@@ -6,10 +6,10 @@ import { useNavigate } from "react-router-dom";
 function First() {
   const navigate = useNavigate();
   const clickToAI = () => {
-    navigate("/MoneySplit/AI/1");
+    navigate("/MoneySplit/AI");
   };
   const clickToSelf = () => {
-    navigate("/MoneySplit/Self/1");
+    navigate("/MoneySplit/Self");
   };
   return (
     <div className="center_wrap">

@@ -41,3 +41,35 @@
 .center_text {
   text-align: center;
 }
+
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.loader {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: #3182f6;
+  border-radius: 50%;
+}
+
+.loading-text {
+  margin-top: 20px;
+  font-size: 22px;
+  color: black;
+  font-weight: bold;
+}
