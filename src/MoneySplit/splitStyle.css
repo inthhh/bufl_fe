@@ -1,0 +1,43 @@
+.center_wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blue_btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  width: 300px;
+  height: 70px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+  display: block;
+  border-radius: 12px;
+}
+
+.light_blue_btn {
+  background-color: #dceaff;
+  color: black;
+  border: none;
+  width: 300px;
+  height: 70px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+  display: block;
+  border-radius: 12px;
+}
+
+.center_text {
+  text-align: center;
+}
