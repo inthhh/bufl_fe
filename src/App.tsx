@@ -6,8 +6,11 @@ import AI_home from "./MoneySplit/ai_home";
 import AI_anaLoading from "./MoneySplit/ai_anaLoading";
 import AI_calLoading from "./MoneySplit/ai_calLoading";
 import AI_calculate from "./MoneySplit/ai_calculate";
+import SelectAccount from "./MoneySplit/SelectAccount";
+import SelectRatio from "./MoneySplit/SelectRatio";
 import Self_home from "./MoneySplit/self_home";
 import AI_analysis from "./MoneySplit/ai_analysis";
+import Authentication from "./MoneySplit/Authentication";
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
           <Route path="/MoneySplit/AI/Analysis" element={<AI_analysis />} />
           <Route path="/MoneySplit/AI/Calculate" element={<AI_calculate />} />
           <Route path="/MoneySplit/Self" element={<Self_home />} />
+          <Route path="/MoneySplit/SelectAccount" element={<SelectAccount />} />
+          <Route path="/MoneySplit/SelectRatio" element={<SelectRatio />} />
+          <Route path="/MoneySplit/Authentication" element={<Authentication />} />
         </Routes>
       </div>
     </Router>

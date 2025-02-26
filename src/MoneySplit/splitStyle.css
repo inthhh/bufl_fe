@@ -22,6 +22,40 @@
   border-radius: 12px;
 }
 
+.blue_big_btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  width: 350px;
+  height: 64px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+  display: block;
+  border-radius: 12px;
+}
+
+.gray_big_btn {
+  background-color: rgb(226, 226, 226);
+  color: white;
+  border: none;
+  width: 350px;
+  height: 64px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+  display: block;
+  border-radius: 12px;
+}
+
 .light_blue_btn {
   background-color: #dceaff;
   color: black;
@@ -112,4 +146,10 @@
 .center_wrap .btn {
   position: absolute;
   bottom: 36px;
+}
+
+.account_list {
+  width: 350px;
+  height: 136px;
+  border-radius: 12px;
 }

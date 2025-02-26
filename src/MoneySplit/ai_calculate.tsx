@@ -1,15 +1,14 @@
 import React from "react";
 import "./splitStyle.css";
 import { useNavigate } from "react-router-dom";
-import RobotImg from "./robot.png";
 
-function AI_analysis() {
+function AI_calculate() {
   const navigate = useNavigate();
   const clickForYes = () => {
-    navigate("/MoneySplit/AI/SelectAccount");
+    navigate("/MoneySplit/SelectAccount");
   };
   const clickForNo = () => {
-    navigate("/MoneySplit/AI/SelectRatio");
+    navigate("/MoneySplit/SelectRatio");
   };
   return (
     <div className="center_wrap">
@@ -50,4 +49,4 @@ function AI_analysis() {
   );
 }
 
-export default AI_analysis;
+export default AI_calculate;

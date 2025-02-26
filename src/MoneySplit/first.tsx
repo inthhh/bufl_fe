@@ -1,6 +1,6 @@
 import React from "react";
 import "./splitStyle.css";
-import MoneyImg from "./money.png";
+import MoneyImg from "./img/money.png";
 import { useNavigate } from "react-router-dom";
 
 function First() {
