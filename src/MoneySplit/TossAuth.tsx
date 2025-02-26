@@ -9,6 +9,9 @@ const TossAuth: React.FC = () => {
   const clickForYes = () => {
     navigate("/MoneySplit/InputPin");
   };
+  const clickForNo = () => {
+    navigate("/MoneySplit/Authentication");
+  };
 
   return (
     <div>
@@ -59,10 +62,24 @@ const TossAuth: React.FC = () => {
             생년월일 6자리
           </label>
         </div>
-        <button type="button" className="blue_big_btn" onClick={() => clickForYes()}>
-          동의하고 인증하기
-        </button>
       </form>
+      <div className="center_wrap">
+        <div>
+          <div className="center_wrap">
+            <button type="button" className="no_border_btn">
+              개인정보 수집 이용 동의
+            </button>
+          </div>
+          <button type="button" className="blue_big_btn" onClick={() => clickForYes()}>
+            동의하고 인증하기
+          </button>
+          <div className="center_wrap">
+            <button type="button" className="no_border_btn" onClick={() => clickForNo()}>
+              닫기
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

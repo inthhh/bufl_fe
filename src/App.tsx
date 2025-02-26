@@ -12,6 +12,7 @@ import Self_home from "./MoneySplit/self_home";
 import AI_analysis from "./MoneySplit/ai_analysis";
 import Authentication from "./MoneySplit/Authentication";
 import TossAuth from "./MoneySplit/TossAuth";
+import InputPin from "./MoneySplit/InputPin";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/MoneySplit/SelectRatio" element={<SelectRatio />} />
           <Route path="/MoneySplit/Authentication" element={<Authentication />} />
           <Route path="/MoneySplit/TossAuth" element={<TossAuth />} />
+          <Route path="/MoneySplit/InputPin" element={<InputPin />} />
         </Routes>
       </div>
     </Router>
