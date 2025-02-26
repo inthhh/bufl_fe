@@ -14,7 +14,7 @@ import Authentication from "./MoneySplit/Authentication";
 import TossAuth from "./MoneySplit/TossAuth";
 import InputPin from "./MoneySplit/InputPin";
 
-function App() {
+const App: React.FC = () => {
   return (
     <Router>
       <div style={{ width: "400px", height: "800px", backgroundColor: "white" }}>
@@ -36,6 +36,6 @@ function App() {
       </div>
     </Router>
   );
-}
+};
 
 export default App;

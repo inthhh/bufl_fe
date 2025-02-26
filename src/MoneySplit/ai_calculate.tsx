@@ -2,7 +2,7 @@ import React from "react";
 import "./splitStyle.css";
 import { useNavigate } from "react-router-dom";
 
-function AI_calculate() {
+const AI_calculate: React.FC = () => {
   const navigate = useNavigate();
   const clickForYes = () => {
     navigate("/MoneySplit/SelectAccount");
@@ -47,6 +47,6 @@ function AI_calculate() {
       </div>
     </div>
   );
-}
+};
 
 export default AI_calculate;

@@ -3,7 +3,7 @@ import "./splitStyle.css";
 import { useNavigate } from "react-router-dom";
 import RobotImg from "./img/robot.png";
 
-function AI_home() {
+const AI_home: React.FC = () => {
   const navigate = useNavigate();
   const clickToNext = () => {
     navigate("/MoneySplit/AI/AnalysisLoading");
@@ -30,6 +30,6 @@ function AI_home() {
       </div>
     </div>
   );
-}
+};
 
 export default AI_home;

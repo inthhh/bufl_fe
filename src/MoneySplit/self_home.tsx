@@ -2,8 +2,8 @@ import React from "react";
 import "./splitStyle.css";
 import { useNavigate } from "react-router-dom";
 
-function Self_home() {
+const Self_home: React.FC = () => {
   return <div>ddd</div>;
-}
+};
 
 export default Self_home;

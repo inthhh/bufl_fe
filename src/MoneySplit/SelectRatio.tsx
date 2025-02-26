@@ -3,7 +3,7 @@ import "./splitStyle.css";
 import { useNavigate } from "react-router-dom";
 import RobotImg from "./robot.png";
 
-function SelectRatio() {
+const SelectRatio: React.FC = () => {
   const navigate = useNavigate();
   const clickForYes = () => {
     navigate("/MoneySplit/AI/SelectAccount");
@@ -15,6 +15,6 @@ function SelectRatio() {
       </div>
     </div>
   );
-}
+};
 
 export default SelectRatio;

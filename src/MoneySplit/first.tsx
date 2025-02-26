@@ -3,7 +3,7 @@ import "./splitStyle.css";
 import MoneyImg from "./img/money.png";
 import { useNavigate } from "react-router-dom";
 
-function First() {
+const First: React.FC = () => {
   const navigate = useNavigate();
   const clickToAI = () => {
     navigate("/MoneySplit/AI");
@@ -42,6 +42,6 @@ function First() {
       </div>
     </div>
   );
-}
+};
 
 export default First;

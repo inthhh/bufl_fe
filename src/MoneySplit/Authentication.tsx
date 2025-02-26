@@ -3,7 +3,7 @@ import "./splitStyle.css";
 import { useNavigate } from "react-router-dom";
 import RobotImg from "./robot.png";
 
-function Authentication() {
+const Authentication: React.FC = () => {
   const [isFinish, setIsFinish] = React.useState(false);
   const navigate = useNavigate();
   const clickForToss = () => {
@@ -25,6 +25,6 @@ function Authentication() {
       </div>
     </div>
   );
-}
+};
 
 export default Authentication;
