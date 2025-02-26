@@ -3,14 +3,18 @@ import { motion } from "framer-motion";
 import "./splitStyle.css"; // CSS 파일 import
 import { useNavigate } from "react-router-dom";
 
-const AI_loader: React.FC = () => {
+interface LoadingSpinnerProps {
+  text: string;
+}
+
+const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ text }) => {
   const dots = [1, 2, 3, 4, 5, 6]; // 6개의 점
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate("/AI/Analysis");
+      navigate("/MoneySplit/AI/Analysis");
     }, 3000);
 
     return () => clearTimeout(timer);
@@ -33,9 +37,19 @@ const AI_loader: React.FC = () => {
           />
         ))}
       </motion.div>
-      <p className="loading-text">내 소비 습관을 분석 중이에요.</p>
+      <p className="loading-text">
+        {text === "ana" ? (
+          "내 소비 습관을 분석 중이에요."
+        ) : (
+          <>
+            월급 쪼개가 AI 추천 비율을
+            <br />
+            계산 중이에요.
+          </>
+        )}
+      </p>
     </div>
   );
 };
 
-export default AI_loader;
+export default LoadingSpinner;

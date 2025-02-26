@@ -6,7 +6,7 @@ import RobotImg from "./robot.png";
 function AI_home() {
   const navigate = useNavigate();
   const clickToNext = () => {
-    navigate("/MoneySplit/AI/Loading");
+    navigate("/MoneySplit/AI/AnalysisLoading");
   };
   return (
     <div className="center_wrap">

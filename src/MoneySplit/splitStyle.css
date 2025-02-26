@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 400px;
 }
 
 .blue_btn {
@@ -72,4 +73,43 @@
   font-size: 22px;
   color: black;
   font-weight: bold;
+  text-align: center;
+}
+
+.gray_small_btn {
+  background-color: #f3f3f3;
+  color: black;
+  border: none;
+  width: 173px;
+  height: 64px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 22px;
+  font-weight: 500;
+  margin: 4px 2px;
+  cursor: pointer;
+  display: block;
+  border-radius: 12px;
+}
+.blue_small_btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  width: 173px;
+  height: 64px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+  display: block;
+  border-radius: 12px;
+}
+
+.center_wrap .btn {
+  position: absolute;
+  bottom: 36px;
 }
