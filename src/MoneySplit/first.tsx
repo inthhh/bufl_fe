@@ -1,15 +1,15 @@
 import React from "react";
 import "./splitStyle.css";
-import MoneyImg from "./money.png";
+import MoneyImg from "./img/money.png";
 import { useNavigate } from "react-router-dom";
 
-function First() {
+const First: React.FC = () => {
   const navigate = useNavigate();
   const clickToAI = () => {
-    navigate("/MoneySplit/AI/1");
+    navigate("/MoneySplit/AI");
   };
   const clickToSelf = () => {
-    navigate("/MoneySplit/Self/1");
+    navigate("/MoneySplit/Self");
   };
   return (
     <div className="center_wrap">
@@ -42,6 +42,6 @@ function First() {
       </div>
     </div>
   );
-}
+};
 
 export default First;
