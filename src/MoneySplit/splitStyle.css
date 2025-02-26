@@ -56,6 +56,21 @@
   border-radius: 12px;
 }
 
+.big_btn {
+  background-color: white;
+  border: 1px solid #919191;
+  width: 350px;
+  height: 64px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+  display: block;
+  border-radius: 12px;
+}
 .light_blue_btn {
   background-color: #dceaff;
   color: black;
@@ -152,4 +167,75 @@
   width: 350px;
   height: 136px;
   border-radius: 12px;
+}
+
+.auth-container {
+  padding: 24px;
+}
+
+.hidden-heading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+}
+
+.message {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 360px;
+  overflow: hidden;
+  height: 300px;
+  margin: 20px 20px;
+}
+
+.form-group {
+  position: relative;
+  width: 360px;
+}
+
+.input-field {
+  width: 330px;
+  padding: 12px;
+  font-size: 18px;
+  border: none;
+  border-bottom: 2px solid #ddd;
+  outline: none;
+  margin-top: 8px;
+}
+
+.input-label {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #aaa;
+  transition: 0.2s;
+}
+
+.input-field:focus + .input-label,
+.input-field:not(:placeholder-shown) + .input-label {
+  top: 10px;
+  font-size: 12px;
+  color: #3182f6;
+}
+
+.black_title {
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  margin: 20px 0;
 }
