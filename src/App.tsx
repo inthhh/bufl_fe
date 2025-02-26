@@ -4,6 +4,8 @@ import First from "./Main/first";
 import MoneySplitFirst from "./MoneySplit/first";
 import AI_1 from "./MoneySplit/ai_1";
 import Self_1 from "./MoneySplit/self_1";
+import Account from "./Main/account";
+import Second from "./Main/second";
 
 import StartPage from "./SignOn/pages/StartPage";
 import PersonalInfoPage from "./SignOn/pages/PersonalInfoPage";
@@ -23,6 +25,8 @@ function App() {
           <Route path="/MoneySplit" element={<MoneySplitFirst />} />
           <Route path="/MoneySplit/AI/1" element={<AI_1 />} />
           <Route path="/MoneySplit/Self/1" element={<Self_1 />} />
+          <Route path="/Account" element={<Account />} />
+          <Route path="/Second" element={<Second />} />
 
           <Route path="/sign" element={<StartPage />} />
           <Route path="/sign/personal-info" element={<PersonalInfoPage />} />
