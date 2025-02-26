@@ -14,7 +14,8 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ text }) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate("/MoneySplit/AI/Analysis");
+      if (text == "ana") navigate("/MoneySplit/AI/Analysis");
+      if (text == "cal") navigate("/MoneySplit/AI/Calculate");
     }, 3000);
 
     return () => clearTimeout(timer);
@@ -42,7 +43,7 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ text }) => {
           "내 소비 습관을 분석 중이에요."
         ) : (
           <>
-            월급 쪼개가 AI 추천 비율을
+            월급 쪼개기 AI 추천 비율을
             <br />
             계산 중이에요.
           </>
