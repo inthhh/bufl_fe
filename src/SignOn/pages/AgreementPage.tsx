@@ -5,13 +5,13 @@ import AgreeImg from "../images/agree.png";
 
 function AgreementPage() {
   const navigate = useNavigate();
-  const [isAgreementOpen, setIsAgreementOpen] = useState(false); 
+  const [isAgreementOpen, setIsAgreementOpen] = useState(false);
   const [isAgreed, setIsAgreed] = useState(false);
 
   return (
     <div>
       {!isAgreementOpen ? (
-        <div className="center">
+        <div>
           <img src={AgreeImg} width="255px" alt="agree" />
           <h3>
             자산 연결을 위해
@@ -25,9 +25,14 @@ function AgreementPage() {
             <br />
             등록된 자산 정보는 금융포털에서 직접 관리할 수 있어요.
           </p>
-          <span onClick={() => setIsAgreementOpen(true)}>
-            [필수]마이데이터 서비스 이용약관
+          <span
+            onClick={() => setIsAgreementOpen(true)}
+            style={{ cursor: "pointer" , color:"blue", borderBottom: "1px solid blue" }}
+          >
+            [필수] 마이데이터 서비스 이용약관
           </span>
+          <br />
+          <br />
           <button
             onClick={() => navigate("/sign/salary-info")}
             disabled={!isAgreed}
