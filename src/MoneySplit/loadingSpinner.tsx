@@ -14,8 +14,9 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ text }) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (text == "ana") navigate("/MoneySplit/AI/Analysis");
-      if (text == "cal") navigate("/MoneySplit/AI/Calculate");
+      if (text === "ana") navigate("/MoneySplit/AI/Analysis");
+      if (text === "cal") navigate("/MoneySplit/AI/Calculate");
+      if (text === "split") navigate("/MoneySplit/Finish");
     }, 2000);
 
     return () => clearTimeout(timer);
@@ -40,12 +41,17 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ text }) => {
       </motion.div>
       <p className="loading-text">
         {text === "ana" ? (
-          "내 소비 습관을 분석 중이에요."
-        ) : (
+          <>내 소비 습관을 분석 중이에요.</>
+        ) : text === "cal" ? (
           <>
             월급 쪼개기 AI 추천 비율을
             <br />
             계산 중이에요.
+          </>
+        ) : (
+          <>
+            월급 쪼개기를 위해 <br />
+            자동이체 등록 중이에요.
           </>
         )}
       </p>

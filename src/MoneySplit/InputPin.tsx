@@ -27,7 +27,7 @@ const InputPin: React.FC = () => {
 
   const navigateToNext = () => {
     // 모든 요소가 true일때 true
-    if (pin.every((p) => p !== "")) navigate("/MoneySplit/LastLoading");
+    if (pin.every((p) => p !== "")) navigate("/MoneySplit/SplitLoading");
   };
 
   return (

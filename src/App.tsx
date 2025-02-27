@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import First from "./Main/first";
-import MoneySplitFirst from "./MoneySplit/first";
+import MoneySplitFirst from "./MoneySplit/SplitFirst";
 
 import AI_home from "./MoneySplit/ai_Pages/ai_home";
 import AI_anaLoading from "./MoneySplit/ai_Pages/ai_anaLoading";
@@ -14,6 +14,7 @@ import AI_analysis from "./MoneySplit/ai_Pages/ai_analysis";
 import Authentication from "./MoneySplit/Authentication";
 import TossAuth from "./MoneySplit/TossAuth";
 import InputPin from "./MoneySplit/InputPin";
+import SplitLoading from "./MoneySplit/SplitLoading";
 
 import Account from "./Main/account";
 import Second from "./Main/second";
@@ -26,6 +27,7 @@ import InterestPage from "./SignOn/pages/InterestPage";
 import CompletionPage from "./SignOn/pages/CompletionPage";
 
 import AddCategory from "./MoneySplit/AddCategory";
+import SplitFinish from "./MoneySplit/SplitFinish";
 
 const App: React.FC = () => {
   return (
@@ -46,6 +48,8 @@ const App: React.FC = () => {
           <Route path="/MoneySplit/Authentication" element={<Authentication />} />
           <Route path="/MoneySplit/TossAuth" element={<TossAuth />} />
           <Route path="/MoneySplit/InputPin" element={<InputPin />} />
+          <Route path="/MoneySplit/SplitLoading" element={<SplitLoading />} />
+          <Route path="/MoneySplit/Finish" element={<SplitFinish />} />
 
           <Route path="/Account" element={<Account />} />
           <Route path="/Second" element={<Second />} />
