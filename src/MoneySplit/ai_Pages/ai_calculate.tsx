@@ -1,5 +1,5 @@
 import React from "react";
-import "./splitStyle.css";
+import "../splitStyle.css";
 import { useNavigate } from "react-router-dom";
 
 const AI_calculate: React.FC = () => {
