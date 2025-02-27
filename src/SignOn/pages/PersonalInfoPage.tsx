@@ -5,6 +5,7 @@ const PersonalInfoPage: React.FC = () => {
   const navigate = useNavigate();
   const [name, setName] = useState<string>("");
   const [idFront, setIdFront] = useState<string>("");
+  const [idBack, setIdBack] = useState<string>(""); // 뒷자리 첫 번째 숫자만 저장
   const [phone, setPhone] = useState<string>("");
   const [agreements, setAgreements] = useState<{
     all: boolean;
@@ -18,7 +19,6 @@ const PersonalInfoPage: React.FC = () => {
     marketing: false,
   });
 
- 
   const handleAllAgreement = () => {
     const newValue = !agreements.all;
     setAgreements({
@@ -29,13 +29,11 @@ const PersonalInfoPage: React.FC = () => {
     });
   };
 
- 
   const handleAgreementChange = (key: keyof typeof agreements) => {
     const updatedAgreements = {
       ...agreements,
       [key]: !agreements[key],
     };
-
 
     updatedAgreements.all =
       updatedAgreements.terms &&
@@ -45,15 +43,20 @@ const PersonalInfoPage: React.FC = () => {
     setAgreements(updatedAgreements);
   };
 
- 
   const handleIdFrontChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/\D/g, "").slice(0, 7); 
+    const value = e.target.value.replace(/\D/g, "").slice(0, 6); 
     setIdFront(value);
+  };
+
+  const handleIdBackChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, "").slice(0, 1); // 첫 번째 숫자만 입력 가능
+    setIdBack(value);
   };
 
   const isFormValid =
     name &&
-    idFront.length === 7 && 
+    idFront.length === 6 &&
+    idBack.length === 1 && // 뒷자리 첫 번째 숫자 입력 필수
     phone &&
     agreements.terms &&
     agreements.privacy;
@@ -87,10 +90,17 @@ const PersonalInfoPage: React.FC = () => {
               placeholder="앞 7자리"
               value={idFront}
               onChange={handleIdFrontChange}
-              maxLength={7}
+              maxLength={6}
             />
             <span>-</span>
-            <input type="text" value="******" readOnly />
+            <input
+              type="text"
+              placeholder="첫 숫자"
+              value={idBack}
+              onChange={handleIdBackChange}
+              maxLength={1}
+            />
+            <span>******</span>
           </label>
         </div>
 
@@ -101,6 +111,7 @@ const PersonalInfoPage: React.FC = () => {
               type="text"
               placeholder="휴대폰 번호"
               value={phone}
+              maxLength={11}
               onChange={(e) => setPhone(e.target.value)}
             />
           </label>
