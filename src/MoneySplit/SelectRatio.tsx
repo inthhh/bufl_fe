@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./splitStyle.css";
 import { useNavigate } from "react-router-dom";
 import RobotImg from "./robot.png";
+import MoveBack from "./MoveBack";
 
 interface CategoryProps {
   category: string;
@@ -39,25 +40,28 @@ const SelectRatio: React.FC = () => {
     navigate("/MoneySplit/AddCategory");
   };
   return (
-    <div className="center_wrap">
-      <div>
+    <div>
+      <MoveBack pageBefore="/MoneySplit" now="ratio" />
+      <div className="center_wrap">
         <div>
-          <div>월급 쪼개기 비율을 설정해주세요.</div>
-          <div>월 소득</div>
-          <div>3,000,000원 중,</div>
-        </div>
-        <div>
-          <Category category="💰 월급 통장" ratio={20} amount={600000} />
-          <Category category="💰 월급 통장" ratio={20} amount={600000} />
-        </div>
-        <div className="center_wrap">
-          <div className="center_wrap btn">
-            <button className="gray_small_btn" type="button" onClick={() => clickForNo()}>
-              카테고리 추가
-            </button>
-            <button className="blue_small_btn" type="button" onClick={() => clickForYes()}>
-              완료했어요
-            </button>
+          <div>
+            <div>월급 쪼개기 비율을 설정해주세요.</div>
+            <div>월 소득</div>
+            <div>3,000,000원 중,</div>
+          </div>
+          <div>
+            <Category category="💰 월급 통장" ratio={20} amount={600000} />
+            <Category category="💰 월급 통장" ratio={20} amount={600000} />
+          </div>
+          <div className="center_wrap">
+            <div className="center_wrap btn">
+              <button className="gray_small_btn" type="button" onClick={() => clickForNo()}>
+                카테고리 추가
+              </button>
+              <button className="blue_small_btn" type="button" onClick={() => clickForYes()}>
+                완료했어요
+              </button>
+            </div>
           </div>
         </div>
       </div>
