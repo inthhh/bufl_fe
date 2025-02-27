@@ -161,6 +161,7 @@
 .center_wrap .btn {
   position: absolute;
   bottom: 36px;
+  width: 400px;
 }
 
 .account_list {
