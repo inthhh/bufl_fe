@@ -3,20 +3,18 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import First from "./Main/first";
 import MoneySplitFirst from "./MoneySplit/first";
 
-import AI_home from "./MoneySplit/ai_home";
-import AI_anaLoading from "./MoneySplit/ai_anaLoading";
-import AI_calLoading from "./MoneySplit/ai_calLoading";
-import AI_calculate from "./MoneySplit/ai_calculate";
+import AI_home from "./MoneySplit/ai_Pages/ai_home";
+import AI_anaLoading from "./MoneySplit/ai_Pages/ai_anaLoading";
+import AI_calLoading from "./MoneySplit/ai_Pages/ai_calLoading";
+import AI_calculate from "./MoneySplit/ai_Pages/ai_calculate";
 import SelectAccount from "./MoneySplit/SelectAccount";
 import SelectRatio from "./MoneySplit/SelectRatio";
 import Self_home from "./MoneySplit/self_home";
-import AI_analysis from "./MoneySplit/ai_analysis";
+import AI_analysis from "./MoneySplit/ai_Pages/ai_analysis";
 import Authentication from "./MoneySplit/Authentication";
 import TossAuth from "./MoneySplit/TossAuth";
 import InputPin from "./MoneySplit/InputPin";
 
-import AI_1 from "./MoneySplit/ai_1";
-import Self_1 from "./MoneySplit/self_1";
 import Account from "./Main/account";
 import Second from "./Main/second";
 
@@ -27,13 +25,12 @@ import SalaryInfoPage from "./SignOn/pages/SalaryInfoPage";
 import InterestPage from "./SignOn/pages/InterestPage";
 import CompletionPage from "./SignOn/pages/CompletionPage";
 
+import AddCategory from "./MoneySplit/AddCategory";
 
 const App: React.FC = () => {
   return (
     <Router>
-      <div
-        style={{ width: "400px", height: "800px", backgroundColor: "white" }}
-      >
+      <div style={{ width: "400px", height: "800px", backgroundColor: "white" }}>
         <Routes>
           <Route path="/" element={<First />} />
           <Route path="/MoneySplit" element={<MoneySplitFirst />} />
@@ -49,8 +46,7 @@ const App: React.FC = () => {
           <Route path="/MoneySplit/Authentication" element={<Authentication />} />
           <Route path="/MoneySplit/TossAuth" element={<TossAuth />} />
           <Route path="/MoneySplit/InputPin" element={<InputPin />} />
-          <Route path="/MoneySplit/AI/1" element={<AI_1 />} />
-          <Route path="/MoneySplit/Self/1" element={<Self_1 />} />
+
           <Route path="/Account" element={<Account />} />
           <Route path="/Second" element={<Second />} />
 
@@ -61,6 +57,7 @@ const App: React.FC = () => {
           <Route path="/sign/interest" element={<InterestPage />} />
           <Route path="/sign/completion" element={<CompletionPage />} />
 
+          <Route path="/MoneySplit/AddCategory" element={<AddCategory />} />
         </Routes>
       </div>
     </Router>
