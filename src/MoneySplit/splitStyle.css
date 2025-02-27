@@ -248,3 +248,70 @@
   font-weight: bold;
   color: #757575;
 }
+
+.space_between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category_input {
+  width: 330px;
+  height: 40px;
+  padding: 12px;
+  font-size: 18px;
+  margin-top: 8px;
+  border: 1px solid rgb(164 164 164);
+  border-radius: 8px;
+}
+
+.pin-message {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.pin-input-container {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.pin-input {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  text-align: center;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.keypad-button {
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  border: none;
+  background-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.keypad-button:hover {
+  background-color: #ddd;
+}
+
+.confirm {
+  background-color: #007bff;
+  color: white;
+}
+
+.confirm:hover {
+  background-color: #0056b3;
+}

@@ -16,7 +16,7 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ text }) => {
     const timer = setTimeout(() => {
       if (text == "ana") navigate("/MoneySplit/AI/Analysis");
       if (text == "cal") navigate("/MoneySplit/AI/Calculate");
-    }, 3000);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, [navigate]);
