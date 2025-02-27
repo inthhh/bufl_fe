@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./splitStyle.css";
 
@@ -25,22 +25,23 @@ const InputPin: React.FC = () => {
     });
   };
 
-  const navigateToNext = () => {
-    // 모든 요소가 true일때 true
+  useEffect(() => {
     if (pin.every((p) => p !== "")) navigate("/MoneySplit/SplitLoading");
-  };
+  }, [pin]);
 
   return (
     <div className="center_wrap">
       <div>
-        <div className="pin-message">
+        <div className="black_title center_text">
           자동이체 등록을 위해 <br />
           PIN 번호를 입력해주세요.
         </div>
-        <div className="pin-input-container">
-          {pin.map((num, index) => (
-            <input key={index} type="text" value={num} readOnly className="pin-input" />
-          ))}
+        <div className="center_wrap" style={{ margin: "30px 0" }}>
+          <div className="pin-input-container">
+            {pin.map((num, index) => (
+              <input key={index} type="password" value={num} className="pin-input" required />
+            ))}
+          </div>
         </div>
         <div className="keypad">
           {[...Array(9)].map((_, index) => (
@@ -48,14 +49,12 @@ const InputPin: React.FC = () => {
               {index + 1}
             </button>
           ))}
-          <button className="keypad-button" onClick={handleDelete}>
-            ⬅
-          </button>
+          <div onClick={handleDelete}></div>
           <button className="keypad-button" onClick={() => handleKeyPress("0")}>
             0
           </button>
-          <button className="keypad-button confirm" onClick={navigateToNext}>
-            ✔
+          <button className="keypad-button" onClick={handleDelete}>
+            ⬅
           </button>
         </div>
       </div>
