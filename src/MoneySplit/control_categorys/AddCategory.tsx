@@ -6,11 +6,20 @@ import MoveBack from "../MoveBack";
 const AddCategory: React.FC = () => {
   const [name, setName] = useState<string>("");
   const [amount, setAmount] = useState<string>("");
-  const [startDate, setStartDate] = useState<string>("");
   const [color, setColor] = useState<string>("#d0defa");
   const navigate = useNavigate();
+
+  const newItem = {
+    newName: name,
+    newAmount: amount,
+    newColor: color,
+  };
+
   const clickForYes = () => {
-    navigate("/money-split/select-ratio");
+    console.log(name, amount, color);
+    navigate("/money-split/select-ratio", {
+      state: { newItem },
+    });
   };
 
   return (
@@ -46,16 +55,6 @@ const AddCategory: React.FC = () => {
               />
             </div>
 
-            <div className="space_between">
-              <label htmlFor="birth">저축 시작일</label>
-              <input
-                type="date"
-                id="birth"
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
-                placeholder=""
-              />
-            </div>
             <div className="space_between">
               <p className="">배경색</p>
               <input type="color" value={color} onChange={(e) => setColor(e.target.value)} className="" />
