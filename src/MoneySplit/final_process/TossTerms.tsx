@@ -1,6 +1,6 @@
 import MoveBack from "../MoveBack";
 
-const TossTerms = () => {
+const TossTerms: React.FC = () => {
   return (
     <div>
       <MoveBack pageBefore="/money-split/toss-auth" />

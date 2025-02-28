@@ -1,6 +1,6 @@
 import MoveBack from "../MoveBack";
 
-const AI_Cancel = () => {
+const AI_Cancel: React.FC = () => {
   return (
     <div>
       <MoveBack pageBefore="/money-split/ai/analysis" />

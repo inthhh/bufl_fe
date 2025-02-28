@@ -2,6 +2,7 @@ import React from "react";
 import "../splitStyle.css";
 import { useNavigate } from "react-router-dom";
 import MoveBack from "../MoveBack";
+import DonutChart from "./ai_doughnut";
 
 const AI_calculate: React.FC = () => {
   const navigate = useNavigate();
@@ -16,27 +17,36 @@ const AI_calculate: React.FC = () => {
       <MoveBack pageBefore={"/money-split/ai/analysis"} />
       <div className="center_wrap">
         <div>
-          <div>AI가 추천하는 월급 분배 비율이에요!</div>
-          <div>
-            <div>월급 2,000,000원에서</div>
+          <div className="black_title">
+            AI가 추천하는
+            <br />
+            월급 분배 비율이에요!
+          </div>
+          <div className="content_box">
+            <div className="black_title">월급 2,000,000원에서</div>
             <div>
-              <ul>
+              <ul className="analysis_list">
                 <li>
-                  생활비 40% <span>(약 800,000원)</span>
+                  생활비 40%<span> (약 800,000원)</span>
                 </li>
                 <li>
-                  적금 30%<span>(약 600,000원)</span>
+                  적금 30%<span> (약 600,000원)</span>
                 </li>
                 <li>
-                  비상금, 예비비 10%<span>(약 200,000원)</span>
+                  비상금, 예비비 10%<span> (약 200,000원)</span>
                 </li>
                 <li>
-                  재테크 20%<span>(약 400,000원)</span>
+                  재테크 20%<span> (약 400,000원)</span>
                 </li>
               </ul>
             </div>
           </div>
 
+          <div className="center_wrap">
+            <div style={{ width: "150px", marginTop: "20px" }}>
+              <DonutChart dataList={[40, 30, 10, 20]} />
+            </div>
+          </div>
           <div className="center_wrap">
             <div className="center_wrap btn">
               <button className="gray_small_btn" type="button" onClick={() => clickForNo()}>

@@ -21,7 +21,7 @@ const AI_analysis: React.FC = () => {
             <div className="black_title">3개월 동안,</div>
             <div>
               {/* api - 소비습관 불러오기 */}
-              <ul>
+              <ul className="analysis_list">
                 <li>생활비 35%</li>
                 <li>적금 20%</li>
                 <li>쇼핑, 장보기 30%</li>
