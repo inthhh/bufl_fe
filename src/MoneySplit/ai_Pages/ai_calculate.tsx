@@ -1,6 +1,7 @@
 import React from "react";
 import "../splitStyle.css";
 import { useNavigate } from "react-router-dom";
+import MoveBack from "../MoveBack";
 
 const AI_calculate: React.FC = () => {
   const navigate = useNavigate();
@@ -11,37 +12,40 @@ const AI_calculate: React.FC = () => {
     navigate("/MoneySplit/SelectRatio");
   };
   return (
-    <div className="center_wrap">
-      <div>
-        <div>AI가 추천하는 월급 분배 비율이에요!</div>
+    <div>
+      <MoveBack pageBefore={"/MoneySplit/AI/Analysis"} />
+      <div className="center_wrap">
         <div>
-          <div>월급 2,000,000원에서</div>
+          <div>AI가 추천하는 월급 분배 비율이에요!</div>
           <div>
-            <ul>
-              <li>
-                생활비 40% <span>(약 800,000원)</span>
-              </li>
-              <li>
-                적금 30%<span>(약 600,000원)</span>
-              </li>
-              <li>
-                비상금, 예비비 10%<span>(약 200,000원)</span>
-              </li>
-              <li>
-                재테크 20%<span>(약 400,000원)</span>
-              </li>
-            </ul>
+            <div>월급 2,000,000원에서</div>
+            <div>
+              <ul>
+                <li>
+                  생활비 40% <span>(약 800,000원)</span>
+                </li>
+                <li>
+                  적금 30%<span>(약 600,000원)</span>
+                </li>
+                <li>
+                  비상금, 예비비 10%<span>(약 200,000원)</span>
+                </li>
+                <li>
+                  재테크 20%<span>(약 400,000원)</span>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
 
-        <div className="center_wrap">
-          <div className="center_wrap btn">
-            <button className="gray_small_btn" type="button" onClick={() => clickForNo()}>
-              수정할래요
-            </button>
-            <button className="blue_small_btn" type="button" onClick={() => clickForYes()}>
-              좋아요!
-            </button>
+          <div className="center_wrap">
+            <div className="center_wrap btn">
+              <button className="gray_small_btn" type="button" onClick={() => clickForNo()}>
+                수정할래요
+              </button>
+              <button className="blue_small_btn" type="button" onClick={() => clickForYes()}>
+                좋아요!
+              </button>
+            </div>
           </div>
         </div>
       </div>
