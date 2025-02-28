@@ -65,15 +65,19 @@ const PersonalInfoPage: React.FC = () => {
 
   return (
     <div>
-      <MoveBack pageBefore="/sign" />
-      <h2>개인정보 설정</h2>
-      <p>
+      <div className="underline">
+        <MoveBack pageBefore="/sign" />
+        <div className="center_wrap">
+          <h2 className="text_info">개인정보 설정</h2>
+        </div>
+      </div>
+      <p className="info_text2 center_wrap">
         안전한 저축 시작과 AI추천을 위하여, <br />
         개인정보를 입력해주세요.
       </p>
 
       <div>
-        <div>
+        <div className="info_input_name">
           <label>
             이름
             <input
@@ -85,15 +89,17 @@ const PersonalInfoPage: React.FC = () => {
           </label>
         </div>
 
-        <div>
+        <div className="info_input_name">
           <label>
             주민등록번호
             <input
+              className="input_id"
               type="text"
               placeholder="앞 7자리"
               value={idFront}
               onChange={handleIdFrontChange}
               maxLength={6}
+              width="10px"
             />
             <span>-</span>
             <input
@@ -107,7 +113,7 @@ const PersonalInfoPage: React.FC = () => {
           </label>
         </div>
 
-        <div>
+        <div className="info_input_name">
           <label>
             휴대폰 번호
             <input
@@ -162,10 +168,11 @@ const PersonalInfoPage: React.FC = () => {
           마케팅 정보 수신 동의 (선택)
         </label>
       </div>
-      <div>
+      <div className="center_wrap">
         <button
           disabled={!isFormValid}
           onClick={() => navigate("/sign/agreement")}
+          className="btn_start"
         >
           확인
         </button>

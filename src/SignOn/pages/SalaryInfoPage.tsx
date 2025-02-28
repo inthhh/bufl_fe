@@ -6,8 +6,7 @@ import DateImg from "../images/date.png";
 import AccountImg from "../images/account.png";
 import "../../MoneySplit/splitStyle.css";
 import MoveBack from "../../MoneySplit/MoveBack";
-import { accountList } from "./data"; // 계좌 데이터 가져오기
-
+import { accountList } from "./data";
 function SalaryInfoPage() {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
@@ -32,37 +31,55 @@ function SalaryInfoPage() {
   ).concat("말일");
 
   return (
-    <div>
+    <div className="container">
       <MoveBack pageBefore="/sign/agreement" />
+      <h3 className="salary_text1">
+        월급 자동 분배를 위해
+        <br /> 정보가 필요해요.
+      </h3>
+
       {step === 1 ? (
         <div>
-          <h3>
-            월급 자동 분배를 위해
-            <br /> 정보가 필요해요.
-          </h3>
-          <img src={MoneyImg} alt="money" width="45px" />
-          <p>월 실수령</p>
-          <p>실수령 월급을 입력해주세요.</p>
+          {/* 월급 입력 UI */}
+          <div className="salary_flex">
+            <img src={MoneyImg} alt="money" width="45px" height="45px" />
+            <div className="salary_text_group">
+              <p className="salary_text2">월 실수령</p>
+              <p className="salary_text3">실수령 월급을 입력해주세요.</p>
+            </div>
+          </div>
 
-          <div>
-            <button onClick={() => adjustSalary(-500000)}>-</button>
+          <div className="salary_input_container">
+            <button
+              className="salary_button"
+              onClick={() => adjustSalary(-500000)}
+            >
+              -
+            </button>
             <input
               type="text"
               value={formatSalary(salary)}
               onChange={handleSalaryChange}
+              className="salary_input"
+              readOnly
             />
-            <button onClick={() => adjustSalary(500000)}>+</button>
-            <span>원</span>
+            <button
+              className="salary_button"
+              onClick={() => adjustSalary(500000)}
+            >
+              +
+            </button>
+            <span className="currency">원</span>
           </div>
 
-          <button onClick={() => setStep(2)}>다음</button>
+          <div className="center_wrap">
+            <button className="btn_start" onClick={() => setStep(2)}>
+              다음
+            </button>
+          </div>
         </div>
       ) : step === 2 ? (
         <div>
-          <h3>
-            월급 자동 분배를 위해
-            <br /> 정보가 필요해요.
-          </h3>
           <img src={DateImg} alt="date" width="45px" />
           <p>월급일</p>
 
@@ -81,10 +98,6 @@ function SalaryInfoPage() {
         </div>
       ) : (
         <div>
-          <h3>
-            월급 자동 분배를 위해
-            <br /> 계좌 정보를 선택해주세요.
-          </h3>
           <img src={AccountImg} alt="account" width="45px" />
           <p>내 계좌</p>
 
@@ -104,8 +117,7 @@ function SalaryInfoPage() {
                   width="20px"
                 />
                 <span>
-                  {account.name}
-                  {account.account}
+                  {account.name} {account.account}
                 </span>
               </div>
             ))}
