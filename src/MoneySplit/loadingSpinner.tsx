@@ -14,9 +14,9 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ text }) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (text === "ana") navigate("/MoneySplit/AI/Analysis");
-      if (text === "cal") navigate("/MoneySplit/AI/Calculate");
-      if (text === "split") navigate("/MoneySplit/Finish");
+      if (text === "ana") navigate("/money-split/ai/analysis");
+      if (text === "cal") navigate("/money-split/ai/calculate");
+      if (text === "split") navigate("/money-split/finish");
     }, 2000);
 
     return () => clearTimeout(timer);

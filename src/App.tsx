@@ -28,6 +28,8 @@ import CompletionPage from "./SignOn/pages/CompletionPage";
 
 import AddCategory from "./MoneySplit/AddCategory";
 import SplitFinish from "./MoneySplit/SplitFinish";
+import SelectAccountDetail from "./MoneySplit/SelectAccountDetail";
+import SelectAccountAccounts from "./MoneySplit/SelectAccountAccounts";
 
 const App: React.FC = () => {
   return (
@@ -35,21 +37,24 @@ const App: React.FC = () => {
       <div style={{ width: "400px", height: "800px", backgroundColor: "white" }}>
         <Routes>
           <Route path="/" element={<First />} />
-          <Route path="/MoneySplit" element={<MoneySplitFirst />} />
+          <Route path="/money-split" element={<MoneySplitFirst />} />
 
-          <Route path="/MoneySplit/AI" element={<AI_home />} />
-          <Route path="/MoneySplit/AI/AnalysisLoading" element={<AI_anaLoading />} />
-          <Route path="/MoneySplit/AI/CalculateLoading" element={<AI_calLoading />} />
-          <Route path="/MoneySplit/AI/Analysis" element={<AI_analysis />} />
-          <Route path="/MoneySplit/AI/Calculate" element={<AI_calculate />} />
-          <Route path="/MoneySplit/Self" element={<Self_home />} />
-          <Route path="/MoneySplit/SelectAccount" element={<SelectAccount />} />
-          <Route path="/MoneySplit/SelectRatio" element={<SelectRatio />} />
-          <Route path="/MoneySplit/Authentication" element={<Authentication />} />
-          <Route path="/MoneySplit/TossAuth" element={<TossAuth />} />
-          <Route path="/MoneySplit/InputPin" element={<InputPin />} />
-          <Route path="/MoneySplit/SplitLoading" element={<SplitLoading />} />
-          <Route path="/MoneySplit/Finish" element={<SplitFinish />} />
+          <Route path="/money-split/ai" element={<AI_home />} />
+          <Route path="/money-split/ai/analysis-loading" element={<AI_anaLoading />} />
+          <Route path="/money-split/ai/calculate-loading" element={<AI_calLoading />} />
+          <Route path="/money-split/ai/analysis" element={<AI_analysis />} />
+          <Route path="/money-split/ai/calculate" element={<AI_calculate />} />
+          <Route path="/money-split/self" element={<Self_home />} />
+          <Route path="/money-split/select-account" element={<SelectAccount />} />
+          <Route path="/money-split/select-ratio" element={<SelectRatio />} />
+          <Route path="/money-split/authentication" element={<Authentication />} />
+          <Route path="/money-split/toss-auth" element={<TossAuth />} />
+          <Route path="/money-split/input-pin" element={<InputPin />} />
+          <Route path="/money-split/split-loading" element={<SplitLoading />} />
+          <Route path="/money-split/finish" element={<SplitFinish />} />
+          <Route path="/money-split/select-account/detail" element={<SelectAccountDetail />} />
+          <Route path="/money-split/select-account/accounts" element={<SelectAccountAccounts />} />
+          <Route path="/money-split/add-category" element={<AddCategory />} />
 
           <Route path="/Account" element={<Account />} />
           <Route path="/Second" element={<Second />} />
@@ -60,8 +65,6 @@ const App: React.FC = () => {
           <Route path="/sign/salary-info" element={<SalaryInfoPage />} />
           <Route path="/sign/interest" element={<InterestPage />} />
           <Route path="/sign/completion" element={<CompletionPage />} />
-
-          <Route path="/MoneySplit/AddCategory" element={<AddCategory />} />
         </Routes>
       </div>
     </Router>

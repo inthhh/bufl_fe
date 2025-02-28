@@ -6,14 +6,14 @@ import MoveBack from "../MoveBack";
 const AI_calculate: React.FC = () => {
   const navigate = useNavigate();
   const clickForYes = () => {
-    navigate("/MoneySplit/SelectAccount");
+    navigate("/money-split/select-account");
   };
   const clickForNo = () => {
-    navigate("/MoneySplit/SelectRatio");
+    navigate("/money-split/select-ratio");
   };
   return (
     <div>
-      <MoveBack pageBefore={"/MoneySplit/AI/Analysis"} />
+      <MoveBack pageBefore={"/money-split/ai/analysis"} />
       <div className="center_wrap">
         <div>
           <div>AI가 추천하는 월급 분배 비율이에요!</div>

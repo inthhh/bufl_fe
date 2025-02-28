@@ -7,11 +7,11 @@ import MoveBack from "../MoveBack";
 const AI_home: React.FC = () => {
   const navigate = useNavigate();
   const clickToNext = () => {
-    navigate("/MoneySplit/AI/AnalysisLoading");
+    navigate("/money-split/ai/analysis-loading");
   };
   return (
     <div>
-      <MoveBack pageBefore="/MoneySplit" />
+      <MoveBack pageBefore="/money-split" />
       <div className="center_wrap">
         <div>
           <div className="black_title">AI가 추천해주는 월급 쪼개기</div>

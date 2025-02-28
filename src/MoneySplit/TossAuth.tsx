@@ -8,15 +8,15 @@ const TossAuth: React.FC = () => {
   const [birth, setBirth] = useState<string>("");
   const navigate = useNavigate();
   const clickForYes = () => {
-    navigate("/MoneySplit/InputPin");
+    navigate("/money-split/input-pin");
   };
   const clickForNo = () => {
-    navigate("/MoneySplit/Authentication");
+    navigate("/money-split/authentication");
   };
 
   return (
     <div>
-      <MoveBack pageBefore="/MoneySplit/Authentication" />
+      <MoveBack pageBefore="/money-split/authentication" />
       <div style={{ marginLeft: "35px" }}>
         <h1 className="black_title">
           토스로 인증하기 위해

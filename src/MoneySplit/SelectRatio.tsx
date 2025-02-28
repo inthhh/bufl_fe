@@ -34,14 +34,14 @@ const Category: React.FC<CategoryProps> = (props) => {
 const SelectRatio: React.FC = () => {
   const navigate = useNavigate();
   const clickForYes = () => {
-    navigate("/MoneySplit/SelectAccount");
+    navigate("/money-split/select-account");
   };
   const clickForNo = () => {
-    navigate("/MoneySplit/AddCategory");
+    navigate("/money-split/add-category");
   };
   return (
     <div>
-      <MoveBack pageBefore="/MoneySplit" now="ratio" />
+      <MoveBack pageBefore="/money-split" now="ratio" />
       <div className="center_wrap">
         <div>
           <div>

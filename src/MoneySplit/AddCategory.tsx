@@ -10,12 +10,12 @@ const AddCategory: React.FC = () => {
   const [color, setColor] = useState<string>("#d0defa");
   const navigate = useNavigate();
   const clickForYes = () => {
-    navigate("/MoneySplit/SelectRatio");
+    navigate("/money-split/select-ratio");
   };
 
   return (
     <div>
-      <MoveBack pageBefore="/MoneySplit/SelectRatio" />
+      <MoveBack pageBefore="/money-split/select-ratio" />
       <div className="center_wrap">
         <div>
           <div className="black_title">카테고리 추가</div>

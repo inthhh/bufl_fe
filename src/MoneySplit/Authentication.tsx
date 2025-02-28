@@ -8,11 +8,11 @@ const Authentication: React.FC = () => {
   const [isFinish, setIsFinish] = React.useState(false);
   const navigate = useNavigate();
   const clickForToss = () => {
-    navigate("/MoneySplit/TossAuth");
+    navigate("/money-split/toss-auth");
   };
   return (
     <div>
-      <MoveBack pageBefore="/MoneySplit/SelectAccount" />
+      <MoveBack pageBefore="/money-split/select-account" />
       <div className="center_wrap">
         <div>
           <div className="black_title">

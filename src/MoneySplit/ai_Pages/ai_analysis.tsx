@@ -6,14 +6,14 @@ import MoveBack from "../MoveBack";
 const AI_analysis: React.FC = () => {
   const navigate = useNavigate();
   const clickForYes = () => {
-    navigate("/MoneySplit/AI/CalculateLoading");
+    navigate("/money-split/ai/calculate-loading");
   };
   const clickForNo = () => {
-    navigate("/MoneySplit/AI/Cancel");
+    navigate("/money-split/ai/Cancel");
   };
   return (
     <div>
-      <MoveBack pageBefore={"/MoneySplit/AI"} />
+      <MoveBack pageBefore={"/money-split/ai"} />
       <div className="center_wrap">
         <div>
           <div>AI가 분석한 소비 습관이에요.</div>

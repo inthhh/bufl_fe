@@ -7,10 +7,10 @@ import MoveBack from "./MoveBack";
 const SplitFirst: React.FC = () => {
   const navigate = useNavigate();
   const clickToAI = () => {
-    navigate("/MoneySplit/AI");
+    navigate("/money-split/ai");
   };
   const clickToSelf = () => {
-    navigate("/MoneySplit/Self");
+    navigate("/money-split/self");
   };
   return (
     <div>

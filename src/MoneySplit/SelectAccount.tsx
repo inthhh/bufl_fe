@@ -12,9 +12,13 @@ interface CategoryAccountProps {
 }
 
 const CategoryAccount: React.FC<CategoryAccountProps> = (props) => {
+  const navigate = useNavigate();
+  const clickForAccountLink = () => {
+    navigate("/money-split/select-account/detail");
+  };
   return (
     <div>
-      <div className="account_list">
+      <div className="account_list" onClick={clickForAccountLink}>
         <div>{props.category}</div>
         <div>{props.account ? props.account : "계좌 연결하기"}</div>
         <div>{props.ratio}%</div>
@@ -28,11 +32,11 @@ function SelectAccount() {
   const [isFinish, setIsFinish] = React.useState(true);
   const navigate = useNavigate();
   const clickForYes = () => {
-    navigate("/MoneySplit/Authentication");
+    navigate("/money-split/authentication");
   };
   return (
     <div>
-      <MoveBack pageBefore="/MoneySplit/SelectRatio" now="account" />
+      <MoveBack pageBefore="/money-split/select-ratio" now="account" />
       <div className="center_wrap">
         <div>
           <div>카테고리별 계좌를 선택해주세요.</div>
