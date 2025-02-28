@@ -9,17 +9,18 @@ const AI_analysis: React.FC = () => {
     navigate("/money-split/ai/calculate-loading");
   };
   const clickForNo = () => {
-    navigate("/money-split/ai/Cancel");
+    navigate("/money-split/ai/cancel");
   };
   return (
     <div>
       <MoveBack pageBefore={"/money-split/ai"} />
       <div className="center_wrap">
         <div>
-          <div>AI가 분석한 소비 습관이에요.</div>
-          <div>
-            <div>3개월 동안,</div>
+          <div className="black_title">AI가 분석한 소비 습관이에요.</div>
+          <div className="content_box">
+            <div className="black_title">3개월 동안,</div>
             <div>
+              {/* api - 소비습관 불러오기 */}
               <ul>
                 <li>생활비 35%</li>
                 <li>적금 20%</li>

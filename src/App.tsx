@@ -30,6 +30,7 @@ import SplitFinish from "./MoneySplit/final_process/SplitFinish";
 import SelectAccountDetail from "./MoneySplit/control_accounts/SelectAccountDetail";
 import SelectAccountAccounts from "./MoneySplit/control_accounts/SelectAccountAccounts";
 import TossTerms from "./MoneySplit/final_process/TossTerms";
+import AI_Cancel from "./MoneySplit/ai_Pages/ai_cancel";
 
 const App: React.FC = () => {
   return (
@@ -55,6 +56,7 @@ const App: React.FC = () => {
           <Route path="/money-split/select-account/accounts" element={<SelectAccountAccounts />} />
           <Route path="/money-split/add-category" element={<AddCategory />} />
           <Route path="/money-split/toss/terms" element={<TossTerms />} />
+          <Route path="/money-split/ai/cancel" element={<AI_Cancel />} />
 
           <Route path="/Account" element={<Account />} />
           <Route path="/Second" element={<Second />} />

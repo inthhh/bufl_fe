@@ -393,3 +393,11 @@
 .cancel:hover {
   background-color: rgb(233, 233, 233);
 }
+
+.content_box {
+  background-color: #e4eeff;
+  width: 330px;
+  height: 400px;
+  border-radius: 12px;
+  padding: 30px;
+}
