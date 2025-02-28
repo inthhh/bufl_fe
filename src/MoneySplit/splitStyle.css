@@ -419,17 +419,11 @@
   font-size: 12px;
 }
 
-input[type="range"] {
+.input_not_origin {
   -webkit-appearance: none;
   width: 250px;
   height: 8px;
-  background: linear-gradient(
-    to right,
-    rgb(28, 106, 216) 0%,
-    rgb(28, 106, 216) 50%,
-    rgb(200, 200, 200) 50%,
-    rgb(200, 200, 200) 100%
-  );
+  background: linear-gradient(to right, rgb(200, 200, 200) 0%, rgb(200, 200, 200) 100%);
   border-radius: 8px;
   outline: none;
   transition: background 450ms ease-in;
@@ -444,6 +438,17 @@ input[type="range"]::-webkit-slider-thumb {
   background: #007bff;
   border-radius: 50%;
   cursor: pointer;
+}
+
+.input_origin {
+  -webkit-appearance: none;
+  width: 250px;
+  height: 8px;
+  background: linear-gradient(to right, rgb(28, 106, 216) 0%, rgb(28, 106, 216) 100%);
+  border-radius: 8px;
+  outline: none;
+  transition: background 450ms ease-in;
+  accent-color: rgb(28, 106, 216);
 }
 
 .list_title {

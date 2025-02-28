@@ -1,25 +1,31 @@
 import React, { useEffect, useState } from "react";
 import "../splitStyle.css"; // CSS 파일 import
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setCategories } from "../../redux/actions/categoryAction";
+import { RootState } from "../../redux/store";
+
 import MoveBack from "../MoveBack";
 
 const AddCategory: React.FC = () => {
   const [name, setName] = useState<string>("");
-  const [amount, setAmount] = useState<string>("");
+  const [goal, setGoal] = useState<string>("");
   const [color, setColor] = useState<string>("#d0defa");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const categoryList = useSelector((state: RootState) => state.category.categoryList);
 
-  const newItem = {
-    newName: name,
-    newAmount: amount,
-    newColor: color,
+  let newItem = {
+    name: name,
+    goal: Number(goal),
+    color: color,
+    ratio: 0,
   };
 
   const clickForYes = () => {
-    console.log(name, amount, color);
-    navigate("/money-split/select-ratio", {
-      state: { newItem },
-    });
+    console.log(name, goal, color);
+    dispatch(setCategories([...categoryList, newItem]));
+    navigate("/money-split/select-ratio");
   };
 
   return (
@@ -48,8 +54,8 @@ const AddCategory: React.FC = () => {
               <input
                 type="number"
                 id="amount"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
+                value={goal}
+                onChange={(e) => setGoal(e.target.value)}
                 placeholder=""
                 className="category_input"
               />
