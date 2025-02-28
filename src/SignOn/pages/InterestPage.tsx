@@ -10,7 +10,6 @@ import IntImage6 from "../images/int6.png";
 import "../../MoneySplit/splitStyle.css";
 import MoveBack from "../../MoneySplit/MoveBack";
 
-
 const interests = [
   { id: 1, img: IntImage1 },
   { id: 2, img: IntImage2 },
@@ -33,45 +32,49 @@ const InterestPage = () => {
     <div>
       <MoveBack pageBefore="/sign/input-pin" />
       <div className="center">
-      <h3>다음 중, 관심사가 있다면 선택해주세요.</h3>
-      <p>(선택)</p>
+        <h3>다음 중, 관심사가 있다면 선택해주세요.</h3>
+        <p>(선택)</p>
 
-      <div>
-        {interests.map((interest) => (
-          <img
-            key={interest.id}
-            src={interest.img}
-            alt={`interest-${interest.id}`}
-            width="160px"
-            style={{
-              cursor: "pointer",
-              borderRadius: "30px",
-              backgroundColor:
-                selectedInterest === interest.id ? "#d0e8ff" : "transparent",
-              border:
-                selectedInterest === interest.id
-                  ? "2px solid blue"
-                  : "2px solid transparent",
-            }}
-            onClick={() => handleSelectInterest(interest.id)}
-          />
-        ))}
-      </div>
+        <div>
+          {interests.map((interest) => (
+            <img
+              key={interest.id}
+              src={interest.img}
+              alt={`interest-${interest.id}`}
+              width="160px"
+              style={{
+                cursor: "pointer",
+                borderRadius: "30px",
+                backgroundColor:
+                  selectedInterest === interest.id ? "#d0e8ff" : "transparent",
+                border:
+                  selectedInterest === interest.id
+                    ? "2px solid blue"
+                    : "2px solid transparent",
+              }}
+              onClick={() => handleSelectInterest(interest.id)}
+            />
+          ))}
+        </div>
 
-      <button
-        disabled={selectedInterest === null}
-        onClick={() => navigate("/sign/completion")}
-      >
-        저장하기
-      </button>
+        <button
+          disabled={selectedInterest === null}
+          onClick={() => navigate("/sign/completion")}
+        >
+          저장하기
+        </button>
 
-      <br />
-      <span
-        onClick={() => navigate("/sign/completion")}
-        style={{ color: "gray", borderBottom: "solid 1px", cursor: "pointer" }}
-      >
-        건너뛰기
-      </span>
+        <br />
+        <span
+          onClick={() => navigate("/sign/completion")}
+          style={{
+            color: "gray",
+            borderBottom: "solid 1px",
+            cursor: "pointer",
+          }}
+        >
+          건너뛰기
+        </span>
       </div>
     </div>
   );
