@@ -1,27 +1,24 @@
 import React, { useEffect, useState } from "react";
-import "./splitStyle.css"; // CSS 파일 import
+import "../splitStyle.css"; // CSS 파일 import
 import { useNavigate } from "react-router-dom";
-import MoveBack from "./MoveBack";
+import MoveBack from "../MoveBack";
 
-const SelectAccountDetail: React.FC = () => {
+const AddCategory: React.FC = () => {
   const [name, setName] = useState<string>("");
   const [amount, setAmount] = useState<string>("");
   const [startDate, setStartDate] = useState<string>("");
   const [color, setColor] = useState<string>("#d0defa");
   const navigate = useNavigate();
   const clickForYes = () => {
-    navigate("/money-split/select-account");
-  };
-  const clickForAccount = () => {
-    navigate("/money-split/select-account/accounts");
+    navigate("/money-split/select-ratio");
   };
 
   return (
     <div>
-      <MoveBack pageBefore="/money-split/select-account" />
+      <MoveBack pageBefore="/money-split/select-ratio" />
       <div className="center_wrap">
         <div>
-          <div className="black_title">카테고리 명</div>
+          <div className="black_title">카테고리 추가</div>
           <form className="auth-form" style={{ width: "330px" }}>
             <div>
               <label htmlFor="name">카테고리 이름</label>
@@ -49,28 +46,25 @@ const SelectAccountDetail: React.FC = () => {
               />
             </div>
 
-            <div>
-              <label>연결 계좌</label>
-              <button
-                type="button"
-                onClick={clickForAccount}
-                className="light_blue_btn"
-                style={{ width: "330px", height: "50px" }}
-              >
-                계좌 추가하기
-              </button>
+            <div className="space_between">
+              <label htmlFor="birth">저축 시작일</label>
+              <input
+                type="date"
+                id="birth"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+                placeholder=""
+              />
             </div>
-
-            <div>
-              <button type="button">카테고리 삭제</button>
+            <div className="space_between">
+              <p className="">배경색</p>
+              <input type="color" value={color} onChange={(e) => setColor(e.target.value)} className="" />
             </div>
           </form>
           <div className="center_wrap">
-            <div className="center_wrap btn">
-              <button className="blue_big_btn" type="button" onClick={() => clickForYes()}>
-                저장
-              </button>
-            </div>
+            <button className="blue_big_btn" type="button" onClick={() => clickForYes()}>
+              저장
+            </button>
           </div>
         </div>
       </div>
@@ -78,4 +72,4 @@ const SelectAccountDetail: React.FC = () => {
   );
 };
 
-export default SelectAccountDetail;
+export default AddCategory;

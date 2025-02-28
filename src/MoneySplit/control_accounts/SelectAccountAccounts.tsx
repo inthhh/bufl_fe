@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "./splitStyle.css"; // CSS 파일 import
+import "../splitStyle.css"; // CSS 파일 import
 import { useNavigate } from "react-router-dom";
-import MoveBack from "./MoveBack";
+import MoveBack from "../MoveBack";
 
 const SelectAccountAccounts: React.FC = () => {
   const navigate = useNavigate();

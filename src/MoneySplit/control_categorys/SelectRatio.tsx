@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import "./splitStyle.css";
+import "../splitStyle.css";
 import { useNavigate } from "react-router-dom";
-import RobotImg from "./robot.png";
-import MoveBack from "./MoveBack";
+import MoveBack from "../MoveBack";
 
 interface CategoryProps {
   category: string;

@@ -7,14 +7,13 @@ import AI_home from "./MoneySplit/ai_Pages/ai_home";
 import AI_anaLoading from "./MoneySplit/ai_Pages/ai_anaLoading";
 import AI_calLoading from "./MoneySplit/ai_Pages/ai_calLoading";
 import AI_calculate from "./MoneySplit/ai_Pages/ai_calculate";
-import SelectAccount from "./MoneySplit/SelectAccount";
-import SelectRatio from "./MoneySplit/SelectRatio";
-import Self_home from "./MoneySplit/self_home";
+import SelectAccount from "./MoneySplit/control_accounts/SelectAccount";
+import SelectRatio from "./MoneySplit/control_categorys/SelectRatio";
 import AI_analysis from "./MoneySplit/ai_Pages/ai_analysis";
-import Authentication from "./MoneySplit/Authentication";
-import TossAuth from "./MoneySplit/TossAuth";
-import InputPin from "./MoneySplit/InputPin";
-import SplitLoading from "./MoneySplit/SplitLoading";
+import Authentication from "./MoneySplit/final_process/Authentication";
+import TossAuth from "./MoneySplit/final_process/TossAuth";
+import InputPin from "./MoneySplit/final_process/InputPin";
+import SplitLoading from "./MoneySplit/final_process/SplitLoading";
 
 import Account from "./Main/account";
 import Second from "./Main/second";
@@ -26,15 +25,15 @@ import SalaryInfoPage from "./SignOn/pages/SalaryInfoPage";
 import InterestPage from "./SignOn/pages/InterestPage";
 import CompletionPage from "./SignOn/pages/CompletionPage";
 
-import AddCategory from "./MoneySplit/AddCategory";
-import SplitFinish from "./MoneySplit/SplitFinish";
-import SelectAccountDetail from "./MoneySplit/SelectAccountDetail";
-import SelectAccountAccounts from "./MoneySplit/SelectAccountAccounts";
+import AddCategory from "./MoneySplit/control_categorys/AddCategory";
+import SplitFinish from "./MoneySplit/final_process/SplitFinish";
+import SelectAccountDetail from "./MoneySplit/control_accounts/SelectAccountDetail";
+import SelectAccountAccounts from "./MoneySplit/control_accounts/SelectAccountAccounts";
 
 const App: React.FC = () => {
   return (
     <Router>
-      <div style={{ width: "400px", height: "800px", backgroundColor: "white" }}>
+      <div style={{ width: "400px", height: "800px", backgroundColor: "white", borderRadius: "15px" }}>
         <Routes>
           <Route path="/" element={<First />} />
           <Route path="/money-split" element={<MoneySplitFirst />} />
@@ -44,7 +43,6 @@ const App: React.FC = () => {
           <Route path="/money-split/ai/calculate-loading" element={<AI_calLoading />} />
           <Route path="/money-split/ai/analysis" element={<AI_analysis />} />
           <Route path="/money-split/ai/calculate" element={<AI_calculate />} />
-          <Route path="/money-split/self" element={<Self_home />} />
           <Route path="/money-split/select-account" element={<SelectAccount />} />
           <Route path="/money-split/select-ratio" element={<SelectRatio />} />
           <Route path="/money-split/authentication" element={<Authentication />} />

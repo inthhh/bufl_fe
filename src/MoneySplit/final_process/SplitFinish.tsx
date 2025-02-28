@@ -1,7 +1,7 @@
 import React from "react";
-import "./splitStyle.css";
+import "../splitStyle.css";
 import { useNavigate } from "react-router-dom";
-import GreenMoneyImg from "./img/green_money.png";
+import GreenMoneyImg from "../img/green_money.png";
 
 const SplitFinish: React.FC = () => {
   const navigate = useNavigate();

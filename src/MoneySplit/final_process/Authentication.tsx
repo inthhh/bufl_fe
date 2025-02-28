@@ -1,8 +1,7 @@
 import React from "react";
-import "./splitStyle.css";
+import "../splitStyle.css";
 import { useNavigate } from "react-router-dom";
-import RobotImg from "./robot.png";
-import MoveBack from "./MoveBack";
+import MoveBack from "../MoveBack";
 
 const Authentication: React.FC = () => {
   const [isFinish, setIsFinish] = React.useState(false);

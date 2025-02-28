@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./splitStyle.css";
-import MoveBack from "./MoveBack";
+import "../splitStyle.css";
+import MoveBack from "../MoveBack";
 
 const InputPin: React.FC = () => {
   const [pin, setPin] = useState<string[]>(Array(6).fill(""));
