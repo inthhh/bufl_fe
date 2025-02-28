@@ -7,6 +7,9 @@ import IntImage3 from "../images/int3.png";
 import IntImage4 from "../images/int4.png";
 import IntImage5 from "../images/int5.png";
 import IntImage6 from "../images/int6.png";
+import "../../MoneySplit/splitStyle.css";
+import MoveBack from "../../MoneySplit/MoveBack";
+
 
 const interests = [
   { id: 1, img: IntImage1 },
@@ -28,6 +31,8 @@ const InterestPage = () => {
 
   return (
     <div>
+      <MoveBack pageBefore="/sign/input-pin" />
+      <div className="center">
       <h3>다음 중, 관심사가 있다면 선택해주세요.</h3>
       <p>(선택)</p>
 
@@ -67,6 +72,7 @@ const InterestPage = () => {
       >
         건너뛰기
       </span>
+      </div>
     </div>
   );
 };

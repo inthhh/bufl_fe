@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../style/style.css";
 import AgreeImg from "../images/agree.png";
+import "../../MoneySplit/splitStyle.css";
+import MoveBack from "../../MoneySplit/MoveBack";
 
 function AgreementPage() {
   const navigate = useNavigate();
@@ -10,6 +12,7 @@ function AgreementPage() {
 
   return (
     <div>
+      <MoveBack pageBefore="/sign/personal-info" />
       {!isAgreementOpen ? (
         <div>
           <img src={AgreeImg} width="255px" alt="agree" />

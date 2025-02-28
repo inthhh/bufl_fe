@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../../MoneySplit/splitStyle.css";
+import MoveBack from "../../MoneySplit/MoveBack";
 
 const PersonalInfoPage: React.FC = () => {
   const navigate = useNavigate();
   const [name, setName] = useState<string>("");
   const [idFront, setIdFront] = useState<string>("");
-  const [idBack, setIdBack] = useState<string>(""); // 뒷자리 첫 번째 숫자만 저장
+  const [idBack, setIdBack] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [agreements, setAgreements] = useState<{
     all: boolean;
@@ -44,25 +46,26 @@ const PersonalInfoPage: React.FC = () => {
   };
 
   const handleIdFrontChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/\D/g, "").slice(0, 6); 
+    const value = e.target.value.replace(/\D/g, "").slice(0, 6);
     setIdFront(value);
   };
 
   const handleIdBackChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/\D/g, "").slice(0, 1); // 첫 번째 숫자만 입력 가능
+    const value = e.target.value.replace(/\D/g, "").slice(0, 1);
     setIdBack(value);
   };
 
   const isFormValid =
     name &&
     idFront.length === 6 &&
-    idBack.length === 1 && // 뒷자리 첫 번째 숫자 입력 필수
+    idBack.length === 1 &&
     phone &&
     agreements.terms &&
     agreements.privacy;
 
   return (
     <div>
+      <MoveBack pageBefore="/sign" />
       <h2>개인정보 설정</h2>
       <p>
         안전한 저축 시작과 AI추천을 위하여, <br />

@@ -3,9 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import First from "./Main/first";
 import MoneySplitFirst from "./MoneySplit/SplitFirst";
 
-
-
-
 import SelectAccount from "./MoneySplit/SelectAccount";
 import SelectRatio from "./MoneySplit/SelectRatio";
 
@@ -23,6 +20,7 @@ import AgreementPage from "./SignOn/pages/AgreementPage";
 import SalaryInfoPage from "./SignOn/pages/SalaryInfoPage";
 import InterestPage from "./SignOn/pages/InterestPage";
 import CompletionPage from "./SignOn/pages/CompletionPage";
+import InputPinPage from "./SignOn/pages/InputPinPage";
 
 import AddCategory from "./MoneySplit/AddCategory";
 import SplitFinish from "./MoneySplit/SplitFinish";
@@ -57,6 +55,7 @@ const App: React.FC = () => {
           <Route path="/sign/salary-info" element={<SalaryInfoPage />} />
           <Route path="/sign/interest" element={<InterestPage />} />
           <Route path="/sign/completion" element={<CompletionPage />} />
+          <Route path="/sign/input-pin" element={<InputPinPage/>} />
 
           <Route path="/MoneySplit/AddCategory" element={<AddCategory />} />
         </Routes>
