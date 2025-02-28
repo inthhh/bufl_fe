@@ -52,9 +52,9 @@ function SalaryInfoPage() {
           <div className="salary_input_container">
             <button
               className="salary_button"
-              onClick={() => adjustSalary(-500000)}
+              onClick={() => adjustSalary(500000)}
             >
-              -
+              +
             </button>
             <input
               type="text"
@@ -65,9 +65,9 @@ function SalaryInfoPage() {
             />
             <button
               className="salary_button"
-              onClick={() => adjustSalary(500000)}
+              onClick={() => adjustSalary(-500000)}
             >
-              +
+              -
             </button>
             <span className="currency">원</span>
           </div>
