@@ -29,6 +29,7 @@ import AddCategory from "./MoneySplit/control_categorys/AddCategory";
 import SplitFinish from "./MoneySplit/final_process/SplitFinish";
 import SelectAccountDetail from "./MoneySplit/control_accounts/SelectAccountDetail";
 import SelectAccountAccounts from "./MoneySplit/control_accounts/SelectAccountAccounts";
+import TossTerms from "./MoneySplit/final_process/TossTerms";
 
 const App: React.FC = () => {
   return (
@@ -53,6 +54,7 @@ const App: React.FC = () => {
           <Route path="/money-split/select-account/detail" element={<SelectAccountDetail />} />
           <Route path="/money-split/select-account/accounts" element={<SelectAccountAccounts />} />
           <Route path="/money-split/add-category" element={<AddCategory />} />
+          <Route path="/money-split/toss/terms" element={<TossTerms />} />
 
           <Route path="/Account" element={<Account />} />
           <Route path="/Second" element={<Second />} />

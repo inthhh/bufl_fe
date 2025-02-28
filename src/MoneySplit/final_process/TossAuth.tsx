@@ -14,6 +14,9 @@ const TossAuth: React.FC = () => {
   const clickForNo = () => {
     navigate("/money-split/authentication");
   };
+  const clickForTerms = () => {
+    navigate("/money-split/toss/terms");
+  };
 
   return (
     <div>
@@ -72,12 +75,12 @@ const TossAuth: React.FC = () => {
       </div>
       <div className="center_wrap">
         <div>
-          <div className="center_wrap">
-            <button type="button" className="no_border_btn">
-              개인정보 수집 이용 동의
+          <div className="center_wrap" style={{ marginBottom: "10px" }}>
+            <button type="button" className="no_border_btn" onClick={() => clickForTerms()}>
+              개인정보 수집·이용 동의 &gt;
             </button>
           </div>
-          <button type="button" className="blue_big_btn" onClick={() => clickForYes()}>
+          <button type="button" className="blue_big_btn" onClick={() => clickForYes()} style={{ marginBottom: "10px" }}>
             동의하고 인증하기
           </button>
           <div className="center_wrap">
