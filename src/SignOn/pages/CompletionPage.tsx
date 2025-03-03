@@ -6,10 +6,19 @@ function CompletionPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="center">
-      <img src={SuccessImg} alt="success" width="140px" />
-      <h2>가입 완료!</h2>
-      <button onClick={() => navigate("/")}>메인 화면으로</button>
+    <div className="center_wrap">
+
+      <img className="content_start" src={SuccessImg} alt="success" width="140px" />
+      <h2 className="start_text">가입 완료!</h2>
+      <div className="center_wrap">
+            <button
+              className="btn_start"
+              onClick={() => navigate("/sign/input-pin")}
+              
+            >
+              메인 화면으로
+            </button>
+          </div>
     </div>
   );
 }
