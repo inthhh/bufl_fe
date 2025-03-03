@@ -53,7 +53,7 @@ const InputPinPage: React.FC = () => {
     <div>
       <MoveBack pageBefore="/sign/salary-info" />
       <div className="center_wrap">
-        <div>
+        <div className= "pin-input--relative">
           <div className="black_title center_text">
             {step === "set" ? (
               <>
@@ -62,24 +62,24 @@ const InputPinPage: React.FC = () => {
                 PIN 번호를 설정해주세요.
               </>
             ) : (
-              <>확인을 위해 한 번 더 <br />입력해주세요. <br /><br /></>
+              <>
+                확인을 위해 한 번 더 <br />
+                입력해주세요. <br />
+                <br />
+              </>
             )}
           </div>
 
           {errorMessage && <div className="error-message">{errorMessage}</div>}
 
-          <div className="center_wrap" style={{ margin: "30px 0" }}>
-            <div className="pin-input-container">
-              {pin.map((num, index) => (
-                <input
-                  key={index}
-                  type="password"
-                  value={num}
-                  className="pin-input"
-                  disabled
-                />
-              ))}
-            </div>
+          {/* 🔹 PIN 입력 UI (동그라미) */}
+          <div className="pin-input-container">
+            {pin.map((num, index) => (
+              <div
+                key={index}
+                className={`pin-dot ${num ? "filled" : ""}`}
+              ></div>
+            ))}
           </div>
 
           <div className="keypad">
@@ -93,7 +93,10 @@ const InputPinPage: React.FC = () => {
               </button>
             ))}
             <div></div>
-            <button className="keypad-button" onClick={() => handleKeyPress("0")}>
+            <button
+              className="keypad-button"
+              onClick={() => handleKeyPress("0")}
+            >
               0
             </button>
             <button className="keypad-button" onClick={handleDelete}>
