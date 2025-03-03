@@ -53,16 +53,9 @@
 .info_input_name {
   padding: 15px 0;
   font-size: 18px;
-  border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+  border-bottom: solid 1px #dfeaf2;
 }
-.info_input_name input {
-  width: 100px;
-  padding: 6px;
-  border-radius: 8px;
-  border: solid 1px rgba(0, 0, 0, 0.2);
-  margin-left: 120px;
-  height: 40px;
-}
+
 .info_input_name label {
   margin-left: 20px;
 }
@@ -74,6 +67,86 @@
   font-size: 16px;
   font-weight: bold;
 }
+
+.agree_container {
+  background: #e9f1fd;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  width: 360px;
+  padding-top: 26px;
+}
+
+.agree_container input[type="checkbox"] {
+  display: none;
+}
+
+.agree_container label {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.agree_container label::before {
+  content: "✓";
+  font-size: 14px;
+  color: #e9f1fd;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  margin-right: 10px;
+  background-color: #ccc;
+}
+
+.agree_container input[type="checkbox"]:checked + label::before {
+  border-color: #3182f6;
+  background-color: #3182f6;
+  color: white;
+}
+
+.required {
+  color: #3366ff;
+}
+
+.agree_down {
+  margin-top: 20px;
+}
+.agree_down h3 {
+  font-size: 18px;
+}
+.info_input_name input {
+  width: 220px;
+  margin-left: 100px;
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid #dfeaf2;
+  font-size: 16px;
+  font-weight: bold;
+  padding-left: 10px;
+  margin-bottom: 5px;
+}
+
+.info_input_phone input{
+  margin-left: 40px;  
+}
+.info_input_id input:nth-child(2){
+  width: 110px;
+  margin-left: 27px;
+  margin-right: 10px;
+}
+.info_input_id input:nth-child(4){
+  width: 30px;
+  margin-left: 10px;
+  margin-right: 9px;
+}
+/* ------------agree------------- */
+
 .agree_text3 {
   cursor: "pointer";
   color: "white";
@@ -118,6 +191,7 @@
   height: 600px;
   background-color: rgb(0, 0, 0, 0.07);
   padding: 10px;
+  border-radius: 10px;
   overflow-y: scroll;
 }
 .agree_box::-webkit-scrollbar {
@@ -198,7 +272,6 @@
   margin-left: 10px;
   margin-top: 6px;
 }
-/* 박스 전체 스타일 */
 .payday__container {
   display: flex;
   flex-direction: column;
@@ -207,13 +280,11 @@
   position: relative;
 }
 
-/* 선택 박스 스타일 */
 .payday__select-text {
   pointer-events: none;
 }
-/* select 태그 숨기고 스타일 적용 */
 .payday__select-wrapper {
-  appearance: none; /* 기본 브라우저 스타일 제거 */
+  appearance: none; 
   border: none;
   background: transparent;
   font-size: 26px;
@@ -229,7 +300,6 @@
   text-align: center;
 }
 
-/* 설명 텍스트 스타일 */
 .payday__description {
   font-size: 18px;
   color: #c0c0c0;
@@ -247,14 +317,14 @@
   max-height: 100px;
   overflow-y: auto;
 }
-/* 드롭다운 메뉴 (절반 크기로 조정) */
+
 .payday__dropdown {
   position: absolute;
   top: 59px;
   left: 20px;
   width: 360px;
-  max-height: 200px; /* ✅ 기존 크기의 절반 */
-  overflow-y: auto; /* ✅ 스크롤 추가 */
+  max-height: 200px; 
+  overflow-y: auto; 
   background: white;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -286,7 +356,7 @@
   margin: 0 auto;
 }
 
-/* 🔹 계좌 버튼 스타일 */
+
 .account-item {
   display: flex;
   align-items: center;
@@ -300,18 +370,15 @@
   background-color: #e4effe;
 }
 
-/* 🔹 선택된 계좌 버튼 */
 .account-item.selected {
   background-color: #3182f6;
 }
 
-/* 🔹 계좌 아이콘 스타일 */
 .account-item img {
   width: 24px;
   height: 24px;
 }
 
-/* 🔹 계좌 버튼 hover 효과 */
 .account-item:hover {
   background-color: #3182f6;
 }
@@ -322,7 +389,6 @@
   margin-left: 4px;
 }
 
-/* 🔹 PIN 입력 동그라미 스타일 */
 .pin-input-container {
   display: flex;
   justify-content: center;
@@ -338,7 +404,6 @@
   border-radius: 20px;
 }
 
-/* ✅ 입력된 PIN 숫자 개수만큼 파란색으로 변경 */
 .pin-dot.filled {
   background-color: #3182f6;
 }
@@ -389,17 +454,17 @@
   background-color: rgb(235, 235, 235);
 }
 .pin-input--relative {
-  position:relative;
+  position: relative;
 }
 .error-message {
   font-size: 12px;
-  position: absolute; 
+  position: absolute;
   top: 97px;
   left: 20px;
   color: red;
   font-weight: bold;
 }
-.interest__title-wrap h3{
+.interest__title-wrap h3 {
   font-size: 20px;
   margin-bottom: 10px;
 }

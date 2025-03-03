@@ -78,96 +78,94 @@ const PersonalInfoPage: React.FC = () => {
 
       <div>
         <div className="info_input_name">
-          <label>
-            이름
-            <input
-              type="text"
-              placeholder="성명"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </label>
+          <label>이름</label>
+          <input
+            type="text"
+            placeholder="성명"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
         </div>
 
-        <div className="info_input_name">
-          <label>
-            주민등록번호
-            <input
-              className="input_id"
-              type="text"
-              placeholder="앞 7자리"
-              value={idFront}
-              onChange={handleIdFrontChange}
-              maxLength={6}
-              width="10px"
-            />
-            <span>-</span>
-            <input
-              type="text"
-              placeholder="첫 숫자"
-              value={idBack}
-              onChange={handleIdBackChange}
-              maxLength={1}
-            />
-            <span>******</span>
-          </label>
+        <div className="info_input_name info_input_id">
+          <label>주민등록번호</label>
+          <input
+            className="input_id_1"
+            type="text"
+            placeholder="앞 7자리"
+            value={idFront}
+            onChange={handleIdFrontChange}
+            maxLength={6}
+            width="10px"
+          />
+          <span>-</span>
+          <input
+            className="input_id_2"
+            type="text"
+            value={idBack}
+            onChange={handleIdBackChange}
+            maxLength={1}
+          />
+          <span>******</span>
         </div>
 
-        <div className="info_input_name">
-          <label>
-            휴대폰 번호
-            <input
-              type="text"
-              placeholder="휴대폰 번호"
-              value={phone}
-              maxLength={11}
-              onChange={(e) => setPhone(e.target.value)}
-            />
-          </label>
+        <div className="info_input_name info_input_phone">
+          <label>휴대폰 번호</label>
+          <input
+            type="text"
+            placeholder="휴대폰 번호"
+            value={phone}
+            maxLength={11}
+            onChange={(e) => setPhone(e.target.value)}
+          />
         </div>
       </div>
 
-      <h3>이용약관 동의</h3>
-      <div>
-        <label>
+      <div className="center_wrap agree_down">
+        <h3>이용약관 동의</h3>
+        <div className="agree_container">
           <input
             type="checkbox"
+            id="all"
             checked={agreements.all}
             onChange={handleAllAgreement}
           />
-          모두 동의합니다.
-        </label>
-      </div>
-      <div>
-        <label>
+          <label htmlFor="all" className="all_agree_label">
+            모두 동의합니다.
+          </label>
+
           <input
             type="checkbox"
+            id="terms"
             checked={agreements.terms}
             onChange={() => handleAgreementChange("terms")}
           />
-          이용약관 (필수)
-        </label>
-      </div>
-      <div>
-        <label>
+          <label htmlFor="terms">
+            이용약관 <span className="required">(필수)</span>
+          </label>
+
           <input
             type="checkbox"
+            id="privacy"
             checked={agreements.privacy}
             onChange={() => handleAgreementChange("privacy")}
           />
-          개인정보 수집 및 이용 동의 (필수)
-        </label>
-      </div>
-      <div>
-        <label>
+          <label htmlFor="privacy">
+            개인정보 수집 및 이용 동의 <span className="required">(필수)</span>
+          </label>
+
           <input
             type="checkbox"
+            id="marketing"
             checked={agreements.marketing}
             onChange={() => handleAgreementChange("marketing")}
           />
-          마케팅 정보 수신 동의 (선택)
-        </label>
+          <label htmlFor="marketing">
+            마케팅 정보 수신 동의 <span className="optional">(선택)</span>
+          </label>
+        </div>
       </div>
+
       <div className="center_wrap">
         <button
           disabled={!isFormValid}

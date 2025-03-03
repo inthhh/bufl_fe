@@ -13,7 +13,7 @@ function CompletionPage() {
       <div className="center_wrap">
             <button
               className="btn_start"
-              onClick={() => navigate("/sign/input-pin")}
+              onClick={() => navigate("/")}
               
             >
               메인 화면으로
