@@ -10,7 +10,7 @@ import { accountList } from "./data";
 
 function SalaryInfoPage() {
   const navigate = useNavigate();
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
   const [salary, setSalary] = useState(2500000);
   const [payday, setPayday] = useState("20일");
   const [selectedAccount, setSelectedAccount] = useState<number | null>(null);
@@ -73,6 +73,7 @@ function SalaryInfoPage() {
       </h3>
 
       {step === 1 ? (
+        //---------------------월급여---------------------------------
         <div>
           <div className="salary_flex">
             <img src={MoneyImg} alt="money" width="45px" height="45px" />
@@ -113,6 +114,7 @@ function SalaryInfoPage() {
           </div>
         </div>
       ) : step === 2 ? (
+        //----------------------------월급일-----------------------
         <div>
           <div className="salary_flex">
             <img src={DateImg} alt="date" width="45px" />
@@ -157,10 +159,15 @@ function SalaryInfoPage() {
           </div>
         </div>
       ) : (
+        //------------------------월급계좌--------------------------------
         <div>
-          <img src={AccountImg} alt="account" width="45px" />
-          <p>내 계좌</p>
+          <div className="salary_flex">
+            <img src={AccountImg} alt="account" width="45px" />
+            <p className="salary_text2 salary2__title--move">월급계좌</p>
+          </div>
+
           <div className="account-list">
+            <p className="account-title">내 계좌</p>
             {accountList.map((account) => (
               <div
                 key={account.id}
@@ -172,7 +179,6 @@ function SalaryInfoPage() {
                 <img
                   src={require(`../images/${account.logo}`)}
                   alt={account.name}
-                  width="20px"
                 />
                 <span>
                   {account.name} {account.account}
@@ -180,6 +186,7 @@ function SalaryInfoPage() {
               </div>
             ))}
           </div>
+
           <div className="center_wrap">
             <button
               className="btn_start"

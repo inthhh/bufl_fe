@@ -210,7 +210,6 @@
 /* 선택 박스 스타일 */
 .payday__select-text {
   pointer-events: none;
-
 }
 /* select 태그 숨기고 스타일 적용 */
 .payday__select-wrapper {
@@ -273,4 +272,52 @@
 .payday__dropdown-item:hover {
   background-color: #3182f6;
   color: white;
+}
+
+/* 🔹 계좌 목록 컨테이너 */
+.account-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* 버튼 사이 간격 */
+  padding: 20px;
+  background-color: #e4effe; /* 연한 파란색 배경 */
+  border-radius: 12px;
+  width: 360px;
+  margin: 0 auto;
+}
+
+/* 🔹 계좌 버튼 스타일 */
+.account-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  border: 2px solid #3182f6;
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: #e4effe;
+}
+
+/* 🔹 선택된 계좌 버튼 */
+.account-item.selected {
+  background-color: #3182f6;
+}
+
+/* 🔹 계좌 아이콘 스타일 */
+.account-item img {
+  width: 24px;
+  height: 24px;
+}
+
+/* 🔹 계좌 버튼 hover 효과 */
+.account-item:hover {
+  background-color: #3182f6;
+}
+
+.account-title {
+  font-weight: bold;
+  font-size: 16px;
+  margin-left: 4px;
 }
