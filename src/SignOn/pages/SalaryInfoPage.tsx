@@ -10,49 +10,32 @@ import { accountList } from "./data";
 
 function SalaryInfoPage() {
   const navigate = useNavigate();
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
   const [salary, setSalary] = useState(2500000);
   const [payday, setPayday] = useState("20일");
   const [selectedAccount, setSelectedAccount] = useState<number | null>(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const formatSalary = (value: number) => value.toLocaleString();
 
   const handleSalaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input = e.target;
-    const rawValue = input.value.replace(/\D/g, ""); // 숫자만 남기기
+    const rawValue = input.value.replace(/\D/g, "");
     const newValue = rawValue ? Number(rawValue) : 0;
 
-    // 기존 입력 값 저장
     const prevFormatted = formatSalary(salary);
     const prevCommaCount = (prevFormatted.match(/,/g) || []).length;
-
-    // 전체 선택 후 입력 여부 감지
-    const isFullReplace =
-      input.selectionStart === 0 && input.selectionEnd === prevFormatted.length;
-
-    // 기존 커서 위치 저장
     const cursorPosition = input.selectionStart || 0;
 
-    // 상태 업데이트
     setSalary(newValue);
 
     setTimeout(() => {
       if (inputRef.current) {
         const newFormatted = formatSalary(newValue);
         const newCommaCount = (newFormatted.match(/,/g) || []).length;
-
-        let newCursorPosition;
-
-        if (isFullReplace) {
-          // 전체 선택 후 입력한 경우: 커서를 맨 끝으로 이동
-          newCursorPosition = newFormatted.length;
-        } else {
-          // 일반 입력인 경우 쉼표 변화량에 따라 커서 보정
-          newCursorPosition = cursorPosition + (newCommaCount - prevCommaCount);
-        }
-
-        // 커서 위치가 올바른 범위 내에 있도록 조정
+        let newCursorPosition =
+          cursorPosition + (newCommaCount - prevCommaCount);
         newCursorPosition = Math.max(
           0,
           Math.min(newFormatted.length, newCursorPosition)
@@ -131,19 +114,42 @@ function SalaryInfoPage() {
         </div>
       ) : step === 2 ? (
         <div>
-          <img src={DateImg} alt="date" width="45px" />
-          <p>월급일</p>
+          <div className="salary_flex">
+            <img src={DateImg} alt="date" width="45px" />
+            <p className="salary_text2 salary2__title--move">월급일</p>
+          </div>
 
-          <span>매달</span>
-          <select value={payday} onChange={(e) => setPayday(e.target.value)}>
-            {paydayOptions.map((day) => (
-              <option key={day} value={day}>
-                {day}
-              </option>
-            ))}
-          </select>
+          <div className="payday__container">
+            <div
+              className="payday__select-wrapper"
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            >
+              <span className="payday__select-text">{payday}</span>
+              <div className="payday__select--icon">▼</div>
+            </div>
 
-          <p>{payday} 새벽에 월급 쪼개기를 진행할게요.</p>
+            {isDropdownOpen && (
+              <div className="payday__dropdown">
+                {paydayOptions.map((day) => (
+                  <div
+                    key={day}
+                    className="payday__dropdown-item"
+                    onClick={() => {
+                      setPayday(day);
+                      setIsDropdownOpen(false);
+                    }}
+                  >
+                    {day}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <p className="payday__description">
+              매달 {payday} 새벽에 월급 쪼개기를 진행할게요.
+            </p>
+          </div>
+
           <div className="center_wrap">
             <button className="btn_start" onClick={() => setStep(3)}>
               다음
