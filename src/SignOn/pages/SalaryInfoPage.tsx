@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "../style/style.css";
 import MoneyImg from "../images/money.png";
@@ -7,18 +7,69 @@ import AccountImg from "../images/account.png";
 import "../../MoneySplit/splitStyle.css";
 import MoveBack from "../../MoneySplit/MoveBack";
 import { accountList } from "./data";
+
 function SalaryInfoPage() {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [salary, setSalary] = useState(2500000);
   const [payday, setPayday] = useState("20일");
   const [selectedAccount, setSelectedAccount] = useState<number | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const formatSalary = (value: number) => value.toLocaleString();
 
   const handleSalaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const rawValue = e.target.value.replace(/\D/g, "");
-    setSalary(Number(rawValue) || 0);
+    const input = e.target;
+    const rawValue = input.value.replace(/\D/g, ""); // 숫자만 남기기
+    const newValue = rawValue ? Number(rawValue) : 0;
+
+    // 기존 입력 값 저장
+    const prevFormatted = formatSalary(salary);
+    const prevCommaCount = (prevFormatted.match(/,/g) || []).length;
+
+    // 전체 선택 후 입력 여부 감지
+    const isFullReplace =
+      input.selectionStart === 0 && input.selectionEnd === prevFormatted.length;
+
+    // 기존 커서 위치 저장
+    const cursorPosition = input.selectionStart || 0;
+
+    // 상태 업데이트
+    setSalary(newValue);
+
+    setTimeout(() => {
+      if (inputRef.current) {
+        const newFormatted = formatSalary(newValue);
+        const newCommaCount = (newFormatted.match(/,/g) || []).length;
+
+        let newCursorPosition;
+
+        if (isFullReplace) {
+          // 전체 선택 후 입력한 경우: 커서를 맨 끝으로 이동
+          newCursorPosition = newFormatted.length;
+        } else {
+          // 일반 입력인 경우 쉼표 변화량에 따라 커서 보정
+          newCursorPosition = cursorPosition + (newCommaCount - prevCommaCount);
+        }
+
+        // 커서 위치가 올바른 범위 내에 있도록 조정
+        newCursorPosition = Math.max(
+          0,
+          Math.min(newFormatted.length, newCursorPosition)
+        );
+
+        inputRef.current.setSelectionRange(
+          newCursorPosition,
+          newCursorPosition
+        );
+      }
+    }, 0);
+  };
+
+  const handleBlur = () => {
+    if (!salary) {
+      setSalary(2500000);
+    }
   };
 
   const adjustSalary = (amount: number) => {
@@ -40,7 +91,6 @@ function SalaryInfoPage() {
 
       {step === 1 ? (
         <div>
-          {/* 월급 입력 UI */}
           <div className="salary_flex">
             <img src={MoneyImg} alt="money" width="45px" height="45px" />
             <div className="salary_text_group">
@@ -57,11 +107,12 @@ function SalaryInfoPage() {
               +
             </button>
             <input
+              ref={inputRef}
               type="text"
               value={formatSalary(salary)}
               onChange={handleSalaryChange}
+              onBlur={handleBlur}
               className="salary_input"
-              readOnly
             />
             <button
               className="salary_button"
@@ -93,15 +144,16 @@ function SalaryInfoPage() {
           </select>
 
           <p>{payday} 새벽에 월급 쪼개기를 진행할게요.</p>
-
-          <button onClick={() => setStep(3)}>다음</button>
+          <div className="center_wrap">
+            <button className="btn_start" onClick={() => setStep(3)}>
+              다음
+            </button>
+          </div>
         </div>
       ) : (
         <div>
           <img src={AccountImg} alt="account" width="45px" />
           <p>내 계좌</p>
-
-          {/* 계좌 목록 표시 */}
           <div className="account-list">
             {accountList.map((account) => (
               <div
@@ -122,13 +174,15 @@ function SalaryInfoPage() {
               </div>
             ))}
           </div>
-
-          <button
-            onClick={() => navigate("/sign/input-pin")}
-            disabled={selectedAccount === null}
-          >
-            다음
-          </button>
+          <div className="center_wrap">
+            <button
+              className="btn_start"
+              onClick={() => navigate("/sign/input-pin")}
+              disabled={selectedAccount === null}
+            >
+              다음
+            </button>
+          </div>
         </div>
       )}
     </div>
