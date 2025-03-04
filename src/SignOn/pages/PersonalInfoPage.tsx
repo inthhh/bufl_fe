@@ -9,6 +9,7 @@ const PersonalInfoPage: React.FC = () => {
   const [idFront, setIdFront] = useState<string>("");
   const [idBack, setIdBack] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
+  const [isComposing, setIsComposing] = useState(false);
   const [agreements, setAgreements] = useState({
     all: false,
     terms: false,
@@ -55,6 +56,15 @@ const PersonalInfoPage: React.FC = () => {
     setPhone(value);
   };
 
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!isComposing) {
+      const value = e.target.value.replace(/[^a-zA-Z가-힣]/g, "");
+      setName(value);
+    } else {
+      setName(e.target.value);
+    }
+  };
+
   const isFormValid =
     name &&
     idFront.length === 6 &&
@@ -83,7 +93,9 @@ const PersonalInfoPage: React.FC = () => {
             type="text"
             placeholder="성명"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={handleNameChange}
+            onCompositionStart={() => setIsComposing(true)}
+            onCompositionEnd={() => setIsComposing(false)}
           />
         </div>
 
