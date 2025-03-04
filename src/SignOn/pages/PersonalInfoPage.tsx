@@ -9,12 +9,7 @@ const PersonalInfoPage: React.FC = () => {
   const [idFront, setIdFront] = useState<string>("");
   const [idBack, setIdBack] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
-  const [agreements, setAgreements] = useState<{
-    all: boolean;
-    terms: boolean;
-    privacy: boolean;
-    marketing: boolean;
-  }>({
+  const [agreements, setAgreements] = useState({
     all: false,
     terms: false,
     privacy: false,
@@ -55,6 +50,11 @@ const PersonalInfoPage: React.FC = () => {
     setIdBack(value);
   };
 
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, "").slice(0, 11);
+    setPhone(value);
+  };
+
   const isFormValid =
     name &&
     idFront.length === 6 &&
@@ -92,11 +92,10 @@ const PersonalInfoPage: React.FC = () => {
           <input
             className="input_id_1"
             type="text"
-            placeholder="앞 7자리"
+            placeholder="앞 6자리"
             value={idFront}
             onChange={handleIdFrontChange}
             maxLength={6}
-            width="10px"
           />
           <span>-</span>
           <input
@@ -116,7 +115,7 @@ const PersonalInfoPage: React.FC = () => {
             placeholder="휴대폰 번호"
             value={phone}
             maxLength={11}
-            onChange={(e) => setPhone(e.target.value)}
+            onChange={handlePhoneChange}
           />
         </div>
       </div>
