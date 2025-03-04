@@ -133,17 +133,17 @@
 }
 
 .info_input_phone input{
-  margin-left: 40px;  
+  margin-left: 48px;  
 }
 .info_input_id input:nth-child(2){
-  width: 110px;
-  margin-left: 27px;
-  margin-right: 10px;
+  width: 90px;
+  margin-left: 38px;
+  margin-right: 14px;
 }
 .info_input_id input:nth-child(4){
   width: 30px;
-  margin-left: 10px;
-  margin-right: 9px;
+  margin-left: 14px;
+  margin-right: 13px;
 }
 /* ------------agree------------- */
 
