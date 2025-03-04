@@ -12,8 +12,10 @@ const SplitFinish: React.FC = () => {
     <div className="center_wrap">
       <div>
         <div className="center_wrap">
-          <div className="black_title" style={{ fontSize: "24px" }}>
-            월급 쪼개기 설정이 끝났어요!
+          <div className="black_title_big center_text" style={{ marginTop: "150px" }}>
+            월급 쪼개기 설정이
+            <br />
+            끝났어요!
           </div>
         </div>
         <div className="center_wrap" style={{ margin: "20px" }}>
