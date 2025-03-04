@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../splitStyle.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import MoveBack from "../MoveBack";
 import { useSelector, useDispatch } from "react-redux";
 import { setCategories } from "../../redux/actions/categoryAction";
@@ -13,65 +13,58 @@ interface CategoryProps {
   ratio: number;
   amount: number;
   isOrigin?: boolean;
+  updateRatio: (idx: number, newRatio: number) => void;
+  clickForDelete: (idx: number) => void;
 }
 
 const Category: React.FC<CategoryProps> = (props) => {
-  const [value, setValue] = useState(props.ratio); // 슬라이더 값 상태 관리
-  const maxValue = 100; // 슬라이더 최대값
-  const [amount, setAmount] = useState(props.amount);
-  const total = props.total;
+  const { idx, total, category, ratio, isOrigin, updateRatio, clickForDelete } = props;
+  const [value, setValue] = useState(ratio); // 슬라이더 값 상태 관리
+
   const dispatch = useDispatch();
   const categoryList = useSelector((state: RootState) => state.category.categoryList);
 
   useEffect(() => {
-    setAmount(total * value * 0.01);
-  }, [value]);
+    setValue(ratio);
+  }, [ratio]);
 
   const handleInput = (event: any) => {
-    const newValue = event.target.value;
+    const newValue = Number(event.target.value);
     setValue(newValue);
-    // 진행된 비율 계산
-    const gradientValue = (100 / maxValue) * newValue;
-    // 배경 스타일 업데이트
-    event.target.style.background = `linear-gradient(to right, rgb(28, 106, 216) 0%, rgb(28, 106, 216) ${gradientValue}%, rgb(200, 200, 200) ${gradientValue}%, rgb(200, 200, 200) 100%)`;
-  };
-
-  const clickForDelete = (index: number) => {
-    console.log(index);
-    let newCategoryList = [...categoryList];
-    newCategoryList.splice(index, 1);
+    updateRatio(idx, newValue);
+    let newCategoryList = categoryList.map((category, i) => (i === idx ? { ...category, ratio: newValue } : category));
     dispatch(setCategories(newCategoryList));
-    console.log(categoryList);
+    // 진행된 비율 계산
+    let gradientValue = newValue;
+    console.log(newCategoryList);
+    event.target.style.background = `linear-gradient(to right, rgb(28, 106, 216) 0%, rgb(28, 106, 216) ${gradientValue}%, rgb(200, 200, 200) ${gradientValue}%, rgb(200, 200, 200) 100%)`;
   };
 
   return (
     <div
       className="account_list"
-      style={props.isOrigin ? { backgroundColor: "#dceaff" } : { height: "150px", paddingBottom: "10px" }}
+      style={isOrigin ? { backgroundColor: "#dceaff" } : { height: "150px", paddingBottom: "10px" }}
     >
       <div className="list_div" style={{ marginTop: "10px" }}>
-        <div className="list_title">{props.category}</div>
-        <div className="list_title">{amount.toLocaleString()}원</div>
+        <div className="list_title">{category}</div>
+        <div className="list_title">{((total * value) / 100).toLocaleString()}원</div>
       </div>
       <div className="list_div" style={{ marginTop: "20px" }}>
         <input
           type="range"
-          id="ratio"
-          name="ratio"
           min="0"
           max="100"
           step="5"
           value={value}
-          onChange={(e) => setValue(Number(e.target.value))}
-          onInput={handleInput}
-          className={props.isOrigin ? "input_origin" : "input_not_origin"}
-        ></input>
+          onChange={handleInput}
+          className={isOrigin ? "input_origin" : "input_not_origin"}
+        />
         <div>{value}%</div>
       </div>
-      {props.isOrigin ? undefined : (
+      {!isOrigin && (
         <div
-          style={{ fontSize: "14px", textAlign: "right", marginTop: "20px", color: "#999" }}
-          onClick={() => clickForDelete(props.idx)}
+          style={{ fontSize: "14px", textAlign: "right", marginTop: "20px", color: "#999", cursor: "pointer" }}
+          onClick={() => clickForDelete(idx)}
         >
           삭제
         </div>
@@ -83,24 +76,57 @@ const Category: React.FC<CategoryProps> = (props) => {
 const SelectRatio: React.FC = () => {
   const dispatch = useDispatch();
   const categoryList = useSelector((state: RootState) => state.category.categoryList);
-
   const navigate = useNavigate();
+
+  const total: number = 3000000;
+  const [ratios, setRatios] = useState<number[]>([]);
+
+  useEffect(() => {
+    // 카테고리 별 비율 렌더링
+    let ratioList: number[] = [];
+    categoryList.map((c) => {
+      ratioList.push(c.ratio);
+    });
+    setRatios(ratioList);
+  }, []);
+
+  // 하위 카테고리들의 ratio 합을 계산
+  const subCategoryTotal = Object.values(ratios)
+    .filter((_, index) => index >= 1)
+    .reduce((acc, cur) => acc + cur, 0);
+  const salaryAccountRatio = 100 - subCategoryTotal; // 월급 통장 비율 자동 조정
+  useEffect(() => {
+    if (categoryList.length > 0) {
+      const updatedCategoryList = categoryList.map((category, index) =>
+        index === 0 ? { ...category, ratio: salaryAccountRatio } : category
+      );
+      dispatch(setCategories(updatedCategoryList));
+    }
+  }, [salaryAccountRatio]);
+
+  const updateRatio = (idx: number, newRatio: number) => {
+    setRatios((prev) => {
+      const updatedRatios = { ...prev, [idx]: newRatio };
+      return updatedRatios;
+    });
+    let newCategoryList = categoryList.map((category, i) => (i === idx ? { ...category, ratio: newRatio } : category));
+
+    dispatch(setCategories(newCategoryList));
+  };
+
+  const clickForDelete = (idx: number) => {
+    let newCategoryList = [...categoryList];
+    newCategoryList.splice(idx, 1);
+    dispatch(setCategories(newCategoryList));
+  };
+
   const clickForYes = () => {
-    // 서버에 카테고리 목록 보내기
-    // 첫 인덱스에 월급 카테고리 넣어서
-    // [월급 카테 + categoryList] 전송
+    console.log(categoryList);
     navigate("/money-split/select-account");
   };
   const clickForNo = () => {
     navigate("/money-split/add-category");
   };
-
-  const total: number = 3000000;
-  const ratio: number = 100;
-
-  useEffect(() => {
-    console.log(categoryList);
-  }, [categoryList]);
 
   return (
     <div>
@@ -112,29 +138,43 @@ const SelectRatio: React.FC = () => {
             <div>월 소득</div>
             <div>{total.toLocaleString()}원 중,</div>
           </div>
-          <div>
-            <Category
-              idx={0}
-              category="💰 월급 통장"
-              total={total}
-              ratio={ratio}
-              amount={total * ratio * 0.01}
-              isOrigin={true}
-            />
-            {categoryList && categoryList.length > 0
-              ? categoryList.map((cate, index) => (
-                  <div>
-                    <Category idx={index} total={total} category={cate.name} ratio={0} amount={0} />
-                  </div>
-                ))
-              : undefined}
+          <div style={{ height: "500px", overflowY: "scroll" }}>
+            <div>
+              {/* 월급 통장 (자동 계산) */}
+              <Category
+                idx={0}
+                category="💰 월급 통장"
+                total={total}
+                ratio={salaryAccountRatio}
+                amount={total * salaryAccountRatio * 0.01}
+                isOrigin={true}
+                updateRatio={() => {}}
+                clickForDelete={clickForDelete}
+              />
+              {/* 하위 카테고리 */}
+              {categoryList &&
+                categoryList.map((cate, index) =>
+                  index >= 1 ? (
+                    <Category
+                      key={index}
+                      idx={index}
+                      total={total}
+                      category={cate.name}
+                      ratio={ratios[index] || 0}
+                      amount={0}
+                      updateRatio={updateRatio}
+                      clickForDelete={clickForDelete}
+                    />
+                  ) : null
+                )}
+            </div>
           </div>
           <div className="center_wrap">
             <div className="center_wrap btn">
-              <button className="gray_small_btn" type="button" onClick={() => clickForNo()}>
+              <button className="gray_small_btn" type="button" onClick={clickForNo}>
                 카테고리 추가
               </button>
-              <button className="blue_small_btn" type="button" onClick={() => clickForYes()}>
+              <button className="blue_small_btn" type="button" onClick={clickForYes}>
                 완료했어요
               </button>
             </div>

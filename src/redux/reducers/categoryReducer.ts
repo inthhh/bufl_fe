@@ -14,7 +14,14 @@ interface CategoryState {
 }
 
 const initialState: CategoryState = {
-  categoryList: [],
+  categoryList: [
+    {
+      name: "💰 월급 통장",
+      goal: 0,
+      color: "#ddd",
+      ratio: 100,
+    },
+  ],
 };
 
 const categoryReducer = createReducer(initialState, (builder) => {
