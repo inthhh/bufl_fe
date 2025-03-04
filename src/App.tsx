@@ -24,6 +24,7 @@ import AgreementPage from "./SignOn/pages/AgreementPage";
 import SalaryInfoPage from "./SignOn/pages/SalaryInfoPage";
 import InterestPage from "./SignOn/pages/InterestPage";
 import CompletionPage from "./SignOn/pages/CompletionPage";
+import InputPinPage from "./SignOn/pages/InputPinPage";
 
 import AddCategory from "./MoneySplit/control_categorys/AddCategory";
 import SplitFinish from "./MoneySplit/final_process/SplitFinish";
