@@ -86,6 +86,9 @@ const SelectRatio: React.FC = () => {
 
   const navigate = useNavigate();
   const clickForYes = () => {
+    // 서버에 카테고리 목록 보내기
+    // 첫 인덱스에 월급 카테고리 넣어서
+    // [월급 카테 + categoryList] 전송
     navigate("/money-split/select-account");
   };
   const clickForNo = () => {
