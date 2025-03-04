@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import MoveBack from "./MoveBack";
+import MoveBack from "../MoveBack";
+import "../splitStyle.css";
 
 const TossAuth: React.FC = () => {
   const [name, setName] = useState<string>("");
@@ -8,15 +9,18 @@ const TossAuth: React.FC = () => {
   const [birth, setBirth] = useState<string>("");
   const navigate = useNavigate();
   const clickForYes = () => {
-    navigate("/MoneySplit/InputPin");
+    navigate("/money-split/input-pin");
   };
   const clickForNo = () => {
-    navigate("/MoneySplit/Authentication");
+    navigate("/money-split/authentication");
+  };
+  const clickForTerms = () => {
+    navigate("/money-split/toss/terms");
   };
 
   return (
     <div>
-      <MoveBack pageBefore="/MoneySplit/Authentication" />
+      <MoveBack pageBefore="/money-split/authentication" />
       <div style={{ marginLeft: "35px" }}>
         <h1 className="black_title">
           토스로 인증하기 위해
@@ -71,12 +75,12 @@ const TossAuth: React.FC = () => {
       </div>
       <div className="center_wrap">
         <div>
-          <div className="center_wrap">
-            <button type="button" className="no_border_btn">
-              개인정보 수집 이용 동의
+          <div className="center_wrap" style={{ marginBottom: "10px" }}>
+            <button type="button" className="no_border_btn" onClick={() => clickForTerms()}>
+              개인정보 수집·이용 동의 &gt;
             </button>
           </div>
-          <button type="button" className="blue_big_btn" onClick={() => clickForYes()}>
+          <button type="button" className="blue_big_btn" onClick={() => clickForYes()} style={{ marginBottom: "10px" }}>
             동의하고 인증하기
           </button>
           <div className="center_wrap">

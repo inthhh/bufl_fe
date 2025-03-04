@@ -1,5 +1,12 @@
+// actions/categoryAction.ts
 import { createAction } from "@reduxjs/toolkit";
 
-export const SET_CATEGORIES = "SET_CATEGORIES";
+interface CategoryItem {
+  name: string;
+  goal: number;
+  color: string;
+  ratio: number;
+}
 
-export const setCategories = createAction<string[]>(SET_CATEGORIES);
+// setCategories 액션 정의
+export const setCategories = createAction<CategoryItem[]>("categories/setCategories");

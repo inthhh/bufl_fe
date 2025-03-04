@@ -1,21 +1,36 @@
 import React, { useEffect, useState } from "react";
-import "./splitStyle.css"; // CSS 파일 import
+import "../splitStyle.css"; // CSS 파일 import
 import { useNavigate } from "react-router-dom";
-import MoveBack from "./MoveBack";
+import { useDispatch, useSelector } from "react-redux";
+import { setCategories } from "../../redux/actions/categoryAction";
+import { RootState } from "../../redux/store";
+
+import MoveBack from "../MoveBack";
 
 const AddCategory: React.FC = () => {
   const [name, setName] = useState<string>("");
-  const [amount, setAmount] = useState<string>("");
-  const [startDate, setStartDate] = useState<string>("");
+  const [goal, setGoal] = useState<string>("");
   const [color, setColor] = useState<string>("#d0defa");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const categoryList = useSelector((state: RootState) => state.category.categoryList);
+
+  let newItem = {
+    name: name,
+    goal: Number(goal),
+    color: color,
+    ratio: 0,
+  };
+
   const clickForYes = () => {
-    navigate("/MoneySplit/SelectRatio");
+    console.log(name, goal, color);
+    dispatch(setCategories([...categoryList, newItem]));
+    navigate("/money-split/select-ratio");
   };
 
   return (
     <div>
-      <MoveBack pageBefore="/MoneySplit/SelectRatio" />
+      <MoveBack pageBefore="/money-split/select-ratio" />
       <div className="center_wrap">
         <div>
           <div className="black_title">카테고리 추가</div>
@@ -39,23 +54,13 @@ const AddCategory: React.FC = () => {
               <input
                 type="number"
                 id="amount"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
+                value={goal}
+                onChange={(e) => setGoal(e.target.value)}
                 placeholder=""
                 className="category_input"
               />
             </div>
 
-            <div className="space_between">
-              <label htmlFor="birth">저축 시작일</label>
-              <input
-                type="date"
-                id="birth"
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
-                placeholder=""
-              />
-            </div>
             <div className="space_between">
               <p className="">배경색</p>
               <input type="color" value={color} onChange={(e) => setColor(e.target.value)} className="" />

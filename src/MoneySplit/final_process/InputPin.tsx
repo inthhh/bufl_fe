@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./splitStyle.css";
-import MoveBack from "./MoveBack";
+import "../splitStyle.css";
+import MoveBack from "../MoveBack";
 
 const InputPin: React.FC = () => {
   const [pin, setPin] = useState<string[]>(Array(6).fill(""));
@@ -37,13 +37,13 @@ const InputPin: React.FC = () => {
   useEffect(() => {
     if (pin.every((p) => p !== "")) {
       // if 비밀번호 비교 후 true일 때
-      navigate("/MoneySplit/SplitLoading");
+      navigate("/money-split/split-loading");
     }
   }, [pin]);
 
   return (
     <div>
-      <MoveBack pageBefore="/MoneySplit/Authentication" />
+      <MoveBack pageBefore="/money-split/authentication" />
       <div className="center_wrap">
         <div>
           <div className="black_title center_text">

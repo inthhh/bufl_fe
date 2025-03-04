@@ -6,21 +6,22 @@ import MoveBack from "../MoveBack";
 const AI_analysis: React.FC = () => {
   const navigate = useNavigate();
   const clickForYes = () => {
-    navigate("/MoneySplit/AI/CalculateLoading");
+    navigate("/money-split/ai/calculate-loading");
   };
   const clickForNo = () => {
-    navigate("/MoneySplit/AI/Cancel");
+    navigate("/money-split/ai/cancel");
   };
   return (
     <div>
-      <MoveBack pageBefore={"/MoneySplit/AI"} />
+      <MoveBack pageBefore={"/money-split/ai"} />
       <div className="center_wrap">
         <div>
-          <div>AI가 분석한 소비 습관이에요.</div>
-          <div>
-            <div>3개월 동안,</div>
+          <div className="black_title">AI가 분석한 소비 습관이에요.</div>
+          <div className="content_box">
+            <div className="black_title">3개월 동안,</div>
             <div>
-              <ul>
+              {/* api - 소비습관 불러오기 */}
+              <ul className="analysis_list">
                 <li>생활비 35%</li>
                 <li>적금 20%</li>
                 <li>쇼핑, 장보기 30%</li>

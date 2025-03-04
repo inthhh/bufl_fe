@@ -8,16 +8,16 @@ interface LoadingSpinnerProps {
 }
 
 const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ text }) => {
-  const dots = [1, 2, 3, 4, 5, 6]; // 6개의 점
+  const dots = [1, 2, 3, 4, 5, 6, 7, 8];
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (text === "ana") navigate("/MoneySplit/AI/Analysis");
-      if (text === "cal") navigate("/MoneySplit/AI/Calculate");
-      if (text === "split") navigate("/MoneySplit/Finish");
-    }, 2000);
+      if (text === "ana") navigate("/money-split/ai/analysis");
+      if (text === "cal") navigate("/money-split/ai/calculate");
+      if (text === "split") navigate("/money-split/finish");
+    }, 2500);
 
     return () => clearTimeout(timer);
   }, [navigate]);
@@ -33,8 +33,22 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ text }) => {
           <motion.span
             key={i}
             className="dot"
-            style={{
-              transform: `rotate(${i * 60}deg) translate(30px)`,
+            // style={{
+            //   transform: `rotate(${i * 60}deg) translate(30px)`,
+            // }}
+            animate={{
+              scale: [0.7, 1.5, 0.8], // 크기 애니메이션
+              transform: [
+                `rotate(${i * 45}deg) translate(30px) scale(0.7)`,
+                `rotate(${i * 45}deg) translate(30px) scale(1.5)`,
+                `rotate(${i * 45}deg) translate(30px) scale(0.8)`,
+              ],
+            }}
+            transition={{
+              duration: 0.8,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.1,
             }}
           />
         ))}
