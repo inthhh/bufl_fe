@@ -181,7 +181,7 @@ const PersonalInfoPage: React.FC = () => {
         <button
           disabled={!isFormValid}
           onClick={() => navigate("/sign/agreement")}
-          className="btn_start"
+          className={`btn_start ${isFormValid ? "" : "disabled"}`}
         >
           확인
         </button>

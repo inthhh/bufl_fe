@@ -27,6 +27,10 @@
   top: 700px;
   cursor: pointer;
 }
+.btn_start.disabled {
+  background-color: #ccc;
+  pointer-events: none;
+}
 .content_start {
   margin-top: 260px;
 }
@@ -331,26 +335,23 @@
   text-align: center;
 }
 
-/* 드롭다운 항목 */
 .payday__dropdown-item {
   padding: 10px 16px;
   font-size: 16px;
   cursor: pointer;
 }
 
-/* Hover 효과 */
 .payday__dropdown-item:hover {
   background-color: #3182f6;
   color: white;
 }
 
-/* 🔹 계좌 목록 컨테이너 */
 .account-list {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* 버튼 사이 간격 */
+  gap: 10px; 
   padding: 20px;
-  background-color: #e4effe; /* 연한 파란색 배경 */
+  background-color: #e4effe; 
   border-radius: 12px;
   width: 360px;
   margin: 0 auto;

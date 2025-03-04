@@ -45,7 +45,7 @@ function AgreementPage() {
           <button
             onClick={() => navigate("/sign/salary-info")}
             disabled={!isAgreed}
-            className="btn_start"
+            className={`btn_start ${isAgreed ? "" : "disabled"}`}
           >
             동의하고 다음
           </button>
@@ -142,6 +142,7 @@ function AgreementPage() {
           >
             동의하기
           </button>
+          
         </div>
       )}
     </div>

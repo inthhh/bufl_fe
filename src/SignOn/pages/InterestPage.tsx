@@ -61,8 +61,8 @@ const InterestPage = () => {
         </div>
 
         <div className="center_wrap">
-          <button
-            className="btn_start"
+        <button
+            className={`btn_start ${selectedInterest === null ? "disabled" : ""}`}
             onClick={() => navigate("/sign/completion")}
             disabled={selectedInterest === null}
           >

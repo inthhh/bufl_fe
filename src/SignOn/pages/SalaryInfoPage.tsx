@@ -188,8 +188,8 @@ function SalaryInfoPage() {
           </div>
 
           <div className="center_wrap">
-            <button
-              className="btn_start"
+          <button
+              className={`btn_start ${selectedAccount === null ? "disabled" : ""}`}
               onClick={() => navigate("/sign/input-pin")}
               disabled={selectedAccount === null}
             >
