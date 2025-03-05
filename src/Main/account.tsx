@@ -1,7 +1,7 @@
 import React from "react";
-import "./mainStyle.css";
+import "./account.css";
 import account from "./account.svg";
-import Group1 from "./Group1.png";
+import Group1 from "./img/Group1.png";
 
 function Account() {
   return <div>

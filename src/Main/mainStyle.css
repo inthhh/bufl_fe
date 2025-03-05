@@ -231,6 +231,24 @@
 
 .pay {
   position: relative;
-  top: 50px;
+  top: 150px;
   left: 130px;
+}
+
+.pay1 {
+  position: relative;
+  left: 130px;
+  bottom: 20px;
+}
+
+.pay2 {
+  position: relative;
+  top: 180px;
+  left: 30px;
+}
+
+.pay3 {
+  position: relative;
+  top: 200px;
+  left: 30px;
 }
