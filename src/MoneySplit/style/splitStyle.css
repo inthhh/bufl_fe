@@ -465,3 +465,39 @@ input[type="range"]::-webkit-slider-thumb {
   font-size: 20px;
   font-weight: 700;
 }
+
+.shake {
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  80% {
+    transform: translateX(-5px);
+  }
+  40%,
+  60% {
+    transform: translateX(5px);
+  }
+}
+
+/* pin 틀린 경우 빨간색 */
+
+.wrong {
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  text-align: center;
+  border: none;
+  border-radius: 20px;
+  background-color: rgb(184, 184, 184);
+  color: rgb(246, 66, 66);
+  outline: none;
+}
+.wrong:valid {
+  background-color: rgb(246, 66, 66);
+}

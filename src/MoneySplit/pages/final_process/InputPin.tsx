@@ -34,10 +34,45 @@ const InputPin: React.FC = () => {
     });
   };
 
+  const comparePassword = async () => {
+    try {
+      const pinString = pin.join("");
+      console.log(pinString);
+      const response = await fetch("http://localhost:5000/api/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userPassword: pinString }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send data");
+      }
+      const data = await response.json();
+      console.log("Success:", data);
+      return true;
+    } catch (error) {
+      console.error("inputPin Error:", error);
+      return false;
+    }
+  };
+
+  const [isWrong, setIsWrong] = useState(false);
   useEffect(() => {
     if (pin.every((p) => p !== "")) {
       // if 비밀번호 비교 후 true일 때
-      navigate("/money-split/split-loading");
+      comparePassword().then((result) => {
+        if (result) navigate("/money-split/split-loading");
+        else {
+          // 틀림 효과 (1초 동안 빨간색으로 변함 + 흔들림)
+          setIsWrong(() => true);
+          setTimeout(() => {
+            setIsWrong(false);
+            setPin(Array(6).fill("")); // PIN 초기화
+          }, 700);
+        }
+      });
     }
   }, [pin]);
 
@@ -51,9 +86,15 @@ const InputPin: React.FC = () => {
             PIN 번호를 입력해주세요.
           </div>
           <div className="center_wrapper" style={{ margin: "30px 0" }}>
-            <div className="pin-input-container">
+            <div className={`pin-input-container ${isWrong ? "shake" : ""}`}>
               {pin.map((num, index) => (
-                <input key={index} type="password" value={num} className="pin-input" required />
+                <input
+                  key={index}
+                  type="password"
+                  value={num}
+                  className={`${isWrong ? "wrong" : "pin-input"}`}
+                  required
+                />
               ))}
             </div>
           </div>
