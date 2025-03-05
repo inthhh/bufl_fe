@@ -1,11 +1,11 @@
 import React from "react";
 import "./mainStyle.css";
-import BellImg from "./Frame 20.png";
-import BankIcon1 from "./toss.png";
-import BankIcon2 from "./shinhan.png";
-import BankIcon3 from "./hana.png";
-import BankIcon4 from "./kb.png";
-import DonutChart from "./DonutChart.js";
+import BellImg from "./img/Frame 20.png";
+import BankIcon1 from "./img/toss.png";
+import BankIcon2 from "./img/shinhan.png";
+import BankIcon3 from "./img/hana.png";
+import BankIcon4 from "./img/kb.png";
+import DoughnutChart from "./DoughnutChart";
 
 function First() {
   return (
@@ -36,7 +36,7 @@ function First() {
         <div className="month2">326,510 원</div>
       </div>
       <div className="asset-box">
-        <div className="donut"><DonutChart /></div>
+        <div className="donut"><DoughnutChart /></div>
         <div className="asset">자산</div>
         <div className="asset1">비상금</div>
         <div className="asset2">예비비</div>

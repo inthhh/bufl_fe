@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import First from "./Main/first";
+
 import MoneySplitFirst from "./MoneySplit/SplitFirst";
 
 import AI_home from "./MoneySplit/ai_Pages/ai_home";
@@ -17,6 +18,9 @@ import SplitLoading from "./MoneySplit/final_process/SplitLoading";
 
 import Account from "./Main/account";
 import Second from "./Main/second";
+import Box1 from "./Main/box1";
+import Box2 from "./Main/box2";
+import Account from "./Main/account";
 
 import StartPage from "./SignOn/pages/StartPage";
 import PersonalInfoPage from "./SignOn/pages/PersonalInfoPage";
@@ -39,6 +43,11 @@ const App: React.FC = () => {
       <div style={{ width: "400px", height: "800px", backgroundColor: "white", borderRadius: "15px" }}>
         <Routes>
           <Route path="/" element={<First />} />
+          <Route path="/Main" element={<First />} />
+          <Route path="/Main/Second" element={<Second />} />
+          <Route path="/Main/box1" element={<Box1 />} />
+          <Route path="/Main/box2" element={<Box2 />} />
+          <Route path="/Account" element={<Account />} />
           <Route path="/money-split" element={<MoneySplitFirst />} />
 
           <Route path="/money-split/ai" element={<AI_home />} />
