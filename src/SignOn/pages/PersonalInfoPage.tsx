@@ -98,7 +98,6 @@ const PersonalInfoPage: React.FC = () => {
     phone &&
     agreements.terms &&
     agreements.privacy;
-
   return (
     <div>
       <div className="underline">
