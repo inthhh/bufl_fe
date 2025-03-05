@@ -7,14 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSelectedAccount } from "../../../redux/actions/accountAction";
 import { RootState } from "../../../redux/store";
 
-interface CategoryAccountProps {
-  category: string;
-  account?: string;
-  ratio: number;
-  amount: number;
-}
-
 interface CategoryInterface {
+  id: number;
   name: string;
   goal_amount: number;
   background_color: string;
@@ -24,15 +18,30 @@ interface CategoryInterface {
   account_number: number;
 }
 
+interface CategoryAccountsInterface {
+  name: string;
+  bankName: string;
+  accountNumber: string;
+}
+
+interface CategoryAccountProps {
+  categoryId: number;
+  category: string;
+  account: CategoryAccountsInterface;
+  ratio: number;
+  amount: number;
+}
+
 const CategoryAccount: React.FC<CategoryAccountProps> = (props) => {
   const navigate = useNavigate();
   const clickForAccountLink = () => {
-    navigate("/money-split/select-account/detail");
+    navigate(`/money-split/select-account/detail/${props.categoryId}`);
   };
+  // console.log("------", props.account.bankName);
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setSelectedAccount(-1));
+    dispatch(setSelectedAccount({ selectedAccountId: -1, selectedAccountName: "" }));
   }, []);
   return (
     <div>
@@ -42,7 +51,12 @@ const CategoryAccount: React.FC<CategoryAccountProps> = (props) => {
             <div>
               <strong>{props.category}</strong>
             </div>
-            <div>{props.account ? props.account : "계좌 연결하기"}</div>
+
+            <div>
+              {props.account.bankName === "정보 없음"
+                ? "계좌 연결하기"
+                : props.account.bankName + " " + props.account.accountNumber + " ✅"}
+            </div>
           </div>
           <img src={RightArrow} alt="right" width={15} />
         </div>
@@ -62,17 +76,32 @@ const CategoryAccount: React.FC<CategoryAccountProps> = (props) => {
 function SelectAccount() {
   const [isFinish, setIsFinish] = React.useState(true);
   const [categorys, setCategorys] = useState<CategoryInterface[]>([]);
+  const [categoryAccounts, setCategoryAccounts] = useState<CategoryAccountsInterface[]>([]);
   const dispatch = useDispatch();
   const categoryList = useSelector((state: RootState) => state.category.categoryList);
   // 리덕스 리스트 길이 n만큼 categorys 뒤에서 n개 자르기
   const listLen = categoryList.length;
 
   useEffect(() => {
+    console.log(listLen);
     fetch("http://localhost:5000/api/salary/category")
       .then((response) => response.json())
-      .then((data) => setCategorys(data.categories.slice(-listLen)))
-      .catch((error) => console.error("SelectAccountAccounts error:", error));
+      .then((data) => {
+        setCategorys(data.categories.slice(-listLen));
+        console.log("**category", categoryList);
+      })
+      .catch((error) => console.error("SelectAccount error:", error));
   }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/salary/account")
+      .then((response) => response.json())
+      .then((data) => {
+        setCategoryAccounts(data.slice(-2));
+        console.log("**accounts", categoryAccounts);
+      })
+      .catch((error) => console.error("SelectAccount error:", error));
+  }, [categoryList]);
 
   const navigate = useNavigate();
   const clickForYes = () => {
@@ -85,9 +114,15 @@ function SelectAccount() {
         <div>
           <div className="black_title">카테고리별 계좌를 선택해주세요.</div>
           <div style={{ height: "550px", overflowY: "scroll" }}>
-            {categorys.map((category) => (
+            {categorys.map((category, index) => (
               <div>
-                <CategoryAccount category={category.name} ratio={category.ratio} amount={category.amount} />
+                <CategoryAccount
+                  categoryId={category.id}
+                  category={category.name}
+                  ratio={category.ratio}
+                  amount={category.amount}
+                  account={categoryAccounts[index] ?? { name: "", bankName: "정보 없음", accountNumber: "" }}
+                />
               </div>
             ))}
           </div>

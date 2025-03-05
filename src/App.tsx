@@ -61,8 +61,8 @@ const App: React.FC = () => {
           <Route path="/money-split/input-pin" element={<InputPin />} />
           <Route path="/money-split/split-loading" element={<SplitLoading />} />
           <Route path="/money-split/finish" element={<SplitFinish />} />
-          <Route path="/money-split/select-account/detail" element={<SelectAccountDetail />} />
-          <Route path="/money-split/select-account/accounts" element={<SelectAccountAccounts />} />
+          <Route path="/money-split/select-account/detail/:categoryId" element={<SelectAccountDetail />} />
+          <Route path="/money-split/select-account/accounts/:categoryId" element={<SelectAccountAccounts />} />
           <Route path="/money-split/add-category" element={<AddCategory />} />
           <Route path="/money-split/toss/terms" element={<TossTerms />} />
           <Route path="/money-split/ai/cancel" element={<AI_Cancel />} />

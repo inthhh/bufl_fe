@@ -2,16 +2,19 @@ import { setSelectedAccount } from "./../actions/accountAction";
 import { createReducer } from "@reduxjs/toolkit";
 
 interface AccountState {
-  selectedAccount: number;
+  selectedAccountId: number;
+  selectedAccountName: string;
 }
 
 const initialState: AccountState = {
-  selectedAccount: -1,
+  selectedAccountId: -1,
+  selectedAccountName: "",
 };
 
 const accountReducer = createReducer(initialState, (builder) => {
   builder.addCase(setSelectedAccount, (state, action) => {
-    state.selectedAccount = action.payload;
+    state.selectedAccountId = action.payload.selectedAccountId;
+    state.selectedAccountName = action.payload.selectedAccountName;
   });
 });
 

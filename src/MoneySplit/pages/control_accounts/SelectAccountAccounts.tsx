@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../style/splitStyle.css"; // CSS 파일 import
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import MoveBack from "../../MoveBack";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedAccount } from "../../../redux/actions/accountAction";
@@ -14,18 +14,24 @@ interface AccountsInterface {
   balance: number;
 }
 
+interface SelectedAccountInterface {
+  selectedAccountId: number;
+  selectedAccountName: string;
+}
+
 const SelectAccountAccounts: React.FC = () => {
   // const allAccountList = ["토스뱅크 123", "토스뱅크 456", "토스뱅크 789", "토스뱅크 000"];
-  const [accountId, setAccountId] = useState(0);
+  const [account, setAccount] = useState<SelectedAccountInterface>({ selectedAccountId: -1, selectedAccountName: "" });
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const selectedAccount = useSelector((state: RootState) => state.account.selectedAccount);
-  // 카테고리 id를 보내면 name, amount 리턴
+  const selectedAccountId = useSelector((state: RootState) => state.account.selectedAccountId);
+  const selectedAccountName = useSelector((state: RootState) => state.account.selectedAccountName);
 
+  const { categoryId } = useParams();
   const clickForYes = async () => {
-    console.log(accountId);
-    dispatch(setSelectedAccount(accountId));
-    navigate("/money-split/select-account/detail");
+    console.log(account);
+    dispatch(setSelectedAccount(account));
+    navigate(`/money-split/select-account/detail/${categoryId}`);
   };
 
   const [accounts, setAccounts] = useState<AccountsInterface[]>([]);
@@ -38,9 +44,9 @@ const SelectAccountAccounts: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(setSelectedAccount(accountId));
-    console.log(selectedAccount);
-  }, [accountId, dispatch]);
+    dispatch(setSelectedAccount(account));
+    console.log(selectedAccountId, selectedAccountName);
+  }, [account, dispatch]);
 
   return (
     <div>
@@ -56,7 +62,12 @@ const SelectAccountAccounts: React.FC = () => {
                     type="radio"
                     id={`account-${index}`}
                     name="account"
-                    onClick={() => setAccountId(account.account_id)}
+                    onClick={() =>
+                      setAccount({
+                        selectedAccountId: account.account_id,
+                        selectedAccountName: account.bank_name + " " + String(account.account_number),
+                      })
+                    }
                     onChange={() => {}}
                   />{" "}
                   <label htmlFor={`account-${index}`}>{account.bank_name + account.account_number}</label>
