@@ -17,60 +17,39 @@ function SalaryInfoPage() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // 월급 포맷 (쉼표 추가)
   const formatSalary = (value: number) => value.toLocaleString();
 
-  // 월급 입력 핸들러
   const handleSalaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input = e.target;
     const rawValue = input.value.replace(/\D/g, "");
     const newValue = rawValue ? Number(rawValue) : 0;
 
-    const prevFormatted = formatSalary(salary);
-    const prevCommaCount = (prevFormatted.match(/,/g) || []).length;
-    const cursorPosition = input.selectionStart || 0;
-
     setSalary(newValue);
-
-    setTimeout(() => {
-      if (inputRef.current) {
-        const newFormatted = formatSalary(newValue);
-        const newCommaCount = (newFormatted.match(/,/g) || []).length;
-        let newCursorPosition =
-          cursorPosition + (newCommaCount - prevCommaCount);
-        newCursorPosition = Math.max(
-          0,
-          Math.min(newFormatted.length, newCursorPosition)
-        );
-
-        inputRef.current.setSelectionRange(
-          newCursorPosition,
-          newCursorPosition
-        );
-      }
-    }, 0);
   };
 
-  // 입력 필드 포커스를 벗어나면 기본값 설정
   const handleBlur = () => {
     if (!salary) {
       setSalary(2500000);
     }
   };
 
-  // 월급 조정 (버튼 클릭)
   const adjustSalary = (amount: number) => {
     setSalary((prevSalary) => Math.max(0, prevSalary + amount));
   };
 
-  // 월급일 선택 리스트 (1일~31일 + 말일)
   const paydayOptions = Array.from({ length: 31 }, (_, i) => `${i + 1}일`).concat("말일");
 
-  // 선택한 날짜의 +1일 새벽으로 변환하는 함수
   const getNextDay = (day: string) => {
-    if (day === "말일") return "1일"; // 말일이면 다음 달 1일 새벽
+    if (day === "말일") return "1일";
+
     const dayNumber = parseInt(day.replace("일", ""), 10);
-    return `${dayNumber + 1}일`; // 숫자로 변환 후 +1
+    if (isNaN(dayNumber)) return "1일";
+
+    if (dayNumber >= 28) {
+      return "1일";
+    }
+
+    return `${dayNumber + 1}일`;
   };
 
   return (
@@ -82,7 +61,6 @@ function SalaryInfoPage() {
       </h3>
 
       {step === 1 ? (
-        //---------------------월급 입력-------------------------------
         <div>
           <div className="salary_flex">
             <img src={MoneyImg} alt="money" width="45px" height="45px" />
@@ -117,7 +95,6 @@ function SalaryInfoPage() {
           </div>
         </div>
       ) : step === 2 ? (
-        //----------------------------월급일 선택-----------------------
         <div>
           <div className="salary_flex">
             <img src={DateImg} alt="date" width="45px" />
@@ -159,7 +136,6 @@ function SalaryInfoPage() {
           </div>
         </div>
       ) : (
-        //------------------------월급 계좌 선택-------------------------
         <div>
           <div className="salary_flex">
             <img src={AccountImg} alt="account" width="45px" />
