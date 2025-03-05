@@ -68,6 +68,7 @@ const App: React.FC = () => {
           <Route path="/sign/salary-info" element={<SalaryInfoPage />} />
           <Route path="/sign/interest" element={<InterestPage />} />
           <Route path="/sign/completion" element={<CompletionPage />} />
+          <Route path="/sign/input-pin" element={<InputPinPage />}/>
         </Routes>
       </div>
     </Router>

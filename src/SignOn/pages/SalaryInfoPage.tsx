@@ -17,8 +17,10 @@ function SalaryInfoPage() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // 월급 포맷 (쉼표 추가)
   const formatSalary = (value: number) => value.toLocaleString();
 
+  // 월급 입력 핸들러
   const handleSalaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input = e.target;
     const rawValue = input.value.replace(/\D/g, "");
@@ -49,20 +51,27 @@ function SalaryInfoPage() {
     }, 0);
   };
 
+  // 입력 필드 포커스를 벗어나면 기본값 설정
   const handleBlur = () => {
     if (!salary) {
       setSalary(2500000);
     }
   };
 
+  // 월급 조정 (버튼 클릭)
   const adjustSalary = (amount: number) => {
     setSalary((prevSalary) => Math.max(0, prevSalary + amount));
   };
 
-  const paydayOptions = Array.from(
-    { length: 31 },
-    (_, i) => `${i + 1}일`
-  ).concat("말일");
+  // 월급일 선택 리스트 (1일~31일 + 말일)
+  const paydayOptions = Array.from({ length: 31 }, (_, i) => `${i + 1}일`).concat("말일");
+
+  // 선택한 날짜의 +1일 새벽으로 변환하는 함수
+  const getNextDay = (day: string) => {
+    if (day === "말일") return "1일"; // 말일이면 다음 달 1일 새벽
+    const dayNumber = parseInt(day.replace("일", ""), 10);
+    return `${dayNumber + 1}일`; // 숫자로 변환 후 +1
+  };
 
   return (
     <div className="container">
@@ -73,7 +82,7 @@ function SalaryInfoPage() {
       </h3>
 
       {step === 1 ? (
-        //---------------------월급여---------------------------------
+        //---------------------월급 입력-------------------------------
         <div>
           <div className="salary_flex">
             <img src={MoneyImg} alt="money" width="45px" height="45px" />
@@ -84,10 +93,7 @@ function SalaryInfoPage() {
           </div>
 
           <div className="salary_input_container">
-            <button
-              className="salary_button"
-              onClick={() => adjustSalary(500000)}
-            >
+            <button className="salary_button" onClick={() => adjustSalary(500000)}>
               +
             </button>
             <input
@@ -98,10 +104,7 @@ function SalaryInfoPage() {
               onBlur={handleBlur}
               className="salary_input"
             />
-            <button
-              className="salary_button"
-              onClick={() => adjustSalary(-500000)}
-            >
+            <button className="salary_button" onClick={() => adjustSalary(-500000)}>
               -
             </button>
             <span className="currency">원</span>
@@ -114,7 +117,7 @@ function SalaryInfoPage() {
           </div>
         </div>
       ) : step === 2 ? (
-        //----------------------------월급일-----------------------
+        //----------------------------월급일 선택-----------------------
         <div>
           <div className="salary_flex">
             <img src={DateImg} alt="date" width="45px" />
@@ -122,10 +125,7 @@ function SalaryInfoPage() {
           </div>
 
           <div className="payday__container">
-            <div
-              className="payday__select-wrapper"
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            >
+            <div className="payday__select-wrapper" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
               <span className="payday__select-text">{payday}</span>
               <div className="payday__select--icon">▼</div>
             </div>
@@ -148,7 +148,7 @@ function SalaryInfoPage() {
             )}
 
             <p className="payday__description">
-              매달 {payday} 새벽에 월급 쪼개기를 진행할게요.
+              매달 {getNextDay(payday)} 새벽에 월급 쪼개기를 진행할게요.
             </p>
           </div>
 
@@ -159,7 +159,7 @@ function SalaryInfoPage() {
           </div>
         </div>
       ) : (
-        //------------------------월급계좌--------------------------------
+        //------------------------월급 계좌 선택-------------------------
         <div>
           <div className="salary_flex">
             <img src={AccountImg} alt="account" width="45px" />
@@ -171,15 +171,10 @@ function SalaryInfoPage() {
             {accountList.map((account) => (
               <div
                 key={account.id}
-                className={`account-item ${
-                  selectedAccount === account.id ? "selected" : ""
-                }`}
+                className={`account-item ${selectedAccount === account.id ? "selected" : ""}`}
                 onClick={() => setSelectedAccount(account.id)}
               >
-                <img
-                  src={require(`../images/${account.logo}`)}
-                  alt={account.name}
-                />
+                <img src={require(`../images/${account.logo}`)} alt={account.name} />
                 <span>
                   {account.name} {account.account}
                 </span>
@@ -188,7 +183,7 @@ function SalaryInfoPage() {
           </div>
 
           <div className="center_wrap">
-          <button
+            <button
               className={`btn_start ${selectedAccount === null ? "disabled" : ""}`}
               onClick={() => navigate("/sign/input-pin")}
               disabled={selectedAccount === null}
