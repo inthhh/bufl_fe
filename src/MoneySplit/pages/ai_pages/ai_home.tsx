@@ -1,8 +1,8 @@
 import React from "react";
-import "../splitStyle.css";
+import "../../style/splitStyle.css";
 import { useNavigate } from "react-router-dom";
-import RobotImg from "../img/robot.png";
-import MoveBack from "../MoveBack";
+import RobotImg from "../../images/robot.png";
+import MoveBack from "../../MoveBack";
 
 const AI_home: React.FC = () => {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ const AI_home: React.FC = () => {
   return (
     <div>
       <MoveBack pageBefore="/money-split" />
-      <div className="center_wrap">
+      <div className="center_wrapper">
         <div>
           <div className="black_title_big">
             <p className="center_text" style={{ margin: "50px 0 40px 0" }}>
@@ -21,10 +21,10 @@ const AI_home: React.FC = () => {
               월급 쪼개기
             </p>
           </div>
-          <div className="center_wrap">
+          <div className="center_wrapper">
             <img src={RobotImg} alt="" width={"150px"} />
           </div>
-          <div className="center_wrap" style={{ marginTop: "220px" }}>
+          <div className="center_wrapper" style={{ marginTop: "220px" }}>
             <p className="center_text">
               지난 소비 습관을 분석하고,
               <br />
@@ -33,8 +33,8 @@ const AI_home: React.FC = () => {
               나중에 비율을 수정할 수 있어요.
             </p>
           </div>
-          <div className="center_wrap">
-            <div className="center_wrap btn">
+          <div className="center_wrapper">
+            <div className="center_wrapper btn">
               <button className="blue_big_btn" type="button" onClick={() => clickToNext()}>
                 시작하기
               </button>

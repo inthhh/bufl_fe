@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../MoneySplit/splitStyle.css";
+import "../../MoneySplit/style/splitStyle.css";
 import MoveBack from "../../MoneySplit/MoveBack";
 
 const PersonalInfoPage: React.FC = () => {
@@ -33,10 +33,7 @@ const PersonalInfoPage: React.FC = () => {
       [key]: !agreements[key],
     };
 
-    updatedAgreements.all =
-      updatedAgreements.terms &&
-      updatedAgreements.privacy &&
-      updatedAgreements.marketing;
+    updatedAgreements.all = updatedAgreements.terms && updatedAgreements.privacy && updatedAgreements.marketing;
 
     setAgreements(updatedAgreements);
   };
@@ -66,12 +63,7 @@ const PersonalInfoPage: React.FC = () => {
   };
 
   const isFormValid =
-    name &&
-    idFront.length === 6 &&
-    idBack.length === 1 &&
-    phone &&
-    agreements.terms &&
-    agreements.privacy;
+    name && idFront.length === 6 && idBack.length === 1 && phone && agreements.terms && agreements.privacy;
 
   return (
     <div>
@@ -110,37 +102,20 @@ const PersonalInfoPage: React.FC = () => {
             maxLength={6}
           />
           <span>-</span>
-          <input
-            className="input_id_2"
-            type="text"
-            value={idBack}
-            onChange={handleIdBackChange}
-            maxLength={1}
-          />
+          <input className="input_id_2" type="text" value={idBack} onChange={handleIdBackChange} maxLength={1} />
           <span>******</span>
         </div>
 
         <div className="info_input_name info_input_phone">
           <label>휴대폰 번호</label>
-          <input
-            type="text"
-            placeholder="휴대폰 번호"
-            value={phone}
-            maxLength={11}
-            onChange={handlePhoneChange}
-          />
+          <input type="text" placeholder="휴대폰 번호" value={phone} maxLength={11} onChange={handlePhoneChange} />
         </div>
       </div>
 
       <div className="center_wrap agree_down">
         <h3>이용약관 동의</h3>
         <div className="agree_container">
-          <input
-            type="checkbox"
-            id="all"
-            checked={agreements.all}
-            onChange={handleAllAgreement}
-          />
+          <input type="checkbox" id="all" checked={agreements.all} onChange={handleAllAgreement} />
           <label htmlFor="all" className="all_agree_label">
             모두 동의합니다.
           </label>

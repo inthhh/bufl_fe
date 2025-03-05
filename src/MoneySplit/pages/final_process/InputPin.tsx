@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../splitStyle.css";
-import MoveBack from "../MoveBack";
+import "../../style/splitStyle.css";
+import MoveBack from "../../MoveBack";
 
 const InputPin: React.FC = () => {
   const [pin, setPin] = useState<string[]>(Array(6).fill(""));
@@ -44,13 +44,13 @@ const InputPin: React.FC = () => {
   return (
     <div>
       <MoveBack pageBefore="/money-split/authentication" />
-      <div className="center_wrap">
+      <div className="center_wrapper">
         <div>
           <div className="black_title center_text">
             자동이체 등록을 위해 <br />
             PIN 번호를 입력해주세요.
           </div>
-          <div className="center_wrap" style={{ margin: "30px 0" }}>
+          <div className="center_wrapper" style={{ margin: "30px 0" }}>
             <div className="pin-input-container">
               {pin.map((num, index) => (
                 <input key={index} type="password" value={num} className="pin-input" required />

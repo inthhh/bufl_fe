@@ -1,4 +1,4 @@
-import MoveBack from "../MoveBack";
+import MoveBack from "../../MoveBack";
 
 const TossTerms: React.FC = () => {
   return (

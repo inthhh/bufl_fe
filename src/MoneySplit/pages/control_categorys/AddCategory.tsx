@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import "../splitStyle.css"; // CSS 파일 import
+import "../../style/splitStyle.css"; // CSS 파일 import
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setCategories } from "../../redux/actions/categoryAction";
-import { RootState } from "../../redux/store";
+import { setCategories } from "../../../redux/actions/categoryAction";
+import { RootState } from "../../../redux/store";
 
-import MoveBack from "../MoveBack";
+import MoveBack from "../../MoveBack";
 
 const AddCategory: React.FC = () => {
   const [name, setName] = useState<string>("");
@@ -31,7 +31,7 @@ const AddCategory: React.FC = () => {
   return (
     <div>
       <MoveBack pageBefore="/money-split/select-ratio" />
-      <div className="center_wrap">
+      <div className="center_wrapper">
         <div>
           <div className="black_title">카테고리 추가</div>
           <form className="auth-form" style={{ width: "330px" }}>
@@ -66,7 +66,7 @@ const AddCategory: React.FC = () => {
               <input type="color" value={color} onChange={(e) => setColor(e.target.value)} className="" />
             </div>
           </form>
-          <div className="center_wrap">
+          <div className="center_wrapper">
             <button className="blue_big_btn" type="button" onClick={() => clickForYes()}>
               저장
             </button>

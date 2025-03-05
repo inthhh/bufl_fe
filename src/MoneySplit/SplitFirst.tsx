@@ -1,6 +1,6 @@
 import React from "react";
-import "./splitStyle.css";
-import MoneyImg from "./img/money.png";
+import "./style/splitStyle.css";
+import MoneyImg from "./images/money.png";
 import { useNavigate } from "react-router-dom";
 import MoveBack from "./MoveBack";
 
@@ -15,24 +15,24 @@ const SplitFirst: React.FC = () => {
   return (
     <div>
       <MoveBack pageBefore="/" />
-      <div className="center_wrap">
+      <div className="center_wrapper">
         <div>
-          <div className="center_wrap" style={{ margin: "50px 0 10px 0" }}>
+          <div className="center_wrapper" style={{ margin: "50px 0 10px 0" }}>
             <p className="black_title_big">통장 쪼개기 비율 설정</p>
           </div>
-          <div className="center_wrap">
+          <div className="center_wrapper">
             <img src={MoneyImg} alt="money" width={"120px"} />
           </div>
-          <div className="center_wrap" style={{ margin: "40px" }}>
+          <div className="center_wrapper" style={{ margin: "40px" }}>
             <strong>자유롭게 비율을 설정하고 추천받고</strong>
           </div>
-          <div className="center_wrap" style={{ margin: "10px 0 80px 0" }}>
+          <div className="center_wrapper" style={{ margin: "10px 0 80px 0" }}>
             <p className="center_text">
               통장 쪼개기 비율을 직접 설정하거나
               <br /> AI를 통해 최적의 비율을 추천받으세요!
             </p>
           </div>
-          <div className="center_wrap">
+          <div className="center_wrapper">
             <div>
               <button className="blue_btn" type="button" onClick={() => clickToAI()}>
                 🤖 AI 추천 받기

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import "../splitStyle.css"; // CSS 파일 import
+import "../../style/splitStyle.css"; // CSS 파일 import
 import { useNavigate } from "react-router-dom";
-import MoveBack from "../MoveBack";
+import MoveBack from "../../MoveBack";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
-import RightArrow from "../img/right-arrow.png";
+import { RootState } from "../../../redux/store";
+import RightArrow from "../../images/right-arrow.png";
 
 const SelectAccountDetail: React.FC = () => {
   const [name, setName] = useState<string>("");
@@ -17,7 +17,28 @@ const SelectAccountDetail: React.FC = () => {
 
   // console.log(selectedAccount);
   const clickForYes = () => {
+    // const requestBody = {
+    // categoryId,
+    // accountId,
+    // };
     // api로 계좌 정보 보내기
+    // try {
+    //   const response = await fetch("http://localhost:5000/api/salary/account", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(requestBody),
+    //   });
+
+    //   if (!response.ok) {
+    //     throw new Error("Failed to send data");
+    //   }
+    //   const data = await response.json();
+    //   console.log("Success:", data);
+    // } catch (error) {
+    //   console.error("Error:", error);
+    // }
     navigate("/money-split/select-account");
   };
   const clickForAccount = () => {
@@ -27,7 +48,7 @@ const SelectAccountDetail: React.FC = () => {
   return (
     <div>
       <MoveBack pageBefore="/money-split/select-account" />
-      <div className="center_wrap">
+      <div className="center_wrapper">
         <div>
           <div className="black_title">카테고리 명</div>
           <form className="auth-form" style={{ width: "330px" }}>
@@ -70,8 +91,8 @@ const SelectAccountDetail: React.FC = () => {
               <button type="button">카테고리 삭제</button>
             </div>
           </form>
-          <div className="center_wrap">
-            <div className="center_wrap btn">
+          <div className="center_wrapper">
+            <div className="center_wrapper btn">
               <button className="blue_big_btn" type="button" onClick={() => clickForYes()}>
                 저장
               </button>

@@ -4,19 +4,18 @@ import First from "./Main/first";
 
 import MoneySplitFirst from "./MoneySplit/SplitFirst";
 
-import AI_home from "./MoneySplit/ai_Pages/ai_home";
-import AI_anaLoading from "./MoneySplit/ai_Pages/ai_anaLoading";
-import AI_calLoading from "./MoneySplit/ai_Pages/ai_calLoading";
-import AI_calculate from "./MoneySplit/ai_Pages/ai_calculate";
-import SelectAccount from "./MoneySplit/control_accounts/SelectAccount";
-import SelectRatio from "./MoneySplit/control_categorys/SelectRatio";
-import AI_analysis from "./MoneySplit/ai_Pages/ai_analysis";
-import Authentication from "./MoneySplit/final_process/Authentication";
-import TossAuth from "./MoneySplit/final_process/TossAuth";
-import InputPin from "./MoneySplit/final_process/InputPin";
-import SplitLoading from "./MoneySplit/final_process/SplitLoading";
+import AI_home from "./MoneySplit/pages/ai_pages/ai_home";
+import AI_anaLoading from "./MoneySplit/pages/ai_pages/ai_anaLoading";
+import AI_calLoading from "./MoneySplit/pages/ai_pages/ai_calLoading";
+import AI_calculate from "./MoneySplit/pages/ai_pages/ai_calculate";
+import SelectAccount from "./MoneySplit/pages/control_accounts/SelectAccount";
+import SelectRatio from "./MoneySplit/pages/control_categorys/SelectRatio";
+import AI_analysis from "./MoneySplit/pages/ai_pages/ai_analysis";
+import Authentication from "./MoneySplit/pages/final_process/Authentication";
+import TossAuth from "./MoneySplit/pages/final_process/TossAuth";
+import InputPin from "./MoneySplit/pages/final_process/InputPin";
+import SplitLoading from "./MoneySplit/pages/final_process/SplitLoading";
 
-import Account from "./Main/account";
 import Second from "./Main/second";
 import Box1 from "./Main/box1";
 import Box2 from "./Main/box2";
@@ -30,12 +29,12 @@ import InterestPage from "./SignOn/pages/InterestPage";
 import CompletionPage from "./SignOn/pages/CompletionPage";
 import InputPinPage from "./SignOn/pages/InputPinPage";
 
-import AddCategory from "./MoneySplit/control_categorys/AddCategory";
-import SplitFinish from "./MoneySplit/final_process/SplitFinish";
-import SelectAccountDetail from "./MoneySplit/control_accounts/SelectAccountDetail";
-import SelectAccountAccounts from "./MoneySplit/control_accounts/SelectAccountAccounts";
-import TossTerms from "./MoneySplit/final_process/TossTerms";
-import AI_Cancel from "./MoneySplit/ai_Pages/ai_cancel";
+import AddCategory from "./MoneySplit/pages/control_categorys/AddCategory";
+import SplitFinish from "./MoneySplit/pages/final_process/SplitFinish";
+import SelectAccountDetail from "./MoneySplit/pages/control_accounts/SelectAccountDetail";
+import SelectAccountAccounts from "./MoneySplit/pages/control_accounts/SelectAccountAccounts";
+import TossTerms from "./MoneySplit/pages/final_process/TossTerms";
+import AI_Cancel from "./MoneySplit/pages/ai_pages/ai_cancel";
 
 const App: React.FC = () => {
   return (

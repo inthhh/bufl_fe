@@ -1,7 +1,7 @@
 import React from "react";
-import "../splitStyle.css";
+import "../../style/splitStyle.css";
 import { useNavigate } from "react-router-dom";
-import MoveBack from "../MoveBack";
+import MoveBack from "../../MoveBack";
 import DonutChart from "./ai_doughnut";
 
 const AI_calculate: React.FC = () => {
@@ -15,7 +15,7 @@ const AI_calculate: React.FC = () => {
   return (
     <div>
       <MoveBack pageBefore={"/money-split/ai/analysis"} />
-      <div className="center_wrap">
+      <div className="center_wrapper">
         <div>
           <div className="black_title">
             AI가 추천하는
@@ -42,13 +42,13 @@ const AI_calculate: React.FC = () => {
             </div>
           </div>
 
-          <div className="center_wrap">
+          <div className="center_wrapper">
             <div style={{ width: "150px", marginTop: "20px" }}>
               <DonutChart dataList={[40, 30, 10, 20]} />
             </div>
           </div>
-          <div className="center_wrap">
-            <div className="center_wrap btn">
+          <div className="center_wrapper">
+            <div className="center_wrapper btn">
               <button className="gray_small_btn" type="button" onClick={() => clickForNo()}>
                 수정할래요
               </button>

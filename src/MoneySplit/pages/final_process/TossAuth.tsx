@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import MoveBack from "../MoveBack";
-import "../splitStyle.css";
+import MoveBack from "../../MoveBack";
+import "../../style/splitStyle.css";
 
 const TossAuth: React.FC = () => {
   const [name, setName] = useState<string>("");
@@ -28,7 +28,7 @@ const TossAuth: React.FC = () => {
         </h1>
       </div>
 
-      <div className="center_wrap">
+      <div className="center_wrapper">
         <form className="auth-form">
           <div className="form-group">
             <input
@@ -73,9 +73,9 @@ const TossAuth: React.FC = () => {
           </div>
         </form>
       </div>
-      <div className="center_wrap">
+      <div className="center_wrapper">
         <div>
-          <div className="center_wrap" style={{ marginBottom: "10px" }}>
+          <div className="center_wrapper" style={{ marginBottom: "10px" }}>
             <button type="button" className="no_border_btn" onClick={() => clickForTerms()}>
               개인정보 수집·이용 동의 &gt;
             </button>
@@ -83,7 +83,7 @@ const TossAuth: React.FC = () => {
           <button type="button" className="blue_big_btn" onClick={() => clickForYes()} style={{ marginBottom: "10px" }}>
             동의하고 인증하기
           </button>
-          <div className="center_wrap">
+          <div className="center_wrapper">
             <button type="button" className="no_border_btn" onClick={() => clickForNo()}>
               닫기
             </button>
