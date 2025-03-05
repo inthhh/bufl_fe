@@ -6,38 +6,13 @@ import RightArrow from "../../images/right-arrow.png";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedAccount } from "../../../redux/actions/accountAction";
 import { RootState } from "../../../redux/store";
-
-interface CategoryInterface {
-  id: number;
-  name: string;
-  goal_amount: number;
-  background_color: string;
-  ratio: number;
-  amount: number;
-  bank_name: string;
-  account_number: number;
-}
-
-interface CategoryAccountsInterface {
-  name: string;
-  bankName: string;
-  accountNumber: string;
-}
-
-interface CategoryAccountProps {
-  categoryId: number;
-  category: string;
-  account: CategoryAccountsInterface;
-  ratio: number;
-  amount: number;
-}
+import { CategoryInterface, CategoryAccountProps, CategoryAccountsInterface } from "./interfaces";
 
 const CategoryAccount: React.FC<CategoryAccountProps> = (props) => {
   const navigate = useNavigate();
   const clickForAccountLink = () => {
     navigate(`/money-split/select-account/detail/${props.categoryId}`);
   };
-  // console.log("------", props.account.bankName);
 
   const dispatch = useDispatch();
   useEffect(() => {
