@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MoveBack from "../../MoveBack";
 import "../../style/splitStyle.css";
@@ -7,6 +7,7 @@ const TossAuth: React.FC = () => {
   const [name, setName] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [birth, setBirth] = useState<string>("");
+  const [isFinish, setIsFinish] = useState<boolean>(false);
   const navigate = useNavigate();
   const clickForYes = () => {
     navigate("/money-split/input-pin");
@@ -17,6 +18,12 @@ const TossAuth: React.FC = () => {
   const clickForTerms = () => {
     navigate("/money-split/toss/terms");
   };
+
+  useEffect(() => {
+    if (name.length >= 2 && phone.length >= 2 && birth.length >= 6) {
+      setIsFinish(true);
+    }
+  }, [birth]);
 
   return (
     <div>
@@ -80,7 +87,12 @@ const TossAuth: React.FC = () => {
               개인정보 수집·이용 동의 &gt;
             </button>
           </div>
-          <button type="button" className="blue_big_btn" onClick={() => clickForYes()} style={{ marginBottom: "10px" }}>
+          <button
+            type="button"
+            className={isFinish ? "blue_big_btn" : "gray_big_btn"}
+            onClick={isFinish ? () => clickForYes() : undefined}
+            style={{ marginBottom: "10px" }}
+          >
             동의하고 인증하기
           </button>
           <div className="center_wrapper">
