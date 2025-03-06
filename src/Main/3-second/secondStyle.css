@@ -1,101 +1,52 @@
 .pay {
   width: 120px;
-  position: relative;
-  top: 150px;
-  left: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
 }
 .pay1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px;
   text-align: center;
 }
 .pay2 {
-  margin: 180px 20px;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 50px 20px 10px 20px;
 }
 .pay3 {
-  margin: -160px 20px;
+  color: gray;
+  margin: 10px 20px;
+}
+.button_wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  flex-direction: column;
 }
 .box1-btn {
+  font-size: 24px;
   border: none;
   border-radius: 8px;
   background-color: #3183f6a8;
-  width: 240px;
-  height: 50px;
-  margin: 80px;
+  width: 300px;
+  height: 60px;
   padding: 10px;
-  position: relative;
-  top: 170px;
+  margin: 20px;
 }
 .box2-btn {
+  font-size: 24px;
   border: none;
   border-radius: 8px;
-  background-color: #3183f669;
-  width: 240px;
-  height: 50px;
-  margin: 80px;
-  position: relative;
-  top: 20px;
+  background-color: #3183f642;
+  width: 300px;
+  height: 60px;
   padding: 10px;
 }
-.bottom {
-  border: none;
-  background-color: rgba(219, 219, 219, 0.336);
-  width: 400px;
-  height: 60px;
-  margin: 16px 0px;
-  position: relative;
-}
-.home {
-  width: 30px;
-  height: 30px;
-  margin: 9px;
-  position: relative;
-  left: 30px;
-}
-.goal {
-  opacity: 0.3;
-  width: 30px;
-  height: 30px;
-  margin: 9px;
-  position: relative;
-  bottom: 71px;
-  left: 175px;
-}
-.menu {
-  opacity: 0.3;
-  width: 30px;
-  height: 30px;
-  margin: 9px;
-  position: relative;
-  bottom: 140px;
-  left: 320px;
-}
-.home-text {
-  font-size: 13px;
-  position: relative;
-  bottom: 13px;
-  left: 48px;
-}
 
-.goal-text {
-  color: lightgray;
-  font-size: 13px;
-  position: relative;
-  bottom: 84px;
-  left: 170px;
-}
-
-.menu-text {
-  color: lightgray;
-  font-size: 13px;
-  position: relative;
-  bottom: 155px;
-  left: 332px;
-}
-
-.bankbook {
-  position: relative;
-  top: 90px;
-  left: 30px;
-}
 .okay-btn {
   color: white;
   border: none;
@@ -104,7 +55,5 @@
   width: 240px;
   height: 50px;
   margin: 80px;
-  position: relative;
-  top: 550px;
   padding: 10px;
 }

@@ -16,7 +16,7 @@ import InputPin from "./MoneySplit/pages/final_process/InputPin";
 import SplitLoading from "./MoneySplit/pages/final_process/SplitLoading";
 
 import DoughnutChart from "./Main/1-first/DoughnutChart";
-import Account from "./Main/2-account/account";
+import Account from "./Main/1-first/account";
 import Box1 from "./Main/3-second/box1";
 import Box2 from "./Main/3-second/box2";
 import Second from "./Main/3-second/second";
@@ -25,6 +25,8 @@ import Loading from "./Main/5-loading/loading";
 import List from "./Main/6-list/list";
 import Choose from "./Main/7-choose/choose";
 import Choice from "./Main/8-choice/choice";
+import Rocket from "./Main/9-rocket/rocket";
+import Start from "./Main/10-start/start";
 
 import StartPage from "./SignOn/pages/StartPage";
 import PersonalInfoPage from "./SignOn/pages/PersonalInfoPage";
@@ -106,6 +108,8 @@ const App: React.FC = () => {
           <Route path="/Main/choose" element={<Choose />} />
           <Route path="/Main/list" element={<List />} />
           <Route path="/Main/choice" element={<Choice />} />
+          <Route path="/Main/rocket" element={<Rocket />} />
+          <Route path="/Main/start" element={<Start />} />
 
           <Route path="/sign" element={<StartPage />} />
           <Route path="/sign/personal-info" element={<PersonalInfoPage />} />
