@@ -101,10 +101,11 @@ const SelectRatio: React.FC = () => {
   }, []);
 
   // 하위 카테고리들의 ratio 합을 계산
-  const subCategoryTotal = Object.values(ratios)
+  const subCategoryTotal: number = Object.values(ratios)
     .filter((_, index) => index >= 1)
     .reduce((acc, cur) => acc + cur, 0);
   const salaryAccountRatio = 100 - subCategoryTotal; // 월급 통장 비율 자동 조정
+
   useEffect(() => {
     if (categoryList.length > 0) {
       const updatedCategoryList = categoryList.map((category, index) =>
@@ -114,11 +115,32 @@ const SelectRatio: React.FC = () => {
     }
   }, [salaryAccountRatio]);
 
+  // const updateRatio = (idx: number, newRatio: number) => {
+  //   setRatios((prev) => {
+  //     const updatedRatios = { ...prev, [idx]: newRatio };
+  //     return updatedRatios;
+  //   });
+  //   let newCategoryList = categoryList.map((category, i) => (i === idx ? { ...category, ratio: newRatio } : category));
+
+  //   dispatch(setCategories(newCategoryList));
+  // };
+
   const updateRatio = (idx: number, newRatio: number) => {
-    setRatios((prev) => {
-      const updatedRatios = { ...prev, [idx]: newRatio };
+    setRatios((prev: number[]) => {
+      const updatedRatios: number[] = { ...prev, [idx]: newRatio };
+      const subCategoryTotal = Object.values(updatedRatios)
+        .filter((_, index) => index >= 1)
+        .reduce((acc, cur) => acc + cur, 0);
+      const salaryAccountRatio = 100 - subCategoryTotal;
+
+      // 비율이 100%를 초과하면 기존 값 유지
+      if (subCategoryTotal > 100 || salaryAccountRatio < 0) {
+        console.log("100% 초과");
+        return prev; // 변경되지 않도록 이전 값 반환
+      }
       return updatedRatios;
     });
+
     let newCategoryList = categoryList.map((category, i) => (i === idx ? { ...category, ratio: newRatio } : category));
 
     dispatch(setCategories(newCategoryList));
