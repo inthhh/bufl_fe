@@ -24,22 +24,7 @@ function SalaryInfoPage() {
     const rawValue = input.value.replace(/\D/g, "");
     const newValue = rawValue ? Number(rawValue) : 0;
 
-    const prevFormatted = formatSalary(salary);
-    const prevCommaCount = (prevFormatted.match(/,/g) || []).length;
-    const cursorPosition = input.selectionStart || 0;
-
     setSalary(newValue);
-
-    setTimeout(() => {
-      if (inputRef.current) {
-        const newFormatted = formatSalary(newValue);
-        const newCommaCount = (newFormatted.match(/,/g) || []).length;
-        let newCursorPosition = cursorPosition + (newCommaCount - prevCommaCount);
-        newCursorPosition = Math.max(0, Math.min(newFormatted.length, newCursorPosition));
-
-        inputRef.current.setSelectionRange(newCursorPosition, newCursorPosition);
-      }
-    }, 0);
   };
 
   const handleBlur = () => {
@@ -54,6 +39,19 @@ function SalaryInfoPage() {
 
   const paydayOptions = Array.from({ length: 31 }, (_, i) => `${i + 1}일`).concat("말일");
 
+  const getNextDay = (day: string) => {
+    if (day === "말일") return "1일";
+
+    const dayNumber = parseInt(day.replace("일", ""), 10);
+    if (isNaN(dayNumber)) return "1일";
+
+    if (dayNumber >= 28) {
+      return "1일";
+    }
+
+    return `${dayNumber + 1}일`;
+  };
+
   return (
     <div className="container">
       <MoveBack pageBefore="/sign/agreement" />
@@ -63,7 +61,6 @@ function SalaryInfoPage() {
       </h3>
 
       {step === 1 ? (
-        //---------------------월급여---------------------------------
         <div>
           <div className="salary_flex">
             <img src={MoneyImg} alt="money" width="45px" height="45px" />
@@ -98,7 +95,6 @@ function SalaryInfoPage() {
           </div>
         </div>
       ) : step === 2 ? (
-        //----------------------------월급일-----------------------
         <div>
           <div className="salary_flex">
             <img src={DateImg} alt="date" width="45px" />
@@ -128,7 +124,9 @@ function SalaryInfoPage() {
               </div>
             )}
 
-            <p className="payday__description">매달 {payday} 새벽에 월급 쪼개기를 진행할게요.</p>
+            <p className="payday__description">
+              매달 {getNextDay(payday)} 새벽에 월급 쪼개기를 진행할게요.
+            </p>
           </div>
 
           <div className="center_wrap">
@@ -138,7 +136,6 @@ function SalaryInfoPage() {
           </div>
         </div>
       ) : (
-        //------------------------월급계좌--------------------------------
         <div>
           <div className="salary_flex">
             <img src={AccountImg} alt="account" width="45px" />

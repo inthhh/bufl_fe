@@ -19,7 +19,6 @@ import SplitLoading from "./MoneySplit/pages/final_process/SplitLoading";
 import Second from "./Main/second";
 import Box1 from "./Main/box1";
 import Box2 from "./Main/box2";
-import Account from "./Main/account";
 
 import StartPage from "./SignOn/pages/StartPage";
 import PersonalInfoPage from "./SignOn/pages/PersonalInfoPage";
@@ -76,6 +75,7 @@ const App: React.FC = () => {
           <Route path="/sign/salary-info" element={<SalaryInfoPage />} />
           <Route path="/sign/interest" element={<InterestPage />} />
           <Route path="/sign/completion" element={<CompletionPage />} />
+          <Route path="/sign/input-pin" element={<InputPinPage />}/>
         </Routes>
       </div>
     </Router>

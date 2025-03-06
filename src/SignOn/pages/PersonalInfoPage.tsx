@@ -1,30 +1,65 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { RootState } from "../../redux/store";
+import {
+  setName,
+  setIdFront,
+  setIdBack,
+  setPhone,
+  setAgreements,
+} from "../../redux/reducers/personalInfoSlice";
 import "../../MoneySplit/style/splitStyle.css";
 import MoveBack from "../../MoneySplit/MoveBack";
 
 const PersonalInfoPage: React.FC = () => {
   const navigate = useNavigate();
-  const [name, setName] = useState<string>("");
-  const [idFront, setIdFront] = useState<string>("");
-  const [idBack, setIdBack] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
+  const dispatch = useDispatch();
+
+  // Redux 상태 가져오기
+  const { name, idFront, idBack, phone, agreements } = useSelector(
+    (state: RootState) => state.personalInfo
+  );
+
+  // 한글 입력 문제 해결을 위한 로컬 상태
+  const [localName, setLocalName] = useState(name);
   const [isComposing, setIsComposing] = useState(false);
-  const [agreements, setAgreements] = useState({
-    all: false,
-    terms: false,
-    privacy: false,
-    marketing: false,
-  });
+
+  useEffect(() => {
+    setLocalName(name);
+  }, [name]);
+
+  // 🔹 숫자 입력 방지 + 한글 & 영문만 입력 허용
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+
+    // 입력 중일 때는 로컬 상태만 변경 (Redux 업데이트 지연)
+    if (isComposing) {
+      setLocalName(value);
+      return;
+    }
+
+    // 한글, 영문, 공백만 허용하고 Redux에 반영
+    const filteredValue = value.replace(/[^a-zA-Z가-힣\s]/g, "");
+    setLocalName(filteredValue);
+    dispatch(setName(filteredValue));
+  };
+
+  // 🔹 포커스 아웃 시 Redux에 최종 반영
+  const handleBlur = () => {
+    dispatch(setName(localName));
+  };
 
   const handleAllAgreement = () => {
     const newValue = !agreements.all;
-    setAgreements({
-      all: newValue,
-      terms: newValue,
-      privacy: newValue,
-      marketing: newValue,
-    });
+    dispatch(
+      setAgreements({
+        all: newValue,
+        terms: newValue,
+        privacy: newValue,
+        marketing: newValue,
+      })
+    );
   };
 
   const handleAgreementChange = (key: keyof typeof agreements) => {
@@ -35,35 +70,31 @@ const PersonalInfoPage: React.FC = () => {
 
     updatedAgreements.all = updatedAgreements.terms && updatedAgreements.privacy && updatedAgreements.marketing;
 
-    setAgreements(updatedAgreements);
+    dispatch(setAgreements(updatedAgreements));
   };
 
   const handleIdFrontChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, "").slice(0, 6);
-    setIdFront(value);
+    dispatch(setIdFront(value));
   };
 
   const handleIdBackChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, "").slice(0, 1);
-    setIdBack(value);
+    dispatch(setIdBack(value));
   };
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, "").slice(0, 11);
-    setPhone(value);
-  };
-
-  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!isComposing) {
-      const value = e.target.value.replace(/[^a-zA-Z가-힣]/g, "");
-      setName(value);
-    } else {
-      setName(e.target.value);
-    }
+    dispatch(setPhone(value));
   };
 
   const isFormValid =
-    name && idFront.length === 6 && idBack.length === 1 && phone && agreements.terms && agreements.privacy;
+    localName &&
+    idFront.length === 6 &&
+    idBack.length === 1 &&
+    phone &&
+    agreements.terms &&
+    agreements.privacy;
 
   return (
     <div>
@@ -84,10 +115,11 @@ const PersonalInfoPage: React.FC = () => {
           <input
             type="text"
             placeholder="성명"
-            value={name}
+            value={localName}
             onChange={handleNameChange}
-            onCompositionStart={() => setIsComposing(true)}
-            onCompositionEnd={() => setIsComposing(false)}
+            onBlur={handleBlur} // 포커스 아웃 시 Redux에 저장
+            onCompositionStart={() => setIsComposing(true)} // 한글 조합 시작
+            onCompositionEnd={() => setIsComposing(false)} // 한글 조합 종료 후 Redux 저장
           />
         </div>
 
