@@ -1,0 +1,21 @@
+.startlist {
+  text-align: center;
+  padding: 15px;
+}
+.plus-btn {
+  border: none;
+  border-radius: 50px;
+  font-size: 30px;
+  width: 45px;
+  height: 45px;
+  color: #3182f6;
+}
+.plus-list {
+  text-align: ;
+  border: none;
+  border-radius: 12px;
+  background-color: rgba(211, 211, 211, 0.418);
+  width: 360px;
+  height: 60px;
+  padding: 20px;
+}

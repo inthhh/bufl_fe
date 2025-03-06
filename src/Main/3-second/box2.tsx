@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./secondStyle.css";
 import { useNavigate } from "react-router-dom";
+import MoveBack from "../../MoneySplit/MoveBack";
 
 const accountNumbers = [
   "토스뱅크 1000-1210-XXXX",
@@ -27,6 +28,7 @@ const Box2: React.FC = () => {
 
   return (
     <div>
+      <MoveBack pageBefore="/Main/second" />
       <div className="bankbook">
         "저축" 목적으로 사용할
         <br />

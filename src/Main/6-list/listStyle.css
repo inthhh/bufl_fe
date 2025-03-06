@@ -3,10 +3,8 @@
   border-radius: 12px;
   background-color: rgba(211, 211, 211, 0.301);
   width: 380px;
-  height: 550px;
+  height: 590px;
   margin: 10px;
-  position: relative;
-  top: 100px;
 }
 .list1 {
   padding: 20px;
@@ -63,40 +61,37 @@
   background-color: #3183f6;
   width: 370px;
   height: 55px;
-  position: relative;
-  bottom: 800px;
-  left: 15px;
+  margin: 15px;
 }
 .modal-content {
   border-radius: 12px;
   background-color: white;
   position: fixed;
-  top: 330px;
-  left: 318px;
+  top: 320px;
+  left: 110px;
   width: 380px;
   height: 480px;
-  backdrop-filter: blur(5px); /* 블러 효과 */
 }
-
+.content-right {
+  margin: 20px;
+}
 .goal-text {
   font-size: 17px;
-  font-weight: bolder;
-  text-align: left;
-  position: relative;
-  bottom: 10px;
-  left: 20px;
+  font-weight: bold;
+  margin: 20px;
 }
 .slider-container {
-  text-align: left;
-  position: relative;
-  top: 25px;
-  left: 20px;
+  margin: 10px;
+}
+.slider1 {
+  margin: 30px 20px 30px 30px;
+  width: 300px;
+}
+.min-value {
+  margin: 10px 0 0;
 }
 .slider-container1 {
   text-align: left;
-  position: relative;
-  top: 25px;
-  left: 22px;
 }
 .cancel-btn {
   font-size: 22px;
@@ -106,7 +101,7 @@
   color: white;
   width: 180px;
   height: 55px;
-  margin: 90px 5px;
+  margin: 5px;
 }
 .confirm-btn {
   font-size: 22px;
