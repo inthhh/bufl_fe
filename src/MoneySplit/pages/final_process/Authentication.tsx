@@ -1,8 +1,8 @@
 import React from "react";
-import "../splitStyle.css";
+import "../../style/splitStyle.css";
 import { useNavigate } from "react-router-dom";
-import MoveBack from "../MoveBack";
-import RightArrow from "../img/right-arrow.png";
+import MoveBack from "../../MoveBack";
+import RightArrow from "../../images/right-arrow.png";
 
 const Authentication: React.FC = () => {
   const [isFinish, setIsFinish] = React.useState(false);
@@ -13,7 +13,7 @@ const Authentication: React.FC = () => {
   return (
     <div>
       <MoveBack pageBefore="/money-split/select-account" />
-      <div className="center_wrap">
+      <div className="center_wrapper">
         <div>
           <div className="black_title">
             자동이체 등록에는 <br />

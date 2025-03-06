@@ -3,17 +3,17 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import First from "./Main/1-first/first";
 import MoneySplitFirst from "./MoneySplit/SplitFirst";
 
-import AI_home from "./MoneySplit/ai_Pages/ai_home";
-import AI_anaLoading from "./MoneySplit/ai_Pages/ai_anaLoading";
-import AI_calLoading from "./MoneySplit/ai_Pages/ai_calLoading";
-import AI_calculate from "./MoneySplit/ai_Pages/ai_calculate";
-import SelectAccount from "./MoneySplit/control_accounts/SelectAccount";
-import SelectRatio from "./MoneySplit/control_categorys/SelectRatio";
-import AI_analysis from "./MoneySplit/ai_Pages/ai_analysis";
-import Authentication from "./MoneySplit/final_process/Authentication";
-import TossAuth from "./MoneySplit/final_process/TossAuth";
-import InputPin from "./MoneySplit/final_process/InputPin";
-import SplitLoading from "./MoneySplit/final_process/SplitLoading";
+import AI_home from "./MoneySplit/pages/ai_pages/ai_home";
+import AI_anaLoading from "./MoneySplit/pages/ai_pages/ai_anaLoading";
+import AI_calLoading from "./MoneySplit/pages/ai_pages/ai_calLoading";
+import AI_calculate from "./MoneySplit/pages/ai_pages/ai_calculate";
+import SelectAccount from "./MoneySplit/pages/control_accounts/SelectAccount";
+import SelectRatio from "./MoneySplit/pages/control_categorys/SelectRatio";
+import AI_analysis from "./MoneySplit/pages/ai_pages/ai_analysis";
+import Authentication from "./MoneySplit/pages/final_process/Authentication";
+import TossAuth from "./MoneySplit/pages/final_process/TossAuth";
+import InputPin from "./MoneySplit/pages/final_process/InputPin";
+import SplitLoading from "./MoneySplit/pages/final_process/SplitLoading";
 
 import DoughnutChart from "./Main/1-first/DoughnutChart";
 import Account from "./Main/2-account/account";
@@ -34,12 +34,12 @@ import InterestPage from "./SignOn/pages/InterestPage";
 import CompletionPage from "./SignOn/pages/CompletionPage";
 import InputPinPage from "./SignOn/pages/InputPinPage";
 
-import AddCategory from "./MoneySplit/control_categorys/AddCategory";
-import SplitFinish from "./MoneySplit/final_process/SplitFinish";
-import SelectAccountDetail from "./MoneySplit/control_accounts/SelectAccountDetail";
-import SelectAccountAccounts from "./MoneySplit/control_accounts/SelectAccountAccounts";
-import TossTerms from "./MoneySplit/final_process/TossTerms";
-import AI_Cancel from "./MoneySplit/ai_Pages/ai_cancel";
+import AddCategory from "./MoneySplit/pages/control_categorys/AddCategory";
+import SplitFinish from "./MoneySplit/pages/final_process/SplitFinish";
+import SelectAccountDetail from "./MoneySplit/pages/control_accounts/SelectAccountDetail";
+import SelectAccountAccounts from "./MoneySplit/pages/control_accounts/SelectAccountAccounts";
+import TossTerms from "./MoneySplit/pages/final_process/TossTerms";
+import AI_Cancel from "./MoneySplit/pages/ai_pages/ai_cancel";
 
 const App: React.FC = () => {
   return (
@@ -54,6 +54,11 @@ const App: React.FC = () => {
       >
         <Routes>
           <Route path="/" element={<First />} />
+          <Route path="/Main" element={<First />} />
+          <Route path="/Main/Second" element={<Second />} />
+          <Route path="/Main/box1" element={<Box1 />} />
+          <Route path="/Main/box2" element={<Box2 />} />
+          <Route path="/Account" element={<Account />} />
           <Route path="/money-split" element={<MoneySplitFirst />} />
 
           <Route path="/money-split/ai" element={<AI_home />} />
@@ -81,11 +86,11 @@ const App: React.FC = () => {
           <Route path="/money-split/split-loading" element={<SplitLoading />} />
           <Route path="/money-split/finish" element={<SplitFinish />} />
           <Route
-            path="/money-split/select-account/detail"
+            path="/money-split/select-account/detail/:categoryId"
             element={<SelectAccountDetail />}
           />
           <Route
-            path="/money-split/select-account/accounts"
+            path="/money-split/select-account/accounts/:categoryId"
             element={<SelectAccountAccounts />}
           />
           <Route path="/money-split/add-category" element={<AddCategory />} />
@@ -108,6 +113,7 @@ const App: React.FC = () => {
           <Route path="/sign/salary-info" element={<SalaryInfoPage />} />
           <Route path="/sign/interest" element={<InterestPage />} />
           <Route path="/sign/completion" element={<CompletionPage />} />
+          <Route path="/sign/input-pin" element={<InputPinPage />} />
         </Routes>
       </div>
     </Router>

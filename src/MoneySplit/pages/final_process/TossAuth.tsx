@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import MoveBack from "../MoveBack";
-import "../splitStyle.css";
+import MoveBack from "../../MoveBack";
+import "../../style/splitStyle.css";
 
 const TossAuth: React.FC = () => {
   const [name, setName] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [birth, setBirth] = useState<string>("");
+  const [isFinish, setIsFinish] = useState<boolean>(false);
   const navigate = useNavigate();
   const clickForYes = () => {
     navigate("/money-split/input-pin");
@@ -18,6 +19,12 @@ const TossAuth: React.FC = () => {
     navigate("/money-split/toss/terms");
   };
 
+  useEffect(() => {
+    if (name.length >= 2 && phone.length >= 2 && birth.length >= 6) {
+      setIsFinish(true);
+    }
+  }, [birth]);
+
   return (
     <div>
       <MoveBack pageBefore="/money-split/authentication" />
@@ -28,7 +35,7 @@ const TossAuth: React.FC = () => {
         </h1>
       </div>
 
-      <div className="center_wrap">
+      <div className="center_wrapper">
         <form className="auth-form">
           <div className="form-group">
             <input
@@ -73,17 +80,22 @@ const TossAuth: React.FC = () => {
           </div>
         </form>
       </div>
-      <div className="center_wrap">
+      <div className="center_wrapper">
         <div>
-          <div className="center_wrap" style={{ marginBottom: "10px" }}>
+          <div className="center_wrapper" style={{ marginBottom: "10px" }}>
             <button type="button" className="no_border_btn" onClick={() => clickForTerms()}>
               개인정보 수집·이용 동의 &gt;
             </button>
           </div>
-          <button type="button" className="blue_big_btn" onClick={() => clickForYes()} style={{ marginBottom: "10px" }}>
+          <button
+            type="button"
+            className={isFinish ? "blue_big_btn" : "gray_big_btn"}
+            onClick={isFinish ? () => clickForYes() : undefined}
+            style={{ marginBottom: "10px" }}
+          >
             동의하고 인증하기
           </button>
-          <div className="center_wrap">
+          <div className="center_wrapper">
             <button type="button" className="no_border_btn" onClick={() => clickForNo()}>
               닫기
             </button>

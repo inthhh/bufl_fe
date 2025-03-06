@@ -4,7 +4,7 @@ import "../style/style.css";
 import MoneyImg from "../images/money.png";
 import DateImg from "../images/date.png";
 import AccountImg from "../images/account.png";
-import "../../MoneySplit/splitStyle.css";
+import "../../MoneySplit/style/splitStyle.css";
 import MoveBack from "../../MoneySplit/MoveBack";
 import { accountList } from "./data";
 
@@ -24,29 +24,7 @@ function SalaryInfoPage() {
     const rawValue = input.value.replace(/\D/g, "");
     const newValue = rawValue ? Number(rawValue) : 0;
 
-    const prevFormatted = formatSalary(salary);
-    const prevCommaCount = (prevFormatted.match(/,/g) || []).length;
-    const cursorPosition = input.selectionStart || 0;
-
     setSalary(newValue);
-
-    setTimeout(() => {
-      if (inputRef.current) {
-        const newFormatted = formatSalary(newValue);
-        const newCommaCount = (newFormatted.match(/,/g) || []).length;
-        let newCursorPosition =
-          cursorPosition + (newCommaCount - prevCommaCount);
-        newCursorPosition = Math.max(
-          0,
-          Math.min(newFormatted.length, newCursorPosition)
-        );
-
-        inputRef.current.setSelectionRange(
-          newCursorPosition,
-          newCursorPosition
-        );
-      }
-    }, 0);
   };
 
   const handleBlur = () => {
@@ -59,10 +37,20 @@ function SalaryInfoPage() {
     setSalary((prevSalary) => Math.max(0, prevSalary + amount));
   };
 
-  const paydayOptions = Array.from(
-    { length: 31 },
-    (_, i) => `${i + 1}일`
-  ).concat("말일");
+  const paydayOptions = Array.from({ length: 31 }, (_, i) => `${i + 1}일`).concat("말일");
+
+  const getNextDay = (day: string) => {
+    if (day === "말일") return "1일";
+
+    const dayNumber = parseInt(day.replace("일", ""), 10);
+    if (isNaN(dayNumber)) return "1일";
+
+    if (dayNumber >= 28) {
+      return "1일";
+    }
+
+    return `${dayNumber + 1}일`;
+  };
 
   return (
     <div className="container">
@@ -73,7 +61,6 @@ function SalaryInfoPage() {
       </h3>
 
       {step === 1 ? (
-        //---------------------월급여---------------------------------
         <div>
           <div className="salary_flex">
             <img src={MoneyImg} alt="money" width="45px" height="45px" />
@@ -84,10 +71,7 @@ function SalaryInfoPage() {
           </div>
 
           <div className="salary_input_container">
-            <button
-              className="salary_button"
-              onClick={() => adjustSalary(500000)}
-            >
+            <button className="salary_button" onClick={() => adjustSalary(500000)}>
               +
             </button>
             <input
@@ -98,10 +82,7 @@ function SalaryInfoPage() {
               onBlur={handleBlur}
               className="salary_input"
             />
-            <button
-              className="salary_button"
-              onClick={() => adjustSalary(-500000)}
-            >
+            <button className="salary_button" onClick={() => adjustSalary(-500000)}>
               -
             </button>
             <span className="currency">원</span>
@@ -114,7 +95,6 @@ function SalaryInfoPage() {
           </div>
         </div>
       ) : step === 2 ? (
-        //----------------------------월급일-----------------------
         <div>
           <div className="salary_flex">
             <img src={DateImg} alt="date" width="45px" />
@@ -122,10 +102,7 @@ function SalaryInfoPage() {
           </div>
 
           <div className="payday__container">
-            <div
-              className="payday__select-wrapper"
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            >
+            <div className="payday__select-wrapper" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
               <span className="payday__select-text">{payday}</span>
               <div className="payday__select--icon">▼</div>
             </div>
@@ -148,7 +125,7 @@ function SalaryInfoPage() {
             )}
 
             <p className="payday__description">
-              매달 {payday} 새벽에 월급 쪼개기를 진행할게요.
+              매달 {getNextDay(payday)} 새벽에 월급 쪼개기를 진행할게요.
             </p>
           </div>
 
@@ -159,7 +136,6 @@ function SalaryInfoPage() {
           </div>
         </div>
       ) : (
-        //------------------------월급계좌--------------------------------
         <div>
           <div className="salary_flex">
             <img src={AccountImg} alt="account" width="45px" />
@@ -171,15 +147,10 @@ function SalaryInfoPage() {
             {accountList.map((account) => (
               <div
                 key={account.id}
-                className={`account-item ${
-                  selectedAccount === account.id ? "selected" : ""
-                }`}
+                className={`account-item ${selectedAccount === account.id ? "selected" : ""}`}
                 onClick={() => setSelectedAccount(account.id)}
               >
-                <img
-                  src={require(`../images/${account.logo}`)}
-                  alt={account.name}
-                />
+                <img src={require(`../images/${account.logo}`)} alt={account.name} />
                 <span>
                   {account.name} {account.account}
                 </span>
@@ -188,7 +159,7 @@ function SalaryInfoPage() {
           </div>
 
           <div className="center_wrap">
-          <button
+            <button
               className={`btn_start ${selectedAccount === null ? "disabled" : ""}`}
               onClick={() => navigate("/sign/input-pin")}
               disabled={selectedAccount === null}

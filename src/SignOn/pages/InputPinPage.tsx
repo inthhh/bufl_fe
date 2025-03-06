@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../MoneySplit/splitStyle.css";
+import "../../MoneySplit/style/splitStyle.css";
 import MoveBack from "../../MoneySplit/MoveBack";
 
 const InputPinPage: React.FC = () => {
@@ -53,7 +53,7 @@ const InputPinPage: React.FC = () => {
     <div>
       <MoveBack pageBefore="/sign/salary-info" />
       <div className="center_wrap">
-        <div className= "pin-input--relative">
+        <div className="pin-input--relative">
           <div className="black_title center_text">
             {step === "set" ? (
               <>
@@ -72,31 +72,20 @@ const InputPinPage: React.FC = () => {
 
           {errorMessage && <div className="error-message">{errorMessage}</div>}
 
-          {/* 🔹 PIN 입력 UI (동그라미) */}
           <div className="pin-input-container">
             {pin.map((num, index) => (
-              <div
-                key={index}
-                className={`pin-dot ${num ? "filled" : ""}`}
-              ></div>
+              <div key={index} className={`pin-dot ${num ? "filled" : ""}`}></div>
             ))}
           </div>
 
           <div className="keypad">
             {[...Array(9)].map((_, index) => (
-              <button
-                key={index + 1}
-                className="keypad-button"
-                onClick={() => handleKeyPress((index + 1).toString())}
-              >
+              <button key={index + 1} className="keypad-button" onClick={() => handleKeyPress((index + 1).toString())}>
                 {index + 1}
               </button>
             ))}
             <div></div>
-            <button
-              className="keypad-button"
-              onClick={() => handleKeyPress("0")}
-            >
+            <button className="keypad-button" onClick={() => handleKeyPress("0")}>
               0
             </button>
             <button className="keypad-button" onClick={handleDelete}>

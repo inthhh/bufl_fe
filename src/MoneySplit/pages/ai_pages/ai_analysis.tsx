@@ -1,7 +1,7 @@
 import React from "react";
-import "../splitStyle.css";
+import "../../style/splitStyle.css";
 import { useNavigate } from "react-router-dom";
-import MoveBack from "../MoveBack";
+import MoveBack from "../../MoveBack";
 
 const AI_analysis: React.FC = () => {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const AI_analysis: React.FC = () => {
   return (
     <div>
       <MoveBack pageBefore={"/money-split/ai"} />
-      <div className="center_wrap">
+      <div className="center_wrapper">
         <div>
           <div className="black_title">AI가 분석한 소비 습관이에요.</div>
           <div className="content_box">
@@ -31,8 +31,8 @@ const AI_analysis: React.FC = () => {
             </div>
           </div>
 
-          <div className="center_wrap">
-            <div className="center_wrap btn">
+          <div className="center_wrapper">
+            <div className="center_wrapper btn">
               <button className="gray_small_btn" type="button" onClick={() => clickForNo()}>
                 다시 할래요
               </button>
