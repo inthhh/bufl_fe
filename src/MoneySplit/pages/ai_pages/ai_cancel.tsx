@@ -1,4 +1,4 @@
-import MoveBack from "../MoveBack";
+import MoveBack from "../../MoveBack";
 
 const AI_Cancel: React.FC = () => {
   return (
@@ -19,8 +19,8 @@ const AI_Cancel: React.FC = () => {
           다시 시도해주세요.
         </strong>
       </div>
-      <div className="center_wrap">
-        <div className="center_wrap btn">
+      <div className="center_wrapper">
+        <div className="center_wrapper btn">
           <button type="button" className="blue_big_btn" style={{ marginBottom: "10px" }}>
             소비내역 수정하러 가기
           </button>

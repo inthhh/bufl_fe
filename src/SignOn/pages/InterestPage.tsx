@@ -7,7 +7,7 @@ import IntImage3 from "../images/int3.png";
 import IntImage4 from "../images/int4.png";
 import IntImage5 from "../images/int5.png";
 import IntImage6 from "../images/int6.png";
-import "../../MoneySplit/splitStyle.css";
+import "../../MoneySplit/style/splitStyle.css";
 import MoveBack from "../../MoneySplit/MoveBack";
 
 const interests = [
@@ -46,13 +46,9 @@ const InterestPage = () => {
               style={{
                 cursor: "pointer",
                 borderRadius: "30px",
-                backgroundColor:
-                  selectedInterest === interest.id ? "#3182f6" : "transparent",
-                border:
-                  selectedInterest === interest.id
-                    ? "4px solid #3182f6"
-                    : "2px solid transparent",
-                
+                backgroundColor: selectedInterest === interest.id ? "#3182f6" : "transparent",
+                border: selectedInterest === interest.id ? "4px solid #3182f6" : "2px solid transparent",
+
                 margin: "5px 7px",
               }}
               onClick={() => handleSelectInterest(interest.id)}
@@ -61,7 +57,7 @@ const InterestPage = () => {
         </div>
 
         <div className="center_wrap">
-        <button
+          <button
             className={`btn_start ${selectedInterest === null ? "disabled" : ""}`}
             onClick={() => navigate("/sign/completion")}
             disabled={selectedInterest === null}

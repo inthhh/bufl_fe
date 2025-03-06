@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import "../splitStyle.css";
+import "../../style/splitStyle.css";
 import { useNavigate } from "react-router-dom";
-import MoveBack from "../MoveBack";
+import MoveBack from "../../MoveBack";
 import { useSelector, useDispatch } from "react-redux";
-import { setCategories } from "../../redux/actions/categoryAction";
-import { RootState } from "../../redux/store";
+import { setCategories } from "../../../redux/actions/categoryAction";
+import { RootState } from "../../../redux/store";
 
 interface CategoryProps {
   idx: number;
@@ -15,6 +15,16 @@ interface CategoryProps {
   isOrigin?: boolean;
   updateRatio: (idx: number, newRatio: number) => void;
   clickForDelete: (idx: number) => void;
+}
+
+interface CategoryInterface {
+  name: string;
+  goal_amount: number;
+  background_color: string;
+  ratio: number;
+  amount: number;
+  bank_name: string;
+  account_number: number;
 }
 
 const Category: React.FC<CategoryProps> = (props) => {
@@ -120,9 +130,33 @@ const SelectRatio: React.FC = () => {
     dispatch(setCategories(newCategoryList));
   };
 
-  const clickForYes = () => {
+  const clickForYes = async () => {
     console.log(categoryList);
-    navigate("/money-split/select-account");
+    const requestBody = categoryList.map(({ name, goal, color, ratio }) => ({
+      name,
+      goal,
+      color,
+      ratio,
+    }));
+    console.log(requestBody);
+    try {
+      const response = await fetch("http://localhost:5000/api/salary/category", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send data");
+      }
+      const data = await response.json();
+      console.log("Success:", data);
+      navigate("/money-split/select-account");
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
   const clickForNo = () => {
     navigate("/money-split/add-category");
@@ -131,7 +165,7 @@ const SelectRatio: React.FC = () => {
   return (
     <div>
       <MoveBack pageBefore="/money-split" now="ratio" />
-      <div className="center_wrap">
+      <div className="center_wrapper">
         <div>
           <div>
             <div className="black_title">월급 쪼개기 비율을 설정해주세요.</div>
@@ -169,8 +203,8 @@ const SelectRatio: React.FC = () => {
                 )}
             </div>
           </div>
-          <div className="center_wrap">
-            <div className="center_wrap btn">
+          <div className="center_wrapper">
+            <div className="center_wrapper btn">
               <button className="gray_small_btn" type="button" onClick={clickForNo}>
                 카테고리 추가
               </button>

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import "../splitStyle.css"; // CSS 파일 import
-import LoadingSpinner from "../loadingSpinner";
+import "../../style/splitStyle.css"; // CSS 파일 import
+import LoadingSpinner from "../../loadingSpinner";
 
 const SplitLoading: React.FC = () => {
   return (

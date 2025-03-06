@@ -4,7 +4,7 @@ import "../style/style.css";
 import MoneyImg from "../images/money.png";
 import DateImg from "../images/date.png";
 import AccountImg from "../images/account.png";
-import "../../MoneySplit/splitStyle.css";
+import "../../MoneySplit/style/splitStyle.css";
 import MoveBack from "../../MoneySplit/MoveBack";
 import { accountList } from "./data";
 
