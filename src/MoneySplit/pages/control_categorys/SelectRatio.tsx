@@ -71,7 +71,17 @@ const SelectRatio: React.FC = () => {
   const [isTooBig, setIsTooBig] = useState<boolean>(false);
   const [isTooSmall, setIsTooSmall] = useState<boolean>(false);
 
-  const total: number = 3000000;
+  const [total, setTotal] = useState<number>(12345);
+  useEffect(() => {
+    fetch("http://localhost:5000/api/users/salary")
+      .then((response) => response.json())
+      .then((data) => {
+        setTotal(Number(data.amount));
+        console.log(total);
+      })
+      .catch((error) => console.error("SelectRatio error:", error));
+  }, []);
+
   const [ratios, setRatios] = useState<number[]>([]);
 
   useEffect(() => {
@@ -97,16 +107,6 @@ const SelectRatio: React.FC = () => {
       dispatch(setCategories(updatedCategoryList));
     }
   }, [salaryAccountRatio]);
-
-  // const updateRatio = (idx: number, newRatio: number) => {
-  //   setRatios((prev) => {
-  //     const updatedRatios = { ...prev, [idx]: newRatio };
-  //     return updatedRatios;
-  //   });
-  //   let newCategoryList = categoryList.map((category, i) => (i === idx ? { ...category, ratio: newRatio } : category));
-
-  //   dispatch(setCategories(newCategoryList));
-  // };
 
   const updateRatio = (idx: number, newRatio: number) => {
     setRatios((prev: number[]) => {
