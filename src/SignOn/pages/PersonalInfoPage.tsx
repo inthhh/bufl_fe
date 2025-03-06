@@ -9,7 +9,7 @@ import {
   setPhone,
   setAgreements,
 } from "../../redux/reducers/personalInfoSlice";
-import axios from "axios"; // 백엔드 통신 추가
+import axios from "axios";
 import "../../MoneySplit/style/splitStyle.css";
 import MoveBack from "../../MoneySplit/MoveBack";
 
