@@ -1,10 +1,8 @@
 import React from "react";
 import "./accountStyle.css";
-import home from "./img/home_icon.png";
-import goal from "./img/goal_icon.png";
-import menu from "./img/menu_icon.png";
 import line1 from "./img/lines.png";
 import toss from "./img/toss.png";
+import Bottom from "../bottom/bottom";
 
 const Account: React.FC = () => {
   return (
@@ -81,14 +79,6 @@ const Account: React.FC = () => {
         <div className="budget15">45%</div>
         <div className="budget16">45%</div>
         <div className="budget17">45%</div>
-      </div>
-      <div className="bottom">
-        <img className="home" src={home} alt="home" />
-        <div className="home-text">홈</div>
-        <img className="goal" src={goal} alt="goal" />
-        <div className="goal-text">목표&관리</div>
-        <img className="menu" src={menu} alt="menu" />
-        <div className="menu-text">설정</div>
       </div>
     </div>
   );

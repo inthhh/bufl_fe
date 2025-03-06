@@ -21,7 +21,7 @@ const List: React.FC = () => {
 
   // 확인 버튼 클릭 시 페이지 이동
   const handleConfirm = () => {
-    navigate("/Main/confirm");
+    navigate("/Main/rocket");
   };
 
   return (
@@ -64,42 +64,40 @@ const List: React.FC = () => {
 
       {/* 모달 창 */}
       {selectedGoal && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <h3>선택한 목표가 맞나요?</h3>
-            <p className="goal-text">"{selectedGoal}"</p>
-            {/* 저축 금액 조절 슬라이더 */}
-            <div className="slider-container">
-              <label>한 달에 {amount}만원</label>
-              <input
-                type="range"
-                min="5"
-                max="300"
-                step="5"
-                value={amount}
-                onChange={(e) => setAmount(Number(e.target.value))}
-              />
-            </div>
-            {/* 저축 기간 조절 슬라이더 */}
-            <div className="slider-container1">
-              <label>{duration}개월 모으기</label>
-              <input
-                type="range"
-                min="1"
-                max="36"
-                value={duration}
-                onChange={(e) => setDuration(Number(e.target.value))}
-              />
-            </div>
-            {/* 버튼 영역 */}
-            <div className="modal-buttons">
-              <button className="cancel-btn" onClick={closeModal}>
-                다시 선택
-              </button>
-              <button className="confirm-btn" onClick={handleConfirm}>
-                확인
-              </button>
-            </div>
+        <div className="modal-content">
+          <h3>선택한 목표가 맞나요?</h3>
+          <p className="goal-text">"{selectedGoal}"</p>
+          {/* 저축 금액 조절 슬라이더 */}
+          <div className="slider-container">
+            <label>한 달에 {amount}만원</label>
+            <input
+              type="range"
+              min="5"
+              max="300"
+              step="5"
+              value={amount}
+              onChange={(e) => setAmount(Number(e.target.value))}
+            />
+          </div>
+          {/* 저축 기간 조절 슬라이더 */}
+          <div className="slider-container1">
+            <label>{duration}개월 모으기</label>
+            <input
+              type="range"
+              min="1"
+              max="36"
+              value={duration}
+              onChange={(e) => setDuration(Number(e.target.value))}
+            />
+          </div>
+          {/* 버튼 영역 */}
+          <div className="modal-buttons">
+            <button className="cancel-btn" onClick={closeModal}>
+              다시 선택
+            </button>
+            <button className="confirm-btn" onClick={handleConfirm}>
+              확인
+            </button>
           </div>
         </div>
       )}
