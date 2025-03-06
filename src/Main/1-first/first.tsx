@@ -1,16 +1,17 @@
 import React from "react";
-import "./mainStyle.css";
+import "./firstStyle.css";
 import BellImg from "./img/Frame 20.png";
 import BankIcon1 from "./img/toss.png";
 import BankIcon2 from "./img/shinhan.png";
 import BankIcon3 from "./img/hana.png";
 import BankIcon4 from "./img/kb.png";
-import DoughnutChart from "./DoughnutChart";
+import Bufl from "./img/BUFL.png";
+import DoughnutChart from "./DoughnutChart.js";
 
-function First() {
+const First: React.FC = () => {
   return (
     <div>
-      <div className="bufl">BUFL</div>
+      <img className="bufl" src={Bufl} alt="bufl" />
       <img className="bell" src={BellImg} alt="Bell" />
       <div className="bank-icon">
         <div className="bank-icon1">
@@ -36,16 +37,18 @@ function First() {
         <div className="month2">326,510 원</div>
       </div>
       <div className="asset-box">
-        <div className="donut"><DoughnutChart /></div>
+        <div className="donut">
+          <DoughnutChart />
+        </div>
         <div className="asset">자산</div>
         <div className="asset1">비상금</div>
         <div className="asset2">예비비</div>
         <div className="asset3">생활비</div>
         <div className="asset4">저축</div>
         <div className="asset5">내 월급 :</div>
-        <div className="asset6">당신은 "    "입니다.</div>
+        <div className="asset6">당신은 " "입니다.</div>
       </div>
     </div>
   );
-}
+};
 export default First;

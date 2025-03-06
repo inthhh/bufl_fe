@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import First from "./Main/first";
-
+import First from "./Main/1-first/first";
 import MoneySplitFirst from "./MoneySplit/SplitFirst";
 
 import AI_home from "./MoneySplit/pages/ai_pages/ai_home";
@@ -16,9 +15,16 @@ import TossAuth from "./MoneySplit/pages/final_process/TossAuth";
 import InputPin from "./MoneySplit/pages/final_process/InputPin";
 import SplitLoading from "./MoneySplit/pages/final_process/SplitLoading";
 
-import Second from "./Main/second";
-import Box1 from "./Main/box1";
-import Box2 from "./Main/box2";
+import DoughnutChart from "./Main/1-first/DoughnutChart";
+import Account from "./Main/2-account/account";
+import Box1 from "./Main/3-second/box1";
+import Box2 from "./Main/3-second/box2";
+import Second from "./Main/3-second/second";
+import Pig from "./Main/4-pig/pig";
+import Loading from "./Main/5-loading/loading";
+import List from "./Main/6-list/list";
+import Choose from "./Main/7-choose/choose";
+import Choice from "./Main/8-choice/choice";
 
 import StartPage from "./SignOn/pages/StartPage";
 import PersonalInfoPage from "./SignOn/pages/PersonalInfoPage";
@@ -38,7 +44,14 @@ import AI_Cancel from "./MoneySplit/pages/ai_pages/ai_cancel";
 const App: React.FC = () => {
   return (
     <Router>
-      <div style={{ width: "400px", height: "800px", backgroundColor: "white", borderRadius: "15px" }}>
+      <div
+        style={{
+          width: "400px",
+          height: "800px",
+          backgroundColor: "white",
+          borderRadius: "15px",
+        }}
+      >
         <Routes>
           <Route path="/" element={<First />} />
           <Route path="/Main" element={<First />} />
@@ -49,25 +62,50 @@ const App: React.FC = () => {
           <Route path="/money-split" element={<MoneySplitFirst />} />
 
           <Route path="/money-split/ai" element={<AI_home />} />
-          <Route path="/money-split/ai/analysis-loading" element={<AI_anaLoading />} />
-          <Route path="/money-split/ai/calculate-loading" element={<AI_calLoading />} />
+          <Route
+            path="/money-split/ai/analysis-loading"
+            element={<AI_anaLoading />}
+          />
+          <Route
+            path="/money-split/ai/calculate-loading"
+            element={<AI_calLoading />}
+          />
           <Route path="/money-split/ai/analysis" element={<AI_analysis />} />
           <Route path="/money-split/ai/calculate" element={<AI_calculate />} />
-          <Route path="/money-split/select-account" element={<SelectAccount />} />
+          <Route
+            path="/money-split/select-account"
+            element={<SelectAccount />}
+          />
           <Route path="/money-split/select-ratio" element={<SelectRatio />} />
-          <Route path="/money-split/authentication" element={<Authentication />} />
+          <Route
+            path="/money-split/authentication"
+            element={<Authentication />}
+          />
           <Route path="/money-split/toss-auth" element={<TossAuth />} />
           <Route path="/money-split/input-pin" element={<InputPin />} />
           <Route path="/money-split/split-loading" element={<SplitLoading />} />
           <Route path="/money-split/finish" element={<SplitFinish />} />
-          <Route path="/money-split/select-account/detail/:categoryId" element={<SelectAccountDetail />} />
-          <Route path="/money-split/select-account/accounts/:categoryId" element={<SelectAccountAccounts />} />
+          <Route
+            path="/money-split/select-account/detail/:categoryId"
+            element={<SelectAccountDetail />}
+          />
+          <Route
+            path="/money-split/select-account/accounts/:categoryId"
+            element={<SelectAccountAccounts />}
+          />
           <Route path="/money-split/add-category" element={<AddCategory />} />
           <Route path="/money-split/toss/terms" element={<TossTerms />} />
           <Route path="/money-split/ai/cancel" element={<AI_Cancel />} />
 
           <Route path="/Account" element={<Account />} />
           <Route path="/Second" element={<Second />} />
+          <Route path="/Main/box1" element={<Box1 />} />
+          <Route path="/Main/box2" element={<Box2 />} />
+          <Route path="/Main/pig" element={<Pig />} />
+          <Route path="/Main/loading" element={<Loading />} />
+          <Route path="/Main/choose" element={<Choose />} />
+          <Route path="/Main/list" element={<List />} />
+          <Route path="/Main/choice" element={<Choice />} />
 
           <Route path="/sign" element={<StartPage />} />
           <Route path="/sign/personal-info" element={<PersonalInfoPage />} />
@@ -75,7 +113,7 @@ const App: React.FC = () => {
           <Route path="/sign/salary-info" element={<SalaryInfoPage />} />
           <Route path="/sign/interest" element={<InterestPage />} />
           <Route path="/sign/completion" element={<CompletionPage />} />
-          <Route path="/sign/input-pin" element={<InputPinPage />}/>
+          <Route path="/sign/input-pin" element={<InputPinPage />} />
         </Routes>
       </div>
     </Router>
