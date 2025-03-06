@@ -1,0 +1,132 @@
+.list {
+  border: none;
+  border-radius: 12px;
+  background-color: rgba(211, 211, 211, 0.301);
+  width: 380px;
+  height: 550px;
+  margin: 10px;
+  position: relative;
+  top: 100px;
+}
+.list1 {
+  padding: 20px;
+}
+.list2 {
+  text-align: left;
+  margin: 15px;
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  background-color: rgba(125, 180, 253, 0.349);
+  width: 350px;
+  height: 100px;
+}
+.list3 {
+  text-align: left;
+  margin: 15px;
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  background-color: rgba(125, 180, 253, 0.349);
+  width: 350px;
+  height: 100px;
+}
+.list4 {
+  text-align: left;
+  margin: 15px;
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  background-color: rgba(125, 180, 253, 0.349);
+  width: 350px;
+  height: 100px;
+}
+.list5 {
+  text-align: left;
+  margin: 15px;
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  background-color: rgba(125, 180, 253, 0.349);
+  width: 350px;
+  height: 100px;
+}
+.log {
+  text-align: center;
+  width: 20px;
+  height: 20px;
+}
+.log-btn {
+  color: white;
+  border: none;
+  border-radius: 8px;
+  background-color: #3183f6;
+  width: 370px;
+  height: 55px;
+  position: relative;
+  bottom: 800px;
+  left: 15px;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  left: 100%;
+  background: rgba(0, 0, 0, 0.3); /* 흐린 배경 */
+  backdrop-filter: blur(5px); /* 블러 효과 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-content {
+  border-radius: 12px;
+  background-color: white;
+  position: fixed;
+  top: 330px;
+  left: 318px;
+  width: 380px;
+  height: 480px;
+  backdrop-filter: blur(5px); /* 블러 효과 */
+}
+
+.goal-text {
+  font-size: 17px;
+  font-weight: bolder;
+  text-align: left;
+  position: relative;
+  bottom: 10px;
+  left: 20px;
+}
+.slider-container {
+  text-align: left;
+  position: relative;
+  top: 25px;
+  left: 20px;
+}
+.slider-container1 {
+  text-align: left;
+  position: relative;
+  top: 25px;
+  left: 22px;
+}
+.cancel-btn {
+  font-size: 22px;
+  border: none;
+  border-radius: 12px;
+  background-color: lightgray;
+  color: white;
+  width: 180px;
+  height: 55px;
+  margin: 90px 5px;
+}
+.confirm-btn {
+  font-size: 22px;
+  border: none;
+  border-radius: 12px;
+  background-color: #3183f6;
+  color: white;
+  width: 180px;
+  height: 55px;
+  margin: 5px;
+}

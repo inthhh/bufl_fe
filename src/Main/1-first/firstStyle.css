@@ -1,18 +1,16 @@
 .bufl {
-  color: #3182F6;
-  font-weight: bolder;
-  font-size: xx-large;
+  width: 60px;
+  color: #3182f6;
   position: relative;
+  top: 15px;
   left: 20px;
-  top: 10px;
 }
 
 .bell {
+  height: 35px;
   position: relative;
-  left: 350px;
-  bottom: 10px;
-  height: 40px;
-  margin-top: -40px;
+  top: 10px;
+  left: 290px;
 }
 
 .money {
@@ -25,7 +23,7 @@
 
 .bank-icon {
   margin: 30px;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .bank-icon1 {
@@ -172,6 +170,8 @@
   bottom: 200px;
   left: 190px;
 }
+<<<<<<< HEAD:src/Main/1-first/firstStyle.css
+=======
 
 .bottom {
   border: 1px;
@@ -252,3 +252,4 @@
   top: 200px;
   left: 30px;
 }
+>>>>>>> bc5e39c1c109563e532618ea749cd74b2640fa8f:src/Main/mainStyle.css

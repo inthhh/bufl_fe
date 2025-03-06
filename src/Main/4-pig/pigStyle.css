@@ -1,0 +1,23 @@
+.start {
+  text-align: center;
+  position: relative;
+  top: 220px;
+}
+.pig {
+  width: 155px;
+  margin: 130px;
+  position: relative;
+  top: 120px;
+}
+.start-btn {
+  color: white;
+  border: none;
+  border-radius: 8px;
+  background-color: #3183f6;
+  width: 240px;
+  height: 50px;
+  margin: 80px;
+  padding: 8px;
+  position: relative;
+  bottom: 50px;
+}

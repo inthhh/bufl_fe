@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import First from "./Main/first";
-
+import First from "./Main/1-first/first";
 import MoneySplitFirst from "./MoneySplit/SplitFirst";
 
 import AI_home from "./MoneySplit/pages/ai_pages/ai_home";
@@ -16,10 +15,16 @@ import TossAuth from "./MoneySplit/pages/final_process/TossAuth";
 import InputPin from "./MoneySplit/pages/final_process/InputPin";
 import SplitLoading from "./MoneySplit/pages/final_process/SplitLoading";
 
-import Account from "./Main/account";
-import Second from "./Main/second";
-import Box1 from "./Main/box1";
-import Box2 from "./Main/box2";
+import DoughnutChart from "./Main/1-first/DoughnutChart";
+import Account from "./Main/2-account/account";
+import Box1 from "./Main/3-second/box1";
+import Box2 from "./Main/3-second/box2";
+import Second from "./Main/3-second/second";
+import Pig from "./Main/4-pig/pig";
+import Loading from "./Main/5-loading/loading";
+import List from "./Main/6-list/list";
+import Choose from "./Main/7-choose/choose";
+import Choice from "./Main/8-choice/choice";
 
 import StartPage from "./SignOn/pages/StartPage";
 import PersonalInfoPage from "./SignOn/pages/PersonalInfoPage";
@@ -39,7 +44,14 @@ import AI_Cancel from "./MoneySplit/pages/ai_pages/ai_cancel";
 const App: React.FC = () => {
   return (
     <Router>
-      <div style={{ width: "400px", height: "800px", backgroundColor: "white", borderRadius: "15px" }}>
+      <div
+        style={{
+          width: "400px",
+          height: "800px",
+          backgroundColor: "white",
+          borderRadius: "15px",
+        }}
+      >
         <Routes>
           <Route path="/" element={<First />} />
           <Route path="/Main" element={<First />} />
@@ -68,6 +80,13 @@ const App: React.FC = () => {
           <Route path="/money-split/ai/cancel" element={<AI_Cancel />} />
 
           <Route path="/Second" element={<Second />} />
+          <Route path="/Main/box1" element={<Box1 />} />
+          <Route path="/Main/box2" element={<Box2 />} />
+          <Route path="/Main/pig" element={<Pig />} />
+          <Route path="/Main/loading" element={<Loading />} />
+          <Route path="/Main/choose" element={<Choose />} />
+          <Route path="/Main/list" element={<List />} />
+          <Route path="/Main/choice" element={<Choice />} />
 
           <Route path="/sign" element={<StartPage />} />
           <Route path="/sign/personal-info" element={<PersonalInfoPage />} />
