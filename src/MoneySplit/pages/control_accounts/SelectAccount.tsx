@@ -14,6 +14,7 @@ const CategoryAccount: React.FC<CategoryAccountProps> = (props) => {
     navigate(`/money-split/select-account/detail/${props.categoryId}`);
   };
 
+  console.log("categoryAccounts[index]", props.category, props.account);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setSelectedAccount({ selectedAccountId: -1, selectedAccountName: "" }));
@@ -40,7 +41,7 @@ const CategoryAccount: React.FC<CategoryAccountProps> = (props) => {
             {Number(props.ratio)}%
           </div>
           <div className="font_20" style={{ color: "#858585" }}>
-            {props.amount.toLocaleString()}원
+            {Number(props.amount).toLocaleString()}원
           </div>
         </div>
       </div>
@@ -96,7 +97,7 @@ function SelectAccount() {
                   category={category.name}
                   ratio={category.ratio}
                   amount={category.amount}
-                  account={categoryAccounts[index] ?? { name: "", bankName: "정보 없음", accountNumber: "" }}
+                  account={categoryAccounts[index - 1] ?? { name: "", bankName: "정보 없음", accountNumber: "" }}
                 />
               </div>
             ))}
