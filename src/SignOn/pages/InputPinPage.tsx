@@ -72,7 +72,6 @@ const InputPinPage: React.FC = () => {
 
           {errorMessage && <div className="error-message">{errorMessage}</div>}
 
-          {/* 🔹 PIN 입력 UI (동그라미) */}
           <div className="pin-input-container">
             {pin.map((num, index) => (
               <div key={index} className={`pin-dot ${num ? "filled" : ""}`}></div>
