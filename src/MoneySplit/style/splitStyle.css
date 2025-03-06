@@ -501,3 +501,9 @@ input[type="range"]::-webkit-slider-thumb {
 .wrong:valid {
   background-color: rgb(246, 66, 66);
 }
+
+.gray_small_btn.no,
+.gray_big_btn.no {
+  background-color: rgb(205, 205, 205);
+  font-weight: bold;
+}

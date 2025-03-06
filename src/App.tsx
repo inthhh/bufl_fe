@@ -16,6 +16,7 @@ import TossAuth from "./MoneySplit/pages/final_process/TossAuth";
 import InputPin from "./MoneySplit/pages/final_process/InputPin";
 import SplitLoading from "./MoneySplit/pages/final_process/SplitLoading";
 
+import Account from "./Main/account";
 import Second from "./Main/second";
 import Box1 from "./Main/box1";
 import Box2 from "./Main/box2";
@@ -66,7 +67,6 @@ const App: React.FC = () => {
           <Route path="/money-split/toss/terms" element={<TossTerms />} />
           <Route path="/money-split/ai/cancel" element={<AI_Cancel />} />
 
-          <Route path="/Account" element={<Account />} />
           <Route path="/Second" element={<Second />} />
 
           <Route path="/sign" element={<StartPage />} />
@@ -75,7 +75,7 @@ const App: React.FC = () => {
           <Route path="/sign/salary-info" element={<SalaryInfoPage />} />
           <Route path="/sign/interest" element={<InterestPage />} />
           <Route path="/sign/completion" element={<CompletionPage />} />
-          <Route path="/sign/input-pin" element={<InputPinPage />}/>
+          <Route path="/sign/input-pin" element={<InputPinPage />} />
         </Routes>
       </div>
     </Router>

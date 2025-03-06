@@ -6,7 +6,7 @@ import RightArrow from "../../images/right-arrow.png";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedAccount } from "../../../redux/actions/accountAction";
 import { RootState } from "../../../redux/store";
-import { CategoryInterface, CategoryAccountProps, CategoryAccountsInterface } from "./interfaces";
+import { CategoryInterface, CategoryAccountProps, CategoryAccountsInterface } from "../interfaces";
 
 const CategoryAccount: React.FC<CategoryAccountProps> = (props) => {
   const navigate = useNavigate();
@@ -40,7 +40,7 @@ const CategoryAccount: React.FC<CategoryAccountProps> = (props) => {
             {Number(props.ratio)}%
           </div>
           <div className="font_20" style={{ color: "#858585" }}>
-            {props.amount}원
+            {props.amount.toLocaleString()}원
           </div>
         </div>
       </div>
@@ -103,7 +103,7 @@ function SelectAccount() {
           </div>
           <div className="center_wrapper">
             <button
-              className={isFinish ? "blue_big_btn" : "gray_big_btn"}
+              className={isFinish ? "blue_big_btn" : "gray_big_btn no"}
               type="button"
               onClick={isFinish ? () => clickForYes() : undefined}
             >
