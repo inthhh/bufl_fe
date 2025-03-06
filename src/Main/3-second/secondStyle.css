@@ -1,0 +1,110 @@
+.pay {
+  width: 120px;
+  position: relative;
+  top: 150px;
+  left: 140px;
+}
+.pay1 {
+  text-align: center;
+}
+.pay2 {
+  margin: 180px 20px;
+}
+.pay3 {
+  margin: -160px 20px;
+}
+.box1-btn {
+  border: none;
+  border-radius: 8px;
+  background-color: #3183f6a8;
+  width: 240px;
+  height: 50px;
+  margin: 80px;
+  padding: 10px;
+  position: relative;
+  top: 170px;
+}
+.box2-btn {
+  border: none;
+  border-radius: 8px;
+  background-color: #3183f669;
+  width: 240px;
+  height: 50px;
+  margin: 80px;
+  position: relative;
+  top: 20px;
+  padding: 10px;
+}
+.bottom {
+  border: none;
+  background-color: rgba(219, 219, 219, 0.336);
+  width: 400px;
+  height: 60px;
+  margin: 16px 0px;
+  position: relative;
+}
+.home {
+  width: 30px;
+  height: 30px;
+  margin: 9px;
+  position: relative;
+  left: 30px;
+}
+.goal {
+  opacity: 0.3;
+  width: 30px;
+  height: 30px;
+  margin: 9px;
+  position: relative;
+  bottom: 71px;
+  left: 175px;
+}
+.menu {
+  opacity: 0.3;
+  width: 30px;
+  height: 30px;
+  margin: 9px;
+  position: relative;
+  bottom: 140px;
+  left: 320px;
+}
+.home-text {
+  font-size: 13px;
+  position: relative;
+  bottom: 13px;
+  left: 48px;
+}
+
+.goal-text {
+  color: lightgray;
+  font-size: 13px;
+  position: relative;
+  bottom: 84px;
+  left: 170px;
+}
+
+.menu-text {
+  color: lightgray;
+  font-size: 13px;
+  position: relative;
+  bottom: 155px;
+  left: 332px;
+}
+
+.bankbook {
+  position: relative;
+  top: 90px;
+  left: 30px;
+}
+.okay-btn {
+  color: white;
+  border: none;
+  border-radius: 8px;
+  background-color: #3183f6;
+  width: 240px;
+  height: 50px;
+  margin: 80px;
+  position: relative;
+  top: 550px;
+  padding: 10px;
+}

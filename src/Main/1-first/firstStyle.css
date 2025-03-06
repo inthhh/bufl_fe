@@ -1,18 +1,16 @@
 .bufl {
-  color: #3182F6;
-  font-weight: bolder;
-  font-size: xx-large;
+  width: 60px;
+  color: #3182f6;
   position: relative;
+  top: 15px;
   left: 20px;
-  top: 10px;
 }
 
 .bell {
+  height: 35px;
   position: relative;
-  left: 350px;
-  bottom: 10px;
-  height: 40px;
-  margin-top: -40px;
+  top: 10px;
+  left: 290px;
 }
 
 .money {
@@ -25,7 +23,7 @@
 
 .bank-icon {
   margin: 30px;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .bank-icon1 {
@@ -171,66 +169,4 @@
   position: relative;
   bottom: 200px;
   left: 190px;
-}
-
-.bottom {
-  border: 1px;
-  background-color: rgba(211, 211, 211, 0.499);
-  position: relative;
-  top: 270px;
-  height: 65px;
-}
-
-.home-text {
-  position: relative;
-  top: 25px;
-  left: 50px;
-}
-
-.target-text {
-  color: rgba(182, 183, 184, 0.786);
-  position: relative;
-  top: 4px;
-  left: 150px;
-}
-
-.menu-text {
-  color: rgba(182, 183, 184, 0.786);
-  position: relative;
-  bottom: 19px;
-  left: 320px;
-}
-
-.account {
-  border: 1px;
-  background-color: rgba(211, 211, 211, 0.233);
-  margin: 20px;
-  border-radius: 12px;
-  position: relative;
-  top: 20px;
-}
-
-.account1 {
-  height: 430px;
-  position: relative;
-  left: 20px;
-}
-
-.account2 {
-  position: relative;
-  left: 339px;
-  bottom: 430px;
-}
-
-.group1 {
-  height: 230px;
-  position: relative;
-  bottom: 40px;
-  left: 50px;
-}
-
-.pay {
-  position: relative;
-  top: 50px;
-  left: 130px;
 }

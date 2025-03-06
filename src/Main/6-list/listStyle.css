@@ -1,0 +1,68 @@
+.list {
+  border: none;
+  border-radius: 12px;
+  background-color: rgba(211, 211, 211, 0.301);
+  width: 380px;
+  height: 600px;
+  margin: 10px;
+  position: relative;
+  top: 70px;
+}
+.list1 {
+  padding: 20px;
+}
+.list2 {
+  text-align: left;
+  margin: 15px;
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  background-color: rgba(125, 180, 253, 0.349);
+  width: 350px;
+  height: 100px;
+}
+.list3 {
+  text-align: left;
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  background-color: rgba(125, 180, 253, 0.349);
+  width: 350px;
+  height: 100px;
+}
+.list4 {
+  text-align: left;
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  background-color: rgba(125, 180, 253, 0.349);
+  width: 350px;
+  height: 100px;
+}
+.list5 {
+  text-align: left;
+  margin: 15px;
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  background-color: rgba(125, 180, 253, 0.349);
+  width: 350px;
+  height: 100px;
+}
+.log {
+  background-color: black;
+  position: absolute;
+  top: 720px;
+  left: 50%;
+}
+.log-btn {
+  color: white;
+  border: none;
+  border-radius: 8px;
+  background-color: #3183f6;
+  width: 370px;
+  height: 55px;
+  margin: 15px;
+  position: relative;
+  top: 70px;
+}
