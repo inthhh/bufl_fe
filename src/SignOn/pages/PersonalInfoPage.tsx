@@ -98,12 +98,14 @@ const PersonalInfoPage: React.FC = () => {
         userName: localName,
         userRegnu: `${idFront}-${idBack}******`,
         userPhone: phone,
-        userPassword: idFront, // 임시 비밀번호 (보안 상 반드시 수정해야 함)
+        userPassword: "", // ✅ 비밀번호는 빈 값으로 설정
       });
 
       if (response.status === 201) {
-        alert("회원가입 성공!");
-        navigate("/sign/agreement");
+        // 🔹 회원가입 후 userId 저장
+        sessionStorage.setItem("userId", response.data.userId);
+        alert("회원가입 성공! 다음 단계로 이동합니다.");
+        navigate("/sign/input-pin"); // PIN 설정 페이지로 이동
       }
     } catch (error: any) {
       console.error("회원가입 오류:", error);
@@ -189,4 +191,4 @@ const PersonalInfoPage: React.FC = () => {
   );
 };
 
-export default PersonalInfoPage;
+export default PersonalInfoPage; 
