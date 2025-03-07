@@ -1,29 +1,43 @@
 import React from "react";
-import { Doughnut } from "react-chartjs-2";
-import "chart.js/auto";
+import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
-const DoughnutChartWithGoal = ({ goal, currentProgress }) => {
-  const data = {
-    labels: ["Progress", "Remaining"],
-    datasets: [
-      {
-        label: "Goal Progress",
-        data: [currentProgress, goal - currentProgress],
-        backgroundColor: [
-          "rgba(10, 195, 16, 0.74)",
-          "rgba(200, 200, 200, 0.5)",
-        ],
-        borderColor: ["rgba(10, 195, 16, 1)", "rgba(200, 200, 200, 1)"],
-        borderWidth: 1,
-      },
-    ],
-  };
+// 데이터 예시
+const data = [
+  { name: "식비", value: 400 },
+  { name: "교통비", value: 300 },
+  { name: "주거비", value: 300 },
+  { name: "기타", value: 200 },
+];
 
+// 색상 배열
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+
+const DonutChart = () => {
   return (
-    <div>
-      <Doughnut data={data} />
+    <div style={{ width: "100%", height: 300 }}>
+      <ResponsiveContainer width="100%" height="100%">
+        <PieChart>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            innerRadius={70} // 🚨 도넛 차트를 만들려면 여기를 추가해야 함!
+            outerRadius={100} // 외곽 반지름
+            fill="#8884d8"
+            paddingAngle={5}
+            dataKey="value"
+          >
+            {data.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={COLORS[index % COLORS.length]}
+              />
+            ))}
+          </Pie>
+        </PieChart>
+      </ResponsiveContainer>
     </div>
   );
 };
 
-export default DoughnutChartWithGoal;
+export default DonutChart;
