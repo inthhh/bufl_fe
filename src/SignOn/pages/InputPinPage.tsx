@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "../../MoneySplit/style/splitStyle.css";
 import MoveBack from "../../MoneySplit/MoveBack";
 
@@ -32,6 +33,7 @@ const InputPinPage: React.FC = () => {
     });
   };
 
+  // PIN이 완성될 때 처리
   useEffect(() => {
     if (pin.every((p) => p !== "")) {
       if (step === "set") {
@@ -40,7 +42,7 @@ const InputPinPage: React.FC = () => {
         setStep("confirm"); // 확인 단계로 변경
       } else if (step === "confirm") {
         if (firstPin === pin.join("")) {
-          navigate("/sign/interest"); // PIN이 일치하면 다음 페이지로 이동
+          updatePassword(firstPin); // ✅ PIN이 일치하면 비밀번호 업데이트
         } else {
           setErrorMessage("PIN 번호가 일치하지 않습니다. 다시 입력해주세요.");
           setPin(Array(6).fill("")); // 입력 초기화
@@ -48,6 +50,32 @@ const InputPinPage: React.FC = () => {
       }
     }
   }, [pin]);
+
+  // ✅ 비밀번호 업데이트 요청
+  const updatePassword = async (newPassword: string) => {
+    setErrorMessage(null);
+    const userPhone = localStorage.getItem("userPhone"); // 회원가입 시 저장된 휴대폰 번호 가져오기
+
+    if (!userPhone) {
+      setErrorMessage("회원가입 정보를 찾을 수 없습니다.");
+      return;
+    }
+
+    try {
+      const response = await axios.put("http://localhost:5002/api/users/update-password", {
+        userPhone, // ✅ 휴대폰 번호로 사용자 찾기
+        userPassword: newPassword, // ✅ 새 비밀번호(PIN)
+      });
+
+      if (response.status === 200) {
+        alert("PIN 설정 완료!");
+        navigate("/sign/interest"); // ✅ 다음 단계로 이동
+      }
+    } catch (error: any) {
+      console.error("비밀번호 업데이트 오류:", error);
+      setErrorMessage("비밀번호 업데이트에 실패했습니다. 다시 시도해주세요.");
+    }
+  };
 
   return (
     <div>

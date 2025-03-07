@@ -94,18 +94,17 @@ const PersonalInfoPage: React.FC = () => {
     setErrorMessage(""); // 오류 메시지 초기화
 
     try {
-      const response = await axios.post("http://localhost:5000/api/users", {
+      const response = await axios.post("http://localhost:5002/api/users", {
         userName: localName,
         userRegnu: `${idFront}-${idBack}******`,
         userPhone: phone,
-        userPassword: "", // ✅ 비밀번호는 빈 값으로 설정
+        userPassword: "temppw", // 
       });
 
       if (response.status === 201) {
-        // 🔹 회원가입 후 userId 저장
-        sessionStorage.setItem("userId", response.data.userId);
-        alert("회원가입 성공! 다음 단계로 이동합니다.");
-        navigate("/sign/input-pin"); // PIN 설정 페이지로 이동
+        localStorage.setItem("userPhone", phone); // ✅ userPhone을 localStorage에 저장
+        alert("회원가입 성공! PIN 번호를 설정해주세요.");
+        navigate("/sign/input-pin"); // ✅ PIN 설정 페이지로 이동
       }
     } catch (error: any) {
       console.error("회원가입 오류:", error);
@@ -191,4 +190,4 @@ const PersonalInfoPage: React.FC = () => {
   );
 };
 
-export default PersonalInfoPage; 
+export default PersonalInfoPage;
