@@ -28,8 +28,6 @@ import Choice from "./Main/8-choice/choice";
 import Rocket from "./Main/9-rocket/rocket";
 import Start from "./Main/10-start/start";
 import Bottom from "./Main/bottom/bottom";
-import Bottom1 from "./Main/bottom1/bottom1";
-import Bottom2 from "./Main/bottom2/bottom2";
 
 import StartPage from "./SignOn/pages/StartPage";
 import PersonalInfoPage from "./SignOn/pages/PersonalInfoPage";
@@ -45,6 +43,7 @@ import SelectAccountDetail from "./MoneySplit/pages/control_accounts/SelectAccou
 import SelectAccountAccounts from "./MoneySplit/pages/control_accounts/SelectAccountAccounts";
 import TossTerms from "./MoneySplit/pages/final_process/TossTerms";
 import AI_Cancel from "./MoneySplit/pages/ai_pages/ai_cancel";
+import Setting from "./Main/settingPage/Setting";
 
 const App: React.FC = () => {
   return (
@@ -80,6 +79,7 @@ const App: React.FC = () => {
           <Route path="/money-split/toss/terms" element={<TossTerms />} />
           <Route path="/money-split/ai/cancel" element={<AI_Cancel />} />
 
+          <Route path="/setting" element={<Setting />} />
           <Route path="/Second" element={<Second />} />
           <Route path="/Main/AccountSelector" element={<AccountSelector />} />
           <Route path="/Main/AccountSelector1" element={<AccountSelector1 />} />
@@ -90,9 +90,6 @@ const App: React.FC = () => {
           <Route path="/Main/choice" element={<Choice />} />
           <Route path="/Main/rocket" element={<Rocket />} />
           <Route path="/Main/start" element={<Start />} />
-          <Route path="/Main/bottom" element={<Bottom />} />
-          <Route path="/Main/bottom1" element={<Bottom1 />} />
-          <Route path="/Main/bottom2" element={<Bottom2 />} />
 
           <Route path="/sign" element={<StartPage />} />
           <Route path="/sign/personal-info" element={<PersonalInfoPage />} />
