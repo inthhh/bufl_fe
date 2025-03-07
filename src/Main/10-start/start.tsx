@@ -5,15 +5,16 @@ import present from "./img/piggy.png";
 import ninja from "./img/start.png";
 import Bottom1 from "../bottom1/bottom1";
 import { useNavigate } from "react-router-dom";
-// import DoughnutChartWithGoal from "../DoughnutChartWithGoal"; // 도넛 차트 컴포넌트 임포트
+import Doughnut1 from "./Doughnut1"; // 도넛 차트 컴포넌트 임포트
 
 const Start: React.FC = () => {
   const navigate = useNavigate();
   const handleplusgoal = () => {
-    navigate("/Main/Second");
+    navigate("/Second"); // 경로 확인 필요!
   };
-  // const [goal, setGoal] = useState(100); // 목표 설정
-  // const [currentProgress, setCurrentProgress] = useState(50); // 현재 진행 상황 설정
+
+  const [goal, setGoal] = useState(100); // 목표 설정
+  const [currentProgress, setCurrentProgress] = useState(50); // 현재 진행 상황 설정
 
   return (
     <div>
@@ -37,19 +38,17 @@ const Start: React.FC = () => {
           <div className="nowmoney">현재 저축액</div>
           <div className="money4">3,200,000원</div>
         </div>
-        <div className="goal-list">목표 달성 현황</div>
-        {/* <DoughnutChartWithGoal
-        goal={goal}
-        currentProgress={currentProgress}
-      />{" "}
-      도넛 차트 추가 
+      </div>
+      <div className="goal-list">목표 달성 현황</div>
+      {/* 도넛 차트 추가 */}
+      <Doughnut1 goal={goal} currentProgress={currentProgress} />
       <input
         type="range"
         min="0"
         max={goal}
         value={currentProgress}
-        onChange={(e) => setCurrentProgress(Number(e.target.value))} */}
-      </div>
+        onChange={(e) => setCurrentProgress(Number(e.target.value))}
+      />
       <div>
         <img className="ninja" src={ninja} alt="ninja" />
       </div>
