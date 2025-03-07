@@ -10,7 +10,7 @@ import DonutChart from "./Doughnut1"; // 도넛 차트 컴포넌트 임포트
 const Start: React.FC = () => {
   const navigate = useNavigate();
   const handleplusgoal = () => {
-    navigate("/Second"); // 경로 확인 필요!
+    navigate("/second");
   };
 
   const [goal, setGoal] = useState(100); // 목표 설정

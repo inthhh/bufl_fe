@@ -6,10 +6,15 @@
   height: 590px;
   margin: 10px;
 }
+
 .list1 {
+  font-size: 17px;
+  font-weight: bold;
   padding: 20px;
 }
+
 .list2 {
+  font-size: 17px;
   text-align: left;
   margin: 15px;
   padding: 10px;
@@ -19,7 +24,9 @@
   width: 350px;
   height: 100px;
 }
+
 .list3 {
+  font-size: 17px;
   text-align: left;
   margin: 15px;
   padding: 10px;
@@ -29,7 +36,9 @@
   width: 350px;
   height: 100px;
 }
+
 .list4 {
+  font-size: 17px;
   text-align: left;
   margin: 15px;
   padding: 10px;
@@ -39,7 +48,9 @@
   width: 350px;
   height: 100px;
 }
+
 .list5 {
+  font-size: 17px;
   text-align: left;
   margin: 15px;
   padding: 10px;
@@ -49,11 +60,13 @@
   width: 350px;
   height: 100px;
 }
+
 .log {
   text-align: center;
   width: 20px;
   height: 20px;
 }
+
 .log-btn {
   color: white;
   border: none;
@@ -63,37 +76,46 @@
   height: 55px;
   margin: 15px;
 }
+
 .modal-content {
   border-radius: 12px;
   background-color: white;
   width: 380px;
   height: 480px;
-  position: fixed; /* 고정 위치 */
-  top: 62%;
+  position: fixed;
+  /* 고정 위치 */
+  top: 53%;
   left: 50%;
-  transform: translate(-50%, -50%); /* 중앙 정렬 */
+  transform: translate(-50%, -50%);
+  /* 중앙 정렬 */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
 .content-right {
   margin: 20px;
 }
+
 .goal-text {
   font-size: 17px;
   font-weight: bold;
   margin: 20px;
 }
+
 .slider-container {
   position: relative;
   margin: 10px 0;
 }
+
 .slider1 {
   margin: 30px 20px 30px 30px;
   width: 320px;
 }
+
 .month {
   font-weight: bold;
   margin: 30px;
 }
+
 .min-value {
   font-size: 14px;
   color: lightgray;
@@ -101,6 +123,7 @@
   top: 32px;
   left: 30px;
 }
+
 .max-value {
   font-size: 14px;
   color: lightgray;
@@ -108,27 +131,32 @@
   top: 32px;
   left: 300px;
 }
+
 .month-money {
   font-weight: bold;
   margin: 30px;
 }
+
 .min-month {
   font-size: 14px;
   color: lightgray;
   position: absolute;
-  top: 260px;
+  top: 255px;
   left: 30px;
 }
+
 .max-month {
   font-size: 14px;
   color: lightgray;
   position: absolute;
-  top: 260px;
+  top: 255px;
   left: 300px;
 }
+
 .slider-container1 {
   text-align: left;
 }
+
 .cancel-btn {
   font-size: 22px;
   border: none;
@@ -139,6 +167,7 @@
   height: 55px;
   margin: 5px;
 }
+
 .confirm-btn {
   font-size: 22px;
   border: none;
