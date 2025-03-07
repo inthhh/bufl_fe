@@ -5,24 +5,29 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 const data = [
   { name: "식비", value: 400 },
   { name: "교통비", value: 300 },
-  { name: "주거비", value: 300 },
-  { name: "기타", value: 200 },
 ];
 
 // 색상 배열
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+const COLORS = ["#3182F6", "#9e2222"];
 
-const DonutChart = () => {
+interface DounutProps {
+  // progress: number;
+  goal: number;
+  currentProgress: number;
+}
+
+const DonutChart: React.FC<DounutProps> = (props) => {
   return (
-    <div style={{ width: "100%", height: 300 }}>
-      <ResponsiveContainer width="100%" height="100%">
+    <div style={{ width: "100%", height: "200px" }}>
+
+      <ResponsiveContainer>
         <PieChart>
           <Pie
             data={data}
             cx="50%"
             cy="50%"
-            innerRadius={70} // 🚨 도넛 차트를 만들려면 여기를 추가해야 함!
-            outerRadius={100} // 외곽 반지름
+            innerRadius={45} // 🚨 도넛 차트를 만들려면 여기를 추가해야 함!
+            outerRadius={70} // 외곽 반지름
             fill="#8884d8"
             paddingAngle={5}
             dataKey="value"
@@ -36,7 +41,12 @@ const DonutChart = () => {
           </Pie>
         </PieChart>
       </ResponsiveContainer>
-    </div>
+      <div style={{
+        position: "absolute",
+        marginLeft: "180px",
+        bottom: "580px"
+      }}>{props.currentProgress}</div>
+    </div >
   );
 };
 
