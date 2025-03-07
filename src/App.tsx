@@ -27,10 +27,6 @@ import Choose from "./Main/7-choose/choose";
 import Choice from "./Main/8-choice/choice";
 import Rocket from "./Main/9-rocket/rocket";
 import Start from "./Main/10-start/start";
-import Bottom from "./Main/bottom/bottom";
-import Bottom1 from "./Main/bottom1/bottom1";
-import Bottom2 from "./Main/bottom2/bottom2";
-import Doughnut1 from "./doughnut1";
 
 import StartPage from "./SignOn/pages/StartPage";
 import PersonalInfoPage from "./SignOn/pages/PersonalInfoPage";
@@ -111,10 +107,7 @@ const App: React.FC = () => {
           <Route path="/Main/choice" element={<Choice />} />
           <Route path="/Main/rocket" element={<Rocket />} />
           <Route path="/Main/start" element={<Start />} />
-          <Route path="/Main/bottom" element={<Bottom />} />
-          <Route path="/Main/bottom1" element={<Bottom1 />} />
-          <Route path="/Main/bottom2" element={<Bottom2 />} />
-          <Route path="/Main/DoughnutChart1" element={<Doughnut1 />} />
+          {/* <Route path="/Main/DoughnutChart1" element={<Doughnut1 />} /> */}
 
           <Route path="/sign" element={<StartPage />} />
           <Route path="/sign/personal-info" element={<PersonalInfoPage />} />

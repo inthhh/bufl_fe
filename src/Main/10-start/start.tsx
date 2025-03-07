@@ -5,7 +5,7 @@ import present from "./img/piggy.png";
 import ninja from "./img/start.png";
 import Bottom from "../bottom/bottom";
 import { useNavigate } from "react-router-dom";
-import Doughnut1 from "./Doughnut1"; // 도넛 차트 컴포넌트 임포트
+import DonutChart from "./Doughnut1"; // 도넛 차트 컴포넌트 임포트
 
 const Start: React.FC = () => {
   const navigate = useNavigate();
@@ -38,17 +38,17 @@ const Start: React.FC = () => {
           <div className="nowmoney">현재 저축액</div>
           <div className="money4">3,200,000원</div>
         </div>
+        <div className="goal-list">목표 달성 현황</div>
+        {/* 도넛 차트 추가 */}
+        <DonutChart goal={goal} currentProgress={currentProgress} />
+        <input
+          type="range"
+          min="0"
+          max={goal}
+          value={currentProgress}
+          onChange={(e) => setCurrentProgress(Number(e.target.value))}
+        />
       </div>
-      <div className="goal-list">목표 달성 현황</div>
-      {/* 도넛 차트 추가 */}
-      <Doughnut1 goal={goal} currentProgress={currentProgress} />
-      <input
-        type="range"
-        min="0"
-        max={goal}
-        value={currentProgress}
-        onChange={(e) => setCurrentProgress(Number(e.target.value))}
-      />
       <div>
         <img className="ninja" src={ninja} alt="ninja" />
       </div>
