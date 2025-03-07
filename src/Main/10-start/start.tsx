@@ -3,7 +3,7 @@ import "./startStyle.css";
 import payment from "./img/pay.png";
 import present from "./img/piggy.png";
 import ninja from "./img/start.png";
-import Bottom1 from "../bottom1/bottom1";
+import Bottom from "../bottom/bottom";
 import { useNavigate } from "react-router-dom";
 // import DoughnutChartWithGoal from "../DoughnutChartWithGoal"; // 도넛 차트 컴포넌트 임포트
 
@@ -53,10 +53,8 @@ const Start: React.FC = () => {
       <div>
         <img className="ninja" src={ninja} alt="ninja" />
       </div>
-      <div className="message">
-        오늘도 목표를 향해 달려가는 "뱅크닌자"님 응원합니다!
-      </div>
-      <Bottom1 />
+      <div className="message">오늘도 목표를 향해 달려가는 "뱅크닌자"님 응원합니다!</div>
+      <Bottom page="goal" />
     </div>
   );
 };
