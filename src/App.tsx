@@ -89,6 +89,7 @@ const App: React.FC = () => {
           <Route path="/Main/choice" element={<Choice />} />
           <Route path="/Main/rocket" element={<Rocket />} />
           <Route path="/Main/start" element={<Start />} />
+          {/* <Route path="/Main/DoughnutChart1" element={<Doughnut1 />} /> */}
 
           <Route path="/sign" element={<StartPage />} />
           <Route path="/sign/personal-info" element={<PersonalInfoPage />} />
