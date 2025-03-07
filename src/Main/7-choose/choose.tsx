@@ -5,7 +5,7 @@ import MoveBack from "../../MoneySplit/MoveBack";
 const Choose: React.FC = () => {
   return (
     <div>
-      <MoveBack pageBefore="/Main/box2" />
+      <MoveBack pageBefore="/Main/AccountSelector1" />
     </div>
   );
 };

@@ -27,7 +27,7 @@ const List: React.FC = () => {
 
   return (
     <div>
-      <MoveBack pageBefore="/Main/box1" />
+      <MoveBack pageBefore="/Main/AccountSelector" />
       <div className="list-container">
         <div className="list">
           <div className="list1">AI 추천받기</div>
@@ -73,7 +73,7 @@ const List: React.FC = () => {
             {/* 저축 금액 조절 슬라이더 */}
             <div className="slider-container">
               <span className="min-value">5만원</span>
-              <label>한 달에 {amount}만원</label>
+              <label className="month">한 달에 {amount}만원</label>
               <span className="max-value">300만원</span>
               <input
                 className="slider1"
@@ -87,7 +87,9 @@ const List: React.FC = () => {
             </div>
             {/* 저축 기간 조절 슬라이더 */}
             <div className="slider-container1">
-              <label>{duration}개월 모으기</label>
+              <span className="min-month">1개월</span>
+              <label className="month-money">{duration}개월 모으기</label>
+              <span className="max-month">36개월</span>
               <input
                 className="slider1"
                 type="range"

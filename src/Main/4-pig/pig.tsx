@@ -7,7 +7,7 @@ import MoveBack from "../../MoneySplit/MoveBack";
 const Pig: React.FC = () => {
   const navigate = useNavigate();
   const handlestart = () => {
-    navigate("/Main/box1");
+    navigate("/Main/AccountSelector");
   };
   return (
     <div>

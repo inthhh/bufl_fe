@@ -66,11 +66,13 @@
 .modal-content {
   border-radius: 12px;
   background-color: white;
-  position: fixed;
-  top: 320px;
-  left: 110px;
   width: 380px;
   height: 480px;
+  position: fixed; /* 고정 위치 */
+  top: 62%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 중앙 정렬 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 .content-right {
   margin: 20px;
@@ -81,14 +83,48 @@
   margin: 20px;
 }
 .slider-container {
-  margin: 10px;
+  position: relative;
+  margin: 10px 0;
 }
 .slider1 {
   margin: 30px 20px 30px 30px;
-  width: 300px;
+  width: 320px;
+}
+.month {
+  font-weight: bold;
+  margin: 30px;
 }
 .min-value {
-  margin: 10px 0 0;
+  font-size: 14px;
+  color: lightgray;
+  position: absolute;
+  top: 32px;
+  left: 30px;
+}
+.max-value {
+  font-size: 14px;
+  color: lightgray;
+  position: absolute;
+  top: 32px;
+  left: 300px;
+}
+.month-money {
+  font-weight: bold;
+  margin: 30px;
+}
+.min-month {
+  font-size: 14px;
+  color: lightgray;
+  position: absolute;
+  top: 260px;
+  left: 30px;
+}
+.max-month {
+  font-size: 14px;
+  color: lightgray;
+  position: absolute;
+  top: 260px;
+  left: 300px;
 }
 .slider-container1 {
   text-align: left;

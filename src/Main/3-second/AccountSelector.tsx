@@ -19,7 +19,7 @@ const AccountSelector: React.FC = () => {
   const [selectedAccount, setSelectedAccount] = useState<string>("");
 
   // 완료 버튼 클릭 시 실행
-  const handleConfirm = () => {
+  const handleConfirm1 = () => {
     if (selectedAccount) {
       navigate("/Main/list");
     } else {
@@ -55,7 +55,7 @@ const AccountSelector: React.FC = () => {
       </div>
 
       {/* 완료 버튼 */}
-      <button className="okay-btn" onClick={handleConfirm}>
+      <button className="okay-btn" onClick={handleConfirm1}>
         완료했어요.
       </button>
     </div>

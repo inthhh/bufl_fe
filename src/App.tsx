@@ -17,8 +17,8 @@ import SplitLoading from "./MoneySplit/pages/final_process/SplitLoading";
 
 import DoughnutChart from "./Main/1-first/DoughnutChart";
 import Account from "./Main/1-first/account";
-import Box1 from "./Main/3-second/box1";
-import Box2 from "./Main/3-second/box2";
+import AccountSelector from "./Main/3-second/AccountSelector";
+import AccountSelector1 from "./Main/3-second/AccountSelector1";
 import Second from "./Main/3-second/second";
 import Pig from "./Main/4-pig/pig";
 import Loading from "./Main/5-loading/loading";
@@ -100,8 +100,8 @@ const App: React.FC = () => {
 
           <Route path="/Account" element={<Account />} />
           <Route path="/Second" element={<Second />} />
-          <Route path="/Main/box1" element={<Box1 />} />
-          <Route path="/Main/box2" element={<Box2 />} />
+          <Route path="/Main/AccountSelector" element={<AccountSelector />} />
+          <Route path="/Main/AccountSelector1" element={<AccountSelector1 />} />
           <Route path="/Main/pig" element={<Pig />} />
           <Route path="/Main/loading" element={<Loading />} />
           <Route path="/Main/choose" element={<Choose />} />
