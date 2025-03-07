@@ -10,8 +10,10 @@ const Rocket: React.FC = () => {
   };
   return (
     <div>
-      <div className="x">X</div>
-      <img className="rocket" src={rocket} alt="rocket" />
+      <button className="x">X</button>
+      <div className="rocket">
+        <img className="rocket" src={rocket} alt="rocket" />
+      </div>
       <div className="text">
         모으기 완주까지
         <br />

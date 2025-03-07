@@ -17,8 +17,8 @@ import SplitLoading from "./MoneySplit/pages/final_process/SplitLoading";
 
 import DoughnutChart from "./Main/1-first/DoughnutChart";
 import Account from "./Main/1-first/account";
-import Box1 from "./Main/3-second/box1";
-import Box2 from "./Main/3-second/box2";
+import AccountSelector from "./Main/3-second/AccountSelector";
+import AccountSelector1 from "./Main/3-second/AccountSelector1";
 import Second from "./Main/3-second/second";
 import Pig from "./Main/4-pig/pig";
 import Loading from "./Main/5-loading/loading";
@@ -27,6 +27,9 @@ import Choose from "./Main/7-choose/choose";
 import Choice from "./Main/8-choice/choice";
 import Rocket from "./Main/9-rocket/rocket";
 import Start from "./Main/10-start/start";
+import Bottom from "./Main/bottom/bottom";
+import Bottom1 from "./Main/bottom1/bottom1";
+import Bottom2 from "./Main/bottom2/bottom2";
 
 import StartPage from "./SignOn/pages/StartPage";
 import PersonalInfoPage from "./SignOn/pages/PersonalInfoPage";
@@ -57,10 +60,6 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<First />} />
           <Route path="/Main" element={<First />} />
-          <Route path="/Main/Second" element={<Second />} />
-          <Route path="/Main/box1" element={<Box1 />} />
-          <Route path="/Main/box2" element={<Box2 />} />
-          <Route path="/Account" element={<Account />} />
           <Route path="/money-split" element={<MoneySplitFirst />} />
 
           <Route path="/money-split/ai" element={<AI_home />} />
@@ -101,8 +100,8 @@ const App: React.FC = () => {
 
           <Route path="/Account" element={<Account />} />
           <Route path="/Second" element={<Second />} />
-          <Route path="/Main/box1" element={<Box1 />} />
-          <Route path="/Main/box2" element={<Box2 />} />
+          <Route path="/Main/AccountSelector" element={<AccountSelector />} />
+          <Route path="/Main/AccountSelector1" element={<AccountSelector1 />} />
           <Route path="/Main/pig" element={<Pig />} />
           <Route path="/Main/loading" element={<Loading />} />
           <Route path="/Main/choose" element={<Choose />} />
@@ -110,6 +109,9 @@ const App: React.FC = () => {
           <Route path="/Main/choice" element={<Choice />} />
           <Route path="/Main/rocket" element={<Rocket />} />
           <Route path="/Main/start" element={<Start />} />
+          <Route path="/Main/bottom" element={<Bottom />} />
+          <Route path="/Main/bottom1" element={<Bottom1 />} />
+          <Route path="/Main/bottom2" element={<Bottom2 />} />
 
           <Route path="/sign" element={<StartPage />} />
           <Route path="/sign/personal-info" element={<PersonalInfoPage />} />

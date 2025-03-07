@@ -47,13 +47,27 @@
   padding: 10px;
 }
 
+.bankbook {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0 0 20px 30px;
+}
+.checkbox {
+  font-size: 20px;
+  color: gray;
+  display: flex;
+  margin: 50px;
+}
+.input-type {
+  margin: 7px 30px 7px 10px;
+}
 .okay-btn {
   color: white;
+  font-size: 20px;
   border: none;
   border-radius: 8px;
   background-color: #3183f6;
-  width: 240px;
-  height: 50px;
-  margin: 80px;
-  padding: 10px;
+  width: 300px;
+  height: 55px;
+  margin: 30px 50px 0 50px;
 }

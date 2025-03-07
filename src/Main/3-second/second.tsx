@@ -11,7 +11,7 @@ const Second: React.FC = () => {
     navigate("/Main/pig");
   };
   const handlebox2 = () => {
-    navigate("/Main/box2");
+    navigate("/Main/AccountSelector1");
   };
   return (
     <div className="relative-parent">
