@@ -1,6 +1,6 @@
 .account {
   border: none;
-  background-color: rgba(231, 229, 229, 0.233);
+  background-color: white;
   width: 380px;
   height: 460px;
   border-radius: 12px;
@@ -99,7 +99,7 @@
 }
 .budget {
   border: none;
-  background-color: rgba(231, 229, 229, 0.233);
+  background-color: white;
   height: 200px;
   width: 380px;
   border-radius: 12px;

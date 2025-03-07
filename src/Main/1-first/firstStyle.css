@@ -84,7 +84,7 @@
 
 .month {
   border: 1px;
-  background-color: rgba(211, 211, 211, 0.233);
+  background-color: white;
   margin: 20px;
   border-radius: 12px;
 }
@@ -108,7 +108,7 @@
 
 .asset-box {
   border: 1px;
-  background-color: rgba(211, 211, 211, 0.233);
+  background-color: white;
   margin: 20px;
   height: 180px;
   border-radius: 12px;

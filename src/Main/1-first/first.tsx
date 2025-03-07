@@ -12,10 +12,10 @@ import Bottom from "../bottom/bottom";
 
 const First: React.FC = () => {
   return (
-    <div>
+    <div style={{ height: "730px", backgroundColor: "#F3F3F3" }}>
       <img className="bufl" src={Bufl} alt="bufl" />
       <img className="bell" src={BellImg} alt="Bell" />
-      <div style={{ height: "690px", overflowY: "scroll", overflowX: "hidden" }}>
+      <div style={{ height: "690px", overflowY: "scroll", overflowX: "hidden", marginTop: "15px" }}>
         <div className="bank-icon">
           <div className="bank-icon1">
             <img className="toss" src={BankIcon1} alt="Toss" />
