@@ -69,7 +69,7 @@ const SelectRatio: React.FC = () => {
   const navigate = useNavigate();
   const [is100percent, setIs100percent] = useState<boolean>(false);
   const [isTooBig, setIsTooBig] = useState<boolean>(false);
-  const [isTooSmall, setIsTooSmall] = useState<boolean>(false);
+  const [isTooSmall, setIsTooSmall] = useState<boolean>(true);
 
   const [total, setTotal] = useState<number>(12345);
   useEffect(() => {
@@ -240,11 +240,16 @@ const SelectRatio: React.FC = () => {
           </div>
           <div className="center_wrapper">
             <div className="center_wrapper btn">
-              <button className="gray_small_btn" type="button" onClick={clickForNo}>
+              <button
+                className="gray_small_btn"
+                style={{ backgroundColor: "#DCEAFF" }}
+                type="button"
+                onClick={clickForNo}
+              >
                 카테고리 추가
               </button>
               <button
-                className={!isTooBig && !isTooSmall ? "blue_small_btn" : "gray_small_btn no"}
+                className={isTooBig || isTooSmall ? "gray_small_btn no" : "blue_small_btn"}
                 type="button"
                 onClick={clickForYes}
               >

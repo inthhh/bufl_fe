@@ -7,50 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSelectedAccount } from "../../../redux/actions/accountAction";
 import { RootState } from "../../../redux/store";
 import { CategoryInterface, CategoryAccountProps, CategoryAccountsInterface } from "../interfaces";
-
-const CategoryAccount: React.FC<CategoryAccountProps> = (props) => {
-  const navigate = useNavigate();
-  const clickForAccountLink = () => {
-    navigate(`/money-split/select-account/detail/${props.categoryId}`);
-  };
-
-  console.log("categoryAccounts[index]", props.category, props.account);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(setSelectedAccount({ selectedAccountId: -1, selectedAccountName: "" }));
-  }, []);
-  return (
-    <div>
-      <div className="account_list" onClick={clickForAccountLink}>
-        <div className="list_div">
-          <div>
-            <div>
-              <strong>{props.category}</strong>
-            </div>
-
-            <div>
-              {props.account.bankName === "정보 없음"
-                ? "계좌 연결하기"
-                : props.account.bankName + " " + props.account.accountNumber + " ✅"}
-            </div>
-          </div>
-          <img src={RightArrow} alt="right" width={15} />
-        </div>
-        <div className="list_div" style={{ marginTop: "15px" }}>
-          <div className="font_20" style={{ color: "#3182F6" }}>
-            {Number(props.ratio)}%
-          </div>
-          <div className="font_20" style={{ color: "#858585" }}>
-            {Number(props.amount).toLocaleString()}원
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+import CategoryAccount from "./CategoryAccount";
 
 function SelectAccount() {
-  const [isFinish, setIsFinish] = React.useState(true);
+  const [isFinish, setIsFinish] = useState<boolean>(false);
   const [categorys, setCategorys] = useState<CategoryInterface[]>([]);
   const [categoryAccounts, setCategoryAccounts] = useState<CategoryAccountsInterface[]>([]);
   const dispatch = useDispatch();
@@ -73,11 +33,38 @@ function SelectAccount() {
     fetch("http://localhost:5000/api/salary/account")
       .then((response) => response.json())
       .then((data) => {
-        setCategoryAccounts(data.slice(-2));
-        console.log("**accounts", categoryAccounts);
+        const slicedData = data.slice(-listLen);
+        setCategoryAccounts(slicedData);
+        console.log("✅ 잘린 accounts:", slicedData);
       })
       .catch((error) => console.error("SelectAccount error:", error));
-  }, [categoryList]);
+  }, []);
+
+  const [salaryAccount, setSalaryAccount] = useState<CategoryAccountsInterface>({
+    name: "",
+    bankName: "",
+    accountNumber: "",
+  });
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/users/salary/")
+      .then((response) => response.json())
+      .then((data) => {
+        setSalaryAccount({
+          name: "Salary Account",
+          bankName: data.salaryAccount.bank_name,
+          accountNumber: data.salaryAccount.account_number,
+        });
+        console.log("**category", categoryList);
+      })
+      .catch((error) => console.error("SelectAccount error:", error));
+  }, []);
+
+  useEffect(() => {
+    if (categoryAccounts.every((a) => a.bankName !== "정보 없음")) {
+      setIsFinish(true);
+    }
+  }, [categoryAccounts]);
 
   const navigate = useNavigate();
   const clickForYes = () => {
@@ -97,7 +84,11 @@ function SelectAccount() {
                   category={category.name}
                   ratio={category.ratio}
                   amount={category.amount}
-                  account={categoryAccounts[index - 1] ?? { name: "", bankName: "정보 없음", accountNumber: "" }}
+                  account={
+                    index === 0
+                      ? salaryAccount
+                      : categoryAccounts[index] ?? { name: "", bankName: "정보 없음", accountNumber: "" }
+                  }
                 />
               </div>
             ))}
