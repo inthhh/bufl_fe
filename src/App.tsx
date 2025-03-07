@@ -46,6 +46,7 @@ import SelectAccountDetail from "./MoneySplit/pages/control_accounts/SelectAccou
 import SelectAccountAccounts from "./MoneySplit/pages/control_accounts/SelectAccountAccounts";
 import TossTerms from "./MoneySplit/pages/final_process/TossTerms";
 import AI_Cancel from "./MoneySplit/pages/ai_pages/ai_cancel";
+import Setting from "./Main/settingPage/Setting";
 
 const App: React.FC = () => {
   return (
@@ -99,6 +100,7 @@ const App: React.FC = () => {
           <Route path="/money-split/toss/terms" element={<TossTerms />} />
           <Route path="/money-split/ai/cancel" element={<AI_Cancel />} />
 
+          <Route path="/setting" element={<Setting />} />
           <Route path="/Second" element={<Second />} />
           <Route path="/Main/AccountSelector" element={<AccountSelector />} />
           <Route path="/Main/AccountSelector1" element={<AccountSelector1 />} />

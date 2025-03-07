@@ -15,9 +15,7 @@ const First: React.FC = () => {
     <div>
       <img className="bufl" src={Bufl} alt="bufl" />
       <img className="bell" src={BellImg} alt="Bell" />
-      <div
-        style={{ height: "690px", overflowY: "scroll", overflowX: "hidden" }}
-      >
+      <div style={{ height: "690px", overflowY: "scroll", overflowX: "hidden" }}>
         <div className="bank-icon">
           <div className="bank-icon1">
             <img className="toss" src={BankIcon1} alt="Toss" />
@@ -56,7 +54,7 @@ const First: React.FC = () => {
 
         <Account />
       </div>
-      <Bottom />
+      <Bottom page="home" />
     </div>
   );
 };

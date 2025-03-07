@@ -17,6 +17,7 @@
   height: 70px;
 }
 .home {
+  opacity: 0.3;
   width: 30px;
   height: 30px;
 }
@@ -31,16 +32,17 @@
   height: 30px;
 }
 .home-text {
+  color: lightgrey;
   font-size: 13px;
 }
 
 .goal-text_ {
-  color: lightgray;
+  color: lightgrey;
   font-size: 13px;
   width: 60px;
 }
 
 .menu-text {
-  color: lightgray;
+  color: lightgrey;
   font-size: 13px;
 }

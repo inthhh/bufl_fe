@@ -40,7 +40,7 @@ const Second: React.FC = () => {
           목표 설정하기
         </button>
       </div>
-      <Bottom />
+      <Bottom page="goal" />
     </div>
   );
 };
