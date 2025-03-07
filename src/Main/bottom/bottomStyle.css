@@ -1,6 +1,7 @@
 .bottom {
   border: none;
-  background-color: rgba(219, 219, 219, 0.336);
+  background-color: white;
+  box-shadow: 0 -1px 1px #dddddd;
   width: 400px;
   height: 70px;
   display: flex;
