@@ -35,32 +35,28 @@ const List: React.FC = () => {
             className="list2"
             onClick={() => openModal("여행을 위해 500만원 모으기")}
           >
-            AI 추천 목표
-            <br />
+            <h4>AI 추천 목표</h4>
             "여행"을 위해 500만원 모으기
           </button>
           <button
             className="list3"
             onClick={() => openModal("한달에 얼마씩 모아야 1억이 될까?")}
           >
-            AI가 도와주는 저축 목표 설정
-            <br />
+            <h4>AI가 도와주는 저축 목표 설정</h4>
             한달에 얼마씩 모아야 1억이 될까?
           </button>
           <button
             className="list4"
             onClick={() => openModal("맥북을 위해 300만원 모으기")}
           >
-            AI 추천 목표
-            <br />
+            <h4> AI 추천 목표</h4>
             "맥북"을 위해 300만원 모으기
           </button>
           <button
             className="list5"
             onClick={() => openModal("노후자금을 위한 최대 저축 금액은?")}
           >
-            AI가 도와주는 저축 목표 설정
-            <br />
+            <h4> AI가 도와주는 저축 목표 설정</h4>
             노후자금을 위한 최대 저축 금액은?
           </button>
         </div>

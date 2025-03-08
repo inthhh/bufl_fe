@@ -62,6 +62,7 @@ const Account: React.FC = () => {
       </div>
       <div className="budget">
         <div className="budget1">항목별 예산</div>
+        <div className="line"></div>
         <div className="budget2">생활비</div>
         <div className="budget3">저축비</div>
         <div className="budget4">예비비</div>
@@ -74,7 +75,6 @@ const Account: React.FC = () => {
         <div className="budget11">00000원</div>
         <div className="budget12">00000원</div>
         <div className="budget13">00000원</div>
-        <div className="line"></div>
         <div className="budget14">45%</div>
         <div className="budget15">45%</div>
         <div className="budget16">45%</div>
