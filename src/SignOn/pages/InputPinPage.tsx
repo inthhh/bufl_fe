@@ -73,7 +73,7 @@ const InputPinPage: React.FC = () => {
 
       if (response.status === 200) {
         alert("PIN 설정 완료!");
-        navigate("/sign/interest"); // ✅ 다음 단계로 이동
+        navigate("/sign/salary-info"); // ✅ 다음 단계로 이동
       }
     } catch (error: any) {
       console.error("비밀번호 업데이트 오류:", error);
@@ -83,7 +83,7 @@ const InputPinPage: React.FC = () => {
 
   return (
     <div>
-      <MoveBack pageBefore="/sign/salary-info" />
+      <MoveBack pageBefore="/sign/personal-info" />
       <div className="center_wrap">
         <div className="pin-input--relative">
           <div className="black_title center_text">
