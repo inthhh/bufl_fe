@@ -62,10 +62,14 @@ const InputPinPage: React.FC = () => {
     }
 
     try {
-      const response = await axios.put("http://localhost:5002/api/users/update-password", {
-        userPhone, // ✅ 휴대폰 번호로 사용자 찾기
-        userPassword: newPassword, // ✅ 새 비밀번호(PIN)
-      });
+      const response = await axios.put(
+        "http://localhost:5000/api/users/update-password",
+        {
+          userPhone, // ✅ 휴대폰 번호로 사용자 찾기
+          userPassword: newPassword, // ✅ 새 비밀번호(PIN)
+        },
+        { withCredentials: true }
+      );
 
       if (response.status === 200) {
         alert("PIN 설정 완료!");
@@ -102,18 +106,28 @@ const InputPinPage: React.FC = () => {
 
           <div className="pin-input-container">
             {pin.map((num, index) => (
-              <div key={index} className={`pin-dot ${num ? "filled" : ""}`}></div>
+              <div
+                key={index}
+                className={`pin-dot ${num ? "filled" : ""}`}
+              ></div>
             ))}
           </div>
 
           <div className="keypad">
             {[...Array(9)].map((_, index) => (
-              <button key={index + 1} className="keypad-button" onClick={() => handleKeyPress((index + 1).toString())}>
+              <button
+                key={index + 1}
+                className="keypad-button"
+                onClick={() => handleKeyPress((index + 1).toString())}
+              >
                 {index + 1}
               </button>
             ))}
             <div></div>
-            <button className="keypad-button" onClick={() => handleKeyPress("0")}>
+            <button
+              className="keypad-button"
+              onClick={() => handleKeyPress("0")}
+            >
               0
             </button>
             <button className="keypad-button" onClick={handleDelete}>

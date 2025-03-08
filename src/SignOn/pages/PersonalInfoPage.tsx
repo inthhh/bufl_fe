@@ -62,7 +62,10 @@ const PersonalInfoPage: React.FC = () => {
       ...agreements,
       [key]: !agreements[key],
     };
-    updatedAgreements.all = updatedAgreements.terms && updatedAgreements.privacy && updatedAgreements.marketing;
+    updatedAgreements.all =
+      updatedAgreements.terms &&
+      updatedAgreements.privacy &&
+      updatedAgreements.marketing;
     dispatch(setAgreements(updatedAgreements));
   };
 
@@ -94,12 +97,16 @@ const PersonalInfoPage: React.FC = () => {
     setErrorMessage(""); // 오류 메시지 초기화
 
     try {
-      const response = await axios.post("http://localhost:5002/api/users", {
-        userName: localName,
-        userRegnu: `${idFront}-${idBack}******`,
-        userPhone: phone,
-        userPassword: "temppw", // 
-      });
+      const response = await axios.post(
+        "http://localhost:5000/api/users",
+        {
+          userName: localName,
+          userRegnu: `${idFront}-${idBack}******`,
+          userPhone: phone,
+          userPassword: "temppw", //
+        },
+        { withCredentials: true }
+      );
 
       if (response.status === 201) {
         localStorage.setItem("userPhone", phone); // ✅ userPhone을 localStorage에 저장
@@ -152,29 +159,61 @@ const PersonalInfoPage: React.FC = () => {
             maxLength={6}
           />
           <span>-</span>
-          <input className="input_id_2" type="text" value={idBack} onChange={handleIdBackChange} maxLength={1} />
+          <input
+            className="input_id_2"
+            type="text"
+            value={idBack}
+            onChange={handleIdBackChange}
+            maxLength={1}
+          />
           <span>******</span>
         </div>
 
         <div className="info_input_name info_input_phone">
           <label>휴대폰 번호</label>
-          <input type="text" placeholder="휴대폰 번호" value={phone} maxLength={11} onChange={handlePhoneChange} />
+          <input
+            type="text"
+            placeholder="휴대폰 번호"
+            value={phone}
+            maxLength={11}
+            onChange={handlePhoneChange}
+          />
         </div>
       </div>
 
       <div className="center_wrap agree_down">
         <h3>이용약관 동의</h3>
         <div className="agree_container">
-          <input type="checkbox" id="all" checked={agreements.all} onChange={handleAllAgreement} />
+          <input
+            type="checkbox"
+            id="all"
+            checked={agreements.all}
+            onChange={handleAllAgreement}
+          />
           <label htmlFor="all">모두 동의합니다.</label>
 
-          <input type="checkbox" id="terms" checked={agreements.terms} onChange={() => handleAgreementChange("terms")} />
+          <input
+            type="checkbox"
+            id="terms"
+            checked={agreements.terms}
+            onChange={() => handleAgreementChange("terms")}
+          />
           <label htmlFor="terms">이용약관 (필수)</label>
 
-          <input type="checkbox" id="privacy" checked={agreements.privacy} onChange={() => handleAgreementChange("privacy")} />
+          <input
+            type="checkbox"
+            id="privacy"
+            checked={agreements.privacy}
+            onChange={() => handleAgreementChange("privacy")}
+          />
           <label htmlFor="privacy">개인정보 수집 및 이용 동의 (필수)</label>
 
-          <input type="checkbox" id="marketing" checked={agreements.marketing} onChange={() => handleAgreementChange("marketing")} />
+          <input
+            type="checkbox"
+            id="marketing"
+            checked={agreements.marketing}
+            onChange={() => handleAgreementChange("marketing")}
+          />
           <label htmlFor="marketing">마케팅 정보 수신 동의 (선택)</label>
         </div>
       </div>
@@ -182,7 +221,11 @@ const PersonalInfoPage: React.FC = () => {
       {errorMessage && <p className="error_message">{errorMessage}</p>}
 
       <div className="center_wrap">
-        <button disabled={!isFormValid} onClick={handleSubmit} className={`btn_start ${isFormValid ? "" : "disabled"}`}>
+        <button
+          disabled={!isFormValid}
+          onClick={handleSubmit}
+          className={`btn_start ${isFormValid ? "" : "disabled"}`}
+        >
           확인
         </button>
       </div>
