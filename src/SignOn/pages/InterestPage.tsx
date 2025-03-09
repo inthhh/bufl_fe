@@ -30,7 +30,7 @@ const InterestPage = () => {
 
   return (
     <div>
-      <MoveBack pageBefore="/sign/input-pin" />
+      <MoveBack pageBefore="/sign/salary-info" />
       <div className="center_wrap">
         <div className="interest__title-wrap">
           <h3>다음 중, 관심사가 있다면 선택해주세요.</h3>

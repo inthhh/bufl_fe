@@ -54,7 +54,7 @@ function SalaryInfoPage() {
 
   return (
     <div className="container">
-      <MoveBack pageBefore="/sign/agreement" />
+      <MoveBack pageBefore="/sign/input-pin" />
       <h3 className="salary_text1">
         월급 자동 분배를 위해
         <br /> 정보가 필요해요.
@@ -161,7 +161,7 @@ function SalaryInfoPage() {
           <div className="center_wrap">
             <button
               className={`btn_start ${selectedAccount === null ? "disabled" : ""}`}
-              onClick={() => navigate("/sign/input-pin")}
+              onClick={() => navigate("/sign/interest")}
               disabled={selectedAccount === null}
             >
               다음
