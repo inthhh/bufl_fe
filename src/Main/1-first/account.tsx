@@ -22,6 +22,7 @@ const Account: React.FC = () => {
       </div>
       <div className="budget">
         <div className="budget1">항목별 예산</div>
+        <div className="line"></div>
         <div className="budget2">생활비</div>
       </div>
     </div>

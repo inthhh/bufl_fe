@@ -8,10 +8,7 @@
 }
 
 .account1 {
-  position: relative;
-  top: 20px;
-  left: 20px;
-  height: 20px;
+  padding: 20px 0 0 20px;
 }
 
 .account2 {
@@ -20,14 +17,17 @@
   bottom: 10px;
   left: 330px;
 }
+
 .toss1 {
   width: 34px;
   margin: 8px;
 }
+
 .account-t {
   font-size: 12px;
   margin: -45px 50px;
 }
+
 .account3 {
   border: none;
   background-color: rgba(206, 206, 206, 0.63);
@@ -39,6 +39,7 @@
 .line1 {
   height: 320px;
 }
+
 .budget {
   border: none;
   background-color: white;
@@ -47,6 +48,7 @@
   border-radius: 12px;
   margin: 30px 20px;
 }
+
 .budget1 {
 }
 .line {
@@ -55,6 +57,7 @@
   width: 360px;
   background-color: lightgray;
 }
+
 .budget14 {
   text-align: center;
   border: none;

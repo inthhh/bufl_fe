@@ -77,7 +77,6 @@ const App: React.FC = () => {
           <Route path="/money-split/add-category" element={<AddCategory />} />
           <Route path="/money-split/toss/terms" element={<TossTerms />} />
           <Route path="/money-split/ai/cancel" element={<AI_Cancel />} />
-
           <Route path="/setting" element={<Setting />} />
           <Route path="/Second" element={<Second />} />
           <Route path="/Main/AccountSelector" element={<AccountSelector />} />

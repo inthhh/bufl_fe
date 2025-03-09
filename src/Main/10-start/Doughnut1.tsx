@@ -3,12 +3,12 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
 // 데이터 예시
 const data = [
-  { name: "식비", value: 400 },
-  { name: "교통비", value: 300 },
+  { name: "현재 저축액", value: 320 },
+  { name: "달성액", value: 1000 - 320 },
 ];
 
 // 색상 배열
-const COLORS = ["#3182F6", "#9e2222"];
+const COLORS = ["#e4c3fe", "#989898"];
 
 interface DounutProps {
   // progress: number;
@@ -27,7 +27,7 @@ const DonutChart: React.FC<DounutProps> = (props) => {
             cy="50%"
             innerRadius={45} // 🚨 도넛 차트를 만들려면 여기를 추가해야 함!
             outerRadius={70} // 외곽 반지름
-            fill="#8884d8"
+            fill="#9c9ac8"
             paddingAngle={5}
             dataKey="value"
           >

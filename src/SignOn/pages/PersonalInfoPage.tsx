@@ -9,21 +9,20 @@ import {
   setPhone,
   setAgreements,
 } from "../../redux/reducers/personalInfoSlice";
+import axios from "axios";
 import "../../MoneySplit/style/splitStyle.css";
 import MoveBack from "../../MoneySplit/MoveBack";
 
 const PersonalInfoPage: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  // Redux 상태 가져오기
   const { name, idFront, idBack, phone, agreements } = useSelector(
     (state: RootState) => state.personalInfo
   );
 
-  // 한글 입력 문제 해결을 위한 로컬 상태
   const [localName, setLocalName] = useState(name);
   const [isComposing, setIsComposing] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(""); // 오류 메시지 상태 추가
 
   useEffect(() => {
     setLocalName(name);
@@ -32,14 +31,10 @@ const PersonalInfoPage: React.FC = () => {
   // 🔹 숫자 입력 방지 + 한글 & 영문만 입력 허용
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-
-    // 입력 중일 때는 로컬 상태만 변경 (Redux 업데이트 지연)
     if (isComposing) {
       setLocalName(value);
       return;
     }
-
-    // 한글, 영문, 공백만 허용하고 Redux에 반영
     const filteredValue = value.replace(/[^a-zA-Z가-힣\s]/g, "");
     setLocalName(filteredValue);
     dispatch(setName(filteredValue));
@@ -67,9 +62,10 @@ const PersonalInfoPage: React.FC = () => {
       ...agreements,
       [key]: !agreements[key],
     };
-
-    updatedAgreements.all = updatedAgreements.terms && updatedAgreements.privacy && updatedAgreements.marketing;
-
+    updatedAgreements.all =
+      updatedAgreements.terms &&
+      updatedAgreements.privacy &&
+      updatedAgreements.marketing;
     dispatch(setAgreements(updatedAgreements));
   };
 
@@ -96,6 +92,35 @@ const PersonalInfoPage: React.FC = () => {
     agreements.terms &&
     agreements.privacy;
 
+  // ✅ 🔗 백엔드 회원가입 요청 함수
+  const handleSubmit = async () => {
+    setErrorMessage(""); // 오류 메시지 초기화
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/users",
+        {
+          userName: localName,
+          userRegnu: `${idFront}-${idBack}******`,
+          userPhone: phone,
+          userPassword: "temppw", //
+        },
+        { withCredentials: true }
+      );
+
+      if (response.status === 201) {
+        localStorage.setItem("userPhone", phone); // ✅ userPhone을 localStorage에 저장
+        alert("회원가입 성공! PIN 번호를 설정해주세요.");
+        navigate("/sign/input-pin"); // ✅ PIN 설정 페이지로 이동
+      }
+    } catch (error: any) {
+      console.error("회원가입 오류:", error);
+      setErrorMessage(
+        error.response?.data?.message || "회원가입 중 오류가 발생했습니다."
+      );
+    }
+  };
+
   return (
     <div>
       <div className="underline">
@@ -117,9 +142,9 @@ const PersonalInfoPage: React.FC = () => {
             placeholder="성명"
             value={localName}
             onChange={handleNameChange}
-            onBlur={handleBlur} // 포커스 아웃 시 Redux에 저장
-            onCompositionStart={() => setIsComposing(true)} // 한글 조합 시작
-            onCompositionEnd={() => setIsComposing(false)} // 한글 조합 종료 후 Redux 저장
+            onBlur={handleBlur}
+            onCompositionStart={() => setIsComposing(true)}
+            onCompositionEnd={() => setIsComposing(false)}
           />
         </div>
 
@@ -134,23 +159,38 @@ const PersonalInfoPage: React.FC = () => {
             maxLength={6}
           />
           <span>-</span>
-          <input className="input_id_2" type="text" value={idBack} onChange={handleIdBackChange} maxLength={1} />
+          <input
+            className="input_id_2"
+            type="text"
+            value={idBack}
+            onChange={handleIdBackChange}
+            maxLength={1}
+          />
           <span>******</span>
         </div>
 
         <div className="info_input_name info_input_phone">
           <label>휴대폰 번호</label>
-          <input type="text" placeholder="휴대폰 번호" value={phone} maxLength={11} onChange={handlePhoneChange} />
+          <input
+            type="text"
+            placeholder="휴대폰 번호"
+            value={phone}
+            maxLength={11}
+            onChange={handlePhoneChange}
+          />
         </div>
       </div>
 
       <div className="center_wrap agree_down">
         <h3>이용약관 동의</h3>
         <div className="agree_container">
-          <input type="checkbox" id="all" checked={agreements.all} onChange={handleAllAgreement} />
-          <label htmlFor="all" className="all_agree_label">
-            모두 동의합니다.
-          </label>
+          <input
+            type="checkbox"
+            id="all"
+            checked={agreements.all}
+            onChange={handleAllAgreement}
+          />
+          <label htmlFor="all">모두 동의합니다.</label>
 
           <input
             type="checkbox"
@@ -158,9 +198,7 @@ const PersonalInfoPage: React.FC = () => {
             checked={agreements.terms}
             onChange={() => handleAgreementChange("terms")}
           />
-          <label htmlFor="terms">
-            이용약관 <span className="required">(필수)</span>
-          </label>
+          <label htmlFor="terms">이용약관 (필수)</label>
 
           <input
             type="checkbox"
@@ -168,9 +206,7 @@ const PersonalInfoPage: React.FC = () => {
             checked={agreements.privacy}
             onChange={() => handleAgreementChange("privacy")}
           />
-          <label htmlFor="privacy">
-            개인정보 수집 및 이용 동의 <span className="required">(필수)</span>
-          </label>
+          <label htmlFor="privacy">개인정보 수집 및 이용 동의 (필수)</label>
 
           <input
             type="checkbox"
@@ -178,16 +214,16 @@ const PersonalInfoPage: React.FC = () => {
             checked={agreements.marketing}
             onChange={() => handleAgreementChange("marketing")}
           />
-          <label htmlFor="marketing">
-            마케팅 정보 수신 동의 <span className="optional">(선택)</span>
-          </label>
+          <label htmlFor="marketing">마케팅 정보 수신 동의 (선택)</label>
         </div>
       </div>
+
+      {errorMessage && <p className="error_message">{errorMessage}</p>}
 
       <div className="center_wrap">
         <button
           disabled={!isFormValid}
-          onClick={() => navigate("/sign/agreement")}
+          onClick={handleSubmit}
           className={`btn_start ${isFormValid ? "" : "disabled"}`}
         >
           확인
