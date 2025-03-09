@@ -10,6 +10,7 @@ const Rocket: React.FC = () => {
   };
   return (
     <div>
+      <button className="x"></button>
       <div className="rocket">
         <img className="rocket" src={rocket} alt="rocket" />
       </div>

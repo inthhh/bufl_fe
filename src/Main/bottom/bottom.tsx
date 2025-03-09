@@ -29,7 +29,9 @@ const Bottom: React.FC<BottomProps> = ({ page }) => {
 
   const moveTo = (where: string) => {
     if (where === "home") navigate("/");
-    if (where === "goal") navigate("/"); // 목표페이지 경로 수정 필요
+    if (where === "goal") {
+      navigate("/Second");
+    } // 현재 목표가 없을때, 있을 때 목표페이지 경로 수정 필요
     if (where === "menu") navigate("/setting");
   };
 

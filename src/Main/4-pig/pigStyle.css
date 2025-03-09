@@ -1,5 +1,5 @@
 .start {
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
   text-align: center;
   margin: 130px 0 0 0;
@@ -12,12 +12,18 @@
   margin: 20px 130px 40px 130px;
 }
 .start-btn {
-  font-size: 20px;
+  background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 8px;
-  background-color: #3183f6;
-  width: 300px;
-  height: 60px;
-  margin: 10px 50px;
+  width: 350px;
+  height: 64px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 100px 25px 0 25px;
+  cursor: pointer;
+  display: block;
+  border-radius: 12px;
 }

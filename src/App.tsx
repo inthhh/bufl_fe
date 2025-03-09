@@ -61,37 +61,19 @@ const App: React.FC = () => {
           <Route path="/money-split" element={<MoneySplitFirst />} />
 
           <Route path="/money-split/ai" element={<AI_home />} />
-          <Route
-            path="/money-split/ai/analysis-loading"
-            element={<AI_anaLoading />}
-          />
-          <Route
-            path="/money-split/ai/calculate-loading"
-            element={<AI_calLoading />}
-          />
+          <Route path="/money-split/ai/analysis-loading" element={<AI_anaLoading />} />
+          <Route path="/money-split/ai/calculate-loading" element={<AI_calLoading />} />
           <Route path="/money-split/ai/analysis" element={<AI_analysis />} />
           <Route path="/money-split/ai/calculate" element={<AI_calculate />} />
-          <Route
-            path="/money-split/select-account"
-            element={<SelectAccount />}
-          />
+          <Route path="/money-split/select-account" element={<SelectAccount />} />
           <Route path="/money-split/select-ratio" element={<SelectRatio />} />
-          <Route
-            path="/money-split/authentication"
-            element={<Authentication />}
-          />
+          <Route path="/money-split/authentication" element={<Authentication />} />
           <Route path="/money-split/toss-auth" element={<TossAuth />} />
           <Route path="/money-split/input-pin" element={<InputPin />} />
           <Route path="/money-split/split-loading" element={<SplitLoading />} />
           <Route path="/money-split/finish" element={<SplitFinish />} />
-          <Route
-            path="/money-split/select-account/detail/:categoryId"
-            element={<SelectAccountDetail />}
-          />
-          <Route
-            path="/money-split/select-account/accounts/:categoryId"
-            element={<SelectAccountAccounts />}
-          />
+          <Route path="/money-split/select-account/detail/:categoryId" element={<SelectAccountDetail />} />
+          <Route path="/money-split/select-account/accounts/:categoryId" element={<SelectAccountAccounts />} />
           <Route path="/money-split/add-category" element={<AddCategory />} />
           <Route path="/money-split/toss/terms" element={<TossTerms />} />
           <Route path="/money-split/ai/cancel" element={<AI_Cancel />} />

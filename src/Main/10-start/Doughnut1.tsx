@@ -19,7 +19,6 @@ interface DounutProps {
 const DonutChart: React.FC<DounutProps> = (props) => {
   return (
     <div style={{ width: "100%", height: "200px" }}>
-
       <ResponsiveContainer>
         <PieChart>
           <Pie
@@ -33,20 +32,21 @@ const DonutChart: React.FC<DounutProps> = (props) => {
             dataKey="value"
           >
             {data.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
-              />
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>
         </PieChart>
       </ResponsiveContainer>
-      <div style={{
-        position: "absolute",
-        marginLeft: "180px",
-        bottom: "600px"
-      }}>{props.currentProgress}</div>
-    </div >
+      <div
+        style={{
+          position: "absolute",
+          marginLeft: "180px",
+          bottom: "580px",
+        }}
+      >
+        {props.currentProgress}
+      </div>
+    </div>
   );
 };
 
