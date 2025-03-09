@@ -1,0 +1,23 @@
+.start {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin: 130px 0 0 0;
+}
+.pig {
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 130px 40px 130px;
+}
+.start-btn {
+  font-size: 20px;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  background-color: #3183f6;
+  width: 300px;
+  height: 60px;
+  margin: 10px 50px;
+}

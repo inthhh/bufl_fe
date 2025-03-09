@@ -1,0 +1,73 @@
+.pay {
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+}
+.pay1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px;
+  text-align: center;
+}
+.pay2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 50px 20px 10px 20px;
+}
+.pay3 {
+  color: gray;
+  margin: 10px 20px;
+}
+.button_wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  flex-direction: column;
+}
+.box1-btn {
+  font-size: 24px;
+  border: none;
+  border-radius: 8px;
+  background-color: #3183f6a8;
+  width: 300px;
+  height: 60px;
+  padding: 10px;
+  margin: 20px;
+}
+.box2-btn {
+  font-size: 24px;
+  border: none;
+  border-radius: 8px;
+  background-color: #3183f642;
+  width: 300px;
+  height: 60px;
+  padding: 10px;
+}
+
+.bankbook {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0 0 20px 30px;
+}
+.checkbox {
+  font-size: 20px;
+  color: gray;
+  display: flex;
+  margin: 50px;
+}
+.input-type {
+  margin: 7px 30px 7px 10px;
+}
+.okay-btn {
+  color: white;
+  font-size: 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #3183f6;
+  width: 300px;
+  height: 55px;
+  margin: 30px 50px 0 50px;
+}
