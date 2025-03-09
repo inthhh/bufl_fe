@@ -21,7 +21,10 @@ const SelectAccountDetail: React.FC = () => {
 
   useEffect(() => {
     console.log("*******", categoryId);
-    fetch(`http://localhost:5000/api/salary/category/${categoryId}`)
+    fetch(`http://localhost:5000/api/salary/category/${categoryId}`, {
+      method: "GET", // 기본값이지만 명시적으로 써도 됨
+      credentials: "include", // 쿠키 및 인증 정보 포함
+    })
       .then((response) => response.json())
       .then((data) => {
         setName(data.category[0].name);
@@ -46,6 +49,7 @@ const SelectAccountDetail: React.FC = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(requestBody),
+        credentials: "include", // 쿠키 및 인증 정보 포함
       });
 
       if (!response.ok) {

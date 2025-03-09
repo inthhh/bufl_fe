@@ -73,7 +73,10 @@ const SelectRatio: React.FC = () => {
 
   const [total, setTotal] = useState<number>(12345);
   useEffect(() => {
-    fetch("http://localhost:5000/api/users/salary")
+    fetch("http://localhost:5000/api/users/salary", {
+      method: "GET", // 기본값이지만 명시적으로 써도 됨
+      credentials: "include", // 쿠키 및 인증 정보 포함
+    })
       .then((response) => response.json())
       .then((data) => {
         setTotal(Number(data.amount));
@@ -169,6 +172,7 @@ const SelectRatio: React.FC = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(requestBody),
+        credentials: "include", // 쿠키 및 인증 정보 포함
       });
 
       if (!response.ok) {

@@ -44,6 +44,7 @@ const InputPin: React.FC = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ userPassword: pinString }),
+        credentials: "include", // 쿠키 및 인증 정보 포함
       });
 
       if (!response.ok) {
