@@ -35,9 +35,9 @@ const First: React.FC = () => {
           </div>
           <div className="more">더 보기 ▼</div>
         </div>
-        <div className="month">
-          <div className="month1">2월 총 지출</div>
-          <div className="month2">326,510 원</div>
+        <div className="month_">
+          <div className="month1_">2월 총 지출</div>
+          <div className="month2_">326,510 원</div>
         </div>
         <div className="asset-box">
           <div className="donut">

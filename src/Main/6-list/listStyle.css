@@ -55,27 +55,33 @@
   height: 20px;
 }
 .log-btn {
+  background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 8px;
-  background-color: #3183f6;
-  width: 370px;
-  height: 55px;
-  margin: 15px;
+  width: 350px;
+  height: 64px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 20px 25px 0 25px;
+  cursor: pointer;
+  display: block;
+  border-radius: 12px;
 }
 .modal-content {
   border-radius: 12px;
   background-color: white;
   width: 380px;
   height: 480px;
+  margin-left: 10px;
   position: fixed; /* 고정 위치 */
-  top: 62%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* 중앙 정렬 */
+  top: 320px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 .content-right {
-  margin: 20px;
+  margin: 40px 20px;
 }
 .goal-text {
   font-size: 17px;
@@ -83,11 +89,10 @@
   margin: 20px;
 }
 .slider-container {
-  position: relative;
   margin: 10px 0;
 }
 .slider1 {
-  margin: 30px 20px 30px 30px;
+  margin: 10px 20px 10px 30px;
   width: 320px;
 }
 .month {
@@ -95,36 +100,23 @@
   margin: 30px;
 }
 .min-value {
+  margin-left: 30px;
   font-size: 14px;
   color: lightgray;
-  position: absolute;
-  top: 32px;
-  left: 30px;
 }
 .max-value {
   font-size: 14px;
   color: lightgray;
-  position: absolute;
-  top: 32px;
-  left: 300px;
+}
+.text-space-btw {
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .month-money {
   font-weight: bold;
   margin: 30px;
-}
-.min-month {
-  font-size: 14px;
-  color: lightgray;
-  position: absolute;
-  top: 260px;
-  left: 30px;
-}
-.max-month {
-  font-size: 14px;
-  color: lightgray;
-  position: absolute;
-  top: 260px;
-  left: 300px;
 }
 .slider-container1 {
   text-align: left;

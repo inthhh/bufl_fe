@@ -2,73 +2,18 @@
   border: none;
   background-color: rgba(211, 211, 211, 0.363);
   border-radius: 12px;
-  height: 560px;
-  width: 360px;
-  margin: 20px;
-  position: relative;
-  top: 100px;
+  height: 590px;
+  width: 380px;
+  margin: 10px;
 }
 .spin {
-  position: relative;
-  top: 30px;
-  left: 30px;
+  padding: 20px;
 }
+
 .loading {
   text-align: center;
-  position: relative;
-  top: 230px;
 }
 
-.spinner {
-  position: relative;
-  width: 60px;
-  height: 60px;
-  top: 200px;
-  left: 150px;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  background-color: #3182f6;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform-origin: 0px 0px;
-  animation: rotate 1.2s linear infinite;
-}
-
-.dot:nth-child(1) {
-  transform: rotate(0deg) translate(20px);
-  animation-delay: 0s;
-}
-.dot:nth-child(2) {
-  transform: rotate(60deg) translate(20px);
-  animation-delay: 0.1s;
-}
-.dot:nth-child(3) {
-  transform: rotate(120deg) translate(20px);
-  animation-delay: 0.2s;
-}
-.dot:nth-child(4) {
-  transform: rotate(180deg) translate(20px);
-  animation-delay: 0.3s;
-}
-.dot:nth-child(5) {
-  transform: rotate(240deg) translate(20px);
-  animation-delay: 0.4s;
-}
-.dot:nth-child(6) {
-  transform: rotate(300deg) translate(20px);
-  animation-delay: 0.5s;
-}
-
-@keyframes rotate {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+.spin_container {
+  margin-top: 170px;
 }

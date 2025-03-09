@@ -1,12 +1,10 @@
 .account {
   border: none;
   background-color: white;
-  width: 380px;
+  width: 360px;
+  margin-left: 20px;
   height: 460px;
   border-radius: 12px;
-  margin: 0 10px;
-  position: relative;
-  top: 10px;
 }
 
 .account1 {
@@ -20,7 +18,7 @@
   font-size: 20px;
   position: relative;
   bottom: 10px;
-  left: 350px;
+  left: 330px;
 }
 .toss1 {
   width: 34px;
@@ -37,147 +35,25 @@
   width: 320px;
   height: 50px;
   margin: 20px;
-  position: relative;
-  bottom: 342px;
-  left: 3px;
-}
-.account4 {
-  border: none;
-  background-color: rgba(10, 195, 16, 0.74);
-  border-radius: 12px;
-  width: 280px;
-  height: 50px;
-  position: relative;
-  bottom: 345px;
-  left: 63px;
-}
-.account5 {
-  border: none;
-  background-color: rgba(48, 231, 228, 0.73);
-  border-radius: 12px;
-  width: 280px;
-  height: 50px;
-  position: relative;
-  bottom: 327px;
-  left: 63px;
-}
-.account6 {
-  border: none;
-  background-color: rgba(48, 231, 228, 0.73);
-  border-radius: 12px;
-  width: 280px;
-  height: 50px;
-  position: relative;
-  bottom: 326px;
-  left: 63px;
-}
-.account7 {
-  border: none;
-  background-color: rgba(250, 159, 1, 0.85);
-  border-radius: 12px;
-  width: 280px;
-  height: 50px;
-  position: relative;
-  bottom: 310px;
-  left: 63px;
-}
-.account8 {
-  border: none;
-  background-color: rgba(255, 3, 49, 0.85);
-  border-radius: 12px;
-  width: 280px;
-  height: 50px;
-  position: relative;
-  bottom: 295px;
-  left: 63px;
 }
 .line1 {
   height: 320px;
-  position: relative;
-  top: 60px;
-  left: 20px;
 }
 .budget {
   border: none;
   background-color: white;
   height: 200px;
-  width: 380px;
+  width: 360px;
   border-radius: 12px;
-  margin: 30px 10px;
+  margin: 30px 20px;
 }
 .budget1 {
-  position: relative;
-  top: 13px;
-  left: 20px;
-}
-.budget2 {
-  position: relative;
-  top: 36px;
-  left: 20px;
-}
-.budget3 {
-  position: relative;
-  top: 50px;
-  left: 20px;
-}
-.budget4 {
-  position: relative;
-  top: 60px;
-  left: 20px;
-}
-.budget5 {
-  position: relative;
-  top: 70px;
-  left: 20px;
-}
-.budget6 {
-  position: relative;
-  bottom: 60px;
-  left: 220px;
-}
-.budget7 {
-  position: relative;
-  bottom: 47px;
-  left: 220px;
-}
-.budget8 {
-  position: relative;
-  bottom: 36px;
-  left: 220px;
-}
-.budget9 {
-  position: relative;
-  bottom: 26px;
-  left: 220px;
-}
-.budget10 {
-  position: relative;
-  bottom: 156px;
-  left: 300px;
-}
-.budget11 {
-  position: relative;
-  bottom: 143px;
-  left: 300px;
-}
-.budget12 {
-  position: relative;
-  bottom: 133px;
-  left: 300px;
-}
-.budget13 {
-  position: relative;
-  bottom: 122px;
-  left: 300px;
 }
 .line {
   border: none;
   height: 1px;
   width: 360px;
   background-color: lightgray;
-  position: relative;
-  bottom: 265px;
-  left: 10px;
 }
 .budget14 {
   text-align: center;
@@ -186,40 +62,4 @@
   border-radius: 20px;
   width: 50px;
   height: 20px;
-  position: relative;
-  bottom: 250px;
-  left: 100px;
-}
-.budget15 {
-  text-align: center;
-  border: none;
-  background-color: rgba(48, 231, 228, 0.73);
-  border-radius: 20px;
-  width: 50px;
-  height: 20px;
-  position: relative;
-  bottom: 233px;
-  left: 100px;
-}
-.budget16 {
-  text-align: center;
-  border: none;
-  background-color: rgba(250, 159, 1, 0.85);
-  border-radius: 20px;
-  width: 50px;
-  height: 20px;
-  position: relative;
-  bottom: 219px;
-  left: 100px;
-}
-.budget17 {
-  text-align: center;
-  border: none;
-  background-color: rgba(255, 3, 49, 0.85);
-  border-radius: 20px;
-  width: 50px;
-  height: 20px;
-  position: relative;
-  bottom: 203px;
-  left: 100px;
 }
