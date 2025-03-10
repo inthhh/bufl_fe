@@ -14,7 +14,9 @@ const Choose: React.FC = () => {
   const selfhandle = () => {
     navigate("/Main/choice");
   };
-
+  const nexthandle = () => {
+    navigate("/Main/rocket");
+  };
   return (
     <div>
       <MoveBack pageBefore="/Main/AccountSelector1" />
@@ -22,7 +24,7 @@ const Choose: React.FC = () => {
         <img className="pigmoney" src={pigmoney} alt="pigmoney" />
       </div>
       <div className="winnermoney1">매달 {amount}만원씩<br />저축에 성공하면</div>
-      <div className="winnermoney2">{duration}개월 만기했을 때 (원금+이자)</div>
+      <div className="winnermoney2">{duration}개월 만기했을 때 (원금+이자)</div>                                             {/* 천 단위 쉼표 추가 */}
       <div className="winnermoney3"><span style={{ color: "#3182F6", fontWeight: "bold" }}>{(amount * 10000 * duration).toLocaleString()}원</span> + a 받아요</div>
       <div>
         {/* 저축 금액 조절 슬라이더 */}
@@ -57,6 +59,7 @@ const Choose: React.FC = () => {
             />
           </div>
           <button className="winner-money4" onClick={selfhandle}>직접 입력</button>
+          <button className="next-btn" onClick={nexthandle}>다음</button>
         </div>
       </div>
     </div>
