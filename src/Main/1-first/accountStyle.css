@@ -85,17 +85,9 @@
   margin: 55px 20px -10px 30px;
 }
 
-.budget {
-  border: none;
-  background-color: white;
-  height: 200px;
-  width: 360px;
-  border-radius: 12px;
-  margin: 30px 20px;
-}
-
-.budget1 {
-  padding: 15px 0 0 15px;
+.budget-title {
+  margin: 15px 0 10px 20px;
+  font-weight: bold;
 }
 
 .line {
@@ -106,90 +98,43 @@
   margin: 10px 10px 0 15px;
 }
 
-.budget2 {
-  margin: 10px 0 0 20px;
-}
-
-.budget3 {
-  margin: 15px 0 0 20px;
-}
-
-.budget4 {
-  margin: 15px 0 0 20px;
-}
-
-.budget5 {
-  margin: 15px 0 0 20px;
-}
-
-.budget6 {
-  margin: -126px 0 0 190px;
-}
-
-.budget7 {
-  margin: 15px 0 0 190px;
-}
-
-.budget8 {
-  margin: 16px 0 0 190px;
-}
-
-.budget9 {
-  margin: 14px 0 0 190px;
-}
-
-.budget10 {
-  margin: -127px 0 0 290px;
-}
-
-.budget11 {
-  margin: 17px 0 0 290px;
-}
-
-.budget12 {
-  margin: 14px 0 0 290px;
-}
-
-.budget13 {
-  margin: 15px 0 0 290px;
-}
-
-.budget14 {
-  text-align: center;
+.budget_container {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  border-radius: 8px;
+  overflow: hidden;
+  border-bottom: 1px solid #ddd;
   border: none;
-  background-color: rgba(10, 195, 16, 0.74);
-  border-radius: 20px;
-  width: 50px;
-  height: 20px;
-  margin: -132px 0 10px 100px;
+  background-color: white;
+  border-radius: 12px;
+  margin: 30px 20px;
+  padding: 0 0 20px 0;
 }
 
-.budget15 {
+.budget_wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 2fr; /* 컬럼 너비 조정 */
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-top: 1px solid #ddd;
   text-align: center;
-  border: none;
-  background-color: rgba(48, 231, 228, 0.73);
-  border-radius: 20px;
-  width: 50px;
-  height: 20px;
-  margin: 15px 0 10px 100px;
 }
 
-.budget16 {
-  text-align: center;
-  border: none;
-  background-color: rgba(250, 159, 1, 0.85);
-  border-radius: 20px;
-  width: 50px;
-  height: 20px;
-  margin: 17px 0 10px 100px;
+.budget_percent {
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
-.budget17 {
-  text-align: center;
-  border: none;
-  background-color: rgba(255, 3, 49, 0.85);
-  border-radius: 20px;
-  width: 50px;
-  height: 20px;
-  margin: 18px 0 10px 100px;
+.donut {
+  height: 150px;
+  width: 180px;
+}
+.donut-title {
+  margin-left: 20px;
+  padding-top: 20px;
 }

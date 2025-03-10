@@ -60,7 +60,7 @@ const SelectAccountAccounts: React.FC = () => {
                     name="account"
                     onClick={() =>
                       setAccount({
-                        selectedAccountId: account.id,
+                        selectedAccountId: account.account_id,
                         selectedAccountName: account.bank_name + " " + String(account.account_number),
                       })
                     }

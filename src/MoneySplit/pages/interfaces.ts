@@ -34,7 +34,7 @@ export interface CategoryAccountProps {
 }
 
 export interface AccountsInterface {
-  id: number;
+  account_id: number;
   user_id: number;
   account_number: number;
   bank_name: number;
