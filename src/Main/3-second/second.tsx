@@ -34,10 +34,10 @@ const Second: React.FC = () => {
       </div>
       <div className="button_wrap">
         <button className="box1-btn" onClick={handlebox1}>
-          AI 추천 받기
+          🤖 AI 추천 받기
         </button>
         <button className="box2-btn" onClick={handlebox2}>
-          목표 설정하기
+          ✍🏻 직접 설정
         </button>
       </div>
       <Bottom page="goal" />

@@ -12,10 +12,10 @@ import Bottom from "../bottom/bottom";
 
 const First: React.FC = () => {
   return (
-    <div>
+    <div style={{ height: "730px", backgroundColor: "#F3F3F3" }}>
       <img className="bufl" src={Bufl} alt="bufl" />
       <img className="bell" src={BellImg} alt="Bell" />
-      <div style={{ height: "690px", overflowY: "scroll", overflowX: "hidden" }}>
+      <div style={{ height: "690px", overflowY: "scroll", overflowX: "hidden", marginTop: "15px" }}>
         <div className="bank-icon">
           <div className="bank-icon1">
             <img className="toss" src={BankIcon1} alt="Toss" />
@@ -35,9 +35,9 @@ const First: React.FC = () => {
           </div>
           <div className="more">더 보기 ▼</div>
         </div>
-        <div className="month">
-          <div className="month1">2월 총 지출</div>
-          <div className="month2">326,510 원</div>
+        <div className="month_">
+          <div className="month1_">2월 총 지출</div>
+          <div className="month2_">326,510 원</div>
         </div>
         <div className="asset-box">
           <div className="donut">

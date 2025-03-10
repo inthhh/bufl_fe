@@ -22,7 +22,7 @@
 }
 
 .bank-icon {
-  margin: 30px;
+  margin: 20px;
   margin-top: 30px;
 }
 
@@ -82,33 +82,33 @@
   left: 20px;
 }
 
-.month {
+.month_ {
+  margin-left: 20px;
   border: 1px;
-  background-color: rgba(211, 211, 211, 0.233);
-  margin: 20px;
+  background-color: white;
+  width: 360px;
+  height: 60px;
   border-radius: 12px;
+  display: flex;
+  justify-content: space-around;
+  align-self: center;
+  line-height: 60px;
 }
 
-.month1 {
+.month1_ {
   color: gray;
   font-size: large;
-  position: relative;
-  left: 30px;
-  top: 10px;
 }
 
-.month2 {
+.month2_ {
   color: rgba(68, 68, 68, 0.959);
   font-weight: bolder;
   font-size: large;
-  position: relative;
-  left: 160px;
-  bottom: 15px;
 }
 
 .asset-box {
   border: 1px;
-  background-color: rgba(211, 211, 211, 0.233);
+  background-color: white;
   margin: 20px;
   height: 180px;
   border-radius: 12px;
