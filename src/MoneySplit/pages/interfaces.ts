@@ -39,6 +39,7 @@ export interface AccountsInterface {
   account_number: number;
   bank_name: number;
   balance: number;
+  logo?: string;
 }
 
 export interface SelectedAccountInterface {
