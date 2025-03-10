@@ -38,16 +38,8 @@ const Start: React.FC = () => {
           <div className="nowmoney">현재 저축액</div>
           <div className="money4">3,200,000원</div>
         </div>
-        <div className="goal-list">목표 달성 현황</div>
         {/* 도넛 차트 추가 */}
-        <DonutChart goal={goal} currentProgress={currentProgress} />
-        <input
-          type="range"
-          min="0"
-          max={goal}
-          value={currentProgress}
-          onChange={(e) => setCurrentProgress(Number(e.target.value))}
-        />
+        <DonutChart />
       </div>
       <div>
         <img className="ninja" src={ninja} alt="ninja" />
