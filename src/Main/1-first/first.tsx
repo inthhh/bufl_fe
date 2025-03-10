@@ -10,10 +10,15 @@ import DoughnutChart from "./DoughnutChart.js";
 import Account from "./account";
 import Bottom from "../bottom/bottom";
 import { AccountsInterface } from "../../MoneySplit/pages/interfaces";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const First: React.FC = () => {
   const [accounts, setAccounts] = useState<AccountsInterface[]>([]);
   const [viewMore, setViewMore] = useState<boolean>(false);
+  const location = useLocation();
+  const isFromCompletion = location.state?.from === "first-time";
+  const navigate = useNavigate();
+  // console.log(isFromCompletion);
 
   useEffect(() => {
     fetch("http://localhost:5000/api/accounts", {
@@ -32,12 +37,14 @@ const First: React.FC = () => {
     <div style={{ height: "730px", backgroundColor: "#F3F3F3" }}>
       <img className="bufl" src={Bufl} alt="bufl" />
       <img className="bell" src={BellImg} alt="Bell" />
-      <div style={{ height: "690px", overflowY: "scroll", overflowX: "hidden", marginTop: "15px" }}>
+      <div
+        style={{ height: "690px", overflowY: "scroll", overflowX: "hidden", marginTop: "15px", position: "relative" }}
+      >
         <div className="bank-icon">
           <div className="bank-icon1">
             <img
               className="main_icons"
-              src={accounts.length > 0 ? require(`../../SignOn/images/${accounts[0]?.logo}`) : BankIcon1}
+              src={accounts?.length > 0 ? require(`../../SignOn/images/${accounts[0]?.logo}`) : BankIcon1}
               alt="icon"
             />
             <div className="money">{accounts[0]?.balance ? Number(accounts[0]?.balance).toLocaleString() : 0}원</div>
@@ -45,7 +52,7 @@ const First: React.FC = () => {
           <div className="bank-icon2">
             <img
               className="main_icons"
-              src={accounts.length > 0 ? require(`../../SignOn/images/${accounts[1]?.logo}`) : BankIcon1}
+              src={accounts?.length > 0 ? require(`../../SignOn/images/${accounts[1]?.logo}`) : BankIcon1}
               alt="icon"
             />
             <div className="money">{accounts[1]?.balance ? Number(accounts[1]?.balance).toLocaleString() : 0}원</div>
@@ -53,7 +60,7 @@ const First: React.FC = () => {
           <div className="bank-icon3">
             <img
               className="main_icons"
-              src={accounts.length > 0 ? require(`../../SignOn/images/${accounts[2]?.logo}`) : BankIcon1}
+              src={accounts?.length > 0 ? require(`../../SignOn/images/${accounts[2]?.logo}`) : BankIcon1}
               alt="icon"
             />
             <div className="money">{accounts[2]?.balance ? Number(accounts[2]?.balance).toLocaleString() : 0}원</div>
@@ -61,7 +68,7 @@ const First: React.FC = () => {
           <div className="bank-icon4">
             <img
               className="main_icons"
-              src={accounts.length > 0 ? require(`../../SignOn/images/${accounts[3]?.logo}`) : BankIcon1}
+              src={accounts?.length > 0 ? require(`../../SignOn/images/${accounts[3]?.logo}`) : BankIcon1}
               alt="icon"
             />
             <div className="money">{accounts[3]?.balance ? Number(accounts[3]?.balance).toLocaleString() : 0}원</div>
@@ -71,7 +78,7 @@ const First: React.FC = () => {
               <div className="bank-icon5">
                 <img
                   className="main_icons"
-                  src={accounts.length > 0 ? require(`../../SignOn/images/${accounts[4]?.logo}`) : BankIcon1}
+                  src={accounts?.length > 0 ? require(`../../SignOn/images/${accounts[4]?.logo}`) : BankIcon1}
                   alt="icon"
                 />
                 <div className="money">
@@ -88,6 +95,20 @@ const First: React.FC = () => {
           <div className="month1_">2월 총 지출</div>
           <div className="month2_">326,510 원</div>
         </div>
+        {isFromCompletion ? (
+          <div className="start-service-box">
+            <div>
+              <div style={{ margin: "30px 0", textAlign: "center" }}>
+                월급 쪼개기를
+                <br />
+                시작해볼까요?
+              </div>
+            </div>
+            <button className="blue_big_btn" type="button" onClick={() => navigate("/money-split")}>
+              바로가기
+            </button>
+          </div>
+        ) : undefined}
         <div className="asset-box">
           <div className="donut">
             <DoughnutChart />
