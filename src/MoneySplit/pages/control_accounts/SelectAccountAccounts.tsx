@@ -30,7 +30,10 @@ const SelectAccountAccounts: React.FC = () => {
       credentials: "include", // 쿠키 및 인증 정보 포함
     })
       .then((response) => response.json())
-      .then((data) => setAccounts(data.accounts))
+      .then((data) => {
+        setAccounts(data.accounts);
+        console.log(data.accounts);
+      })
       .catch((error) => console.error("SelectAccountAccounts error:", error));
   }, []);
 
@@ -41,13 +44,15 @@ const SelectAccountAccounts: React.FC = () => {
 
   return (
     <div>
-      <MoveBack pageBefore="/money-split/select-account/detail" />
+      <MoveBack pageBefore={`/money-split/select-account/detail/${categoryId}`} />
       <div className="center_wrapper">
         <div>
-          <div>“생활비” 목적으로 사용할 통장을 선택해주세요.</div>
+          <div className="accounttitle">
+            “생활비” 목적으로 사용할 <br /> 선택해주세요.
+          </div>
           <div>
             <ul className="analysis_list">
-              {accounts.map((account, index) => (
+              {accounts?.map((account, index) => (
                 <li>
                   <input
                     type="radio"
@@ -55,7 +60,7 @@ const SelectAccountAccounts: React.FC = () => {
                     name="account"
                     onClick={() =>
                       setAccount({
-                        selectedAccountId: account.account_id,
+                        selectedAccountId: account.id,
                         selectedAccountName: account.bank_name + " " + String(account.account_number),
                       })
                     }

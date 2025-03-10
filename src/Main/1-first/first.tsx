@@ -119,7 +119,11 @@ const First: React.FC = () => {
           <div className="asset3">생활비</div>
           <div className="asset4">저축</div>
           <div className="asset5">내 월급 :</div>
-          <div className="asset6">당신은 " "입니다.</div>
+          <div className="asset6">
+            당신은 "성실형"
+            <br />
+            입니다.
+          </div>
         </div>
 
         <Account />

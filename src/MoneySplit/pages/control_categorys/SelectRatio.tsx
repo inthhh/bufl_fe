@@ -159,10 +159,10 @@ const SelectRatio: React.FC = () => {
   const clickForYes = async () => {
     console.log(categoryList);
     const requestBody = categoryList.map(({ name, goal, color, ratio }) => ({
-      name,
-      goal,
-      color,
-      ratio,
+      name: name,
+      goal_amount: goal,
+      background_color: color,
+      ratio: ratio,
     }));
     console.log(requestBody);
     try {
