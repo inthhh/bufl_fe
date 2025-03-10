@@ -27,7 +27,7 @@ import Choose from "./Main/7-choose/choose";
 import Choice from "./Main/8-choice/choice";
 import Rocket from "./Main/9-rocket/rocket";
 import Start from "./Main/10-start/start";
-
+import Goal from "./Main/11-goal/goal";
 import StartPage from "./SignOn/pages/StartPage";
 import PersonalInfoPage from "./SignOn/pages/PersonalInfoPage";
 import AgreementPage from "./SignOn/pages/AgreementPage";
@@ -89,7 +89,7 @@ const App: React.FC = () => {
           <Route path="/Main/rocket" element={<Rocket />} />
           <Route path="/Main/start" element={<Start />} />
           {/* <Route path="/Main/DoughnutChart1" element={<Doughnut1 />} /> */}
-
+          <Route path="/Main/goal" element={<Goal />} />
           <Route path="/sign" element={<StartPage />} />
           <Route path="/sign/personal-info" element={<PersonalInfoPage />} />
           <Route path="/sign/agreement" element={<AgreementPage />} />
