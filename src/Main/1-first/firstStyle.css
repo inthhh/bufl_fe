@@ -159,7 +159,7 @@
 
 .start-service-box {
   width: 400px;
-  height: 900px;
+  height: 1100px;
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
   position: absolute;
@@ -172,4 +172,28 @@
   flex-direction: column;
   font-size: 28px;
   font-weight: bold;
+}
+
+.main-wrap {
+  height: 690px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin-top: 15px;
+  position: relative;
+}
+/* 스크롤바 전체 기본 꾸미기 */
+.main-wrap::-webkit-scrollbar {
+  scrollbar-color: #b6b6b6 #f1f1f1;
+  width: 6px;
+}
+
+/* 스크롤바 막대 꾸미기 */
+.main-wrap::-webkit-scrollbar-thumb {
+  background-color: #b6b6b6;
+  border-radius: 4px;
+}
+
+/* 스크롤바 트랙 꾸미기 */
+.main-wrap::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }

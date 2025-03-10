@@ -1,33 +1,68 @@
 import React, { useState, useEffect } from "react";
 import styles from "./AccountTree.module.css";
 
-interface Account {
-  id: number;
-  bankName: string;
-  accountNumber: string;
-  balance: number;
-}
-
 const AccountTree: React.FC = () => {
-  const [accounts, setAccounts] = useState<Account[]>([]);
+  const [name, setName] = useState<string[]>([]);
+  const [bankName, setBankName] = useState<number[]>([]);
+  const [accNum, setAccNum] = useState<string[]>([]);
+  const [amount, setAmount] = useState<number[]>([]);
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
 
   useEffect(() => {
-    // 예제 데이터 (API 요청 대체)
-    const fetchAccounts = async () => {
-      const data: Account[] = [
-        { id: 0, bankName: "토스뱅크", accountNumber: "0000-00000", balance: 3000000 },
-        { id: 1, bankName: "토스뱅크", accountNumber: "0000-00000", balance: 3000000 },
-        { id: 2, bankName: "토스뱅크", accountNumber: "0000-00000", balance: 3000000 },
-        { id: 3, bankName: "토스뱅크", accountNumber: "0000-00000", balance: 3000000 },
-        { id: 4, bankName: "토스뱅크", accountNumber: "0000-00000", balance: 3000000 },
-        { id: 5, bankName: "토스뱅크", accountNumber: "0000-00000", balance: 3000000 },
-      ];
-      setAccounts(data);
-    };
-    fetchAccounts();
+    fetch(`http://localhost:5000/api/salary/account`, {
+      method: "GET", // 기본값이지만 명시적으로 써도 됨
+      credentials: "include", // 쿠키 및 인증 정보 포함
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const names = data.map((c: any) => c.name);
+        const banknames = data.map((c: any) => c.bankName);
+        const accnums = data.map((c: any) => c.accountNumber);
+        setName(names);
+        setBankName(banknames);
+        setAccNum(accnums);
+        console.log("***", names, banknames, accnums);
+        setIsDataLoaded(true);
+      })
+      .catch((error) => console.error("tree error:", error));
   }, []);
 
-  if (accounts.length === 0) return <p>Loading...</p>;
+  useEffect(() => {
+    // 카테고리 정보 api
+    fetch(`http://localhost:5000/api/salary/category`, {
+      method: "GET", // 기본값이지만 명시적으로 써도 됨
+      credentials: "include", // 쿠키 및 인증 정보 포함
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const amounts = data.categories.map((c: any) => Number(c.amount));
+        setAmount(amounts);
+        // console.log(amounts);
+      })
+      .catch((error) => console.error("tree error:", error));
+  }, []);
+
+  useEffect(() => {
+    if (!isDataLoaded) return; // 데이터가 로드되지 않았으면 실행 안 함
+
+    fetch(`http://localhost:5000/api/users/salary`, {
+      method: "GET",
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setBankName((prev) => prev.map((n, index) => (index === 0 ? data.salaryAccount.bank_name : n)));
+        setAccNum((prev) => prev.map((a, index) => (index === 0 ? data.salaryAccount.account_number : a)));
+        setAmount((prev) => prev.map((a, index) => (index === 0 ? Number(data.amount) : a)));
+      })
+      .catch((error) => console.error("tree error:", error));
+  }, [isDataLoaded]); // isDataLoaded가 true일 때 실행됨
+
+  useEffect(() => {
+    console.log(amount);
+  }, [amount]);
+
+  if (amount.length === 0) return <p>Loading...</p>;
 
   return (
     <div className={styles.accountContainer}>
@@ -38,21 +73,26 @@ const AccountTree: React.FC = () => {
           <span className={styles.accountIcon} />
           <div>
             <p className={styles.accountInfo}>
-              {accounts[0].bankName} {accounts[0].accountNumber}
+              {bankName[0]} {accNum[0]}
             </p>
-            <p className={styles.accountBalance}>{accounts[0].balance.toLocaleString()}원</p>
+            <p className={styles.accountBalance}>
+              {amount[0] > 0 ? <>{amount[0].toLocaleString()}원</> : <>201,000원</>}
+            </p>
           </div>
         </div>
         {/* 하위 계좌 */}
         <div className={styles.accountBranch}>
-          {accounts.slice(1).map((account, index) => (
-            <div key={account.id} className={`${styles.accountNode} ${getColorClass(index)}`}>
-              <span className={styles.accountIcon} />
-              <div>
-                <p className={styles.accountInfo}>
-                  {account.bankName} {account.accountNumber}
-                </p>
-                <p className={styles.accountBalance}>{account.balance.toLocaleString()}원</p>
+          {name.slice(1).map((n, index) => (
+            <div>
+              {n}
+              <div className={`${styles.accountNode} ${getColorClass(index)}`}>
+                <span className={styles.accountIcon} />
+                <div>
+                  <p className={styles.accountInfo}>
+                    {bankName[index]} {accNum[index]}
+                  </p>
+                  <p className={styles.accountBalance}>{amount[index]?.toLocaleString()}원</p>
+                </div>
               </div>
             </div>
           ))}

@@ -27,18 +27,13 @@ const Account: React.FC<AccountProps> = ({ total }) => {
         setName(names);
         setRatio(ratios);
         setColor(colors);
-        console.log("***", names, ratios);
+        // console.log("***", names, ratios);
       })
       .catch((error) => console.error("SelectAccountDetail error:", error));
   }, []);
 
   return (
     <div>
-      {/* <div className="account">
-        <div className="account1">계좌</div>
-        <div className="account2">+</div>
-        <img className="line1" src={line1} alt="line1" />
-      </div> */}
       <div>
         <div className="budget_container">
           <div className="budget-title">항목별 예산</div>

@@ -19,7 +19,6 @@ const First: React.FC = () => {
   const location = useLocation();
   const isFromCompletion = location.state?.from === "first-time";
   const navigate = useNavigate();
-  // console.log(isFromCompletion);
 
   useEffect(() => {
     fetch("http://localhost:5000/api/accounts", {
@@ -29,7 +28,7 @@ const First: React.FC = () => {
       .then((response) => response.json())
       .then((data) => {
         setAccounts(data.accounts);
-        console.log(data.accounts);
+        // console.log(data.accounts);
       })
       .catch((error) => console.error("SelectAccountAccounts error:", error));
   }, []);
@@ -52,7 +51,7 @@ const First: React.FC = () => {
         setName(names);
         setRatio(ratios);
         setColor(colors);
-        console.log("***", names, ratios);
+        // console.log("***", names, ratios);
       })
       .catch((error) => console.error("SelectAccountDetail error:", error));
   }, []);
@@ -67,7 +66,6 @@ const First: React.FC = () => {
       .then((response) => response.json())
       .then((data) => {
         setTotal(Number(data.amount));
-        console.log(total);
       })
       .catch((error) => console.error("SelectRatio error:", error));
   }, []);
@@ -76,9 +74,7 @@ const First: React.FC = () => {
     <div style={{ height: "730px", backgroundColor: "#F3F3F3" }}>
       <img className="bufl" src={Bufl} alt="bufl" />
       <img className="bell" src={BellImg} alt="Bell" />
-      <div
-        style={{ height: "690px", overflowY: "scroll", overflowX: "hidden", marginTop: "15px", position: "relative" }}
-      >
+      <div className="main-wrap">
         <div className="bank-icon">
           <div className="bank-icon1">
             <img
