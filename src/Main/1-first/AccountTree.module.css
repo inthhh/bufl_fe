@@ -1,0 +1,74 @@
+.accountContainer {
+  /* padding: 16px; */
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 360px;
+  margin: 0 20px;
+  padding: 20px;
+}
+
+.accountTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.accountTree {
+  position: relative;
+}
+
+.accountNode {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.topNode {
+  background: #d1d5db;
+}
+
+.accountBranch {
+  margin-left: 24px;
+  padding-left: 12px;
+  border-left: 2px solid #9ca3af;
+}
+
+.accountIcon {
+  width: 24px;
+  height: 24px;
+  background: #3b82f6;
+  border-radius: 50%;
+}
+
+.accountInfo {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.accountBalance {
+  font-size: 14px;
+}
+
+.greenNode {
+  background: #86efac;
+}
+
+.cyanNode {
+  background: #67e8f9;
+}
+
+.blueNode {
+  background: #93c5fd;
+}
+
+.orangeNode {
+  background: #fdba74;
+}
+
+.redNode {
+  background: #f87171;
+}

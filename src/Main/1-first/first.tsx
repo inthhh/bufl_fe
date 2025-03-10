@@ -11,6 +11,7 @@ import Account from "./account";
 import Bottom from "../bottom/bottom";
 import { AccountsInterface } from "../../MoneySplit/pages/interfaces";
 import { useLocation, useNavigate } from "react-router-dom";
+import AccountTree from "./AccountTree";
 
 const First: React.FC = () => {
   const [accounts, setAccounts] = useState<AccountsInterface[]>([]);
@@ -31,6 +32,44 @@ const First: React.FC = () => {
         console.log(data.accounts);
       })
       .catch((error) => console.error("SelectAccountAccounts error:", error));
+  }, []);
+
+  const [name, setName] = useState<string[]>([]);
+  const [ratio, setRatio] = useState<number[]>([]);
+  const [color, setColor] = useState<string[]>([]);
+
+  useEffect(() => {
+    // 카테고리 정보 api
+    fetch(`http://localhost:5000/api/salary/category`, {
+      method: "GET", // 기본값이지만 명시적으로 써도 됨
+      credentials: "include", // 쿠키 및 인증 정보 포함
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const names = data.categories.map((c: any) => c.name);
+        const ratios = data.categories.map((c: any) => Number(c.ratio));
+        const colors = data.categories.map((c: any) => c.background_color);
+        setName(names);
+        setRatio(ratios);
+        setColor(colors);
+        console.log("***", names, ratios);
+      })
+      .catch((error) => console.error("SelectAccountDetail error:", error));
+  }, []);
+
+  const [total, setTotal] = useState<number>(12345);
+  useEffect(() => {
+    // 월급 정보 api
+    fetch("http://localhost:5000/api/users/salary", {
+      method: "GET", // 기본값이지만 명시적으로 써도 됨
+      credentials: "include", // 쿠키 및 인증 정보 포함
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setTotal(Number(data.amount));
+        console.log(total);
+      })
+      .catch((error) => console.error("SelectRatio error:", error));
   }, []);
 
   return (
@@ -110,23 +149,22 @@ const First: React.FC = () => {
           </div>
         ) : undefined}
         <div className="asset-box">
+          <div className="donut-title">자산</div>
           <div className="donut">
-            <DoughnutChart />
+            <DoughnutChart name={name} ratio={ratio} color={color} />
           </div>
-          <div className="asset">자산</div>
-          <div className="asset1">비상금</div>
-          <div className="asset2">예비비</div>
-          <div className="asset3">생활비</div>
-          <div className="asset4">저축</div>
-          <div className="asset5">내 월급 :</div>
+
+          <div className="asset5">
+            내 월급 :<br /> {(total / 10000).toLocaleString()}만원
+          </div>
           <div className="asset6">
             당신은 "성실형"
             <br />
             입니다.
           </div>
         </div>
-
-        <Account />
+        <AccountTree />
+        <Account total={total} />
       </div>
       <Bottom page="home" />
     </div>

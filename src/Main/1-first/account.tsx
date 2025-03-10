@@ -1,85 +1,63 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./accountStyle.css";
 import line1 from "./img/lines.png";
 import toss from "./img/toss.png";
 import Bottom from "../bottom/bottom";
 
-const Account: React.FC = () => {
+interface AccountProps {
+  total: number;
+}
+
+const Account: React.FC<AccountProps> = ({ total }) => {
+  const [name, setName] = useState<string[]>([]);
+  const [ratio, setRatio] = useState<number[]>([]);
+  const [color, setColor] = useState<string[]>([]);
+
+  useEffect(() => {
+    // 카테고리 정보 api
+    fetch(`http://localhost:5000/api/salary/category`, {
+      method: "GET", // 기본값이지만 명시적으로 써도 됨
+      credentials: "include", // 쿠키 및 인증 정보 포함
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const names = data.categories.map((c: any) => c.name);
+        const ratios = data.categories.map((c: any) => Number(c.ratio));
+        const colors = data.categories.map((c: any) => c.background_color);
+        setName(names);
+        setRatio(ratios);
+        setColor(colors);
+        console.log("***", names, ratios);
+      })
+      .catch((error) => console.error("SelectAccountDetail error:", error));
+  }, []);
+
   return (
     <div>
-      <div className="account">
+      {/* <div className="account">
         <div className="account1">계좌</div>
         <div className="account2">+</div>
         <img className="line1" src={line1} alt="line1" />
-        <div className="account3">
-          <img className="toss1" src={toss} alt="toss" />
-          <div className="account-t">
-            토스뱅크 0000-00000
-            <br />
-            3,000,000원
-          </div>
-        </div>
-        <div className="account4">
-          <img className="toss1" src={toss} alt="toss" />
-          <div className="account-t">
-            토스뱅크 0000-00000
-            <br />
-            3,000,000원
-          </div>
-        </div>
-        <div className="account5">
-          <img className="toss1" src={toss} alt="toss" />
-          <div className="account-t">
-            토스뱅크 0000-00000
-            <br />
-            3,000,000원
-          </div>
-        </div>
-        <div className="account6">
-          <img className="toss1" src={toss} alt="toss" />
-          <div className="account-t">
-            토스뱅크 0000-00000
-            <br />
-            3,000,000원
-          </div>
-        </div>
-        <div className="account7">
-          <img className="toss1" src={toss} alt="toss" />
-          <div className="account-t">
-            토스뱅크 0000-00000
-            <br />
-            3,000,000원
-          </div>
-        </div>
-        <div className="account8">
-          <img className="toss1" src={toss} alt="toss" />
-          <div className="account-t">
-            토스뱅크 0000-00000
-            <br />
-            3,000,000원
-          </div>
-        </div>
-      </div>
-      <div className="budget">
-        <div className="budget1">항목별 예산</div>
-        <div className="line"></div>
-        <div className="budget2">생활비</div>
-        <div className="budget3">저축비</div>
-        <div className="budget4">예비비</div>
-        <div className="budget5">비상금</div>
-        <div className="budget6">매달</div>
-        <div className="budget7">매달</div>
-        <div className="budget8">매달</div>
-        <div className="budget9">매달</div>
-        <div className="budget10">00000원</div>
-        <div className="budget11">00000원</div>
-        <div className="budget12">00000원</div>
-        <div className="budget13">00000원</div>
+      </div> */}
+      <div>
+        <div className="budget_container">
+          <div className="budget-title">항목별 예산</div>
+          {/* <div className="line"></div> */}
 
-        <div className="budget14">45%</div>
-        <div className="budget15">45%</div>
-        <div className="budget16">45%</div>
-        <div className="budget17">45%</div>
+          {ratio.map((r, i) => (
+            <div className="budget_wrapper">
+              <div className="budget_name">{name[i]}</div>
+              <div
+                className="budget_percent"
+                style={color[i] ? { backgroundColor: `${color[i]}` } : { backgroundColor: "#dddddd" }}
+              >
+                {r}%
+              </div>
+              <div className="budget_month">매달</div>
+              <div className="budget_amount">{(r * total * 0.01).toLocaleString()}원</div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -24,6 +24,7 @@
 .bank-icon {
   margin: 20px;
   margin-top: 30px;
+  width: 360px;
 }
 
 .bank-icon1 {
@@ -95,16 +96,15 @@
   border: 1px;
   background-color: white;
   margin: 20px;
-  height: 180px;
+  height: 220px;
   border-radius: 12px;
+  width: 360px;
 }
 
 .donut {
-  position: relative;
-  top: 20px;
-  left: 30px;
   width: 150px;
   height: 150px;
+  margin-left: 20px;
 }
 
 .asset {
@@ -143,16 +143,17 @@
 
 .asset5 {
   position: relative;
-  bottom: 150px;
-  left: 75px;
+  bottom: 90px;
+  left: -70px;
   font-size: small;
+  text-align: center;
 }
 
 .asset6 {
   font-size: larger;
   font-weight: bolder;
   position: relative;
-  bottom: 190px;
+  bottom: 130px;
   left: 210px;
 }
 
