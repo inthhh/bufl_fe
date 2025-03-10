@@ -2,9 +2,9 @@
   border: none;
   background-color: white;
   width: 360px;
-  margin-left: 20px;
   height: 460px;
   border-radius: 12px;
+  margin: 0 20px;
 }
 
 .account1 {
@@ -13,9 +13,7 @@
 
 .account2 {
   font-size: 20px;
-  position: relative;
-  bottom: 10px;
-  left: 330px;
+  margin: -22px 0 0 330px;
 }
 
 .toss1 {
@@ -34,10 +32,57 @@
   border-radius: 12px;
   width: 320px;
   height: 50px;
-  margin: 20px;
+  margin: -370px 5px 20px 30px;
 }
+
+.account4 {
+  border: none;
+  background-color: rgba(10, 195, 16, 0.74);
+  border-radius: 12px;
+  width: 280px;
+  height: 50px;
+  margin: 0 5px 20px 70px;
+}
+
+.account5 {
+  border: none;
+  background-color: rgba(48, 231, 228, 0.73);
+  border-radius: 12px;
+  width: 280px;
+  height: 50px;
+  margin: 10px 5px 0 70px;
+}
+
+.account6 {
+  border: none;
+  background-color: rgba(48, 231, 228, 0.73);
+  border-radius: 12px;
+  width: 280px;
+  height: 50px;
+  margin: 1px 5px 20px 70px;
+}
+
+.account7 {
+  border: none;
+  background-color: rgba(250, 159, 1, 0.85);
+  border-radius: 12px;
+  width: 280px;
+  height: 50px;
+  margin: 0 5px 20px 70px;
+}
+
+.account8 {
+  border: none;
+  background-color: rgba(255, 3, 49, 0.85);
+  border-radius: 12px;
+  width: 280px;
+  height: 50px;
+  margin: 0 5px 5px 70px;
+}
+
 .line1 {
-  height: 320px;
+  height: 330px;
+  margin: 55px 20px -10px 30px;
 }
 
 .budget {
@@ -50,12 +95,63 @@
 }
 
 .budget1 {
+  padding: 15px 0 0 15px;
 }
+
 .line {
   border: none;
   height: 1px;
-  width: 360px;
+  width: 340px;
   background-color: lightgray;
+  margin: 10px 10px 0 15px;
+}
+
+.budget2 {
+  margin: 10px 0 0 20px;
+}
+
+.budget3 {
+  margin: 15px 0 0 20px;
+}
+
+.budget4 {
+  margin: 15px 0 0 20px;
+}
+
+.budget5 {
+  margin: 15px 0 0 20px;
+}
+
+.budget6 {
+  margin: -126px 0 0 190px;
+}
+
+.budget7 {
+  margin: 15px 0 0 190px;
+}
+
+.budget8 {
+  margin: 16px 0 0 190px;
+}
+
+.budget9 {
+  margin: 14px 0 0 190px;
+}
+
+.budget10 {
+  margin: -127px 0 0 290px;
+}
+
+.budget11 {
+  margin: 17px 0 0 290px;
+}
+
+.budget12 {
+  margin: 14px 0 0 290px;
+}
+
+.budget13 {
+  margin: 15px 0 0 290px;
 }
 
 .budget14 {
@@ -65,4 +161,35 @@
   border-radius: 20px;
   width: 50px;
   height: 20px;
+  margin: -132px 0 10px 100px;
+}
+
+.budget15 {
+  text-align: center;
+  border: none;
+  background-color: rgba(48, 231, 228, 0.73);
+  border-radius: 20px;
+  width: 50px;
+  height: 20px;
+  margin: 15px 0 10px 100px;
+}
+
+.budget16 {
+  text-align: center;
+  border: none;
+  background-color: rgba(250, 159, 1, 0.85);
+  border-radius: 20px;
+  width: 50px;
+  height: 20px;
+  margin: 17px 0 10px 100px;
+}
+
+.budget17 {
+  text-align: center;
+  border: none;
+  background-color: rgba(255, 3, 49, 0.85);
+  border-radius: 20px;
+  width: 50px;
+  height: 20px;
+  margin: 18px 0 10px 100px;
 }

@@ -8,7 +8,7 @@ const DoughnutChart = () => {
     datasets: [
       {
         label: "# of Votes",
-        data: [25, 25, 25, 25],
+        data: [40, 20, 10, 30],
         backgroundColor: [
           "rgba(255, 3, 49, 0.85)",
           "rgba(250, 159, 1, 0.85)",

@@ -38,12 +38,13 @@ const InputPin: React.FC = () => {
     try {
       const pinString = pin.join("");
       console.log(pinString);
-      const response = await fetch("http://localhost:5000/api/users/login", {
+      const response = await fetch("http://localhost:5000/api/users/pin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ userPassword: pinString }),
+        credentials: "include", // 쿠키 및 인증 정보 포함
       });
 
       if (!response.ok) {

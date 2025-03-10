@@ -20,7 +20,10 @@ function SelectAccount() {
 
   useEffect(() => {
     console.log(listLen);
-    fetch("http://localhost:5000/api/salary/category")
+    fetch("http://localhost:5000/api/salary/category", {
+      method: "GET", // 기본값이지만 명시적으로 써도 됨
+      credentials: "include", // 쿠키 및 인증 정보 포함
+    })
       .then((response) => response.json())
       .then((data) => {
         setCategorys(data.categories.slice(-listLen));
@@ -30,7 +33,10 @@ function SelectAccount() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/salary/account")
+    fetch("http://localhost:5000/api/salary/account", {
+      method: "GET", // 기본값이지만 명시적으로 써도 됨
+      credentials: "include", // 쿠키 및 인증 정보 포함
+    })
       .then((response) => response.json())
       .then((data) => {
         const slicedData = data.slice(-listLen);
@@ -47,7 +53,10 @@ function SelectAccount() {
   });
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/users/salary/")
+    fetch("http://localhost:5000/api/users/salary", {
+      method: "GET", // 기본값이지만 명시적으로 써도 됨
+      credentials: "include", // 쿠키 및 인증 정보 포함
+    })
       .then((response) => response.json())
       .then((data) => {
         setSalaryAccount({
@@ -84,11 +93,7 @@ function SelectAccount() {
                   category={category.name}
                   ratio={category.ratio}
                   amount={category.amount}
-                  account={
-                    index === 0
-                      ? salaryAccount
-                      : categoryAccounts[index] ?? { name: "", bankName: "정보 없음", accountNumber: "" }
-                  }
+                  account={index === 0 ? salaryAccount : categoryAccounts[index] ?? { bankName: "정보 없음" }}
                 />
               </div>
             ))}

@@ -17,8 +17,8 @@
   font-weight: bolder;
   font-size: larger;
   position: relative;
-  bottom: 20px;
-  left: 90px;
+  bottom: 10px;
+  left: 60px;
 }
 
 .bank-icon {
@@ -27,24 +27,25 @@
 }
 
 .bank-icon1 {
-  border: 1px;
   background-color: #3183f6ba;
   border-radius: 12px 12px 0 0;
 }
 
 .bank-icon2 {
-  border: 1px;
   background-color: #3183f67a;
 }
 
 .bank-icon3 {
-  border: 1px;
   background-color: #3183f645;
 }
 
 .bank-icon4 {
-  border: 1px;
   background-color: #3183f629;
+  border-radius: 0;
+}
+
+.bank-icon5 {
+  background-color: #eaeaeb4c;
   border-radius: 0;
 }
 
@@ -58,28 +59,11 @@
   padding: 5px;
 }
 
-.toss {
+.main_icons {
   position: relative;
   top: 15px;
   left: 16px;
-}
-
-.shinhan {
-  position: relative;
-  top: 15px;
-  left: 20px;
-}
-
-.hana {
-  position: relative;
-  top: 15px;
-  left: 20px;
-}
-
-.kb {
-  position: relative;
-  top: 15px;
-  left: 20px;
+  width: 22px;
 }
 
 .month_ {
@@ -90,7 +74,8 @@
   height: 60px;
   border-radius: 12px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0 20px;
   align-self: center;
   line-height: 60px;
 }
@@ -144,8 +129,8 @@
 
 .asset3 {
   position: relative;
-  bottom: 75px;
-  left: 130px;
+  bottom: 60px;
+  left: 80px;
   font-size: small;
 }
 
@@ -167,6 +152,23 @@
   font-size: larger;
   font-weight: bolder;
   position: relative;
-  bottom: 200px;
-  left: 190px;
+  bottom: 190px;
+  left: 210px;
+}
+
+.start-service-box {
+  width: 400px;
+  height: 900px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  position: absolute;
+  top: 350px;
+  z-index: 999;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 30px;
+  flex-direction: column;
+  font-size: 28px;
+  font-weight: bold;
 }

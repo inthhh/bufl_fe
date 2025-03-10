@@ -20,7 +20,11 @@ const CategoryAccount: React.FC<CategoryAccountProps> = (props) => {
   }, []);
   return (
     <div>
-      <div className="account_list" onClick={clickForAccountLink}>
+      <div
+        className="account_list"
+        onClick={props.category == "💰 월급 통장" ? undefined : clickForAccountLink}
+        style={props.category == "💰 월급 통장" ? undefined : { backgroundColor: "#DCEAFF" }}
+      >
         <div className="list_div">
           <div>
             <div>
@@ -33,7 +37,7 @@ const CategoryAccount: React.FC<CategoryAccountProps> = (props) => {
                 : props.account.bankName + " " + props.account.accountNumber + " ✅"}
             </div>
           </div>
-          <img src={RightArrow} alt="right" width={15} />
+          {props.category == "💰 월급 통장" ? undefined : <img src={RightArrow} alt="right" width={15} />}
         </div>
         <div className="list_div" style={{ marginTop: "15px" }}>
           <div className="font_20" style={{ color: "#3182F6" }}>

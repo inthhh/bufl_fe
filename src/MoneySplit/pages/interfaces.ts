@@ -34,11 +34,12 @@ export interface CategoryAccountProps {
 }
 
 export interface AccountsInterface {
-  account_id: number;
+  id: number;
   user_id: number;
   account_number: number;
   bank_name: number;
   balance: number;
+  logo?: string;
 }
 
 export interface SelectedAccountInterface {

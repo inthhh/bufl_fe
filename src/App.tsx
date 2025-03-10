@@ -57,9 +57,7 @@ const App: React.FC = () => {
       >
         <Routes>
           <Route path="/" element={<First />} />
-          <Route path="/Main" element={<First />} />
           <Route path="/money-split" element={<MoneySplitFirst />} />
-
           <Route path="/money-split/ai" element={<AI_home />} />
           <Route path="/money-split/ai/analysis-loading" element={<AI_anaLoading />} />
           <Route path="/money-split/ai/calculate-loading" element={<AI_calLoading />} />
@@ -88,8 +86,6 @@ const App: React.FC = () => {
           <Route path="/Main/choice" element={<Choice />} />
           <Route path="/Main/rocket" element={<Rocket />} />
           <Route path="/Main/start" element={<Start />} />
-          {/* <Route path="/Main/DoughnutChart1" element={<Doughnut1 />} /> */}
-
           <Route path="/sign" element={<StartPage />} />
           <Route path="/sign/personal-info" element={<PersonalInfoPage />} />
           <Route path="/sign/agreement" element={<AgreementPage />} />
