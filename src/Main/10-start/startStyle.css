@@ -41,6 +41,7 @@
   margin: 10px 0 10px 10px;
 }
 .nowgoal {
+  font-size: 20px;
   font-weight: bold;
   margin: -41px 0 0 45px;
 }
@@ -48,9 +49,9 @@
   font-weight: bold;
   text-align: center;
   padding: 5px;
-  color: rgb(153, 151, 151);
+  color: rgb(121, 121, 121);
   font-size: 20px;
-  border: 1px solid lightgray;
+  border: 1px solid rgb(121, 121, 121);
   background-color: rgba(211, 211, 211, 0.575);
   border-radius: 12px;
   width: 360px;
@@ -62,6 +63,7 @@
   margin: 10px 0 10px 10px;
 }
 .nowmoney {
+  font-size: 20px;
   font-weight: bold;
   margin: -39px 0 0 47px;
 }
@@ -69,9 +71,9 @@
   font-weight: bold;
   text-align: center;
   padding: 5px;
-  color: rgb(153, 151, 151);
+  color: rgb(121, 121, 121);
   font-size: 20px;
-  border: 1px solid lightgray;
+  border: 1px solid rgb(121, 121, 121);
   background-color: rgba(211, 211, 211, 0.575);
   border-radius: 12px;
   width: 360px;
