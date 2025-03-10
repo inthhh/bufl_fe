@@ -16,7 +16,7 @@ const Second: React.FC = () => {
   return (
     <div className="relative-parent">
       <div>
-        <MoveBack pageBefore="/Account" />
+        <MoveBack pageBefore="/" />
         <div className="pay1">저축 목표 세우기</div>
       </div>
       <div className="pay">
