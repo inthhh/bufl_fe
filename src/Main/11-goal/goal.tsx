@@ -13,6 +13,8 @@ const Goal = () => {
   const [goalAmount, setGoalAmount] = useState(10000000);
   const [currentAmount, setCurrentAmount] = useState(3200000);
 
+  const progressPercentage = Math.min(100, (currentAmount / goalAmount) * 100);
+
   const [savingHistory, setSavingHistory] = useState([
     {
       date: "2월 19일",
@@ -47,7 +49,7 @@ const Goal = () => {
 
       <div className="goal-header">
         <p className="goal-title">
-          💰1년 안에 {goalAmount.toLocaleString()}원 모으기
+          💰 1년 안에 {goalAmount.toLocaleString()}원 모으기
         </p>
       </div>
 
@@ -59,7 +61,7 @@ const Goal = () => {
         <div className="progress-bar">
           <div
             className="progress"
-            style={{ width: `${(currentAmount / goalAmount) * 100}%` }}
+            style={{ width: `${progressPercentage}%` }}
           ></div>
         </div>
         <div className="goal-dates">
@@ -102,7 +104,7 @@ const Goal = () => {
             <p className="notification-modal">
               이번 달 목표 달성까지 20만원
               <br /> 더 필요합니다!
-            </p>{" "}
+            </p>
             <br />
             <p className="notification-modal">
               현재 속도로 10개월 정도면 목표에 <br />
