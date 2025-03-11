@@ -5,13 +5,12 @@ import present from "./img/piggy.png";
 import ninja from "./img/start.png";
 import Bottom from "../bottom_nav/bottom";
 import { useNavigate } from "react-router-dom";
-import DonutChart from "./Doughnut1"; // 도넛 차트 컴포넌트 임포트
+import DonutChart from "./Doughnut1";
 
 const Start: React.FC = () => {
   const navigate = useNavigate();
   const parentsboxRef = useRef<HTMLDivElement>(null);
 
-  // 목표 목록 스크롤 단위 이동 조절
   useEffect(() => {
     const parentsbox = parentsboxRef.current;
     if (!parentsbox) return;
@@ -19,12 +18,11 @@ const Start: React.FC = () => {
     const handleWheelScroll = (event: WheelEvent) => {
       event.preventDefault();
 
-      // 첫 번째 goal-box 요소의 높이 계산
       const goalBox = parentsbox.querySelector(".goal-box") as HTMLElement;
       if (!goalBox) return;
 
-      const goalBoxHeight = goalBox.clientHeight + 26; // 목표 카드 높이 + 간격
-      const scrollAmount = Math.sign(event.deltaY) * goalBoxHeight; // 위/아래로 정확한 높이만큼 이동
+      const goalBoxHeight = goalBox.clientHeight + 26;
+      const scrollAmount = Math.sign(event.deltaY) * goalBoxHeight;
 
       parentsbox.scrollBy({ top: scrollAmount, behavior: "smooth" });
     };
@@ -84,7 +82,6 @@ const Start: React.FC = () => {
         </div>
       </div>
 
-      {/* 목표 목록 (정확한 줄 단위로 스크롤) */}
       <div className="parentsbox" ref={parentsboxRef}>
         {goals.map((goal) => (
           <div

@@ -48,19 +48,19 @@
   width: 380px;
   height: 406px;
   margin: 80px 3px 0 10px;
-  max-height: 406px; /* 원하는 최대 높이 설정 (필요에 따라 조정) */
-  overflow-y: auto; /* 세로 스크롤만 추가 */
-  overflow-x: hidden; /* 가로 스크롤 숨기기 */
-}
-/* 스크롤바 */
-.parentsbox::-webkit-scrollbar {
-  width: 10px; /* 세로 스크롤바의 너비 */
+  max-height: 406px; 
+  overflow-y: auto; 
+  overflow-x: hidden; 
 }
 
-/* 스크롤바 핸들 (실제 스크롤바 부분) */
+.parentsbox::-webkit-scrollbar {
+  width: 10px; 
+}
+
+
 .parentsbox::-webkit-scrollbar-thumb {
-  background: #888; /* 핸들의 색상 */
-  border-radius: 20px; /* 핸들의 모서리를 둥글게 */
+  background: #888; 
+  border-radius: 20px; 
 }
 .payment {
   width: 30px;
@@ -135,7 +135,7 @@
   width: 190px;
   height: 150px;
   margin: -170px 10px 0 200px;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 .donutWrap {
