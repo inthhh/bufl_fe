@@ -37,6 +37,8 @@ const DoughnutChart = (props) => {
         offset: -15, // 레이블을 더 이동시키기
       },
     },
+    cutout: "40%",
+    radius: "90%",
   };
 
   return (
