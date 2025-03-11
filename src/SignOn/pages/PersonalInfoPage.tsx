@@ -1,30 +1,58 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import "../../MoneySplit/splitStyle.css";
+import { RootState } from "../../redux/store";
+import {
+  setName,
+  setIdFront,
+  setIdBack,
+  setPhone,
+  setAgreements,
+} from "../../redux/reducers/personalInfoSlice";
+import axios from "axios";
+import "../../MoneySplit/style/splitStyle.css";
 import MoveBack from "../../MoneySplit/MoveBack";
 
 const PersonalInfoPage: React.FC = () => {
   const navigate = useNavigate();
-  const [name, setName] = useState<string>("");
-  const [idFront, setIdFront] = useState<string>("");
-  const [idBack, setIdBack] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
+  const dispatch = useDispatch();
+  const { name, idFront, idBack, phone, agreements } = useSelector(
+    (state: RootState) => state.personalInfo
+  );
+
+  const [localName, setLocalName] = useState(name);
   const [isComposing, setIsComposing] = useState(false);
-  const [agreements, setAgreements] = useState({
-    all: false,
-    terms: false,
-    privacy: false,
-    marketing: false,
-  });
+  const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    setLocalName(name);
+  }, [name]);
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (isComposing) {
+      setLocalName(value);
+      return;
+    }
+    const filteredValue = value.replace(/[^a-zA-Z가-힣\s]/g, "");
+    setLocalName(filteredValue);
+    dispatch(setName(filteredValue));
+  };
+
+  const handleBlur = () => {
+    dispatch(setName(localName));
+  };
 
   const handleAllAgreement = () => {
     const newValue = !agreements.all;
-    setAgreements({
-      all: newValue,
-      terms: newValue,
-      privacy: newValue,
-      marketing: newValue,
-    });
+    dispatch(
+      setAgreements({
+        all: newValue,
+        terms: newValue,
+        privacy: newValue,
+        marketing: newValue,
+      })
+    );
   };
 
   const handleAgreementChange = (key: keyof typeof agreements) => {
@@ -32,46 +60,64 @@ const PersonalInfoPage: React.FC = () => {
       ...agreements,
       [key]: !agreements[key],
     };
-
     updatedAgreements.all =
       updatedAgreements.terms &&
       updatedAgreements.privacy &&
       updatedAgreements.marketing;
-
-    setAgreements(updatedAgreements);
+    dispatch(setAgreements(updatedAgreements));
   };
 
   const handleIdFrontChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, "").slice(0, 6);
-    setIdFront(value);
+    dispatch(setIdFront(value));
   };
 
   const handleIdBackChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, "").slice(0, 1);
-    setIdBack(value);
+    dispatch(setIdBack(value));
   };
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, "").slice(0, 11);
-    setPhone(value);
-  };
-
-  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!isComposing) {
-      const value = e.target.value.replace(/[^a-zA-Z가-힣]/g, "");
-      setName(value);
-    } else {
-      setName(e.target.value);
-    }
+    dispatch(setPhone(value));
   };
 
   const isFormValid =
-    name &&
+    localName &&
     idFront.length === 6 &&
     idBack.length === 1 &&
     phone &&
     agreements.terms &&
     agreements.privacy;
+
+  // 백엔드 회원가입 요청 함수
+  const handleSubmit = async () => {
+    setErrorMessage(""); // 오류 메시지 초기화
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/users",
+        {
+          userName: localName,
+          userRegnu: `${idFront}-${idBack}******`,
+          userPhone: phone,
+          userPassword: "temppw", //
+        },
+        { withCredentials: true }
+      );
+
+      if (response.status === 201) {
+        localStorage.setItem("userPhone", phone);
+        alert("회원가입 성공! PIN 번호를 설정해주세요.");
+        navigate("/sign/input-pin");
+      }
+    } catch (error: any) {
+      console.error("회원가입 오류:", error);
+      setErrorMessage(
+        error.response?.data?.message || "회원가입 중 오류가 발생했습니다."
+      );
+    }
+  };
 
   return (
     <div>
@@ -92,8 +138,9 @@ const PersonalInfoPage: React.FC = () => {
           <input
             type="text"
             placeholder="성명"
-            value={name}
+            value={localName}
             onChange={handleNameChange}
+            onBlur={handleBlur}
             onCompositionStart={() => setIsComposing(true)}
             onCompositionEnd={() => setIsComposing(false)}
           />
@@ -141,9 +188,7 @@ const PersonalInfoPage: React.FC = () => {
             checked={agreements.all}
             onChange={handleAllAgreement}
           />
-          <label htmlFor="all" className="all_agree_label">
-            모두 동의합니다.
-          </label>
+          <label htmlFor="all">모두 동의합니다.</label>
 
           <input
             type="checkbox"
@@ -151,9 +196,7 @@ const PersonalInfoPage: React.FC = () => {
             checked={agreements.terms}
             onChange={() => handleAgreementChange("terms")}
           />
-          <label htmlFor="terms">
-            이용약관 <span className="required">(필수)</span>
-          </label>
+          <label htmlFor="terms">이용약관 (필수)</label>
 
           <input
             type="checkbox"
@@ -161,9 +204,7 @@ const PersonalInfoPage: React.FC = () => {
             checked={agreements.privacy}
             onChange={() => handleAgreementChange("privacy")}
           />
-          <label htmlFor="privacy">
-            개인정보 수집 및 이용 동의 <span className="required">(필수)</span>
-          </label>
+          <label htmlFor="privacy">개인정보 수집 및 이용 동의 (필수)</label>
 
           <input
             type="checkbox"
@@ -171,16 +212,16 @@ const PersonalInfoPage: React.FC = () => {
             checked={agreements.marketing}
             onChange={() => handleAgreementChange("marketing")}
           />
-          <label htmlFor="marketing">
-            마케팅 정보 수신 동의 <span className="optional">(선택)</span>
-          </label>
+          <label htmlFor="marketing">마케팅 정보 수신 동의 (선택)</label>
         </div>
       </div>
+
+      {errorMessage && <p className="error_message">{errorMessage}</p>}
 
       <div className="center_wrap">
         <button
           disabled={!isFormValid}
-          onClick={() => navigate("/sign/agreement")}
+          onClick={handleSubmit}
           className={`btn_start ${isFormValid ? "" : "disabled"}`}
         >
           확인

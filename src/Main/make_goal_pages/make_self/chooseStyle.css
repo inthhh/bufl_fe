@@ -1,0 +1,101 @@
+.pigmoney {
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: -5px 0 0 25px;
+}
+
+.winnermoney1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px 0 0 25px;
+}
+
+.winnermoney2 {
+  font-size: 16px;
+  color: gray;
+  margin: 10px 0 0 25px;
+}
+
+.winnermoney3 {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 10px 0 0 25px;
+}
+
+.mybox-container {
+  border: none;
+  border-radius: 12px;
+  background-color: rgba(212, 209, 209, 0.383);
+  width: 340px;
+  height: 380px;
+  position: relative;
+  top: 55px;
+  left: 30px;
+}
+
+.month10 {
+  font-size: 20px;
+  font-weight: bold;
+  position: absolute;
+  top: 30px;
+  left: 20px;
+}
+.min-value1 {
+  font-size: 15px;
+  color: rgb(142, 137, 137);
+  position: absolute;
+  top: 70px;
+  left: 20px;  
+}
+.max-value2 {
+  font-size: 15px;
+  color: rgb(142, 137, 137);
+  position: absolute;
+  top: 70px;
+  left: 265px;  
+}
+.slider3 {
+  width: 300px;
+  margin: 90px 20px 0 20px;
+}
+.month-money1 {
+  font-size: 20px;
+  font-weight: bold;
+  position: absolute;
+  top: 150px;
+  left: 20px;
+}
+.min-month1 {
+  font-size: 15px;
+  color: rgb(142, 137, 137);
+  position: absolute;
+  top: 190px;
+  left: 20px;  
+}
+.max-month2 {
+  font-size: 15px;
+  color: rgb(142, 137, 137);
+  position: absolute;
+  top: 190px;
+  left: 265px;  
+}
+.winner-money4 {
+  border: none;
+  color: gray;
+  position: absolute;
+  top: 270px;
+  left: 140px;
+}
+.next-btn {
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  background-color: #3182F6;
+  width: 300px;
+  height: 50px;
+  margin: 80px 20px 0 20px;
+}

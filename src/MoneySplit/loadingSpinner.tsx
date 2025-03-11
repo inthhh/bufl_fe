@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import "./splitStyle.css"; // CSS 파일 import
+import "./style/splitStyle.css"; // CSS 파일 import
 import { useNavigate } from "react-router-dom";
 
 interface LoadingSpinnerProps {
-  text: string;
+  text?: string;
+  height?: string;
 }
 
-const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ text }) => {
+const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ text, height }) => {
   const dots = [1, 2, 3, 4, 5, 6, 7, 8];
 
   const navigate = useNavigate();
@@ -17,13 +18,13 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ text }) => {
       if (text === "ana") navigate("/money-split/ai/analysis");
       if (text === "cal") navigate("/money-split/ai/calculate");
       if (text === "split") navigate("/money-split/finish");
-    }, 2500);
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, [navigate]);
 
   return (
-    <div className="loader-container">
+    <div className="loader-container" style={height ? { height: `${height}` } : { height: "800px" }}>
       <motion.div
         className="loader"
         animate={{ rotate: 360 }} // 부모 요소를 회전시킴
@@ -61,6 +62,12 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ text }) => {
             월급 쪼개기 AI 추천 비율을
             <br />
             계산 중이에요.
+          </>
+        ) : text === "recommend" ? (
+          <>
+            새 추천 목록
+            <br />
+            로딩 중
           </>
         ) : (
           <>

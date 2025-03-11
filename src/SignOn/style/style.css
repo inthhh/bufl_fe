@@ -460,8 +460,8 @@
 .error-message {
   font-size: 12px;
   position: absolute;
-  top: 105px;
-  left: 20px;
+  top: 97px;
+  left: 35px;
   color: red;
   font-weight: bold;
 }

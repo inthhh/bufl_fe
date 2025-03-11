@@ -1,0 +1,115 @@
+.startlist {
+  text-align: center;
+  padding: 15px;
+}
+.plus-parents {
+  position: relative;
+}
+.plus-btn {
+  border: none;
+  border-radius: 50px;
+  font-size: 30px;
+  width: 45px;
+  height: 45px;
+  color: #3182f6;
+  position: absolute;
+  top: 17px;
+  left: 30px;
+}
+.plus-list {
+  text-align: center;
+  border: none;
+  border-radius: 12px;
+  background-color: rgba(211, 211, 211, 0.212);
+  width: 380px;
+  height: 60px;
+  padding: 20px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.parentsbox {
+  border: none;
+  background-color: rgba(211, 211, 211, 0.212);
+  border-radius: 12px;
+  width: 380px;
+  height: 400px;
+  margin: 77px 3px 0 10px;
+  max-height: 400px; /* 원하는 최대 높이 설정 (필요에 따라 조정) */
+  overflow-y: auto; /* 세로 스크롤만 추가 */
+  overflow-x: hidden; /* 가로 스크롤 숨기기 */
+  padding-right: 5px; /* 스크롤바와의 간격 조정 (필요 시) */
+}
+/* 스크롤바 */
+.parentsbox::-webkit-scrollbar {
+  width: 8px; /* 세로 스크롤바의 너비 */
+}
+
+/* 스크롤바 핸들 (실제 스크롤바 부분) */
+.parentsbox::-webkit-scrollbar-thumb {
+  background: #888; /* 핸들의 색상 */
+  border-radius: 10px; /* 핸들의 모서리를 둥글게 */
+}
+.payment {
+  width: 30px;
+  margin: 10px 0 10px 10px;
+}
+.nowgoal {
+  font-size: 20px;
+  font-weight: bold;
+  margin: -41px 0 0 45px;
+}
+.goaltext {
+  font-weight: bold;
+  text-align: center;
+  padding: 5px;
+  color: rgb(121, 121, 121);
+  font-size: 20px;
+  border: 1px solid rgb(121, 121, 121);
+  background-color: rgba(211, 211, 211, 0.575);
+  border-radius: 12px;
+  width: 360px;
+  height: 40px;
+  margin: 10px 10px 0 10px;
+}
+.present {
+  width: 33px;
+  margin: 10px 0 10px 10px;
+}
+.nowmoney {
+  font-size: 20px;
+  font-weight: bold;
+  margin: -39px 0 0 47px;
+}
+.money4 {
+  font-weight: bold;
+  text-align: center;
+  padding: 5px;
+  color: rgb(121, 121, 121);
+  font-size: 20px;
+  border: 1px solid rgb(121, 121, 121);
+  background-color: rgba(211, 211, 211, 0.575);
+  border-radius: 12px;
+  width: 360px;
+  height: 40px;
+  margin: 10px 10px 0 10px;
+}
+.goal-list {
+  font-weight: bold;
+  margin: 20px 0 0 10px;
+}
+
+.ninja {
+  margin: 8px 0 0 10px;
+}
+
+.message {
+  font-size: 15px;
+  padding: 40px 20px 30px 20px;
+  text-align: center;
+  border: none;
+  background-color: rgba(192, 219, 255, 0.507);
+  width: 180px;
+  height: 150px;
+  margin: -170px 10px 0 200px;
+}

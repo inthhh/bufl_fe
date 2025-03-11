@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import BackImg from "./img/left-arrow.png";
+import BackImg from "./images/left-arrow.png";
 import { useState } from "react";
-import "./splitStyle.css";
+import "./style/splitStyle.css";
 
 interface MoveBackProps {
   pageBefore: string;

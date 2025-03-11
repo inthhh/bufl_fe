@@ -1,79 +1,121 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import axios, { AxiosError } from "axios";
 import "../style/style.css";
 import MoneyImg from "../images/money.png";
 import DateImg from "../images/date.png";
 import AccountImg from "../images/account.png";
-import "../../MoneySplit/splitStyle.css";
+import "../../MoneySplit/style/splitStyle.css";
 import MoveBack from "../../MoneySplit/MoveBack";
-import { accountList } from "./data";
 
 function SalaryInfoPage() {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
-  const [salary, setSalary] = useState(2500000);
-  const [payday, setPayday] = useState("20일");
+  const [salary, setSalary] = useState(
+    () => Number(localStorage.getItem("salary")) || 2500000
+  );
+  const [payday, setPayday] = useState(
+    () => localStorage.getItem("payday") || "20일"
+  );
   const [selectedAccount, setSelectedAccount] = useState<number | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [accountList, setAccountList] = useState<
+    {
+      account_id: number;
+      bank_name: string;
+      account_number: string;
+      logo: string;
+    }[]
+  >([]);
   const inputRef = useRef<HTMLInputElement>(null);
+
+
+  useEffect(() => {
+    const fetchAccounts = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/accounts", {
+          withCredentials: true, 
+        });
+        setAccountList(response.data.accounts);
+      } catch (error) {
+        console.error("계좌 정보를 불러오는 데 실패했습니다:", error);
+      }
+    };
+
+    fetchAccounts();
+  }, []);
+
 
   const formatSalary = (value: number) => value.toLocaleString();
 
+
   const handleSalaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const input = e.target;
-    const rawValue = input.value.replace(/\D/g, "");
-    const newValue = rawValue ? Number(rawValue) : 0;
-
-    const prevFormatted = formatSalary(salary);
-    const prevCommaCount = (prevFormatted.match(/,/g) || []).length;
-    const cursorPosition = input.selectionStart || 0;
-
-    setSalary(newValue);
-
-    setTimeout(() => {
-      if (inputRef.current) {
-        const newFormatted = formatSalary(newValue);
-        const newCommaCount = (newFormatted.match(/,/g) || []).length;
-        let newCursorPosition =
-          cursorPosition + (newCommaCount - prevCommaCount);
-        newCursorPosition = Math.max(
-          0,
-          Math.min(newFormatted.length, newCursorPosition)
-        );
-
-        inputRef.current.setSelectionRange(
-          newCursorPosition,
-          newCursorPosition
-        );
-      }
-    }, 0);
+    const rawValue = e.target.value.replace(/\D/g, ""); 
+    setSalary(rawValue ? Number(rawValue) : 0);
   };
+
 
   const handleBlur = () => {
-    if (!salary) {
-      setSalary(2500000);
-    }
+    if (!salary) setSalary(2500000);
   };
+
 
   const adjustSalary = (amount: number) => {
     setSalary((prevSalary) => Math.max(0, prevSalary + amount));
   };
+
 
   const paydayOptions = Array.from(
     { length: 31 },
     (_, i) => `${i + 1}일`
   ).concat("말일");
 
+
+  const getNextDay = (day: string) => {
+    if (day === "말일") return "1일";
+    const dayNumber = parseInt(day.replace("일", ""), 10);
+    return isNaN(dayNumber) || dayNumber >= 28 ? "1일" : `${dayNumber + 1}일`;
+  };
+
+
+  const submitSalaryInfo = async () => {
+    if (!selectedAccount) {
+      alert("월급 계좌를 선택하세요!");
+      return;
+    }
+
+    try {
+      await axios.post(
+        "http://localhost:5000/api/users/salary",
+        {
+          amount: salary,
+          payDate: payday,
+          accountId: selectedAccount, 
+        },
+        { withCredentials: true }
+      );
+
+      navigate("/sign/interest"); 
+    } catch (error) {
+      const axiosError = error as AxiosError;
+      alert("월급 정보를 저장하는 데 실패했습니다.");
+      console.error(
+        "월급 정보 저장 실패:",
+        axiosError.response ? axiosError.response.data : axiosError.message
+      );
+    }
+  };
+
   return (
     <div className="container">
-      <MoveBack pageBefore="/sign/agreement" />
+      <MoveBack pageBefore="/sign/input-pin" />
       <h3 className="salary_text1">
         월급 자동 분배를 위해
-        <br /> 정보가 필요해요.
+        <br />
+        정보가 필요해요.
       </h3>
 
       {step === 1 ? (
-        //---------------------월급여---------------------------------
         <div>
           <div className="salary_flex">
             <img src={MoneyImg} alt="money" width="45px" height="45px" />
@@ -114,7 +156,6 @@ function SalaryInfoPage() {
           </div>
         </div>
       ) : step === 2 ? (
-        //----------------------------월급일-----------------------
         <div>
           <div className="salary_flex">
             <img src={DateImg} alt="date" width="45px" />
@@ -148,7 +189,7 @@ function SalaryInfoPage() {
             )}
 
             <p className="payday__description">
-              매달 {payday} 새벽에 월급 쪼개기를 진행할게요.
+              매달 {getNextDay(payday)} 새벽에 월급 쪼개기를 진행할게요.
             </p>
           </div>
 
@@ -159,38 +200,38 @@ function SalaryInfoPage() {
           </div>
         </div>
       ) : (
-        //------------------------월급계좌--------------------------------
         <div>
           <div className="salary_flex">
             <img src={AccountImg} alt="account" width="45px" />
             <p className="salary_text2 salary2__title--move">월급계좌</p>
           </div>
-
           <div className="account-list">
             <p className="account-title">내 계좌</p>
             {accountList.map((account) => (
-              <div
-                key={account.id}
+              <button
+                key={account.account_id}
                 className={`account-item ${
-                  selectedAccount === account.id ? "selected" : ""
+                  selectedAccount === account.account_id ? "selected" : ""
                 }`}
-                onClick={() => setSelectedAccount(account.id)}
+                onClick={() => setSelectedAccount(account.account_id)}
               >
                 <img
                   src={require(`../images/${account.logo}`)}
-                  alt={account.name}
+                  alt={account.bank_name}
                 />
                 <span>
-                  {account.name} {account.account}
+                  {account.bank_name} <strong>{account.account_number}</strong>
                 </span>
-              </div>
+              </button>
             ))}
           </div>
 
           <div className="center_wrap">
-          <button
-              className={`btn_start ${selectedAccount === null ? "disabled" : ""}`}
-              onClick={() => navigate("/sign/input-pin")}
+            <button
+              className={`btn_start ${
+                selectedAccount === null ? "disabled" : ""
+              }`}
+              onClick={submitSalaryInfo}
               disabled={selectedAccount === null}
             >
               다음

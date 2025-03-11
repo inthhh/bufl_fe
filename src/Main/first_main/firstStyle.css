@@ -1,0 +1,199 @@
+.bufl {
+  width: 60px;
+  color: #3182f6;
+  position: relative;
+  top: 15px;
+  left: 20px;
+}
+
+.bell {
+  height: 35px;
+  position: relative;
+  top: 10px;
+  left: 290px;
+}
+
+.money {
+  font-weight: bolder;
+  font-size: larger;
+  position: relative;
+  bottom: 10px;
+  left: 60px;
+}
+
+.bank-icon {
+  margin: 20px;
+  margin-top: 30px;
+  width: 360px;
+}
+
+.bank-icon1 {
+  background-color: #3183f6ba;
+  border-radius: 12px 12px 0 0;
+}
+
+.bank-icon2 {
+  background-color: #3183f67a;
+}
+
+.bank-icon3 {
+  background-color: #3183f645;
+}
+
+.bank-icon4 {
+  background-color: #3183f629;
+  border-radius: 0;
+}
+
+.bank-icon5 {
+  background-color: #eaeaeb4c;
+  border-radius: 0;
+}
+
+.more {
+  border: 1px;
+  background-color: rgba(211, 211, 211, 0.432);
+  border-radius: 0 0 12px 12px;
+  color: rgba(160, 159, 159, 0.749);
+  text-align: center;
+  font-size: small;
+  padding: 5px;
+}
+
+.main_icons {
+  position: relative;
+  top: 15px;
+  left: 16px;
+  width: 22px;
+}
+
+.month_ {
+  margin-left: 20px;
+  border: 1px;
+  background-color: white;
+  width: 360px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  align-self: center;
+  line-height: 60px;
+}
+
+.month1_ {
+  color: gray;
+  font-size: large;
+}
+
+.month2_ {
+  color: rgba(68, 68, 68, 0.959);
+  font-weight: bolder;
+  font-size: large;
+}
+
+.asset-box {
+  border: 1px;
+  background-color: white;
+  margin: 20px;
+  height: 220px;
+  border-radius: 12px;
+  width: 360px;
+}
+
+.donut1 {
+  width: 180px;
+  height: 180px;
+  margin-left: 20px;
+}
+
+.asset {
+  position: relative;
+  bottom: 140px;
+  left: 10px;
+}
+
+.asset1 {
+  position: relative;
+  bottom: 115px;
+  left: 140px;
+  font-size: small;
+}
+
+.asset2 {
+  position: relative;
+  bottom: 135px;
+  left: 40px;
+  font-size: small;
+}
+
+.asset3 {
+  position: relative;
+  bottom: 60px;
+  left: 80px;
+  font-size: small;
+}
+
+.asset4 {
+  position: relative;
+  bottom: 97px;
+  left: 40px;
+  font-size: small;
+}
+
+.asset5 {
+  position: relative;
+  bottom: 120px;
+  left: -70px;
+  font-size: small;
+  text-align: center;
+}
+
+.asset6 {
+  font-size: larger;
+  font-weight: bolder;
+  position: relative;
+  bottom: 160px;
+  left: 220px;
+}
+
+.start-service-box {
+  width: 400px;
+  height: 1100px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  position: absolute;
+  top: 350px;
+  z-index: 999;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 30px;
+  flex-direction: column;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.main-wrap {
+  height: 690px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin-top: 15px;
+  position: relative;
+}
+/* 스크롤바 전체 기본 꾸미기 */
+.main-wrap::-webkit-scrollbar {
+  scrollbar-color: #b6b6b6 #f1f1f1;
+  width: 6px;
+}
+
+/* 스크롤바 막대 꾸미기 */
+.main-wrap::-webkit-scrollbar-thumb {
+  background-color: #b6b6b6;
+  border-radius: 4px;
+}
+
+/* 스크롤바 트랙 꾸미기 */
+.main-wrap::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
