@@ -21,7 +21,7 @@ const AccountSelector: React.FC = () => {
   // 완료 버튼 클릭 시 실행
   const handleConfirm1 = () => {
     if (selectedAccount) {
-      navigate("/Main/list");
+      navigate("/main/list");
     } else {
       alert("계좌를 선택해주세요!");
     }
@@ -29,9 +29,9 @@ const AccountSelector: React.FC = () => {
   // ✔
   return (
     <div>
-      <MoveBack pageBefore="/Main/pig" />
+      <MoveBack pageBefore="/main/pig" />
       <div className="bankbook">
-        "저축" 목적으로 사용할
+        저축을 위해 매달 돈을 가져올
         <br />
         통장을 선택해주세요.
       </div>
