@@ -146,7 +146,7 @@ const First: React.FC = () => {
         ) : undefined}
         <div className="asset-box">
           <div className="donut-title">자산</div>
-          <div className="donut">
+          <div className="donut1">
             <DoughnutChart name={name} ratio={ratio} color={color} />
           </div>
 

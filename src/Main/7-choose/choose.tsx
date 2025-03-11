@@ -12,20 +12,27 @@ const Choose: React.FC = () => {
   const [duration, setDuration] = useState(12); // 기본값 12개월
 
   const selfhandle = () => {
-    navigate("/Main/choice");
+    navigate("/main/choice");
   };
   const nexthandle = () => {
-    navigate("/Main/rocket");
+    navigate("/main/rocket");
   };
   return (
     <div>
-      <MoveBack pageBefore="/Main/AccountSelector1" />
+      <MoveBack pageBefore="/main/account-selector1" />
       <div>
         <img className="pigmoney" src={pigmoney} alt="pigmoney" />
       </div>
-      <div className="winnermoney1">매달 {amount}만원씩<br />저축에 성공하면</div>
-      <div className="winnermoney2">{duration}개월 만기했을 때 (원금+이자)</div>                                             {/* 천 단위 쉼표 추가 */}
-      <div className="winnermoney3"><span style={{ color: "#3182F6", fontWeight: "bold" }}>{(amount * 10000 * duration).toLocaleString()}원</span> + a 받아요</div>
+      <div className="winnermoney1">
+        매달 {amount}만원씩
+        <br />
+        저축에 성공하면
+      </div>
+      <div className="winnermoney2">{duration}개월 만기했을 때 (원금+이자)</div> {/* 천 단위 쉼표 추가 */}
+      <div className="winnermoney3">
+        <span style={{ color: "#3182F6", fontWeight: "bold" }}>{(amount * 10000 * duration).toLocaleString()}원</span> +
+        a 받아요
+      </div>
       <div>
         {/* 저축 금액 조절 슬라이더 */}
         <div className="mybox-container">
@@ -58,8 +65,12 @@ const Choose: React.FC = () => {
               onChange={(e) => setDuration(Number(e.target.value))}
             />
           </div>
-          <button className="winner-money4" onClick={selfhandle}>직접 입력</button>
-          <button className="next-btn" onClick={nexthandle}>다음</button>
+          <button className="winner-money4" onClick={selfhandle}>
+            직접 입력
+          </button>
+          <button className="next-btn" onClick={nexthandle}>
+            다음
+          </button>
         </div>
       </div>
     </div>

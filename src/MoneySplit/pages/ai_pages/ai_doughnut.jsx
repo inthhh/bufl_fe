@@ -10,15 +10,7 @@ const DonutChart = ({ dataList, name }) => {
       {
         label: "# of Votes",
         data: dataList,
-        backgroundColor: [
-          "rgba(255, 107, 134, 0.85)",
-          "rgb(180, 247, 169)",
-          "rgb(255, 245, 138)",
-          "rgb(255, 177, 224)",
-          "rgba(10, 195, 16, 0.74)",
-          "rgb(107, 248, 246)",
-          "rgb(199, 103, 208)",
-        ],
+        backgroundColor: ["#FF6B86", "#bdeeb6", "#FFF58A", "#FFB1E0", "#5eb961", "#6BF8F6", "#C767D0"],
       },
     ],
   };
@@ -42,6 +34,7 @@ const DonutChart = ({ dataList, name }) => {
         offset: -6, // 라벨을 더 바깥쪽으로 이동
       },
     },
+    radius: "90%",
   };
 
   return (

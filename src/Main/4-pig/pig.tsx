@@ -7,11 +7,11 @@ import MoveBack from "../../MoneySplit/MoveBack";
 const Pig: React.FC = () => {
   const navigate = useNavigate();
   const handlestart = () => {
-    navigate("/Main/AccountSelector");
+    navigate("/main/account-selector");
   };
   return (
     <div>
-      <MoveBack pageBefore="/second" />
+      <MoveBack pageBefore="/add-goal" />
       <div className="start">
         AI가 추천해주는
         <br />
