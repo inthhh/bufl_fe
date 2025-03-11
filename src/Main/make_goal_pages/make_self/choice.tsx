@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import MoveBack from "../../MoneySplit/MoveBack";
+import MoveBack from "../../../MoneySplit/MoveBack";
 import "./choiceStyle.css";
 
 const Choice: React.FC = () => {
@@ -24,9 +24,7 @@ const Choice: React.FC = () => {
         setInputValue(newValue);
 
         // input 요소의 값도 업데이트하여 천 단위 콤마 추가
-        const inputElement = document.getElementById(
-          "userInput"
-        ) as HTMLInputElement;
+        const inputElement = document.getElementById("userInput") as HTMLInputElement;
         if (inputElement) {
           inputElement.value = (numericValue / 10000).toLocaleString() + "만원"; // 천 단위 콤마 추가하고 '만원' 단위로 표시
         }
@@ -65,23 +63,16 @@ const Choice: React.FC = () => {
       <div className="numpad-container">
         <div className="numpad-grid">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
-            <button
-              key={num}
-              className="numpad-button"
-              onClick={() => handleKeyPress(num.toString())}
-            >
+            <button key={num} className="numpad-button" onClick={() => handleKeyPress(num.toString())}>
               {num}
             </button>
           ))}
           <div className="empty-cell"></div>
-          <button className="numpad-button" onClick={() => handleKeyPress("0")}>
+          {/* <button className="numpad-button" onClick={() => handleKeyPress("0")}> */}
           <button className="numpad-button" onClick={() => handleKeyPress("0")}>
             0
           </button>
-          <button
-            className="numpad-button"
-            onClick={() => handleKeyPress("backspace")}
-          >
+          <button className="numpad-button" onClick={() => handleKeyPress("backspace")}>
             ←
           </button>
         </div>
@@ -95,4 +86,3 @@ const Choice: React.FC = () => {
 };
 
 export default Choice;
-

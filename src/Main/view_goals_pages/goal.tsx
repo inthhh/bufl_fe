@@ -4,7 +4,7 @@ import "./goalStyle.css";
 import MoveBack from "../../MoneySplit/MoveBack";
 import "../../MoneySplit/style/splitStyle.css";
 import BellImg from "./img/bell.png";
-import Bottom from "../bottom/bottom";
+import Bottom from "../bottom_nav/bottom";
 
 const Goal = () => {
   const navigate = useNavigate();
@@ -59,28 +59,22 @@ const Goal = () => {
 
   return (
     <div className={`goal-container ${showNotification ? "blurred" : ""}`}>
-      <MoveBack pageBefore="/Main/start" />
+      <MoveBack pageBefore="/Main/goals" />
 
       <div className="alarm-img" onClick={() => setShowNotification(true)}>
         <img src={BellImg} alt="bell" className="bell-icon" />
       </div>
 
       <div className="goal-header">
-        <p className="goal-title">
-          💰 1년 안에 {goalAmount.toLocaleString()}원 모으기
-        </p>
+        <p className="goal-title">💰 1년 안에 {goalAmount.toLocaleString()}원 모으기</p>
       </div>
 
       <div className="goal-progress">
         <p className="goal-progress-title">
-          <strong>{currentAmount.toLocaleString()}</strong> /{" "}
-          {goalAmount.toLocaleString()}원
+          <strong>{currentAmount.toLocaleString()}</strong> / {goalAmount.toLocaleString()}원
         </p>
         <div className="progress-bar">
-          <div
-            className="progress"
-            style={{ width: `${progressPercentage}%` }}
-          ></div>
+          <div className="progress" style={{ width: `${progressPercentage}%` }}></div>
         </div>
         <div className="goal-dates">
           <span>{startDate}</span>
@@ -96,12 +90,8 @@ const Goal = () => {
               <div className="history-date">{item.date}</div>
               <div className="history-description">{item.description}</div>
               <div className="history-wrap">
-                <div className="history-amount">
-                  + {item.amount.toLocaleString()}
-                </div>
-                <div className="history-total">
-                  {item.total.toLocaleString()}
-                </div>
+                <div className="history-amount">+ {item.amount.toLocaleString()}</div>
+                <div className="history-total">{item.total.toLocaleString()}</div>
               </div>
             </li>
           ))}
@@ -111,14 +101,8 @@ const Goal = () => {
       <Bottom page="goal" />
 
       {showNotification && (
-        <div
-          className="notification-backdrop"
-          onClick={() => setShowNotification(false)}
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="notification-wrap"
-          >
+        <div className="notification-backdrop" onClick={() => setShowNotification(false)}>
+          <div onClick={(e) => e.stopPropagation()} className="notification-wrap">
             <p className="notification-modal">
               이번 달 목표 달성까지 20만원
               <br /> 더 필요합니다!

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./listStyle.css";
-import log from "./img/log.png";
+import log from "../img/log.png";
 import { useNavigate } from "react-router-dom";
-import MoveBack from "../../MoneySplit/MoveBack";
-import LoadingSpinner from "../../MoneySplit/loadingSpinner";
+import MoveBack from "../../../MoneySplit/MoveBack";
+import LoadingSpinner from "../../../MoneySplit/loadingSpinner";
 
 // 추천 목록의 타입 정의
 interface Recommendation {

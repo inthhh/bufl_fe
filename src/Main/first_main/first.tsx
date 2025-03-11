@@ -8,7 +8,7 @@ import BankIcon4 from "./img/kb.png";
 import Bufl from "./img/BUFL.png";
 import DoughnutChart from "./DoughnutChart.js";
 import Account from "./account";
-import Bottom from "../bottom/bottom";
+import Bottom from "../bottom_nav/bottom";
 import { AccountsInterface } from "../../MoneySplit/pages/interfaces";
 import { useLocation, useNavigate } from "react-router-dom";
 import AccountTree from "./AccountTree";

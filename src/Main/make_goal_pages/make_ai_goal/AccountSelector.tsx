@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "./secondStyle.css";
+import "../secondStyle.css";
 import { useNavigate } from "react-router-dom";
-import MoveBack from "../../MoneySplit/MoveBack";
+import MoveBack from "../../../MoneySplit/MoveBack";
 
 const AccountSelector1: React.FC = () => {
   const navigate = useNavigate();

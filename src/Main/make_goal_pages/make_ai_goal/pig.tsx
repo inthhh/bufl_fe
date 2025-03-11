@@ -1,8 +1,8 @@
 import React from "react";
 import "./pigStyle.css";
-import pig from "./img/piggy.png";
+import pig from "../img/piggy.png";
 import { useNavigate } from "react-router-dom";
-import MoveBack from "../../MoneySplit/MoveBack";
+import MoveBack from "../../../MoneySplit/MoveBack";
 
 const Pig: React.FC = () => {
   const navigate = useNavigate();

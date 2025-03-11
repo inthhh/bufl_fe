@@ -3,7 +3,7 @@ import "./startStyle.css";
 import payment from "./img/pay.png";
 import present from "./img/piggy.png";
 import ninja from "./img/start.png";
-import Bottom from "../bottom/bottom";
+import Bottom from "../bottom_nav/bottom";
 import { useNavigate } from "react-router-dom";
 import DonutChart from "./Doughnut1"; // 도넛 차트 컴포넌트 임포트
 
@@ -43,7 +43,9 @@ const Start: React.FC = () => {
         <button className="plus-btn" onClick={handleplusgoal}>
           +
         </button>
-        <div className="plus-list">추가 목표</div>
+        <div className="plus-list" onClick={() => navigate("/add-goal")}>
+          추가 목표
+        </div>
       </div>
 
       {/* 목표 목록 렌더링 */}
@@ -69,9 +71,7 @@ const Start: React.FC = () => {
       <div>
         <img className="ninja" src={ninja} alt="ninja" />
       </div>
-      <div className="message">
-        오늘도 목표를 향해 달려가는 "뱅크닌자"님 응원합니다!
-      </div>
+      <div className="message">오늘도 목표를 향해 달려가는 "뱅크닌자"님 응원합니다!</div>
       <Bottom page="goal" />
     </div>
   );
