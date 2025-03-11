@@ -9,6 +9,10 @@ import Bottom from "../bottom/bottom";
 const Goal = () => {
   const navigate = useNavigate();
   const [showNotification, setShowNotification] = useState(false);
+
+  const [goalAmount, setGoalAmount] = useState(10000000);
+  const [currentAmount, setCurrentAmount] = useState(3200000);
+
   const [savingHistory, setSavingHistory] = useState([
     {
       date: "2월 19일",
@@ -30,6 +34,9 @@ const Goal = () => {
     },
   ]);
 
+  const [startDate, setStartDate] = useState("2025.01.12");
+  const [endDate, setEndDate] = useState("2026.01.12");
+
   return (
     <div className={`goal-container ${showNotification ? "blurred" : ""}`}>
       <MoveBack pageBefore="/Main/start" />
@@ -39,19 +46,25 @@ const Goal = () => {
       </div>
 
       <div className="goal-header">
-        <p className="goal-title">💰1년 안에 10,000,000원 모으기</p>
+        <p className="goal-title">
+          💰1년 안에 {goalAmount.toLocaleString()}원 모으기
+        </p>
       </div>
 
       <div className="goal-progress">
         <p className="goal-progress-title">
-          <strong>3,200,000</strong> / 10,000,000원
+          <strong>{currentAmount.toLocaleString()}</strong> /{" "}
+          {goalAmount.toLocaleString()}원
         </p>
         <div className="progress-bar">
-          <div className="progress" style={{ width: "32%" }}></div>
+          <div
+            className="progress"
+            style={{ width: `${(currentAmount / goalAmount) * 100}%` }}
+          ></div>
         </div>
         <div className="goal-dates">
-          <span>2025.01.12</span>
-          <span>2026.01.12</span>
+          <span>{startDate}</span>
+          <span>{endDate}</span>
         </div>
       </div>
 
