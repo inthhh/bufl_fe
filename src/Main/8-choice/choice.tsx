@@ -48,7 +48,7 @@ const Choice: React.FC = () => {
 
   return (
     <div>
-      <MoveBack pageBefore="/Main/choose" />
+      <MoveBack pageBefore="/main/choose" />
       <div>
         <input
           className="money-pig"
@@ -75,6 +75,7 @@ const Choice: React.FC = () => {
           ))}
           <div className="empty-cell"></div>
           <button className="numpad-button" onClick={() => handleKeyPress("0")}>
+          <button className="numpad-button" onClick={() => handleKeyPress("0")}>
             0
           </button>
           <button
@@ -94,3 +95,4 @@ const Choice: React.FC = () => {
 };
 
 export default Choice;
+

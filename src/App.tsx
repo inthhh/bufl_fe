@@ -15,8 +15,6 @@ import TossAuth from "./MoneySplit/pages/final_process/TossAuth";
 import InputPin from "./MoneySplit/pages/final_process/InputPin";
 import SplitLoading from "./MoneySplit/pages/final_process/SplitLoading";
 
-import DoughnutChart from "./Main/1-first/DoughnutChart";
-import Account from "./Main/1-first/account";
 import AccountSelector from "./Main/3-second/AccountSelector";
 import AccountSelector1 from "./Main/3-second/AccountSelector1";
 import Second from "./Main/3-second/second";
@@ -75,17 +73,19 @@ const App: React.FC = () => {
           <Route path="/money-split/add-category" element={<AddCategory />} />
           <Route path="/money-split/toss/terms" element={<TossTerms />} />
           <Route path="/money-split/ai/cancel" element={<AI_Cancel />} />
+
           <Route path="/setting" element={<Setting />} />
-          <Route path="/Second" element={<Second />} />
-          <Route path="/Main/AccountSelector" element={<AccountSelector />} />
-          <Route path="/Main/AccountSelector1" element={<AccountSelector1 />} />
-          <Route path="/Main/pig" element={<Pig />} />
-          <Route path="/Main/loading" element={<Loading />} />
-          <Route path="/Main/choose" element={<Choose />} />
-          <Route path="/Main/list" element={<List />} />
-          <Route path="/Main/choice" element={<Choice />} />
-          <Route path="/Main/rocket" element={<Rocket />} />
-          <Route path="/Main/start" element={<Start />} />
+          <Route path="/add-goal" element={<Second />} />
+          <Route path="/main/account-selector" element={<AccountSelector />} />
+          <Route path="/main/account-selector1" element={<AccountSelector1 />} />
+          <Route path="/main/pig" element={<Pig />} />
+          <Route path="/main/loading" element={<Loading />} />
+          <Route path="/main/choose" element={<Choose />} />
+          <Route path="/main/list" element={<List />} />
+          <Route path="/main/choice" element={<Choice />} />
+          <Route path="/main/rocket" element={<Rocket />} />
+          <Route path="/main/goals" element={<Start />} />
+
           <Route path="/sign" element={<StartPage />} />
           <Route path="/sign/personal-info" element={<PersonalInfoPage />} />
           <Route path="/sign/agreement" element={<AgreementPage />} />

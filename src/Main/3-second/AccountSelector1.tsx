@@ -34,7 +34,7 @@ const AccountSelector1: React.FC = () => {
   // 완료 버튼 클릭 시 실행
   const handleConfirm = () => {
     if (selectedAccount) {
-      navigate("/Main/choose", { state: { account_id: selectedAccount } }); // 계좌 번호를 state로 전달
+      navigate("/main/choose");
     } else {
       alert("계좌를 선택해주세요!");
     }
@@ -42,7 +42,7 @@ const AccountSelector1: React.FC = () => {
 
   return (
     <div>
-      <MoveBack pageBefore="/Second" />
+      <MoveBack pageBefore="/add-goal" />
       <div className="bankbook">
         "저축" 목적으로 사용할
         <br />
