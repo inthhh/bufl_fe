@@ -11,7 +11,7 @@ const Goal = () => {
   const [showNotification, setShowNotification] = useState(false);
 
   const [goalAmount, setGoalAmount] = useState(10000000);
-  const [currentAmount, setCurrentAmount] = useState(3200000);
+  const [currentAmount, setCurrentAmount] = useState(3800000);
 
   const progressPercentage = Math.min(100, (currentAmount / goalAmount) * 100);
 
@@ -20,19 +20,37 @@ const Goal = () => {
       date: "2월 19일",
       description: "입금자명",
       amount: 200000,
-      total: 3200000,
+      total: 3800000,
     },
     {
       date: "1월 19일",
       description: "입금자명",
       amount: 200000,
-      total: 3200000,
+      total: 3600000,
     },
     {
       date: "12월 19일",
       description: "입금자명",
       amount: 200000,
+      total: 3400000,
+    },
+    {
+      date: "11월 19일",
+      description: "입금자명",
+      amount: 200000,
       total: 3200000,
+    },
+    {
+      date: "10월 19일",
+      description: "입금자명",
+      amount: 200000,
+      total: 3000000,
+    },
+    {
+      date: "9월 19일",
+      description: "입금자명",
+      amount: 200000,
+      total: 2800000,
     },
   ]);
 
