@@ -21,7 +21,10 @@ const SelectAccountDetail: React.FC = () => {
 
   useEffect(() => {
     console.log("*******", categoryId);
-    fetch(`http://localhost:5000/api/salary/category/${categoryId}`)
+    fetch(`http://localhost:5000/api/salary/category/${categoryId}`, {
+      method: "GET", // 기본값이지만 명시적으로 써도 됨
+      credentials: "include", // 쿠키 및 인증 정보 포함
+    })
       .then((response) => response.json())
       .then((data) => {
         setName(data.category[0].name);
@@ -46,6 +49,7 @@ const SelectAccountDetail: React.FC = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(requestBody),
+        credentials: "include", // 쿠키 및 인증 정보 포함
       });
 
       if (!response.ok) {
@@ -67,24 +71,25 @@ const SelectAccountDetail: React.FC = () => {
       <MoveBack pageBefore="/money-split/select-account" />
       <div className="center_wrapper">
         <div>
-          <div className="black_title">카테고리 명</div>
           <form className="auth-form" style={{ width: "330px" }}>
             <div>
-              <label htmlFor="name">카테고리 이름</label>
+              <label className="title" htmlFor="name">
+                카테고리 명
+              </label>
               <br />
-              <div className="black_title" style={{ margin: "5px 0" }}>
-                {name}
-              </div>
+              <div className="input-form">{name}</div>
             </div>
 
             <div>
-              <label htmlFor="amount">목표 금액(선택)</label>
+              <label className="title" htmlFor="amount">
+                목표 금액
+              </label>
               <br />
-              <div>{Number(amount).toLocaleString()} 원</div>
+              <div className="input-form">{Number(amount).toLocaleString()} 원</div>
             </div>
 
             <div>
-              <label>연결 계좌</label>
+              <label className="title">연결 계좌</label>
               {selectedAccountId >= 0 && selectedAccountName.length > 0 ? (
                 <div style={{ margin: "10px 0" }}>
                   <div onClick={clickForAccount} className="list_div font_20">
@@ -97,15 +102,16 @@ const SelectAccountDetail: React.FC = () => {
                   type="button"
                   onClick={clickForAccount}
                   className="light_blue_btn"
-                  style={{ width: "330px", height: "50px" }}
+                  style={{
+                    width: "330px",
+                    height: "45px",
+                    fontSize: "15px",
+                    fontWeight: "normal",
+                  }}
                 >
-                  계좌 추가하기
+                  + 계좌 추가하기
                 </button>
               )}
-            </div>
-
-            <div>
-              <button type="button">카테고리 삭제</button>
             </div>
           </form>
           <div className="center_wrapper">

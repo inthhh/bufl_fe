@@ -2,9 +2,9 @@
   border: none;
   background-color: white;
   width: 360px;
-  margin-left: 20px;
   height: 460px;
   border-radius: 12px;
+  margin: 0 20px;
 }
 
 .account1 {
@@ -13,9 +13,7 @@
 
 .account2 {
   font-size: 20px;
-  position: relative;
-  bottom: 10px;
-  left: 330px;
+  margin: -22px 0 0 330px;
 }
 
 .toss1 {
@@ -34,35 +32,109 @@
   border-radius: 12px;
   width: 320px;
   height: 50px;
-  margin: 20px;
-}
-.line1 {
-  height: 320px;
+  margin: -370px 5px 20px 30px;
 }
 
-.budget {
+.account4 {
   border: none;
-  background-color: white;
-  height: 200px;
-  width: 360px;
+  background-color: rgba(10, 195, 16, 0.74);
   border-radius: 12px;
-  margin: 30px 20px;
+  width: 280px;
+  height: 50px;
+  margin: 0 5px 20px 70px;
 }
 
-.budget1 {
+.account5 {
+  border: none;
+  background-color: rgba(48, 231, 228, 0.73);
+  border-radius: 12px;
+  width: 280px;
+  height: 50px;
+  margin: 10px 5px 0 70px;
 }
+
+.account6 {
+  border: none;
+  background-color: rgba(48, 231, 228, 0.73);
+  border-radius: 12px;
+  width: 280px;
+  height: 50px;
+  margin: 1px 5px 20px 70px;
+}
+
+.account7 {
+  border: none;
+  background-color: rgba(250, 159, 1, 0.85);
+  border-radius: 12px;
+  width: 280px;
+  height: 50px;
+  margin: 0 5px 20px 70px;
+}
+
+.account8 {
+  border: none;
+  background-color: rgba(255, 3, 49, 0.85);
+  border-radius: 12px;
+  width: 280px;
+  height: 50px;
+  margin: 0 5px 5px 70px;
+}
+
+.line1 {
+  height: 330px;
+  margin: 55px 20px -10px 30px;
+}
+
+.budget-title {
+  margin: 15px 0 10px 20px;
+  font-weight: bold;
+}
+
 .line {
   border: none;
   height: 1px;
-  width: 360px;
+  width: 340px;
   background-color: lightgray;
+  margin: 10px 10px 0 15px;
 }
 
-.budget14 {
-  text-align: center;
+.budget_container {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  border-radius: 8px;
+  overflow: hidden;
+  border-bottom: 1px solid #ddd;
   border: none;
-  background-color: rgba(10, 195, 16, 0.74);
-  border-radius: 20px;
-  width: 50px;
-  height: 20px;
+  background-color: white;
+  border-radius: 12px;
+  margin: 30px 20px;
+  padding: 0 0 20px 0;
+}
+
+.budget_wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 2fr; /* 컬럼 너비 조정 */
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-top: 1px solid #ddd;
+  text-align: center;
+}
+
+.budget_percent {
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.donut {
+  height: 150px;
+  width: 180px;
+}
+.donut-title {
+  margin-left: 20px;
+  padding-top: 20px;
 }
