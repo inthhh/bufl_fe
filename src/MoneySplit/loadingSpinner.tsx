@@ -5,9 +5,10 @@ import { useNavigate } from "react-router-dom";
 
 interface LoadingSpinnerProps {
   text?: string;
+  height?: string;
 }
 
-const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ text }) => {
+const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ text, height }) => {
   const dots = [1, 2, 3, 4, 5, 6, 7, 8];
 
   const navigate = useNavigate();
@@ -17,13 +18,13 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ text }) => {
       if (text === "ana") navigate("/money-split/ai/analysis");
       if (text === "cal") navigate("/money-split/ai/calculate");
       if (text === "split") navigate("/money-split/finish");
-    }, 2500);
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, [navigate]);
 
   return (
-    <div className="loader-container" style={{ height: "800px" }}>
+    <div className="loader-container" style={height ? { height: `${height}` } : { height: "800px" }}>
       <motion.div
         className="loader"
         animate={{ rotate: 360 }} // 부모 요소를 회전시킴
