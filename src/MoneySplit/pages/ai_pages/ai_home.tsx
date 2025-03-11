@@ -7,7 +7,7 @@ import MoveBack from "../../MoveBack";
 const AI_home: React.FC = () => {
   const navigate = useNavigate();
   const clickToNext = () => {
-    navigate("/money-split/ai/analysis-loading");
+    navigate("/money-split/ai/analysis");
   };
   return (
     <div>

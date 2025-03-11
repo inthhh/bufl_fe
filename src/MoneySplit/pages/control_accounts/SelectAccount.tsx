@@ -26,7 +26,7 @@ function SelectAccount() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setCategorys(data.categories.slice(-listLen));
+        setCategorys(data.categories);
         console.log("**category", categoryList);
       })
       .catch((error) => console.error("SelectAccount error:", error));
@@ -39,9 +39,8 @@ function SelectAccount() {
     })
       .then((response) => response.json())
       .then((data) => {
-        const slicedData = data.slice(-listLen);
-        setCategoryAccounts(slicedData);
-        console.log("✅ 잘린 accounts:", slicedData);
+        setCategoryAccounts(data);
+        console.log("✅ accounts:", data);
       })
       .catch((error) => console.error("SelectAccount error:", error));
   }, []);
@@ -70,10 +69,11 @@ function SelectAccount() {
   }, []);
 
   useEffect(() => {
+    setIsFinish(false);
     if (categoryAccounts.every((a) => a.bankName !== "정보 없음")) {
       setIsFinish(true);
     }
-  }, [categoryAccounts]);
+  }, [categoryAccounts, categoryList]);
 
   const navigate = useNavigate();
   const clickForYes = () => {
