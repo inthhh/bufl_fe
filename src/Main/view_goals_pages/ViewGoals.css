@@ -35,6 +35,20 @@
   width: 380px;
   height: 400px;
   margin: 77px 3px 0 10px;
+  max-height: 400px; /* 원하는 최대 높이 설정 (필요에 따라 조정) */
+  overflow-y: auto; /* 세로 스크롤만 추가 */
+  overflow-x: hidden; /* 가로 스크롤 숨기기 */
+  padding-right: 5px; /* 스크롤바와의 간격 조정 (필요 시) */
+}
+/* 스크롤바 */
+.parentsbox::-webkit-scrollbar {
+  width: 8px; /* 세로 스크롤바의 너비 */
+}
+
+/* 스크롤바 핸들 (실제 스크롤바 부분) */
+.parentsbox::-webkit-scrollbar-thumb {
+  background: #888; /* 핸들의 색상 */
+  border-radius: 10px; /* 핸들의 모서리를 둥글게 */
 }
 .payment {
   width: 30px;

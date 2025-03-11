@@ -3,7 +3,7 @@ import "./secondStyle.css";
 import pay from "./img/pay.png";
 import { useNavigate } from "react-router-dom";
 import MoveBack from "../../MoneySplit/MoveBack";
-import Bottom from "../bottom/bottom";
+import Bottom from "../bottom_nav/bottom";
 
 const Second: React.FC = () => {
   const navigate = useNavigate();

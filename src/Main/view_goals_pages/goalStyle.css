@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+.goal-container {
+  position: relative;
+}
+.alarm-img {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.goal-header {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-left: 25px;
+}
+
+.back-icon,
+.bell-icon {
+  width: 24px;
+  cursor: pointer;
+}
+
+.goal-title {
+  font-size: 20px;
+}
+
+.goal-progress {
+  margin-top: 10px;
+}
+
+.goal-progress-title {
+  margin-left: 33px;
+  font-size: 20px;
+}
+.progress-bar {
+  margin: 20px auto;
+  margin-bottom: 0px;
+  width: 90%;
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 40px;
+}
+
+.progress {
+  height: 20px;
+  background-color: #3182f6;
+  border-radius: 40px 0px 0px 40px;
+}
+
+.goal-dates {
+  padding: 10px 25px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: gray;
+}
+.saving-history-container {
+  height: 520px;
+  width: 100%;
+  background-color: #f3f3f3;
+  padding: 10px 20px 11px 20px;
+}
+.saving-history {
+  margin-top: 15px;
+  background: white;
+  padding: 15px;
+  border-radius: 20px;
+  height: 100%;
+  max-height: 460px;
+  overflow-y: auto;
+}
+
+.saving-history::-webkit-scrollbar {
+  width: 5px;
+}
+
+.saving-history::-webkit-scrollbar-thumb {
+  background-color: #cccccc;
+  border-radius: 10px;
+}
+
+.saving-history::-webkit-scrollbar-track {
+  background-color: #f3f3f3;
+  height: 10px;
+}
+
+.saving-history h4 {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.history-list {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 2fr;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.history-item {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 2fr;
+  align-items: center;
+  text-align: center;
+  padding: 10px 0;
+  padding-left: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-date {
+  font-size: 14px;
+  color: gray;
+  min-width: 80px;
+  text-align: left;
+}
+
+.history-description {
+  font-size: 15px;
+  min-width: 100px;
+  text-align: center;
+}
+.history-wrap {
+  margin-left: 10px;
+}
+
+.history-amount {
+  font-size: 15px;
+  font-weight: bold;
+  color: #3182f6;
+  min-width: 120px;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.history-total {
+  font-size: 15px;
+  color: black;
+  min-width: 120px;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.goal-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  padding: 10px 0;
+  text-align: center;
+  border-top: 1px solid #ddd;
+}
+
+.nav-icons span {
+  margin: 0 15px;
+  font-size: 15px;
+  color: gray;
+}
+
+.nav-icons .active {
+  color: black;
+  font-weight: bold;
+}
+
+.goal-container.blurred {
+  pointer-events: none;
+}
+
+.notification-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 108%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.notification-modal {
+  background: #e4effe;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+  height: 100px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.notification-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./settingStyle.css";
 import ProfileImg from "./profile.png";
-import Bottom from "../bottom/bottom";
+import Bottom from "../bottom_nav/bottom";
 import RightArrow from "./right-arrow.png";
 
 interface menuProps {

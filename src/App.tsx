@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import First from "./Main/1-first/first";
+import First from "./Main/first_main/first";
 import MoneySplitFirst from "./MoneySplit/SplitFirst";
 
 import AI_home from "./MoneySplit/pages/ai_pages/ai_home";
@@ -15,17 +15,16 @@ import TossAuth from "./MoneySplit/pages/final_process/TossAuth";
 import InputPin from "./MoneySplit/pages/final_process/InputPin";
 import SplitLoading from "./MoneySplit/pages/final_process/SplitLoading";
 
-import AccountSelector from "./Main/3-second/AccountSelector";
-import AccountSelector1 from "./Main/3-second/AccountSelector1";
-import Second from "./Main/3-second/second";
-import Pig from "./Main/4-pig/pig";
-import Loading from "./Main/5-loading/loading";
-import List from "./Main/6-list/list";
-import Choose from "./Main/7-choose/choose";
-import Choice from "./Main/8-choice/choice";
-import Rocket from "./Main/9-rocket/rocket";
-import Start from "./Main/10-start/start";
-
+import AccountSelector from "./Main/make_goal_pages/make_ai_goal/AccountSelector";
+import AccountSelector1 from "./Main/make_goal_pages/make_self/AccountSelector1";
+import Second from "./Main/make_goal_pages/second";
+import Pig from "./Main/make_goal_pages/make_ai_goal/pig";
+import List from "./Main/make_goal_pages/make_ai_goal/list";
+import Choose from "./Main/make_goal_pages/make_self/choose";
+import Choice from "./Main/make_goal_pages/make_self/choice";
+import Rocket from "./Main/make_goal_pages/rocket";
+import ViewGoals from "./Main/view_goals_pages/ViewGoals";
+import Goal from "./Main/view_goals_pages/goal";
 import StartPage from "./SignOn/pages/StartPage";
 import PersonalInfoPage from "./SignOn/pages/PersonalInfoPage";
 import AgreementPage from "./SignOn/pages/AgreementPage";
@@ -79,13 +78,12 @@ const App: React.FC = () => {
           <Route path="/main/account-selector" element={<AccountSelector />} />
           <Route path="/main/account-selector1" element={<AccountSelector1 />} />
           <Route path="/main/pig" element={<Pig />} />
-          <Route path="/main/loading" element={<Loading />} />
           <Route path="/main/choose" element={<Choose />} />
           <Route path="/main/list" element={<List />} />
           <Route path="/main/choice" element={<Choice />} />
           <Route path="/main/rocket" element={<Rocket />} />
-          <Route path="/main/goals" element={<Start />} />
-
+          <Route path="/main/goals" element={<ViewGoals />} />
+          <Route path="/main/goal" element={<Goal />} />
           <Route path="/sign" element={<StartPage />} />
           <Route path="/sign/personal-info" element={<PersonalInfoPage />} />
           <Route path="/sign/agreement" element={<AgreementPage />} />

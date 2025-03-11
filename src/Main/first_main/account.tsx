@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./accountStyle.css";
 import line1 from "./img/lines.png";
 import toss from "./img/toss.png";
-import Bottom from "../bottom/bottom";
+import Bottom from "../bottom_nav/bottom";
 
 interface AccountProps {
   total: number;
