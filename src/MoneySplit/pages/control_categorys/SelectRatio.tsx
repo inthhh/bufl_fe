@@ -18,16 +18,18 @@ const Category: React.FC<CategoryProps> = (props) => {
     setValue(ratio);
   }, [ratio]);
 
-  const handleInput = (event: any) => {
+  useEffect(() => {
+    const rangeInput = document.getElementById(`range-${idx}`) as HTMLInputElement;
+    if (rangeInput) {
+      let gradientValue = value;
+      rangeInput.style.background = `linear-gradient(to right, rgb(28, 106, 216) 0%, rgb(28, 106, 216) ${gradientValue}%, rgb(200, 200, 200) ${gradientValue}%, rgb(200, 200, 200) 100%)`;
+    }
+  }, [value]); // value 값이 변경될 때마다 실행
+
+  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = Number(event.target.value);
     setValue(newValue);
     updateRatio(idx, newValue);
-    let newCategoryList = categoryList.map((category, i) => (i === idx ? { ...category, ratio: newValue } : category));
-    dispatch(setCategories(newCategoryList));
-    // 진행된 비율 계산
-    let gradientValue = newValue;
-    console.log(newCategoryList);
-    event.target.style.background = `linear-gradient(to right, rgb(28, 106, 216) 0%, rgb(28, 106, 216) ${gradientValue}%, rgb(200, 200, 200) ${gradientValue}%, rgb(200, 200, 200) 100%)`;
   };
 
   return (
@@ -41,6 +43,7 @@ const Category: React.FC<CategoryProps> = (props) => {
       </div>
       <div className="list_div" style={{ marginTop: "20px" }}>
         <input
+          id={`range-${idx}`} // 각 슬라이더에 고유한 id 부여
           type="range"
           min="0"
           max="100"
@@ -70,10 +73,22 @@ const SelectRatio: React.FC = () => {
   const [is100percent, setIs100percent] = useState<boolean>(false);
   const [isTooBig, setIsTooBig] = useState<boolean>(false);
   const [isTooSmall, setIsTooSmall] = useState<boolean>(true);
-
   const [total, setTotal] = useState<number>(12345);
+  const [ratios, setRatios] = useState<number[]>([]);
+
   useEffect(() => {
-    fetch("http://localhost:5000/api/users/salary")
+    // ai 데이터가 포함되어왔을 때 확인
+    if (categoryList.length > 1) {
+      console.log("***", categoryList);
+      setIsTooSmall(false);
+    }
+  }, [categoryList]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/users/salary", {
+      method: "GET", // 기본값이지만 명시적으로 써도 됨
+      credentials: "include", // 쿠키 및 인증 정보 포함
+    })
       .then((response) => response.json())
       .then((data) => {
         setTotal(Number(data.amount));
@@ -81,8 +96,6 @@ const SelectRatio: React.FC = () => {
       })
       .catch((error) => console.error("SelectRatio error:", error));
   }, []);
-
-  const [ratios, setRatios] = useState<number[]>([]);
 
   useEffect(() => {
     // 카테고리 별 비율 렌더링
@@ -156,10 +169,10 @@ const SelectRatio: React.FC = () => {
   const clickForYes = async () => {
     console.log(categoryList);
     const requestBody = categoryList.map(({ name, goal, color, ratio }) => ({
-      name,
-      goal,
-      color,
-      ratio,
+      name: name,
+      goal_amount: goal,
+      background_color: color,
+      ratio: ratio,
     }));
     console.log(requestBody);
     try {
@@ -169,6 +182,7 @@ const SelectRatio: React.FC = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(requestBody),
+        credentials: "include", // 쿠키 및 인증 정보 포함
       });
 
       if (!response.ok) {

@@ -59,7 +59,7 @@
   background-color: white;
   border: 1px solid rgb(172, 172, 172);
   width: 350px;
-  height: 64px;
+  height: 74px;
   text-align: left;
   text-decoration: none;
   display: inline-block;
@@ -159,7 +159,7 @@
 
 .center_wrapper .btn {
   position: absolute;
-  bottom: 40px;
+  top: 700px;
   width: 400px;
 }
 
@@ -250,6 +250,28 @@
   margin: 20px 0;
 }
 
+.title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.accounttitle {
+  font-size: 22px;
+  font-weight: bold;
+  margin-right: 100px;
+  padding: 5px 0;
+}
+.input-form {
+  border-radius: 8px;
+  margin: 8px 0;
+  padding-left: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #f5f5f5;
+  height: 35px;
+  font-size: 18px;
+}
 .no_border_btn {
   background-color: white;
   border: none;
@@ -334,24 +356,24 @@
   cursor: pointer;
 }
 
-/* 배경 블러 처리 */
+/* 諛곌꼍 釉붾윭 泥섎━ */
 .modal-overlay {
   position: fixed;
   top: 0;
   width: 400px;
   height: 800px;
-  background: rgba(0, 0, 0, 0.3); /* 반투명 */
+  background: rgba(0, 0, 0, 0.3); /* 諛섑닾紐� */
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(2px); /* 흐림 효과 */
+  backdrop-filter: blur(2px); /* �먮┝ �④낵 */
   z-index: 99;
   font-size: 18px;
 }
 
-/* 모달 스타일 */
+/* 紐⑤떖 �ㅽ��� */
 .modal {
-  background-color: #e4eeff; /* 모달 배경색 */
+  background-color: #e4eeff; /* 紐⑤떖 諛곌꼍�� */
   border-radius: 12px;
   text-align: center;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
@@ -359,7 +381,7 @@
   height: 200px;
 }
 
-/* 버튼 스타일 */
+/* 踰꾪듉 �ㅽ��� */
 .modal-buttons {
   margin-top: 15px;
   display: flex;
@@ -400,7 +422,7 @@
   background-color: #e4eeff;
   width: 330px;
   border-radius: 12px;
-  padding: 30px;
+  padding: 20px 30px;
 }
 
 .analysis_list {
@@ -485,7 +507,7 @@ input[type="range"]::-webkit-slider-thumb {
   }
 }
 
-/* pin 틀린 경우 빨간색 */
+/* pin ��由� 寃쎌슦 鍮④컙�� */
 
 .wrong {
   width: 20px;
@@ -506,4 +528,35 @@ input[type="range"]::-webkit-slider-thumb {
 .gray_big_btn.no {
   background-color: rgb(205, 205, 205);
   font-weight: bold;
+}
+
+.modal-overlay1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.modal-content1 {
+  background: white;
+  width: 100%;
+  max-width: 400px;
+  padding: 50px;
+  border-radius: 15px 15px 0 0;
+  text-align: center;
+  animation: slide-up 0.3s ease-in-out;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }

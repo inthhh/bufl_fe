@@ -23,10 +23,10 @@ const SplitFirst: React.FC = () => {
           <div className="center_wrapper">
             <img src={MoneyImg} alt="money" width={"120px"} />
           </div>
-          <div className="center_wrapper" style={{ margin: "40px" }}>
+          <div className="center_wrapper" style={{ margin: "80px 0 20px 0" }}>
             <strong>자유롭게 비율을 설정하고 추천받고</strong>
           </div>
-          <div className="center_wrapper" style={{ margin: "10px 0 80px 0" }}>
+          <div className="center_wrapper" style={{ margin: "10px 0 40px 0" }}>
             <p className="center_text">
               통장 쪼개기 비율을 직접 설정하거나
               <br /> AI를 통해 최적의 비율을 추천받으세요!

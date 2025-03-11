@@ -8,15 +8,15 @@ import Bottom from "../bottom/bottom";
 const Second: React.FC = () => {
   const navigate = useNavigate();
   const handlebox1 = () => {
-    navigate("/Main/pig");
+    navigate("/main/pig");
   };
   const handlebox2 = () => {
-    navigate("/Main/AccountSelector1");
+    navigate("/main/account-selector1");
   };
   return (
     <div className="relative-parent">
       <div>
-        <MoveBack pageBefore="/Account" />
+        <MoveBack pageBefore="/" />
         <div className="pay1">저축 목표 세우기</div>
       </div>
       <div className="pay">

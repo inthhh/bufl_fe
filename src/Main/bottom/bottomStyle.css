@@ -39,8 +39,9 @@
 
 .goal-text_ {
   color: lightgrey;
-  font-size: 12px;
-  width: 60px;
+  font-size: 13px;
+  width: 90px;
+  text-align: center;
 }
 
 .menu-text {

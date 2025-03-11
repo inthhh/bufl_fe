@@ -13,6 +13,7 @@ const Bottom: React.FC<BottomProps> = ({ page }) => {
   const [isHome, setIsHome] = useState<boolean>(false);
   const [isGoal, setIsGoal] = useState<boolean>(false);
   const [isMenu, setIsMenu] = useState<boolean>(false);
+  const [goalLen, setGoalLen] = useState<number>(0);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,10 +31,22 @@ const Bottom: React.FC<BottomProps> = ({ page }) => {
   const moveTo = (where: string) => {
     if (where === "home") navigate("/");
     if (where === "goal") {
-      navigate("/Second");
+      if (goalLen > 0) navigate("/main/goals");
+      else navigate("/add-goal");
     } // 현재 목표가 없을때, 있을 때 목표페이지 경로 수정 필요
     if (where === "menu") navigate("/setting");
   };
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/goals", {
+      method: "GET", // 기본값이지만 명시적으로 써도 됨
+      credentials: "include", // 쿠키 및 인증 정보 포함
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.goals) setGoalLen(data.goals.length);
+      });
+  }, []);
 
   return (
     <div className="bottom">

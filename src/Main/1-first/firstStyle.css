@@ -17,34 +17,36 @@
   font-weight: bolder;
   font-size: larger;
   position: relative;
-  bottom: 20px;
-  left: 90px;
+  bottom: 10px;
+  left: 60px;
 }
 
 .bank-icon {
   margin: 20px;
   margin-top: 30px;
+  width: 360px;
 }
 
 .bank-icon1 {
-  border: 1px;
   background-color: #3183f6ba;
   border-radius: 12px 12px 0 0;
 }
 
 .bank-icon2 {
-  border: 1px;
   background-color: #3183f67a;
 }
 
 .bank-icon3 {
-  border: 1px;
   background-color: #3183f645;
 }
 
 .bank-icon4 {
-  border: 1px;
   background-color: #3183f629;
+  border-radius: 0;
+}
+
+.bank-icon5 {
+  background-color: #eaeaeb4c;
   border-radius: 0;
 }
 
@@ -58,28 +60,11 @@
   padding: 5px;
 }
 
-.toss {
+.main_icons {
   position: relative;
   top: 15px;
   left: 16px;
-}
-
-.shinhan {
-  position: relative;
-  top: 15px;
-  left: 20px;
-}
-
-.hana {
-  position: relative;
-  top: 15px;
-  left: 20px;
-}
-
-.kb {
-  position: relative;
-  top: 15px;
-  left: 20px;
+  width: 22px;
 }
 
 .month_ {
@@ -90,7 +75,8 @@
   height: 60px;
   border-radius: 12px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0 20px;
   align-self: center;
   line-height: 60px;
 }
@@ -110,16 +96,15 @@
   border: 1px;
   background-color: white;
   margin: 20px;
-  height: 180px;
+  height: 220px;
   border-radius: 12px;
+  width: 360px;
 }
 
-.donut {
-  position: relative;
-  top: 20px;
-  left: 30px;
-  width: 150px;
-  height: 150px;
+.donut1 {
+  width: 180px;
+  height: 180px;
+  margin-left: 20px;
 }
 
 .asset {
@@ -144,8 +129,8 @@
 
 .asset3 {
   position: relative;
-  bottom: 75px;
-  left: 130px;
+  bottom: 60px;
+  left: 80px;
   font-size: small;
 }
 
@@ -158,15 +143,57 @@
 
 .asset5 {
   position: relative;
-  bottom: 150px;
-  left: 75px;
+  bottom: 120px;
+  left: -70px;
   font-size: small;
+  text-align: center;
 }
 
 .asset6 {
   font-size: larger;
   font-weight: bolder;
   position: relative;
-  bottom: 200px;
-  left: 190px;
+  bottom: 160px;
+  left: 220px;
+}
+
+.start-service-box {
+  width: 400px;
+  height: 1100px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  position: absolute;
+  top: 350px;
+  z-index: 999;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 30px;
+  flex-direction: column;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.main-wrap {
+  height: 690px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin-top: 15px;
+  position: relative;
+}
+/* 스크롤바 전체 기본 꾸미기 */
+.main-wrap::-webkit-scrollbar {
+  scrollbar-color: #b6b6b6 #f1f1f1;
+  width: 6px;
+}
+
+/* 스크롤바 막대 꾸미기 */
+.main-wrap::-webkit-scrollbar-thumb {
+  background-color: #b6b6b6;
+  border-radius: 4px;
+}
+
+/* 스크롤바 트랙 꾸미기 */
+.main-wrap::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
