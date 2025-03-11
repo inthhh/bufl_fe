@@ -469,3 +469,20 @@
   font-size: 20px;
   margin-bottom: 10px;
 }
+
+@keyframes floatBubble {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.logo-float {
+  width: 100px;
+  animation: floatBubble 2s infinite ease-in-out;
+}
