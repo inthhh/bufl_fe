@@ -1,12 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../style/splitStyle.css";
 import { useNavigate } from "react-router-dom";
 import MoveBack from "../../MoveBack";
+import axios from "axios";
+import AI_anaLoading from "./ai_anaLoading";
+
+interface ConsumptionPattern {
+  name: string;
+  ratio: string;
+}
 
 const AI_analysis: React.FC = () => {
   const navigate = useNavigate();
+  const [consumptionPattern, setConsumptionPattern] = useState<ConsumptionPattern[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchConsumptionPattern = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/ai-analysis", { withCredentials: true });
+        setConsumptionPattern(response.data.consumptionPattern);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching consumption pattern:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchConsumptionPattern();
+  }, []);
+
+  if (loading) {
+    return (
+      <div>
+        <AI_anaLoading />
+      </div>
+    );
+  }
+
   const clickForYes = () => {
-    navigate("/money-split/ai/calculate-loading");
+    navigate("/money-split/ai/calculate");
   };
   const clickForNo = () => {
     navigate("/money-split/ai/cancel");
@@ -22,13 +55,15 @@ const AI_analysis: React.FC = () => {
             <div>
               {/* api - 소비습관 불러오기 */}
               <ul className="analysis_list">
-                <li>생활비 35%</li>
-                <li>적금 20%</li>
-                <li>쇼핑, 장보기 30%</li>
-                <li>재테크 5%</li>
-                <li>기타 10% (보험금 등)</li>
+                {consumptionPattern.map((pattern) => (
+                  <li>
+                    💰 {pattern.name} {parseInt(pattern.ratio)}%
+                  </li>
+                ))}
               </ul>
             </div>
+            <div className="black_title">사용했어요.</div>
+            <div>이 정보를 바탕으로 적정 분배비율 계산을 시작할게요.</div>
           </div>
 
           <div className="center_wrapper">

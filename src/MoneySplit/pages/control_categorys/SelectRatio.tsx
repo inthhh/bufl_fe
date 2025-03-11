@@ -18,18 +18,6 @@ const Category: React.FC<CategoryProps> = (props) => {
     setValue(ratio);
   }, [ratio]);
 
-  // const handleInput = (event: any) => {
-  //   const newValue = Number(event.target.value);
-  //   setValue(newValue);
-  //   updateRatio(idx, newValue);
-  //   let newCategoryList = categoryList.map((category, i) => (i === idx ? { ...category, ratio: newValue } : category));
-  //   dispatch(setCategories(newCategoryList));
-  //   // 진행된 비율 계산
-  //   let gradientValue = newValue;
-  //   console.log(newCategoryList);
-  //   event.target.style.background = `linear-gradient(to right, rgb(28, 106, 216) 0%, rgb(28, 106, 216) ${gradientValue}%, rgb(200, 200, 200) ${gradientValue}%, rgb(200, 200, 200) 100%)`;
-  // };
-
   useEffect(() => {
     const rangeInput = document.getElementById(`range-${idx}`) as HTMLInputElement;
     if (rangeInput) {
@@ -85,8 +73,17 @@ const SelectRatio: React.FC = () => {
   const [is100percent, setIs100percent] = useState<boolean>(false);
   const [isTooBig, setIsTooBig] = useState<boolean>(false);
   const [isTooSmall, setIsTooSmall] = useState<boolean>(true);
-
   const [total, setTotal] = useState<number>(12345);
+  const [ratios, setRatios] = useState<number[]>([]);
+
+  useEffect(() => {
+    // ai 데이터가 포함되어왔을 때 확인
+    if (categoryList.length > 1) {
+      console.log("***", categoryList);
+      setIsTooSmall(false);
+    }
+  }, [categoryList]);
+
   useEffect(() => {
     fetch("http://localhost:5000/api/users/salary", {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
@@ -99,8 +96,6 @@ const SelectRatio: React.FC = () => {
       })
       .catch((error) => console.error("SelectRatio error:", error));
   }, []);
-
-  const [ratios, setRatios] = useState<number[]>([]);
 
   useEffect(() => {
     // 카테고리 별 비율 렌더링

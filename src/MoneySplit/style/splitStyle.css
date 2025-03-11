@@ -159,7 +159,7 @@
 
 .center_wrapper .btn {
   position: absolute;
-  top: 690px;
+  top: 700px;
   width: 400px;
 }
 
@@ -422,7 +422,7 @@
   background-color: #e4eeff;
   width: 330px;
   border-radius: 12px;
-  padding: 30px;
+  padding: 20px 30px;
 }
 
 .analysis_list {
