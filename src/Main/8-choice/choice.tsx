@@ -11,23 +11,19 @@ const Choice: React.FC = () => {
     navigate("/Main/rocket");
   };
    //  숫자버튼이나 뒤로 가는 버튼 클릭 시 실행 + 백스페이스 버튼 클릭은 입력 값 중 마지막 값 삭제
-  const handleKeyPress = (key: string) => {
-    if (key === 'backspace') {
-      setInputValue(prev => prev.slice(0, -1));
+  
+   const handleKeyPress = (key: string) => {
+    if (key === "backspace") {
+      setInputValue((prev) => {
+        const newValue = prev.slice(0, -1).replace(/,/g, "");
+        return newValue ? parseInt(newValue).toLocaleString() : "";
+      });
     } else {
-      // 기존 inputvalue에 새로운 숫자 추가 
-      const newValue = inputValue + key;
-      const numericValue = parseInt(newValue.replace(/,/g, ''));
-      // 콤마 제거 후 숫자 전환  (3,000,000원 이하일 시 입력 허용)
-      if (numericValue <= 3000000) {
-        setInputValue(newValue);
-        
-        // input 요소의 값도 업데이트
-        const inputElement = document.getElementById('userInput') as HTMLInputElement;
-        if (inputElement) {
-                                            // 천 단위 콤마 추가
-          inputElement.value = numericValue.toLocaleString();
-        }
+      const newValue = inputValue.replace(/,/g, "") + key; // 기존 값에서 콤마 제거 후 추가
+      const numericValue = parseInt(newValue, 10); // 숫자로 변환
+  
+      if (!isNaN(numericValue) && numericValue <= 3000000) {
+        setInputValue(numericValue.toLocaleString()); // 콤마 적용된 값으로 상태 업데이트
       }
     }
   };
@@ -41,7 +37,7 @@ const Choice: React.FC = () => {
           type="text"
           id="userInput"
           placeholder="매달 얼마씩 저금할까요?"
-          value={inputValue}
+          value={inputValue ? `${inputValue} 원` : ""}
           readOnly  
         />
         <div className="money-pig1">매달 최대 3,000,000원 가능</div>
