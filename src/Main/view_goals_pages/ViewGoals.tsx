@@ -38,11 +38,36 @@ const Start: React.FC = () => {
 
   // 목표 데이터
   const [goals, setGoals] = useState([
-    { goal_id: 1, goal_name: "여행 자금 모으기", current_amount: 150000, probability: 40 },
-    { goal_id: 2, goal_name: "노트북 구매", current_amount: 500000, probability: 70 },
-    { goal_id: 3, goal_name: "비상금 저축", current_amount: 80000, probability: 20 },
-    { goal_id: 4, goal_name: "운동기구 구매", current_amount: 200000, probability: 30 },
-    { goal_id: 5, goal_name: "책 구입", current_amount: 50000, probability: 10 },
+    {
+      goal_id: 1,
+      goal_name: "여행 자금 모으기",
+      current_amount: 150000,
+      probability: 40,
+    },
+    {
+      goal_id: 2,
+      goal_name: "노트북 구매",
+      current_amount: 500000,
+      probability: 70,
+    },
+    {
+      goal_id: 3,
+      goal_name: "비상금 저축",
+      current_amount: 80000,
+      probability: 20,
+    },
+    {
+      goal_id: 4,
+      goal_name: "운동기구 구매",
+      current_amount: 200000,
+      probability: 30,
+    },
+    {
+      goal_id: 5,
+      goal_name: "책 구입",
+      current_amount: 50000,
+      probability: 10,
+    },
   ]);
 
   return (
@@ -51,7 +76,9 @@ const Start: React.FC = () => {
         <div className="startlist">목표 목록</div>
       </div>
       <div className="plus-parents">
-        <button className="plus-btn" onClick={() => navigate("/add-goal")}>+</button>
+        <button className="plus-btn" onClick={() => navigate("/add-goal")}>
+          +
+        </button>
         <div className="plus-list" onClick={() => navigate("/add-goal")}>
           <div className="plus-text">추가 목표</div>
         </div>
@@ -60,13 +87,19 @@ const Start: React.FC = () => {
       {/* 목표 목록 (정확한 줄 단위로 스크롤) */}
       <div className="parentsbox" ref={parentsboxRef}>
         {goals.map((goal) => (
-          <div key={goal.goal_id} className="goal-box">
+          <div
+            key={goal.goal_id}
+            className="goal-box"
+            onClick={() => navigate("/main/goal")}
+          >
             <img className="payment" src={payment} alt="payment" />
             <div className="nowgoal">목표</div>
             <div className="goaltext">{goal.goal_name}</div>
             <img className="present" src={present} alt="present" />
             <div className="nowmoney">현재 저축액</div>
-            <div className="money4">{goal.current_amount.toLocaleString()}원</div>
+            <div className="money4">
+              {goal.current_amount.toLocaleString()}원
+            </div>
             <div className="donutWrap">
               <DonutChart progress={goal.probability || 0} />
             </div>
