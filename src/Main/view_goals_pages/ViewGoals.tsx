@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./startStyle.css";
+import "./ViewGoals.css";
 import payment from "./img/pay.png";
 import present from "./img/piggy.png";
 import ninja from "./img/start.png";

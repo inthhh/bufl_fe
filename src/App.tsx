@@ -23,7 +23,7 @@ import List from "./Main/make_goal_pages/make_ai_goal/list";
 import Choose from "./Main/make_goal_pages/make_self/choose";
 import Choice from "./Main/make_goal_pages/make_self/choice";
 import Rocket from "./Main/make_goal_pages/rocket";
-import Start from "./Main/view_goals_pages/start";
+import ViewGoals from "./Main/view_goals_pages/ViewGoals";
 import Goal from "./Main/view_goals_pages/goal";
 import StartPage from "./SignOn/pages/StartPage";
 import PersonalInfoPage from "./SignOn/pages/PersonalInfoPage";
@@ -82,7 +82,7 @@ const App: React.FC = () => {
           <Route path="/main/list" element={<List />} />
           <Route path="/main/choice" element={<Choice />} />
           <Route path="/main/rocket" element={<Rocket />} />
-          <Route path="/main/goals" element={<Start />} />
+          <Route path="/main/goals" element={<ViewGoals />} />
           <Route path="/main/goal" element={<Goal />} />
           <Route path="/sign" element={<StartPage />} />
           <Route path="/sign/personal-info" element={<PersonalInfoPage />} />
