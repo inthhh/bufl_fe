@@ -23,51 +23,6 @@ const First: React.FC = () => {
   const [ratio, setRatio] = useState<number[]>([]);
   const [color, setColor] = useState<string[]>([]);
 
-  // useEffect(() => {
-  //   fetch("https://buflbe.vercel.app/api/accounts", {
-  //     method: "GET", // 기본값이지만 명시적으로 써도 됨
-  //     credentials: "include", // 쿠키 및 인증 정보 포함
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setAccounts(data.accounts);
-  //       // console.log(data.accounts);
-  //     })
-  //     .catch((error) => console.error("first error:", error));
-  // }, []);
-
-  // useEffect(() => {
-  //   // 카테고리 정보 api
-  //   fetch(`https://buflbe.vercel.app/api/salary/category`, {
-  //     method: "GET", // 기본값이지만 명시적으로 써도 됨
-  //     credentials: "include", // 쿠키 및 인증 정보 포함
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       const names = data.categories.map((c: any) => c.name);
-  //       const ratios = data.categories.map((c: any) => Number(c.ratio));
-  //       const colors = data.categories.map((c: any) => c.background_color);
-  //       setName(names);
-  //       setRatio(ratios);
-  //       setColor(colors);
-  //       // console.log("***", names, ratios);
-  //     })
-  //     .catch((error) => console.error("first error:", error));
-  // }, []);
-
-  // useEffect(() => {
-  //   // 월급 정보 api
-  //   fetch("https://buflbe.vercel.app/api/users/salary", {
-  //     method: "GET", // 기본값이지만 명시적으로 써도 됨
-  //     credentials: "include", // 쿠키 및 인증 정보 포함
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setTotal(Number(data.amount));
-  //     })
-  //     .catch((error) => console.error("first error:", error));
-  // }, []);
-
   useEffect(() => {
     setIsLoading(true); // ✅ API 호출 전 로딩 시작
 
@@ -205,7 +160,7 @@ const First: React.FC = () => {
           </>
         ) : undefined}
       </div>
-      <Bottom page="home" />
+      <Bottom page="home" isFirstTime={isFromCompletion ? true : false} />
     </div>
   );
 };
