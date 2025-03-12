@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../MoneySplit/style/splitStyle.css";
 import MoveBack from "../../MoneySplit/MoveBack";
-
+import "../style/style.css";
 const InputPinPage: React.FC = () => {
   const [pin, setPin] = useState<string[]>(Array(6).fill(""));
   const [firstPin, setFirstPin] = useState<string | null>(null);
   const [step, setStep] = useState<"set" | "confirm">("set");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [isWrong, setIsWrong] = useState(false); 
   const navigate = useNavigate();
 
   const handleKeyPress = (num: string) => {
@@ -43,8 +44,13 @@ const InputPinPage: React.FC = () => {
         if (firstPin === pin.join("")) {
           updatePassword(firstPin);
         } else {
-          setErrorMessage("PIN 번호가 일치하지 않습니다. 다시 입력해주세요.");
-          setPin(Array(6).fill(""));
+          setIsWrong(true);
+          setErrorMessage("PIN 번호가 일치하지 않습니다.");
+
+          setTimeout(() => {
+            setIsWrong(false);
+            setPin(Array(6).fill(""));
+          }, 700);
         }
       }
     }
@@ -101,11 +107,11 @@ const InputPinPage: React.FC = () => {
 
           {errorMessage && <div className="error-message">{errorMessage}</div>}
 
-          <div className="pin-input-container">
+          <div className={`pin-input-container ${isWrong ? "shake" : ""}`}>
             {pin.map((num, index) => (
               <div
                 key={index}
-                className={`pin-dot ${num ? "filled" : ""}`}
+                className={`pin-dot ${num ? (isWrong ? "wrong" : "filled") : ""}`}
               ></div>
             ))}
           </div>
