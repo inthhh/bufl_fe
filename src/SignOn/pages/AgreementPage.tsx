@@ -15,7 +15,7 @@ function AgreementPage() {
       <MoveBack pageBefore="/sign/personal-info" />
       {!isAgreementOpen ? (
         <div className="center_wrap">
-          <img src={AgreeImg} width="255px" height="149px" alt="agree" className="agree_img" />
+          <img src={AgreeImg} width={220} alt="agree" className="agree_img" />
           <h3 className="agree_text1">
             자산 연결을 위해
             <br />
