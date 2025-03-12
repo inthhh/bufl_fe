@@ -49,19 +49,18 @@
   width: 380px;
   height: 406px;
   margin: 80px 3px 0 10px;
-  max-height: 406px; 
-  overflow-y: auto; 
-  overflow-x: hidden; 
+  max-height: 406px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .parentsbox::-webkit-scrollbar {
-  width: 10px; 
+  width: 10px;
 }
 
-
 .parentsbox::-webkit-scrollbar-thumb {
-  background: #888; 
-  border-radius: 20px; 
+  background: #888;
+  border-radius: 20px;
 }
 .payment {
   width: 30px;
@@ -129,13 +128,15 @@
 
 .message {
   font-size: 13px;
-  padding: 45px 20px 30px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   border: none;
   background-color: rgba(192, 219, 255, 0.507);
   width: 190px;
   height: 150px;
-  margin: -170px 10px 0 200px;
+  margin: -150px 10px 0 200px;
   border-radius: 20px;
 }
 

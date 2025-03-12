@@ -69,12 +69,12 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ text, height }) => {
             <br />
             로딩 중
           </>
-        ) : (
+        ) : text === "split" ? (
           <>
             월급 쪼개기를 위해 <br />
             자동이체 등록 중이에요.
           </>
-        )}
+        ) : undefined}
       </p>
     </div>
   );

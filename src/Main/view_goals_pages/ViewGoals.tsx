@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./ViewGoals.css";
 import payment from "./img/pay.png";
 import present from "./img/piggy.png";
-import ninja from "./img/start.png";
+import profile from "./img/profile.jpeg";
 import Bottom from "../bottom_nav/bottom";
 import { useNavigate } from "react-router-dom";
 import DonutChart from "./Doughnut1";
@@ -84,19 +84,13 @@ const Start: React.FC = () => {
 
       <div className="parentsbox" ref={parentsboxRef}>
         {goals.map((goal) => (
-          <div
-            key={goal.goal_id}
-            className="goal-box"
-            onClick={() => navigate("/main/goal")}
-          >
+          <div key={goal.goal_id} className="goal-box" onClick={() => navigate("/main/goal")}>
             <img className="payment" src={payment} alt="payment" />
             <div className="nowgoal">목표</div>
             <div className="goaltext">{goal.goal_name}</div>
             <img className="present" src={present} alt="present" />
             <div className="nowmoney">현재 저축액</div>
-            <div className="money4">
-              {goal.current_amount.toLocaleString()}원
-            </div>
+            <div className="money4">{goal.current_amount.toLocaleString()}원</div>
             <div className="donutWrap">
               <DonutChart progress={goal.probability || 0} />
             </div>
@@ -104,8 +98,8 @@ const Start: React.FC = () => {
         ))}
       </div>
 
-      <div>
-        <img className="ninja" src={ninja} alt="ninja" />
+      <div style={{ paddingTop: "10px" }}>
+        <img className="ninja" src={profile} alt="ninja" width={150} />
       </div>
       <div className="message">
         오늘도 목표를 향해 <br /> 달려가는 "뱅크닌자"님 <br /> 응원합니다!

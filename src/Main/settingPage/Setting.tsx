@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./settingStyle.css";
-import ProfileImg from "./profile.png";
+import ProfileImg from "./profile.jpeg";
 import Bottom from "../bottom_nav/bottom";
 import RightArrow from "./right-arrow.png";
 
