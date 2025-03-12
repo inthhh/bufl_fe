@@ -8,6 +8,7 @@ import { setSelectedAccount } from "../../../redux/actions/accountAction";
 import { RootState } from "../../../redux/store";
 import { CategoryInterface, CategoryAccountProps, CategoryAccountsInterface } from "../interfaces";
 import CategoryAccount from "./CategoryAccount";
+import LoadingSpinner from "../../loadingSpinner";
 
 function SelectAccount() {
   const [isFinish, setIsFinish] = useState<boolean>(false);
@@ -17,7 +18,14 @@ function SelectAccount() {
   const categoryList = useSelector((state: RootState) => state.category.categoryList);
   // 리덕스 리스트 길이 n만큼 categorys 뒤에서 n개 자르기
   const listLen = categoryList.length;
-
+  const navigate = useNavigate();
+  const [salaryAccount, setSalaryAccount] = useState<CategoryAccountsInterface>({
+    name: "",
+    bankName: "",
+    accountNumber: "",
+  });
+  const [isLoading1, setIsLoading1] = useState(true);
+  const [isLoading2, setIsLoading2] = useState(true);
   useEffect(() => {
     console.log(listLen);
     fetch("https://buflbe.vercel.app/api/salary/category", {
@@ -26,10 +34,16 @@ function SelectAccount() {
     })
       .then((response) => response.json())
       .then((data) => {
+        setSalaryAccount({
+          name: "Salary Account",
+          bankName: data.categories[0].bank_name,
+          accountNumber: data.categories[0].account_number,
+        });
         setCategorys(data.categories);
         console.log("**category", categoryList);
       })
-      .catch((error) => console.error("SelectAccount error:", error));
+      .catch((error) => console.error("SelectAccount error:", error))
+      .finally(() => setIsLoading1(false));
   }, []);
 
   useEffect(() => {
@@ -42,30 +56,8 @@ function SelectAccount() {
         setCategoryAccounts(data);
         console.log("✅ accounts:", data);
       })
-      .catch((error) => console.error("account get error:", error));
-  }, []);
-
-  const [salaryAccount, setSalaryAccount] = useState<CategoryAccountsInterface>({
-    name: "",
-    bankName: "",
-    accountNumber: "",
-  });
-
-  useEffect(() => {
-    fetch("https://buflbe.vercel.app/api/users/salary", {
-      method: "GET", // 기본값이지만 명시적으로 써도 됨
-      credentials: "include", // 쿠키 및 인증 정보 포함
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setSalaryAccount({
-          name: "Salary Account",
-          bankName: data.salaryAccount.bank_name,
-          accountNumber: data.salaryAccount.account_number,
-        });
-        console.log("**category", categoryList);
-      })
-      .catch((error) => console.error("SelectAccount error:", error));
+      .catch((error) => console.error("account get error:", error))
+      .finally(() => setIsLoading2(false));
   }, []);
 
   useEffect(() => {
@@ -75,10 +67,14 @@ function SelectAccount() {
     }
   }, [categoryAccounts, categoryList]);
 
-  const navigate = useNavigate();
   const clickForYes = () => {
     navigate("/money-split/authentication");
   };
+
+  if (isLoading1 || isLoading2) {
+    return <LoadingSpinner />;
+  }
+
   return (
     <div>
       <MoveBack pageBefore="/money-split/select-ratio" now="account" />
