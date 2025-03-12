@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./listStyle.css";
 import log from "../img/log.png";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import MoveBack from "../../../MoneySplit/MoveBack";
 import LoadingSpinner from "../../../MoneySplit/loadingSpinner";
 
 // 추천 목록의 타입 정의
 interface Recommendation {
+  id: number;
   goal_name: string;
   goal_amount: number;
   goal_duration: number;
@@ -20,6 +21,7 @@ interface ApiResponse {
 }
 
 const List: React.FC = () => {
+  const location = useLocation(); // 이전 페이지에서 전달된 데이터 가져오기
   const navigate = useNavigate();
   const [selectedGoal, setSelectedGoal] = useState<string | null>(null); // 사용자가 선택한 목표를 저장함, null이면 모달 닫힘, 특정 값 = 모달 열림
   const [amount, setAmount] = useState<number>(50); // 기본값 50만원 사용자가 설정한 월 저축 금액
@@ -27,10 +29,12 @@ const List: React.FC = () => {
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]); // AI 추천 리스트 상태 배열로 저장 ex) 해외여행 맥북구매 등
   const [loading, setLoading] = useState<boolean>(true); // 데이터 로딩인지 확인 여부
   const [error, setError] = useState<string | null>(null); // 에러 발생 시 에러 메시지 저장
+  const [goalId, setGoalId] = useState<number>(0);
 
   // 모달 열기 사용자가 추천 목표 클릭 -> selectedgoal = 해당 목표로 변경 -> 모달 창 오픈
-  const openModal = (goal: string) => {
+  const openModal = (goal: string, id: number) => {
     setSelectedGoal(goal);
+    setGoalId(id);
   };
 
   // 모달 닫기 사용자가 다시 선택 누르면 selectedgoal을 null로 설정 -> 모달 창 닫힘.
@@ -39,24 +43,31 @@ const List: React.FC = () => {
   };
 
   // 확인 버튼 클릭 시 페이지 이동
-  const handleConfirm = () => {
-    saveGoal();
-    navigate("/main/rocket");
+  const handleConfirm = async () => {
+    try {
+      const goalId = await saveGoal(); // goalId를 받아온 후 실행
+      // console.log("---", goalId);
+      navigate("/main/rocket", { state: { goal_id: goalId } });
+    } catch (error) {
+      console.error("Failed to save goal:", error);
+    }
   };
 
   const saveGoal = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/goals", {
+      const response = await fetch("https://buflbe.vercel.app/api/ai-goals/generate-goals", {
         method: "POST",
-        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          goal_name: selectedGoal,
           monthly_saving: amount,
           goal_duration: duration,
-          account_id: 46,
+          // selectedGoalIndex: goalId,
+          accountId: 46,
         }),
+        credentials: "include",
       });
 
       if (!response.ok) {
@@ -65,9 +76,11 @@ const List: React.FC = () => {
 
       const result = await response.json();
       console.log("Goal saved successfully:", result);
-      navigate("/main/rocket"); // 저장 후 이동
+
+      return result.goal_id; // goal_id 반환
     } catch (error) {
       console.error("Failed to save goal:", error);
+      throw error;
     }
   };
 
@@ -77,7 +90,7 @@ const List: React.FC = () => {
     setError(null); // 기존 오류 메시지 초기화
 
     try {
-      const response = await fetch("http://localhost:5000/api/ai-goals", {
+      const response = await fetch("https://buflbe.vercel.app/api/ai-goals", {
         method: "GET",
         credentials: "include",
       });
@@ -126,7 +139,7 @@ const List: React.FC = () => {
             <p>오류 발생: {error}</p>
           ) : (
             recommendations?.slice(0, 4).map((rec, index) => (
-              <button key={index} className="list2" onClick={() => openModal(rec.goal_name)}>
+              <button key={index} className="list2" onClick={() => openModal(rec.goal_name, rec.id)}>
                 <strong>AI 추천 목표</strong>
                 <br />
                 {rec.goal_name}

@@ -3,6 +3,7 @@ import "./style/splitStyle.css";
 import MoneyImg from "./images/money.png";
 import { useNavigate } from "react-router-dom";
 import MoveBack from "./MoveBack";
+import RobotFace from "./images/robot_face.png";
 
 const SplitFirst: React.FC = () => {
   const navigate = useNavigate();
@@ -34,8 +35,13 @@ const SplitFirst: React.FC = () => {
           </div>
           <div className="center_wrapper">
             <div>
-              <button className="blue_btn" type="button" onClick={() => clickToAI()}>
-                🤖 AI 추천 받기
+              <button
+                className="blue_btn"
+                type="button"
+                onClick={() => clickToAI()}
+                style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+              >
+                <img src={RobotFace} alt="" width={42} style={{ paddingBottom: "5px" }} /> <div>AI 추천 받기</div>
               </button>
               <button className="light_blue_btn" type="button" onClick={() => clickToSelf()}>
                 ✍️ 직접 설정

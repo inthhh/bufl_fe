@@ -17,8 +17,8 @@ import SplitLoading from "./MoneySplit/pages/final_process/SplitLoading";
 
 import AccountSelector from "./Main/make_goal_pages/make_ai_goal/AccountSelector";
 import AccountSelector1 from "./Main/make_goal_pages/make_self/AccountSelector1";
-import Second from "./Main/make_goal_pages/second";
-import Pig from "./Main/make_goal_pages/make_ai_goal/pig";
+import AddGoal from "./Main/make_goal_pages/AddGoal";
+import Pig from "./Main/make_goal_pages/make_ai_goal/ai_first";
 import List from "./Main/make_goal_pages/make_ai_goal/list";
 import Choose from "./Main/make_goal_pages/make_self/choose";
 import Choice from "./Main/make_goal_pages/make_self/choice";
@@ -74,7 +74,7 @@ const App: React.FC = () => {
           <Route path="/money-split/ai/cancel" element={<AI_Cancel />} />
 
           <Route path="/setting" element={<Setting />} />
-          <Route path="/add-goal" element={<Second />} />
+          <Route path="/add-goal" element={<AddGoal />} />
           <Route path="/main/account-selector" element={<AccountSelector />} />
           <Route path="/main/account-selector1" element={<AccountSelector1 />} />
           <Route path="/main/pig" element={<Pig />} />

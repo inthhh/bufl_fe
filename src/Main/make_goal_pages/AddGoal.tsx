@@ -1,11 +1,12 @@
 import React from "react";
-import "./secondStyle.css";
+import "./AddGoal.css";
 import pay from "./img/pay.png";
 import { useNavigate } from "react-router-dom";
 import MoveBack from "../../MoneySplit/MoveBack";
 import Bottom from "../bottom_nav/bottom";
+import RobotFace from "./img/robot_face.png";
 
-const Second: React.FC = () => {
+const AddGoal: React.FC = () => {
   const navigate = useNavigate();
   const handlebox1 = () => {
     navigate("/main/pig");
@@ -14,13 +15,15 @@ const Second: React.FC = () => {
     navigate("/main/account-selector1");
   };
   return (
-    <div className="relative-parent">
-      <div>
-        <MoveBack pageBefore="/" />
-        <div className="pay1">저축 목표 세우기</div>
-      </div>
-      <div className="pay">
-        <img src={pay} alt="pay" />
+    <div>
+      <div style={{ backgroundColor: "#f2f2f2" }}>
+        <div>
+          <MoveBack pageBefore="/" />
+          <div className="pay1">저축 목표 세우기</div>
+        </div>
+        <div className="pay">
+          <img src={pay} alt="pay" width={210} />
+        </div>
       </div>
       <div className="pay2">
         마음껏 만들고,
@@ -33,8 +36,12 @@ const Second: React.FC = () => {
         AI를 통해 최적의 목표를 추천받으세요!
       </div>
       <div className="button_wrap">
-        <button className="box1-btn" onClick={handlebox1}>
-          🤖 AI 추천 받기
+        <button
+          className="box1-btn"
+          onClick={handlebox1}
+          style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+        >
+          <img src={RobotFace} alt="" width={42} style={{ paddingBottom: "5px" }} /> <div>AI 추천 받기</div>
         </button>
         <button className="box2-btn" onClick={handlebox2}>
           ✍🏻 직접 설정
@@ -45,4 +52,4 @@ const Second: React.FC = () => {
   );
 };
 
-export default Second;
+export default AddGoal;

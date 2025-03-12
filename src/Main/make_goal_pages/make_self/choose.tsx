@@ -19,7 +19,7 @@ const Choose: React.FC = () => {
       return;
     }
     try {
-      const response = await fetch("http://localhost:5000/api/goals", {
+      const response = await fetch("https://buflbe.vercel.app/api/goals", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -27,7 +27,7 @@ const Choose: React.FC = () => {
         body: JSON.stringify({
           monthly_saving: amount * 10000, // amount는 만 원 단위로 설정되어 있음
           goal_duration: duration,
-          account_id: account_id,
+          account_id: 46,
         }),
         credentials: "include", // 쿠키 인증 정보를 포함
       });

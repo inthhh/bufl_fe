@@ -18,7 +18,7 @@ const AI_analysis: React.FC = () => {
   useEffect(() => {
     const fetchConsumptionPattern = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/ai-analysis", { withCredentials: true });
+        const response = await axios.get("https://buflbe.vercel.app/api/ai-analysis", { withCredentials: true });
         setConsumptionPattern(response.data.consumptionPattern);
         setLoading(false);
       } catch (error) {

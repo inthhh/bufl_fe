@@ -27,7 +27,7 @@ const AI_calculate: React.FC = () => {
 
   const saveTheResult = async () => {
     try {
-      await axios.post("http://localhost:5000/api/ai-analysis/recommend", {}, { withCredentials: true });
+      await axios.post("https://buflbe.vercel.app/api/ai-analysis/recommend", {}, { withCredentials: true });
       navigate("/money-split/select-account");
     } catch (error) {
       console.error("Error saving the result:", error);
@@ -50,7 +50,7 @@ const AI_calculate: React.FC = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/users/salary", {
+    fetch("https://buflbe.vercel.app/api/users/salary", {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })
@@ -65,7 +65,9 @@ const AI_calculate: React.FC = () => {
   useEffect(() => {
     const fetchRecommendRatio = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/ai-analysis/recommend", { withCredentials: true });
+        const response = await axios.get("https://buflbe.vercel.app/api/ai-analysis/recommend", {
+          withCredentials: true,
+        });
         setRecommendRatio(response.data.recommendRatio);
         setLoading(false);
       } catch (error) {
