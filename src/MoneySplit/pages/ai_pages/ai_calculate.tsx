@@ -27,7 +27,6 @@ const AI_calculate: React.FC = () => {
 
   const saveTheResult = async () => {
     try {
-      // await axios.post("https://buflbe.vercel.app/api/ai-analysis/recommend", {}, { withCredentials: true });
       await axios.get("https://buflbe.vercel.app/api/ai-analysis/add-category", {
         withCredentials: true,
       });
@@ -100,7 +99,7 @@ const AI_calculate: React.FC = () => {
             <br />
             월급 분배 비율이에요!
           </div>
-          <div style={{ overflowY: "auto" }}>
+          <div className="scroll-wrapper">
             <div className="content_box">
               <div className="black_title">월급 {total.toLocaleString()}원에서</div>
               <div>
@@ -115,7 +114,7 @@ const AI_calculate: React.FC = () => {
               </div>
             </div>
 
-            <div className="center_wrapper">
+            <div className="center_wrapper" style={{ marginBottom: "20px" }}>
               <div style={{ width: "180px", height: "180px", marginTop: "20px" }}>
                 <DonutChart
                   dataList={recommendRatio?.map((r) => Number(r.ratio))}
