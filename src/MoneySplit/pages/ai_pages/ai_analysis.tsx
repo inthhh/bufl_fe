@@ -55,7 +55,7 @@ const AI_analysis: React.FC = () => {
             <div>
               {/* api - 소비습관 불러오기 */}
               <ul className="analysis_list">
-                {consumptionPattern.map((pattern) => (
+                {consumptionPattern?.map((pattern) => (
                   <li>
                     💰 {pattern.name} {parseInt(pattern.ratio)}%
                   </li>

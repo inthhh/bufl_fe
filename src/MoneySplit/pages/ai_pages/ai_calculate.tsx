@@ -39,7 +39,7 @@ const AI_calculate: React.FC = () => {
   };
 
   const clickForNo = () => {
-    const updatedCategories = recommendRatio.map((item, index) => ({
+    const updatedCategories = recommendRatio?.map((item, index) => ({
       name: item.name,
       goal: 0,
       color: colorList[index % colorList.length], // 색상 배열에서 순환하여 적용
@@ -102,7 +102,7 @@ const AI_calculate: React.FC = () => {
               <div className="black_title">월급 {total.toLocaleString()}원에서</div>
               <div>
                 <ul className="analysis_list">
-                  {recommendRatio.map((recommend) => (
+                  {recommendRatio?.map((recommend) => (
                     <li>
                       {recommend.name} {Number(recommend.ratio)}%{" "}
                       <span>(약 {Number(recommend.amount).toLocaleString()}원)</span>
@@ -115,8 +115,8 @@ const AI_calculate: React.FC = () => {
             <div className="center_wrapper">
               <div style={{ width: "180px", height: "180px", marginTop: "20px" }}>
                 <DonutChart
-                  dataList={recommendRatio.map((r) => Number(r.ratio))}
-                  name={recommendRatio.map((r) => r.name)}
+                  dataList={recommendRatio?.map((r) => Number(r.ratio))}
+                  name={recommendRatio?.map((r) => r.name)}
                 />
               </div>
             </div>
