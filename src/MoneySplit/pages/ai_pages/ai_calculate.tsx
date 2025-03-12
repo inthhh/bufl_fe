@@ -65,7 +65,9 @@ const AI_calculate: React.FC = () => {
   useEffect(() => {
     const fetchRecommendRatio = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/ai-analysis/recommend", { withCredentials: true });
+        const response = await axios.get("http://localhost:5000/api/ai-analysis/recommend", {
+          withCredentials: true,
+        });
         setRecommendRatio(response.data.recommendRatio);
         setLoading(false);
       } catch (error) {

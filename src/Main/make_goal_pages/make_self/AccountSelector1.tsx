@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../secondStyle.css";
+import "../AddGoal.css";
 import { useNavigate } from "react-router-dom";
 import MoveBack from "../../../MoneySplit/MoveBack";
 

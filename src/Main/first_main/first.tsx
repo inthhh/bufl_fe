@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./firstStyle.css";
-import BellImg from "./img/Frame 20.png";
+import BellImg from "./img/bell.png";
 import BankIcon1 from "./img/toss.png";
 import Bufl from "./img/BUFL.png";
 import DoughnutChart from "./DoughnutChart.js";
@@ -9,6 +9,7 @@ import Bottom from "../bottom_nav/bottom";
 import { AccountsInterface } from "../../MoneySplit/pages/interfaces";
 import { useLocation, useNavigate } from "react-router-dom";
 import AccountTree from "./AccountTree";
+import LoadingSpinner from "../../MoneySplit/loadingSpinner";
 
 const First: React.FC = () => {
   const [accounts, setAccounts] = useState<AccountsInterface[]>([]);
@@ -16,56 +17,90 @@ const First: React.FC = () => {
   const location = useLocation();
   const isFromCompletion = location.state?.from === "first-time";
   const navigate = useNavigate();
-
-  useEffect(() => {
-    fetch("http://localhost:5000/api/accounts", {
-      method: "GET", // 기본값이지만 명시적으로 써도 됨
-      credentials: "include", // 쿠키 및 인증 정보 포함
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setAccounts(data.accounts);
-        // console.log(data.accounts);
-      })
-      .catch((error) => console.error("SelectAccountAccounts error:", error));
-  }, []);
-
+  const [isLoading, setIsLoading] = useState<boolean>(true); // ✅ 로딩 상태 추가
+  const [total, setTotal] = useState<number>(12345);
   const [name, setName] = useState<string[]>([]);
   const [ratio, setRatio] = useState<number[]>([]);
   const [color, setColor] = useState<string[]>([]);
 
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/api/accounts", {
+  //     method: "GET", // 기본값이지만 명시적으로 써도 됨
+  //     credentials: "include", // 쿠키 및 인증 정보 포함
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setAccounts(data.accounts);
+  //       // console.log(data.accounts);
+  //     })
+  //     .catch((error) => console.error("first error:", error));
+  // }, []);
+
+  // useEffect(() => {
+  //   // 카테고리 정보 api
+  //   fetch(`http://localhost:5000/api/salary/category`, {
+  //     method: "GET", // 기본값이지만 명시적으로 써도 됨
+  //     credentials: "include", // 쿠키 및 인증 정보 포함
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       const names = data.categories.map((c: any) => c.name);
+  //       const ratios = data.categories.map((c: any) => Number(c.ratio));
+  //       const colors = data.categories.map((c: any) => c.background_color);
+  //       setName(names);
+  //       setRatio(ratios);
+  //       setColor(colors);
+  //       // console.log("***", names, ratios);
+  //     })
+  //     .catch((error) => console.error("first error:", error));
+  // }, []);
+
+  // useEffect(() => {
+  //   // 월급 정보 api
+  //   fetch("http://localhost:5000/api/users/salary", {
+  //     method: "GET", // 기본값이지만 명시적으로 써도 됨
+  //     credentials: "include", // 쿠키 및 인증 정보 포함
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setTotal(Number(data.amount));
+  //     })
+  //     .catch((error) => console.error("first error:", error));
+  // }, []);
+
   useEffect(() => {
-    // 카테고리 정보 api
-    fetch(`http://localhost:5000/api/salary/category`, {
-      method: "GET", // 기본값이지만 명시적으로 써도 됨
-      credentials: "include", // 쿠키 및 인증 정보 포함
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        const names = data.categories.map((c: any) => c.name);
-        const ratios = data.categories.map((c: any) => Number(c.ratio));
-        const colors = data.categories.map((c: any) => c.background_color);
-        setName(names);
-        setRatio(ratios);
-        setColor(colors);
-        // console.log("***", names, ratios);
+    Promise.all([
+      fetch("http://localhost:5000/api/accounts", {
+        method: "GET",
+        credentials: "include",
+      }).then((res) => res.json()),
+
+      fetch("http://localhost:5000/api/salary/category", {
+        method: "GET",
+        credentials: "include",
+      }).then((res) => res.json()),
+
+      fetch("http://localhost:5000/api/users/salary", {
+        method: "GET",
+        credentials: "include",
+      }).then((res) => res.json()),
+    ])
+      .then(([accountsData, categoryData, salaryData]) => {
+        setAccounts(accountsData.accounts);
+        setName(categoryData.categories.map((c: any) => c.name));
+        setRatio(categoryData.categories.map((c: any) => Number(c.ratio)));
+        setColor(categoryData.categories.map((c: any) => c.background_color));
+        setTotal(Number(salaryData.amount));
       })
-      .catch((error) => console.error("SelectAccountDetail error:", error));
+      .catch((error) => {
+        console.error("Error loading data:", error);
+        setIsLoading(false);
+        return <LoadingSpinner />;
+      })
+      .finally(() => setIsLoading(false)); // ✅ 모든 요청 완료 후 로딩 상태 해제
   }, []);
 
-  const [total, setTotal] = useState<number>(12345);
-  useEffect(() => {
-    // 월급 정보 api
-    fetch("http://localhost:5000/api/users/salary", {
-      method: "GET", // 기본값이지만 명시적으로 써도 됨
-      credentials: "include", // 쿠키 및 인증 정보 포함
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setTotal(Number(data.amount));
-      })
-      .catch((error) => console.error("SelectRatio error:", error));
-  }, []);
+  if (isLoading) return <LoadingSpinner />; // ✅ 로딩 중이면 스피너 표시
 
   return (
     <div style={{ height: "730px", backgroundColor: "#F3F3F3" }}>
