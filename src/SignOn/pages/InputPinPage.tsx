@@ -70,7 +70,6 @@ const InputPinPage: React.FC = () => {
       );
 
       if (response.status === 200) {
-        alert("PIN 설정 완료!");
         navigate("/sign/salary-info");
       }
     } catch (error: any) {

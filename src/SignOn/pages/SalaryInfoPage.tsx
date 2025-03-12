@@ -29,12 +29,11 @@ function SalaryInfoPage() {
   >([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
-
   useEffect(() => {
     const fetchAccounts = async () => {
       try {
         const response = await axios.get("http://localhost:5000/api/accounts", {
-          withCredentials: true, 
+          withCredentials: true,
         });
         setAccountList(response.data.accounts);
       } catch (error) {
@@ -45,31 +44,25 @@ function SalaryInfoPage() {
     fetchAccounts();
   }, []);
 
-
   const formatSalary = (value: number) => value.toLocaleString();
 
-
   const handleSalaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const rawValue = e.target.value.replace(/\D/g, ""); 
+    const rawValue = e.target.value.replace(/\D/g, "");
     setSalary(rawValue ? Number(rawValue) : 0);
   };
-
 
   const handleBlur = () => {
     if (!salary) setSalary(2500000);
   };
 
-
   const adjustSalary = (amount: number) => {
     setSalary((prevSalary) => Math.max(0, prevSalary + amount));
   };
-
 
   const paydayOptions = Array.from(
     { length: 31 },
     (_, i) => `${i + 1}일`
   ).concat("말일");
-
 
   const getNextDay = (day: string) => {
     if (day === "말일") return "1일";
@@ -77,10 +70,8 @@ function SalaryInfoPage() {
     return isNaN(dayNumber) || dayNumber >= 28 ? "1일" : `${dayNumber + 1}일`;
   };
 
-
   const submitSalaryInfo = async () => {
     if (!selectedAccount) {
-      alert("월급 계좌를 선택하세요!");
       return;
     }
 
@@ -90,15 +81,14 @@ function SalaryInfoPage() {
         {
           amount: salary,
           payDate: payday,
-          accountId: selectedAccount, 
+          accountId: selectedAccount,
         },
         { withCredentials: true }
       );
 
-      navigate("/sign/interest"); 
+      navigate("/sign/interest");
     } catch (error) {
       const axiosError = error as AxiosError;
-      alert("월급 정보를 저장하는 데 실패했습니다.");
       console.error(
         "월급 정보 저장 실패:",
         axiosError.response ? axiosError.response.data : axiosError.message
