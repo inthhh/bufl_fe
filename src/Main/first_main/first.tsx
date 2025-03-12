@@ -22,9 +22,11 @@ const First: React.FC = () => {
   const [name, setName] = useState<string[]>([]);
   const [ratio, setRatio] = useState<number[]>([]);
   const [color, setColor] = useState<string[]>([]);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
     setIsLoading(true); // ✅ API 호출 전 로딩 시작
+    setErrorMessage(null); // ✅ 기존 에러 초기화
 
     const fetchAccounts = fetch("https://buflbe.vercel.app/api/accounts", {
       method: "GET",
@@ -57,9 +59,21 @@ const First: React.FC = () => {
       })
       .catch((error) => {
         console.error("Error loading data:", error);
+        setAccounts([]); // ✅ 오류 발생 시 안전한 기본값 설정
+        setErrorMessage("/sign으로 접속하여 회원가입을 진행하세요.");
       })
       .finally(() => setIsLoading(false)); // ✅ 모든 요청 완료 후 로딩 상태 해제
   }, []);
+
+  if (errorMessage) {
+    return (
+      <div style={{ textAlign: "center", fontSize: "18px", color: "red", lineHeight: "50px" }}>
+        세션 없음
+        <br />
+        {errorMessage}
+      </div>
+    );
+  }
 
   if (isLoading) return <LoadingSpinner />; // ✅ 로딩 중이면 스피너 표시
 
