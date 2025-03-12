@@ -126,7 +126,7 @@
 }
 .info_input_name input {
   width: 220px;
-  margin-left: 100px;
+  margin-left: 101px;
   height: 44px;
   border-radius: 8px;
   border: 2px solid #dfeaf2;
@@ -141,7 +141,7 @@
 }
 .info_input_id input:nth-child(2) {
   width: 90px;
-  margin-left: 38px;
+  margin-left: 35px;
   margin-right: 14px;
 }
 .info_input_id input:nth-child(4) {
