@@ -69,13 +69,15 @@
   font-size: 20px;
   color: gray;
   display: flex;
-  margin: 50px;
+  margin: 30px;
 }
 .input-type {
   margin: 7px 30px 7px 10px;
 }
 .okay-btn {
   background-color: #007bff;
+  position: absolute;
+  top: 700px;
   color: white;
   border: none;
   width: 350px;
@@ -85,7 +87,7 @@
   display: inline-block;
   font-size: 22px;
   font-weight: bold;
-  margin: 100px 25px 0 25px;
+  margin: 10px 25px 0 25px;
   cursor: pointer;
   display: block;
   border-radius: 12px;

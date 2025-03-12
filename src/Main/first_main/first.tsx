@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./firstStyle.css";
 import BellImg from "./img/Frame 20.png";
 import BankIcon1 from "./img/toss.png";
-import BankIcon2 from "./img/shinhan.png";
-import BankIcon3 from "./img/hana.png";
-import BankIcon4 from "./img/kb.png";
 import Bufl from "./img/BUFL.png";
 import DoughnutChart from "./DoughnutChart.js";
 import Account from "./account";
@@ -110,18 +107,19 @@ const First: React.FC = () => {
           </div>
           {viewMore ? (
             <>
-              <div className="bank-icon5">
-                <img
-                  className="main_icons"
-                  src={accounts?.length > 0 ? require(`../../SignOn/images/${accounts[4]?.logo}`) : BankIcon1}
-                  alt="icon"
-                />
-                <div className="money">
-                  {accounts[4]?.balance ? Number(accounts[4]?.balance).toLocaleString() : 0}원
+              {accounts.slice(4).map((account, index) => (
+                <div key={index} className="bank-icon5">
+                  <img
+                    className="main_icons"
+                    src={account?.logo ? require(`../../SignOn/images/${account.logo}`) : BankIcon1}
+                    alt="icon"
+                  />
+                  <div className="money">{account?.balance ? Number(account.balance).toLocaleString() : 0}원</div>
                 </div>
-              </div>
+              ))}
             </>
           ) : undefined}
+
           <div className="more" onClick={() => setViewMore(!viewMore)}>
             {viewMore ? <>접기 ▲</> : <>더 보기 ▼</>}
           </div>
