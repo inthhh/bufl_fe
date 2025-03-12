@@ -27,7 +27,10 @@ const AI_calculate: React.FC = () => {
 
   const saveTheResult = async () => {
     try {
-      await axios.post("https://buflbe.vercel.app/api/ai-analysis/recommend", {}, { withCredentials: true });
+      // await axios.post("https://buflbe.vercel.app/api/ai-analysis/recommend", {}, { withCredentials: true });
+      await axios.get("https://buflbe.vercel.app/api/ai-analysis/add-category", {
+        withCredentials: true,
+      });
       navigate("/money-split/select-account");
     } catch (error) {
       console.error("Error saving the result:", error);
