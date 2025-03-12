@@ -42,7 +42,7 @@ function SelectAccount() {
         setCategoryAccounts(data);
         console.log("✅ accounts:", data);
       })
-      .catch((error) => console.error("SelectAccount error:", error));
+      .catch((error) => console.error("account get error:", error));
   }, []);
 
   const [salaryAccount, setSalaryAccount] = useState<CategoryAccountsInterface>({
@@ -86,7 +86,7 @@ function SelectAccount() {
         <div>
           <div className="black_title">카테고리별 계좌를 선택해주세요.</div>
           <div style={{ height: "550px", overflowY: "scroll" }}>
-            {categorys.map((category, index) => (
+            {categorys?.map((category, index) => (
               <div>
                 <CategoryAccount
                   categoryId={category.id}

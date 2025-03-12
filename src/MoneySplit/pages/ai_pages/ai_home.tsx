@@ -24,7 +24,7 @@ const AI_home: React.FC = () => {
           <div className="center_wrapper">
             <img src={RobotImg} alt="" width={"280px"} />
           </div>
-          <div className="center_wrapper" style={{ marginTop: "60px" }}>
+          <div className="center_wrapper" style={{ marginTop: "40px" }}>
             <p className="center_text">
               지난 소비 습관을 분석하고,
               <br />
