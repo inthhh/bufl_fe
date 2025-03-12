@@ -1,38 +1,72 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./ViewGoals.css";
 import payment from "./img/pay.png";
 import present from "./img/piggy.png";
 import ninja from "./img/start.png";
 import Bottom from "../bottom_nav/bottom";
 import { useNavigate } from "react-router-dom";
-import DonutChart from "./Doughnut1"; // 도넛 차트 컴포넌트 임포트
+import DonutChart from "./Doughnut1";
 
 const Start: React.FC = () => {
   const navigate = useNavigate();
-  const handleplusgoal = () => {
-    navigate("/add-goal");
-  };
+  const parentsboxRef = useRef<HTMLDivElement>(null);
 
-  const [goals, setGoals] = useState<any[]>([]); // 목표 리스트 상태
-
-  // 목표 데이터를 가져오는 API 호출
   useEffect(() => {
-    const fetchGoals = async () => {
-      const response = await fetch("http://localhost:5000/api/goals", {
-        method: "GET",
-        credentials: "include", // 쿠키 인증 포함
-      });
+    const parentsbox = parentsboxRef.current;
+    if (!parentsbox) return;
 
-      if (response.ok) {
-        const data = await response.json();
-        setGoals(data.goals); // 목표 리스트 상태 업데이트
-      } else {
-        console.error("목표 데이터 가져오기 실패");
-      }
+    const handleWheelScroll = (event: WheelEvent) => {
+      event.preventDefault();
+
+      const goalBox = parentsbox.querySelector(".goal-box") as HTMLElement;
+      if (!goalBox) return;
+
+      const goalBoxHeight = goalBox.clientHeight + 26;
+      const scrollAmount = Math.sign(event.deltaY) * goalBoxHeight;
+
+      parentsbox.scrollBy({ top: scrollAmount, behavior: "smooth" });
     };
 
-    fetchGoals();
+    parentsbox.addEventListener("wheel", handleWheelScroll, { passive: false });
+
+    return () => {
+      parentsbox.removeEventListener("wheel", handleWheelScroll);
+    };
   }, []);
+
+  // 목표 데이터
+  const [goals, setGoals] = useState([
+    {
+      goal_id: 1,
+      goal_name: "여행 자금 모으기",
+      current_amount: 150000,
+      probability: 40,
+    },
+    {
+      goal_id: 2,
+      goal_name: "노트북 구매",
+      current_amount: 500000,
+      probability: 70,
+    },
+    {
+      goal_id: 3,
+      goal_name: "비상금 저축",
+      current_amount: 80000,
+      probability: 20,
+    },
+    {
+      goal_id: 4,
+      goal_name: "운동기구 구매",
+      current_amount: 200000,
+      probability: 30,
+    },
+    {
+      goal_id: 5,
+      goal_name: "책 구입",
+      current_amount: 50000,
+      probability: 10,
+    },
+  ]);
 
   return (
     <div>
@@ -40,29 +74,31 @@ const Start: React.FC = () => {
         <div className="startlist">목표 목록</div>
       </div>
       <div className="plus-parents">
-        <button className="plus-btn" onClick={handleplusgoal}>
+        <button className="plus-btn" onClick={() => navigate("/add-goal")}>
           +
         </button>
         <div className="plus-list" onClick={() => navigate("/add-goal")}>
-          추가 목표
+          <div className="plus-text">추가 목표</div>
         </div>
       </div>
 
-      {/* 목표 목록 렌더링 */}
-      <div className="parentsbox">
-        {goals.map((goal, index) => (
-          <div key={goal.goal_id || index}>
-            {/* 고유한 key 추가 */}
+      <div className="parentsbox" ref={parentsboxRef}>
+        {goals.map((goal) => (
+          <div
+            key={goal.goal_id}
+            className="goal-box"
+            onClick={() => navigate("/main/goal")}
+          >
             <img className="payment" src={payment} alt="payment" />
             <div className="nowgoal">목표</div>
             <div className="goaltext">{goal.goal_name}</div>
             <img className="present" src={present} alt="present" />
             <div className="nowmoney">현재 저축액</div>
-            <div className="money4">{goal.current_amount}원</div>
-            {/* 도넛 차트 추가, progress 값은 goal.probability */}
-            <div style={{ margin: "10px" }}>
-              <h2></h2>
-              {/* <DonutChart progress={goal.probability} /> */}
+            <div className="money4">
+              {goal.current_amount.toLocaleString()}원
+            </div>
+            <div className="donutWrap">
+              <DonutChart progress={goal.probability || 0} />
             </div>
           </div>
         ))}
@@ -71,7 +107,9 @@ const Start: React.FC = () => {
       <div>
         <img className="ninja" src={ninja} alt="ninja" />
       </div>
-      <div className="message">오늘도 목표를 향해 달려가는 "뱅크닌자"님 응원합니다!</div>
+      <div className="message">
+        오늘도 목표를 향해 <br /> 달려가는 "뱅크닌자"님 <br /> 응원합니다!
+      </div>
       <Bottom page="goal" />
     </div>
   );

@@ -108,7 +108,6 @@ const PersonalInfoPage: React.FC = () => {
 
       if (response.status === 201) {
         localStorage.setItem("userPhone", phone);
-        alert("회원가입 성공! PIN 번호를 설정해주세요.");
         navigate("/sign/input-pin");
       }
     } catch (error: any) {

@@ -44,7 +44,6 @@ const InterestPage = () => {
       navigate("/sign/completion");
     } catch (error) {
       console.error("관심사 저장 실패:", error);
-      alert("관심사를 저장하는 데 실패했습니다.");
     }
   };
 
