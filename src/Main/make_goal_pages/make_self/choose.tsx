@@ -19,7 +19,7 @@ const Choose: React.FC = () => {
       return;
     }
     try {
-      const response = await fetch("http://localhost:5000/api/goals", {
+      const response = await fetch("https://buflbe.vercel.app/api/goals", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -72,8 +72,10 @@ const Choose: React.FC = () => {
       </div>
       <div className="winnermoney2">{duration}개월 만기했을 때 (원금+이자)</div>
       <div className="winnermoney3">
-        <span style={{ color: "#3182F6", fontWeight: "bold" }}>{(amount * 10000 * duration).toLocaleString()}원</span> +
-        a 받아요
+        <span style={{ color: "#3182F6", fontWeight: "bold" }}>
+          {(amount * 10000 * duration).toLocaleString()}원
+        </span>{" "}
+        + a 받아요
       </div>
       <div>
         <div className="mybox-container">

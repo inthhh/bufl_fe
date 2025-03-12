@@ -38,7 +38,7 @@ const Bottom: React.FC<BottomProps> = ({ page }) => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/goals", {
+    fetch("https://buflbe.vercel.app/api/goals", {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })
@@ -51,20 +51,44 @@ const Bottom: React.FC<BottomProps> = ({ page }) => {
   return (
     <div className="bottom">
       <div className="bottombox" onClick={() => moveTo("home")}>
-        <img className="home" src={home} alt="home" style={isHome ? { opacity: "1" } : undefined} />
-        <div className="home-text" style={isHome ? { color: "black" } : undefined}>
+        <img
+          className="home"
+          src={home}
+          alt="home"
+          style={isHome ? { opacity: "1" } : undefined}
+        />
+        <div
+          className="home-text"
+          style={isHome ? { color: "black" } : undefined}
+        >
           홈
         </div>
       </div>
       <div className="bottombox" onClick={() => moveTo("goal")}>
-        <img className="goal" src={goal} alt="goal" style={isGoal ? { opacity: "1" } : undefined} />
-        <div className="goal-text_" style={isGoal ? { color: "black" } : undefined}>
+        <img
+          className="goal"
+          src={goal}
+          alt="goal"
+          style={isGoal ? { opacity: "1" } : undefined}
+        />
+        <div
+          className="goal-text_"
+          style={isGoal ? { color: "black" } : undefined}
+        >
           목표&관리
         </div>
       </div>
       <div className="bottombox" onClick={() => moveTo("menu")}>
-        <img className="menu" src={menu} alt="menu" style={isMenu ? { opacity: "1" } : undefined} />
-        <div className="menu-text" style={isMenu ? { color: "black" } : undefined}>
+        <img
+          className="menu"
+          src={menu}
+          alt="menu"
+          style={isMenu ? { opacity: "1" } : undefined}
+        />
+        <div
+          className="menu-text"
+          style={isMenu ? { color: "black" } : undefined}
+        >
           설정
         </div>
       </div>

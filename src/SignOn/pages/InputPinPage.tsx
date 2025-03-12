@@ -9,7 +9,7 @@ const InputPinPage: React.FC = () => {
   const [firstPin, setFirstPin] = useState<string | null>(null);
   const [step, setStep] = useState<"set" | "confirm">("set");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [isWrong, setIsWrong] = useState(false); 
+  const [isWrong, setIsWrong] = useState(false);
   const navigate = useNavigate();
 
   const handleKeyPress = (num: string) => {
@@ -67,7 +67,7 @@ const InputPinPage: React.FC = () => {
 
     try {
       const response = await axios.put(
-        "http://localhost:5000/api/users/update-password",
+        "https://buflbe.vercel.app/api/users/update-password",
         {
           userPhone,
           userPassword: newPassword,
@@ -111,7 +111,9 @@ const InputPinPage: React.FC = () => {
             {pin.map((num, index) => (
               <div
                 key={index}
-                className={`pin-dot ${num ? (isWrong ? "wrong" : "filled") : ""}`}
+                className={`pin-dot ${
+                  num ? (isWrong ? "wrong" : "filled") : ""
+                }`}
               ></div>
             ))}
           </div>

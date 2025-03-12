@@ -8,18 +8,23 @@ import { RootState } from "../../../redux/store";
 import { CategoryProps } from "../interfaces";
 
 const Category: React.FC<CategoryProps> = (props) => {
-  const { idx, total, category, ratio, isOrigin, updateRatio, clickForDelete } = props;
+  const { idx, total, category, ratio, isOrigin, updateRatio, clickForDelete } =
+    props;
   const [value, setValue] = useState(ratio); // 슬라이더 값 상태 관리
 
   const dispatch = useDispatch();
-  const categoryList = useSelector((state: RootState) => state.category.categoryList);
+  const categoryList = useSelector(
+    (state: RootState) => state.category.categoryList
+  );
 
   useEffect(() => {
     setValue(ratio);
   }, [ratio]);
 
   useEffect(() => {
-    const rangeInput = document.getElementById(`range-${idx}`) as HTMLInputElement;
+    const rangeInput = document.getElementById(
+      `range-${idx}`
+    ) as HTMLInputElement;
     if (rangeInput) {
       let gradientValue = value;
       rangeInput.style.background = `linear-gradient(to right, rgb(28, 106, 216) 0%, rgb(28, 106, 216) ${gradientValue}%, rgb(200, 200, 200) ${gradientValue}%, rgb(200, 200, 200) 100%)`;
@@ -35,11 +40,17 @@ const Category: React.FC<CategoryProps> = (props) => {
   return (
     <div
       className="account_list"
-      style={isOrigin ? { backgroundColor: "#dceaff" } : { height: "150px", paddingBottom: "10px" }}
+      style={
+        isOrigin
+          ? { backgroundColor: "#dceaff" }
+          : { height: "150px", paddingBottom: "10px" }
+      }
     >
       <div className="list_div" style={{ marginTop: "10px" }}>
         <div className="list_title">{category}</div>
-        <div className="list_title">{((total * value) / 100).toLocaleString()}원</div>
+        <div className="list_title">
+          {((total * value) / 100).toLocaleString()}원
+        </div>
       </div>
       <div className="list_div" style={{ marginTop: "20px" }}>
         <input
@@ -56,7 +67,13 @@ const Category: React.FC<CategoryProps> = (props) => {
       </div>
       {!isOrigin && (
         <div
-          style={{ fontSize: "14px", textAlign: "right", marginTop: "20px", color: "#999", cursor: "pointer" }}
+          style={{
+            fontSize: "14px",
+            textAlign: "right",
+            marginTop: "20px",
+            color: "#999",
+            cursor: "pointer",
+          }}
           onClick={() => clickForDelete(idx)}
         >
           삭제
@@ -68,7 +85,9 @@ const Category: React.FC<CategoryProps> = (props) => {
 
 const SelectRatio: React.FC = () => {
   const dispatch = useDispatch();
-  const categoryList = useSelector((state: RootState) => state.category.categoryList);
+  const categoryList = useSelector(
+    (state: RootState) => state.category.categoryList
+  );
   const navigate = useNavigate();
   const [is100percent, setIs100percent] = useState<boolean>(false);
   const [isTooBig, setIsTooBig] = useState<boolean>(false);
@@ -85,7 +104,7 @@ const SelectRatio: React.FC = () => {
   }, [categoryList]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/users/salary", {
+    fetch("https://buflbe.vercel.app/api/users/salary", {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })
@@ -155,7 +174,9 @@ const SelectRatio: React.FC = () => {
       return updatedRatios;
     });
 
-    let newCategoryList = categoryList.map((category, i) => (i === idx ? { ...category, ratio: newRatio } : category));
+    let newCategoryList = categoryList.map((category, i) =>
+      i === idx ? { ...category, ratio: newRatio } : category
+    );
 
     dispatch(setCategories(newCategoryList));
   };
@@ -176,14 +197,17 @@ const SelectRatio: React.FC = () => {
     }));
     console.log(requestBody);
     try {
-      const response = await fetch("http://localhost:5000/api/salary/category", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestBody),
-        credentials: "include", // 쿠키 및 인증 정보 포함
-      });
+      const response = await fetch(
+        "https://buflbe.vercel.app/api/salary/category",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestBody),
+          credentials: "include", // 쿠키 및 인증 정보 포함
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to send data");
@@ -209,7 +233,9 @@ const SelectRatio: React.FC = () => {
 
             <div style={{ margin: "10px 0" }}>
               <div>월 소득</div>
-              <div style={{ fontSize: "22px" }}>{total.toLocaleString()}원 중,</div>
+              <div style={{ fontSize: "22px" }}>
+                {total.toLocaleString()}원 중,
+              </div>
             </div>
           </div>
           <div style={{ height: "500px", overflowY: "scroll" }}>
@@ -229,9 +255,14 @@ const SelectRatio: React.FC = () => {
                 {is100percent && !isTooBig ? (
                   <div>분배 완료!</div>
                 ) : isTooBig ? (
-                  <div style={{ color: "red" }}>비율의 총 합이 100%를 초과해요! ({-1 * salaryAccountRatio}% 초과)</div>
+                  <div style={{ color: "red" }}>
+                    비율의 총 합이 100%를 초과해요! ({-1 * salaryAccountRatio}%
+                    초과)
+                  </div>
                 ) : (
-                  <div style={{ color: "blue" }}>비율의 총 합이 100%가 되도록 해주세요.</div>
+                  <div style={{ color: "blue" }}>
+                    비율의 총 합이 100%가 되도록 해주세요.
+                  </div>
                 )}
               </div>
               {/* 하위 카테고리 */}
@@ -263,7 +294,11 @@ const SelectRatio: React.FC = () => {
                 카테고리 추가
               </button>
               <button
-                className={isTooBig || isTooSmall ? "gray_small_btn no" : "blue_small_btn"}
+                className={
+                  isTooBig || isTooSmall
+                    ? "gray_small_btn no"
+                    : "blue_small_btn"
+                }
                 type="button"
                 onClick={clickForYes}
               >

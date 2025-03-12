@@ -21,13 +21,27 @@ const AI_calculate: React.FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
-  const categoryList = useSelector((state: RootState) => state.category.categoryList);
+  const categoryList = useSelector(
+    (state: RootState) => state.category.categoryList
+  );
 
-  const colorList = ["#FF6B86", "#bdeeb6", "#FFF58A", "#FFB1E0", "#5eb961", "#6BF8F6", "#C767D0"];
+  const colorList = [
+    "#FF6B86",
+    "#bdeeb6",
+    "#FFF58A",
+    "#FFB1E0",
+    "#5eb961",
+    "#6BF8F6",
+    "#C767D0",
+  ];
 
   const saveTheResult = async () => {
     try {
-      await axios.post("http://localhost:5000/api/ai-analysis/recommend", {}, { withCredentials: true });
+      await axios.post(
+        "https://buflbe.vercel.app/api/ai-analysis/recommend",
+        {},
+        { withCredentials: true }
+      );
       navigate("/money-split/select-account");
     } catch (error) {
       console.error("Error saving the result:", error);
@@ -50,7 +64,7 @@ const AI_calculate: React.FC = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/users/salary", {
+    fetch("https://buflbe.vercel.app/api/users/salary", {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })
@@ -65,7 +79,10 @@ const AI_calculate: React.FC = () => {
   useEffect(() => {
     const fetchRecommendRatio = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/ai-analysis/recommend", { withCredentials: true });
+        const response = await axios.get(
+          "https://buflbe.vercel.app/api/ai-analysis/recommend",
+          { withCredentials: true }
+        );
         setRecommendRatio(response.data.recommendRatio);
         setLoading(false);
       } catch (error) {
@@ -97,13 +114,17 @@ const AI_calculate: React.FC = () => {
           </div>
           <div style={{ overflowY: "auto" }}>
             <div className="content_box">
-              <div className="black_title">월급 {total.toLocaleString()}원에서</div>
+              <div className="black_title">
+                월급 {total.toLocaleString()}원에서
+              </div>
               <div>
                 <ul className="analysis_list">
                   {recommendRatio.map((recommend) => (
                     <li>
                       {recommend.name} {Number(recommend.ratio)}%{" "}
-                      <span>(약 {Number(recommend.amount).toLocaleString()}원)</span>
+                      <span>
+                        (약 {Number(recommend.amount).toLocaleString()}원)
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -111,7 +132,9 @@ const AI_calculate: React.FC = () => {
             </div>
 
             <div className="center_wrapper">
-              <div style={{ width: "180px", height: "180px", marginTop: "20px" }}>
+              <div
+                style={{ width: "180px", height: "180px", marginTop: "20px" }}
+              >
                 <DonutChart
                   dataList={recommendRatio.map((r) => Number(r.ratio))}
                   name={recommendRatio.map((r) => r.name)}
@@ -122,10 +145,18 @@ const AI_calculate: React.FC = () => {
 
           <div className="center_wrapper">
             <div className="center_wrapper btn">
-              <button className="gray_small_btn" type="button" onClick={() => clickForNo()}>
+              <button
+                className="gray_small_btn"
+                type="button"
+                onClick={() => clickForNo()}
+              >
                 수정할래요
               </button>
-              <button className="blue_small_btn" type="button" onClick={() => clickForYes()}>
+              <button
+                className="blue_small_btn"
+                type="button"
+                onClick={() => clickForYes()}
+              >
                 좋아요!
               </button>
             </div>

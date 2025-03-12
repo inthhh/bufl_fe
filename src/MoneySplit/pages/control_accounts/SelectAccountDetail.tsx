@@ -13,15 +13,21 @@ const SelectAccountDetail: React.FC = () => {
   const [color, setColor] = useState<string>("#d0defa");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const selectedAccountId = useSelector((state: RootState) => state.account.selectedAccountId);
-  const selectedAccountName = useSelector((state: RootState) => state.account.selectedAccountName);
+  const selectedAccountId = useSelector(
+    (state: RootState) => state.account.selectedAccountId
+  );
+  const selectedAccountName = useSelector(
+    (state: RootState) => state.account.selectedAccountName
+  );
 
   const { categoryId } = useParams();
-  const categoryList = useSelector((state: RootState) => state.category.categoryList);
+  const categoryList = useSelector(
+    (state: RootState) => state.category.categoryList
+  );
 
   useEffect(() => {
     console.log("*******", categoryId);
-    fetch(`http://localhost:5000/api/salary/category/${categoryId}`, {
+    fetch(`https://buflbe.vercel.app/api/salary/category/${categoryId}`, {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })
@@ -43,14 +49,17 @@ const SelectAccountDetail: React.FC = () => {
     };
     // api로 계좌 정보 보내기
     try {
-      const response = await fetch("http://localhost:5000/api/salary/account", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestBody),
-        credentials: "include", // 쿠키 및 인증 정보 포함
-      });
+      const response = await fetch(
+        "https://buflbe.vercel.app/api/salary/account",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestBody),
+          credentials: "include", // 쿠키 및 인증 정보 포함
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to send data");
@@ -85,7 +94,9 @@ const SelectAccountDetail: React.FC = () => {
                 목표 금액
               </label>
               <br />
-              <div className="input-form">{Number(amount).toLocaleString()} 원</div>
+              <div className="input-form">
+                {Number(amount).toLocaleString()} 원
+              </div>
             </div>
 
             <div>
@@ -116,7 +127,11 @@ const SelectAccountDetail: React.FC = () => {
           </form>
           <div className="center_wrapper">
             <div className="center_wrapper btn">
-              <button className="blue_big_btn" type="button" onClick={() => clickForYes()}>
+              <button
+                className="blue_big_btn"
+                type="button"
+                onClick={() => clickForYes()}
+              >
                 저장
               </button>
             </div>

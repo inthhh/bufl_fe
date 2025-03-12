@@ -12,13 +12,18 @@ interface ConsumptionPattern {
 
 const AI_analysis: React.FC = () => {
   const navigate = useNavigate();
-  const [consumptionPattern, setConsumptionPattern] = useState<ConsumptionPattern[]>([]);
+  const [consumptionPattern, setConsumptionPattern] = useState<
+    ConsumptionPattern[]
+  >([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchConsumptionPattern = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/ai-analysis", { withCredentials: true });
+        const response = await axios.get(
+          "https://buflbe.vercel.app/api/ai-analysis",
+          { withCredentials: true }
+        );
         setConsumptionPattern(response.data.consumptionPattern);
         setLoading(false);
       } catch (error) {
@@ -68,10 +73,18 @@ const AI_analysis: React.FC = () => {
 
           <div className="center_wrapper">
             <div className="center_wrapper btn">
-              <button className="gray_small_btn" type="button" onClick={() => clickForNo()}>
+              <button
+                className="gray_small_btn"
+                type="button"
+                onClick={() => clickForNo()}
+              >
                 다시 할래요
               </button>
-              <button className="blue_small_btn" type="button" onClick={() => clickForYes()}>
+              <button
+                className="blue_small_btn"
+                type="button"
+                onClick={() => clickForYes()}
+              >
                 계산 시작
               </button>
             </div>

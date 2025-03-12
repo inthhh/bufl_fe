@@ -21,7 +21,7 @@ const First: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/accounts", {
+    fetch("https://buflbe.vercel.app/api/accounts", {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })
@@ -39,7 +39,7 @@ const First: React.FC = () => {
 
   useEffect(() => {
     // 카테고리 정보 api
-    fetch(`http://localhost:5000/api/salary/category`, {
+    fetch(`https://buflbe.vercel.app/api/salary/category`, {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })
@@ -59,7 +59,7 @@ const First: React.FC = () => {
   const [total, setTotal] = useState<number>(12345);
   useEffect(() => {
     // 월급 정보 api
-    fetch("http://localhost:5000/api/users/salary", {
+    fetch("https://buflbe.vercel.app/api/users/salary", {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })
@@ -79,45 +79,88 @@ const First: React.FC = () => {
           <div className="bank-icon1">
             <img
               className="main_icons"
-              src={accounts?.length > 0 ? require(`../../SignOn/images/${accounts[0]?.logo}`) : BankIcon1}
+              src={
+                accounts?.length > 0
+                  ? require(`../../SignOn/images/${accounts[0]?.logo}`)
+                  : BankIcon1
+              }
               alt="icon"
             />
-            <div className="money">{accounts[0]?.balance ? Number(accounts[0]?.balance).toLocaleString() : 0}원</div>
+            <div className="money">
+              {accounts[0]?.balance
+                ? Number(accounts[0]?.balance).toLocaleString()
+                : 0}
+              원
+            </div>
           </div>
           <div className="bank-icon2">
             <img
               className="main_icons"
-              src={accounts?.length > 0 ? require(`../../SignOn/images/${accounts[1]?.logo}`) : BankIcon1}
+              src={
+                accounts?.length > 0
+                  ? require(`../../SignOn/images/${accounts[1]?.logo}`)
+                  : BankIcon1
+              }
               alt="icon"
             />
-            <div className="money">{accounts[1]?.balance ? Number(accounts[1]?.balance).toLocaleString() : 0}원</div>
+            <div className="money">
+              {accounts[1]?.balance
+                ? Number(accounts[1]?.balance).toLocaleString()
+                : 0}
+              원
+            </div>
           </div>
           <div className="bank-icon3">
             <img
               className="main_icons"
-              src={accounts?.length > 0 ? require(`../../SignOn/images/${accounts[2]?.logo}`) : BankIcon1}
+              src={
+                accounts?.length > 0
+                  ? require(`../../SignOn/images/${accounts[2]?.logo}`)
+                  : BankIcon1
+              }
               alt="icon"
             />
-            <div className="money">{accounts[2]?.balance ? Number(accounts[2]?.balance).toLocaleString() : 0}원</div>
+            <div className="money">
+              {accounts[2]?.balance
+                ? Number(accounts[2]?.balance).toLocaleString()
+                : 0}
+              원
+            </div>
           </div>
           <div className="bank-icon4">
             <img
               className="main_icons"
-              src={accounts?.length > 0 ? require(`../../SignOn/images/${accounts[3]?.logo}`) : BankIcon1}
+              src={
+                accounts?.length > 0
+                  ? require(`../../SignOn/images/${accounts[3]?.logo}`)
+                  : BankIcon1
+              }
               alt="icon"
             />
-            <div className="money">{accounts[3]?.balance ? Number(accounts[3]?.balance).toLocaleString() : 0}원</div>
+            <div className="money">
+              {accounts[3]?.balance
+                ? Number(accounts[3]?.balance).toLocaleString()
+                : 0}
+              원
+            </div>
           </div>
           {viewMore ? (
             <>
               <div className="bank-icon5">
                 <img
                   className="main_icons"
-                  src={accounts?.length > 0 ? require(`../../SignOn/images/${accounts[4]?.logo}`) : BankIcon1}
+                  src={
+                    accounts?.length > 0
+                      ? require(`../../SignOn/images/${accounts[4]?.logo}`)
+                      : BankIcon1
+                  }
                   alt="icon"
                 />
                 <div className="money">
-                  {accounts[4]?.balance ? Number(accounts[4]?.balance).toLocaleString() : 0}원
+                  {accounts[4]?.balance
+                    ? Number(accounts[4]?.balance).toLocaleString()
+                    : 0}
+                  원
                 </div>
               </div>
             </>
@@ -139,7 +182,11 @@ const First: React.FC = () => {
                 시작해볼까요?
               </div>
             </div>
-            <button className="blue_big_btn" type="button" onClick={() => navigate("/money-split")}>
+            <button
+              className="blue_big_btn"
+              type="button"
+              onClick={() => navigate("/money-split")}
+            >
               바로가기
             </button>
           </div>
