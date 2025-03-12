@@ -7,9 +7,10 @@ import { useNavigate } from "react-router-dom";
 
 interface BottomProps {
   page: string;
+  isFirstTime?: boolean;
 }
 
-const Bottom: React.FC<BottomProps> = ({ page }) => {
+const Bottom: React.FC<BottomProps> = ({ page, isFirstTime }) => {
   const [isHome, setIsHome] = useState<boolean>(false);
   const [isGoal, setIsGoal] = useState<boolean>(false);
   const [isMenu, setIsMenu] = useState<boolean>(false);
@@ -30,11 +31,11 @@ const Bottom: React.FC<BottomProps> = ({ page }) => {
 
   const moveTo = (where: string) => {
     if (where === "home") navigate("/");
-    if (where === "goal") {
+    if (where === "goal" && !isFirstTime) {
       if (goalLen > 0) navigate("/main/goals");
       else navigate("/add-goal");
     } // 현재 목표가 없을때, 있을 때 목표페이지 경로 수정 필요
-    if (where === "menu") navigate("/setting");
+    if (where === "menu" && !isFirstTime) navigate("/setting");
   };
 
   useEffect(() => {

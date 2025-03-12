@@ -22,54 +22,11 @@ const First: React.FC = () => {
   const [name, setName] = useState<string[]>([]);
   const [ratio, setRatio] = useState<number[]>([]);
   const [color, setColor] = useState<string[]>([]);
-
-  // useEffect(() => {
-  //   fetch("https://buflbe.vercel.app/api/accounts", {
-  //     method: "GET", // 기본값이지만 명시적으로 써도 됨
-  //     credentials: "include", // 쿠키 및 인증 정보 포함
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setAccounts(data.accounts);
-  //       // console.log(data.accounts);
-  //     })
-  //     .catch((error) => console.error("first error:", error));
-  // }, []);
-
-  // useEffect(() => {
-  //   // 카테고리 정보 api
-  //   fetch(`https://buflbe.vercel.app/api/salary/category`, {
-  //     method: "GET", // 기본값이지만 명시적으로 써도 됨
-  //     credentials: "include", // 쿠키 및 인증 정보 포함
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       const names = data.categories.map((c: any) => c.name);
-  //       const ratios = data.categories.map((c: any) => Number(c.ratio));
-  //       const colors = data.categories.map((c: any) => c.background_color);
-  //       setName(names);
-  //       setRatio(ratios);
-  //       setColor(colors);
-  //       // console.log("***", names, ratios);
-  //     })
-  //     .catch((error) => console.error("first error:", error));
-  // }, []);
-
-  // useEffect(() => {
-  //   // 월급 정보 api
-  //   fetch("https://buflbe.vercel.app/api/users/salary", {
-  //     method: "GET", // 기본값이지만 명시적으로 써도 됨
-  //     credentials: "include", // 쿠키 및 인증 정보 포함
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setTotal(Number(data.amount));
-  //     })
-  //     .catch((error) => console.error("first error:", error));
-  // }, []);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
     setIsLoading(true); // ✅ API 호출 전 로딩 시작
+    setErrorMessage(null); // ✅ 기존 에러 초기화
 
     const fetchAccounts = fetch("https://buflbe.vercel.app/api/accounts", {
       method: "GET",
@@ -102,9 +59,21 @@ const First: React.FC = () => {
       })
       .catch((error) => {
         console.error("Error loading data:", error);
+        setAccounts([]); // ✅ 오류 발생 시 안전한 기본값 설정
+        setErrorMessage("/sign으로 접속하여 회원가입을 진행하세요.");
       })
       .finally(() => setIsLoading(false)); // ✅ 모든 요청 완료 후 로딩 상태 해제
   }, []);
+
+  if (errorMessage) {
+    return (
+      <div style={{ textAlign: "center", fontSize: "18px", color: "red", lineHeight: "50px" }}>
+        세션 없음
+        <br />
+        {errorMessage}
+      </div>
+    );
+  }
 
   if (isLoading) return <LoadingSpinner />; // ✅ 로딩 중이면 스피너 표시
 
@@ -205,7 +174,7 @@ const First: React.FC = () => {
           </>
         ) : undefined}
       </div>
-      <Bottom page="home" />
+      <Bottom page="home" isFirstTime={isFromCompletion ? true : false} />
     </div>
   );
 };

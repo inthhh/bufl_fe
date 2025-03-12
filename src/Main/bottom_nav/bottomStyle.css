@@ -21,16 +21,19 @@
   opacity: 0.3;
   width: 30px;
   height: 30px;
+  z-index: 999;
 }
 .goal {
   opacity: 0.3;
   width: 30px;
   height: 30px;
+  z-index: 999;
 }
 .menu {
   opacity: 0.3;
   width: 30px;
   height: 30px;
+  z-index: 999;
 }
 .home-text {
   color: lightgrey;
