@@ -69,33 +69,39 @@ const First: React.FC = () => {
   // }, []);
 
   useEffect(() => {
-    Promise.all([
-      fetch("https://buflbe.vercel.app/api/accounts", {
-        method: "GET",
-        credentials: "include",
-      }).then((res) => res.json()),
+    setIsLoading(true); // ✅ API 호출 전 로딩 시작
 
-      fetch("https://buflbe.vercel.app/api/salary/category", {
-        method: "GET",
-        credentials: "include",
-      }).then((res) => res.json()),
+    const fetchAccounts = fetch("https://buflbe.vercel.app/api/accounts", {
+      method: "GET",
+      credentials: "include",
+    }).then((res) => res.json());
 
-      fetch("https://buflbe.vercel.app/api/users/salary", {
-        method: "GET",
-        credentials: "include",
-      }).then((res) => res.json()),
-    ])
+    const fetchCategory = fetch("https://buflbe.vercel.app/api/salary/category", {
+      method: "GET",
+      credentials: "include",
+    }).then((res) => res.json());
+
+    const fetchSalary = fetch("https://buflbe.vercel.app/api/users/salary", {
+      method: "GET",
+      credentials: "include",
+    }).then((res) => res.json());
+
+    const apiCalls = isFromCompletion
+      ? [fetchAccounts] // ✅ `isFromCompletion === true`이면 accounts API만 호출
+      : [fetchAccounts, fetchCategory, fetchSalary]; // ✅ `false`일 때 3개 모두 호출
+
+    Promise.all(apiCalls)
       .then(([accountsData, categoryData, salaryData]) => {
         setAccounts(accountsData.accounts);
-        setName(categoryData.categories.map((c: any) => c.name));
-        setRatio(categoryData.categories.map((c: any) => Number(c.ratio)));
-        setColor(categoryData.categories.map((c: any) => c.background_color));
-        setTotal(Number(salaryData.amount));
+        if (!isFromCompletion) {
+          setName(categoryData.categories.map((c: any) => c.name));
+          setRatio(categoryData.categories.map((c: any) => Number(c.ratio)));
+          setColor(categoryData.categories.map((c: any) => c.background_color));
+          setTotal(Number(salaryData.amount));
+        }
       })
       .catch((error) => {
         console.error("Error loading data:", error);
-        setIsLoading(false);
-        return <LoadingSpinner />;
       })
       .finally(() => setIsLoading(false)); // ✅ 모든 요청 완료 후 로딩 상태 해제
   }, []);
@@ -192,8 +198,12 @@ const First: React.FC = () => {
             입니다.
           </div>
         </div>
-        <AccountTree />
-        <Account total={total} />
+        {!isFromCompletion ? (
+          <>
+            <AccountTree />
+            <Account total={total} />
+          </>
+        ) : undefined}
       </div>
       <Bottom page="home" />
     </div>
