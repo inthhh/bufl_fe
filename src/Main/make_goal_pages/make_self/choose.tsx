@@ -19,7 +19,7 @@ const Choose: React.FC = () => {
       return;
     }
     try {
-      const response = await fetch("https://buflbe.vercel.app/api/goals", {
+      const response = await fetch("http://localhost:5000/api/goals", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

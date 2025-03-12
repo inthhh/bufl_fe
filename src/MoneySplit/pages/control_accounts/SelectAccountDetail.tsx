@@ -27,7 +27,7 @@ const SelectAccountDetail: React.FC = () => {
 
   useEffect(() => {
     console.log("*******", categoryId);
-    fetch(`https://buflbe.vercel.app/api/salary/category/${categoryId}`, {
+    fetch(`http://localhost:5000/api/salary/category/${categoryId}`, {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })
@@ -49,17 +49,14 @@ const SelectAccountDetail: React.FC = () => {
     };
     // api로 계좌 정보 보내기
     try {
-      const response = await fetch(
-        "https://buflbe.vercel.app/api/salary/account",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(requestBody),
-          credentials: "include", // 쿠키 및 인증 정보 포함
-        }
-      );
+      const response = await fetch("http://localhost:5000/api/salary/account", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
+        credentials: "include", // 쿠키 및 인증 정보 포함
+      });
 
       if (!response.ok) {
         throw new Error("Failed to send data");

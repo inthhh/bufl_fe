@@ -104,7 +104,7 @@ const SelectRatio: React.FC = () => {
   }, [categoryList]);
 
   useEffect(() => {
-    fetch("https://buflbe.vercel.app/api/users/salary", {
+    fetch("http://localhost:5000/api/users/salary", {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })
@@ -198,7 +198,7 @@ const SelectRatio: React.FC = () => {
     console.log(requestBody);
     try {
       const response = await fetch(
-        "https://buflbe.vercel.app/api/salary/category",
+        "http://localhost:5000/api/salary/category",
         {
           method: "POST",
           headers: {

@@ -21,7 +21,7 @@ const First: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("https://buflbe.vercel.app/api/accounts", {
+    fetch("http://localhost:5000/api/accounts", {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })
@@ -39,7 +39,7 @@ const First: React.FC = () => {
 
   useEffect(() => {
     // 카테고리 정보 api
-    fetch(`https://buflbe.vercel.app/api/salary/category`, {
+    fetch(`http://localhost:5000/api/salary/category`, {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })
@@ -59,7 +59,7 @@ const First: React.FC = () => {
   const [total, setTotal] = useState<number>(12345);
   useEffect(() => {
     // 월급 정보 api
-    fetch("https://buflbe.vercel.app/api/users/salary", {
+    fetch("http://localhost:5000/api/users/salary", {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })

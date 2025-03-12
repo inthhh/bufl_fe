@@ -38,7 +38,7 @@ const Bottom: React.FC<BottomProps> = ({ page }) => {
   };
 
   useEffect(() => {
-    fetch("https://buflbe.vercel.app/api/goals", {
+    fetch("http://localhost:5000/api/goals", {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })

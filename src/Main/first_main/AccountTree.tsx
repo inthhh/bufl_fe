@@ -12,7 +12,7 @@ const AccountTree: React.FC = () => {
 
   useEffect(() => {
     // 카테고리 정보 api
-    fetch(`https://buflbe.vercel.app/api/salary/info`, {
+    fetch(`http://localhost:5000/api/salary/info`, {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })
@@ -37,7 +37,7 @@ const AccountTree: React.FC = () => {
   useEffect(() => {
     if (!isDataLoaded) return; // 데이터가 로드되지 않았으면 실행 안 함
 
-    fetch(`https://buflbe.vercel.app/api/salary/category`, {
+    fetch(`http://localhost:5000/api/salary/category`, {
       method: "GET",
       credentials: "include",
     })

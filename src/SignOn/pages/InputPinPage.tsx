@@ -67,7 +67,7 @@ const InputPinPage: React.FC = () => {
 
     try {
       const response = await axios.put(
-        "https://buflbe.vercel.app/api/users/update-password",
+        "http://localhost:5000/api/users/update-password",
         {
           userPhone,
           userPassword: newPassword,

@@ -21,7 +21,7 @@ const Rocket: React.FC = () => {
 
       try {
         const response = await fetch(
-          `https://buflbe.vercel.app/api/goals/${goalId}`,
+          `http://localhost:5000/api/goals/${goalId}`,
           {
             method: "GET",
             credentials: "include", // 세션 쿠키 전송
