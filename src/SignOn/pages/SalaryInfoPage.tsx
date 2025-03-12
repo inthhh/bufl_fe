@@ -28,7 +28,7 @@ function SalaryInfoPage() {
   useEffect(() => {
     const fetchAccounts = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/accounts", {
+        const response = await axios.get("https://buflbe.vercel.app/api/accounts", {
           withCredentials: true,
         });
         setAccountList(response.data.accounts);
@@ -70,7 +70,7 @@ function SalaryInfoPage() {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/users/salary",
+        "https://buflbe.vercel.app/api/users/salary",
         {
           amount: salary,
           payDate: payday,

@@ -12,7 +12,7 @@ const AccountTree: React.FC = () => {
 
   useEffect(() => {
     // 카테고리 정보 api
-    fetch(`http://localhost:5000/api/salary/info`, {
+    fetch(`https://buflbe.vercel.app/api/salary/info`, {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })
@@ -37,7 +37,7 @@ const AccountTree: React.FC = () => {
   useEffect(() => {
     if (!isDataLoaded) return; // 데이터가 로드되지 않았으면 실행 안 함
 
-    fetch(`http://localhost:5000/api/salary/category`, {
+    fetch(`https://buflbe.vercel.app/api/salary/category`, {
       method: "GET",
       credentials: "include",
     })
@@ -64,25 +64,14 @@ const AccountTree: React.FC = () => {
       <h2 className={styles.accountTitle}>계좌</h2>
       <div className={styles.accountTree}>
         {/* 최상위 계좌 */}
-        <div
-          className={`${styles.accountNode}`}
-          style={{ backgroundColor: `${color[0]}` }}
-        >
-          <img
-            src={logo[0] ? require(`../../SignOn/images/${logo[0]}`) : ""}
-            alt=""
-            width={20}
-          />
+        <div className={`${styles.accountNode}`} style={{ backgroundColor: `${color[0]}` }}>
+          <img src={logo[0] ? require(`../../SignOn/images/${logo[0]}`) : ""} alt="" width={20} />
           <div>
             <p className={styles.accountInfo}>
               {bankName[0]} {accNum[0]}
             </p>
             <p className={styles.accountBalance}>
-              {amount[0] > 0 ? (
-                <>{amount[0].toLocaleString()}원</>
-              ) : (
-                <>201,000원</>
-              )}
+              {amount[0] > 0 ? <>{amount[0].toLocaleString()}원</> : <>201,000원</>}
             </p>
           </div>
         </div>
@@ -92,10 +81,7 @@ const AccountTree: React.FC = () => {
             index == 0 ? undefined : (
               <div>
                 {n}
-                <div
-                  className={`${styles.accountNode}`}
-                  style={{ backgroundColor: `${color[index]}` }}
-                >
+                <div className={`${styles.accountNode}`} style={{ backgroundColor: `${color[index]}` }}>
                   <img
                     src={
                       logo[index]
@@ -109,9 +95,7 @@ const AccountTree: React.FC = () => {
                     <p className={styles.accountInfo}>
                       {bankName[index]} {accNum[index]}
                     </p>
-                    <p className={styles.accountBalance}>
-                      {amount[index]?.toLocaleString()}원
-                    </p>
+                    <p className={styles.accountBalance}>{amount[index]?.toLocaleString()}원</p>
                   </div>
                 </div>
               </div>

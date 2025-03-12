@@ -36,7 +36,7 @@ const InterestPage = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/users/interests",
+        "https://buflbe.vercel.app/api/users/interests",
         { interest: selectedInterest.name },
         { withCredentials: true }
       );

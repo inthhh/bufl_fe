@@ -67,7 +67,7 @@ const InputPinPage: React.FC = () => {
 
     try {
       const response = await axios.put(
-        "http://localhost:5000/api/users/update-password",
+        "https://buflbe.vercel.app/api/users/update-password",
         {
           userPhone,
           userPassword: newPassword,
@@ -109,12 +109,7 @@ const InputPinPage: React.FC = () => {
 
           <div className={`pin-input-container ${isWrong ? "shake" : ""}`}>
             {pin.map((num, index) => (
-              <div
-                key={index}
-                className={`pin-dot ${
-                  num ? (isWrong ? "wrong" : "filled") : ""
-                }`}
-              ></div>
+              <div key={index} className={`pin-dot ${num ? (isWrong ? "wrong" : "filled") : ""}`}></div>
             ))}
           </div>
 

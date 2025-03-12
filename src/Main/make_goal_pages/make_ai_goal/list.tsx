@@ -55,7 +55,7 @@ const List: React.FC = () => {
 
   const saveGoal = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/ai-goals/generate-goals", {
+      const response = await fetch("https://buflbe.vercel.app/api/ai-goals/generate-goals", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -90,7 +90,7 @@ const List: React.FC = () => {
     setError(null); // 기존 오류 메시지 초기화
 
     try {
-      const response = await fetch("http://localhost:5000/api/ai-goals", {
+      const response = await fetch("https://buflbe.vercel.app/api/ai-goals", {
         method: "GET",
         credentials: "include",
       });
@@ -100,9 +100,7 @@ const List: React.FC = () => {
       }
 
       const data = await response.json();
-      const shuffledRecommendations = data.recommendations.recommendations.sort(
-        () => Math.random() - 0.5
-      );
+      const shuffledRecommendations = data.recommendations.recommendations.sort(() => Math.random() - 0.5);
 
       setTimeout(() => {
         setRecommendations(shuffledRecommendations);
@@ -152,16 +150,8 @@ const List: React.FC = () => {
 
         {/* 새로고침 버튼 - 변경된 부분 */}
         <div>
-          <button
-            className={loading ? "log-btn no" : "log-btn"}
-            onClick={handleRefresh}
-          >
-            <img
-              className="log"
-              src={log}
-              alt="log"
-              style={{ marginRight: "5px" }}
-            />
+          <button className={loading ? "log-btn no" : "log-btn"} onClick={handleRefresh}>
+            <img className="log" src={log} alt="log" style={{ marginRight: "5px" }} />
             새로고침
           </button>
         </div>
@@ -211,10 +201,7 @@ const List: React.FC = () => {
             </div>
 
             {/* 버튼 영역 */}
-            <div
-              className="modal-buttons"
-              style={{ marginTop: "40px", width: "360px", marginLeft: "10px" }}
-            >
+            <div className="modal-buttons" style={{ marginTop: "40px", width: "360px", marginLeft: "10px" }}>
               <button className="cancel-btn" onClick={closeModal}>
                 다시 선택
               </button>
