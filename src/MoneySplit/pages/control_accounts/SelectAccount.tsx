@@ -6,15 +6,23 @@ import RightArrow from "../../images/right-arrow.png";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedAccount } from "../../../redux/actions/accountAction";
 import { RootState } from "../../../redux/store";
-import { CategoryInterface, CategoryAccountProps, CategoryAccountsInterface } from "../interfaces";
+import {
+  CategoryInterface,
+  CategoryAccountProps,
+  CategoryAccountsInterface,
+} from "../interfaces";
 import CategoryAccount from "./CategoryAccount";
 
 function SelectAccount() {
   const [isFinish, setIsFinish] = useState<boolean>(false);
   const [categorys, setCategorys] = useState<CategoryInterface[]>([]);
-  const [categoryAccounts, setCategoryAccounts] = useState<CategoryAccountsInterface[]>([]);
+  const [categoryAccounts, setCategoryAccounts] = useState<
+    CategoryAccountsInterface[]
+  >([]);
   const dispatch = useDispatch();
-  const categoryList = useSelector((state: RootState) => state.category.categoryList);
+  const categoryList = useSelector(
+    (state: RootState) => state.category.categoryList
+  );
   // 리덕스 리스트 길이 n만큼 categorys 뒤에서 n개 자르기
   const listLen = categoryList.length;
 
@@ -45,11 +53,13 @@ function SelectAccount() {
       .catch((error) => console.error("SelectAccount error:", error));
   }, []);
 
-  const [salaryAccount, setSalaryAccount] = useState<CategoryAccountsInterface>({
-    name: "",
-    bankName: "",
-    accountNumber: "",
-  });
+  const [salaryAccount, setSalaryAccount] = useState<CategoryAccountsInterface>(
+    {
+      name: "",
+      bankName: "",
+      accountNumber: "",
+    }
+  );
 
   useEffect(() => {
     fetch("http://localhost:5000/api/users/salary", {
@@ -93,7 +103,11 @@ function SelectAccount() {
                   category={category.name}
                   ratio={category.ratio}
                   amount={category.amount}
-                  account={index === 0 ? salaryAccount : categoryAccounts[index] ?? { bankName: "정보 없음" }}
+                  account={
+                    index === 0
+                      ? salaryAccount
+                      : categoryAccounts[index] ?? { bankName: "정보 없음" }
+                  }
                 />
               </div>
             ))}

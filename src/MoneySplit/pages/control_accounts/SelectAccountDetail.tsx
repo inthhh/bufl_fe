@@ -13,11 +13,17 @@ const SelectAccountDetail: React.FC = () => {
   const [color, setColor] = useState<string>("#d0defa");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const selectedAccountId = useSelector((state: RootState) => state.account.selectedAccountId);
-  const selectedAccountName = useSelector((state: RootState) => state.account.selectedAccountName);
+  const selectedAccountId = useSelector(
+    (state: RootState) => state.account.selectedAccountId
+  );
+  const selectedAccountName = useSelector(
+    (state: RootState) => state.account.selectedAccountName
+  );
 
   const { categoryId } = useParams();
-  const categoryList = useSelector((state: RootState) => state.category.categoryList);
+  const categoryList = useSelector(
+    (state: RootState) => state.category.categoryList
+  );
 
   useEffect(() => {
     console.log("*******", categoryId);
@@ -85,7 +91,9 @@ const SelectAccountDetail: React.FC = () => {
                 목표 금액
               </label>
               <br />
-              <div className="input-form">{Number(amount).toLocaleString()} 원</div>
+              <div className="input-form">
+                {Number(amount).toLocaleString()} 원
+              </div>
             </div>
 
             <div>
@@ -116,7 +124,11 @@ const SelectAccountDetail: React.FC = () => {
           </form>
           <div className="center_wrapper">
             <div className="center_wrapper btn">
-              <button className="blue_big_btn" type="button" onClick={() => clickForYes()}>
+              <button
+                className="blue_big_btn"
+                type="button"
+                onClick={() => clickForYes()}
+              >
                 저장
               </button>
             </div>

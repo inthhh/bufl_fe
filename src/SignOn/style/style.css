@@ -126,7 +126,7 @@
 }
 .info_input_name input {
   width: 220px;
-  margin-left: 100px;
+  margin-left: 101px;
   height: 44px;
   border-radius: 8px;
   border: 2px solid #dfeaf2;
@@ -136,15 +136,15 @@
   margin-bottom: 5px;
 }
 
-.info_input_phone input{
-  margin-left: 48px;  
+.info_input_phone input {
+  margin-left: 48px;
 }
-.info_input_id input:nth-child(2){
+.info_input_id input:nth-child(2) {
   width: 90px;
-  margin-left: 38px;
+  margin-left: 35px;
   margin-right: 14px;
 }
-.info_input_id input:nth-child(4){
+.info_input_id input:nth-child(4) {
   width: 33px;
   margin-left: 14px;
   margin-right: 10px;
@@ -199,7 +199,7 @@
   overflow-y: scroll;
 }
 .agree_box::-webkit-scrollbar {
-  width: 8px; /* 세로 스크롤바 너비 */
+  width: 8px; 
 }
 
 .agree_box::-webkit-scrollbar-thumb {
@@ -288,7 +288,7 @@
   pointer-events: none;
 }
 .payday__select-wrapper {
-  appearance: none; 
+  appearance: none;
   border: none;
   background: transparent;
   font-size: 26px;
@@ -327,8 +327,8 @@
   top: 59px;
   left: 20px;
   width: 360px;
-  max-height: 200px; 
-  overflow-y: auto; 
+  max-height: 200px;
+  overflow-y: auto;
   background: white;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -349,14 +349,13 @@
 .account-list {
   display: flex;
   flex-direction: column;
-  gap: 10px; 
+  gap: 10px;
   padding: 20px;
-  background-color: #e4effe; 
+  background-color: #e4effe;
   border-radius: 12px;
   width: 360px;
   margin: 0 auto;
 }
-
 
 .account-item {
   display: flex;
@@ -458,10 +457,10 @@
   position: relative;
 }
 .error-message {
-  font-size: 12px;
+  font-size: 15px;
   position: absolute;
-  top: 97px;
-  left: 35px;
+  top: 99px;
+  left: 54px;
   color: red;
   font-weight: bold;
 }
@@ -485,4 +484,45 @@
 .logo-float {
   width: 100px;
   animation: floatBubble 2s infinite ease-in-out;
+}
+
+.pin-input-container {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.pin-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgb(184, 184, 184);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.pin-dot.filled {
+  background-color: #3182f6; 
+}
+
+.pin-dot.wrong {
+  background-color: rgb(246, 66, 66) !important; 
+}
+
+.shake {
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  80% {
+    transform: translateX(-5px);
+  }
+  40%,
+  60% {
+    transform: translateX(5px);
+  }
 }

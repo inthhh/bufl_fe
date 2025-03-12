@@ -44,12 +44,18 @@ const Account: React.FC<AccountProps> = ({ total }) => {
               <div className="budget_name">{name[i]}</div>
               <div
                 className="budget_percent"
-                style={color[i] ? { backgroundColor: `${color[i]}` } : { backgroundColor: "#dddddd" }}
+                style={
+                  color[i]
+                    ? { backgroundColor: `${color[i]}` }
+                    : { backgroundColor: "#dddddd" }
+                }
               >
                 {r}%
               </div>
               <div className="budget_month">매달</div>
-              <div className="budget_amount">{(r * total * 0.01).toLocaleString()}원</div>
+              <div className="budget_amount">
+                {(r * total * 0.01).toLocaleString()}원
+              </div>
             </div>
           ))}
         </div>

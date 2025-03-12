@@ -51,20 +51,44 @@ const Bottom: React.FC<BottomProps> = ({ page }) => {
   return (
     <div className="bottom">
       <div className="bottombox" onClick={() => moveTo("home")}>
-        <img className="home" src={home} alt="home" style={isHome ? { opacity: "1" } : undefined} />
-        <div className="home-text" style={isHome ? { color: "black" } : undefined}>
+        <img
+          className="home"
+          src={home}
+          alt="home"
+          style={isHome ? { opacity: "1" } : undefined}
+        />
+        <div
+          className="home-text"
+          style={isHome ? { color: "black" } : undefined}
+        >
           홈
         </div>
       </div>
       <div className="bottombox" onClick={() => moveTo("goal")}>
-        <img className="goal" src={goal} alt="goal" style={isGoal ? { opacity: "1" } : undefined} />
-        <div className="goal-text_" style={isGoal ? { color: "black" } : undefined}>
+        <img
+          className="goal"
+          src={goal}
+          alt="goal"
+          style={isGoal ? { opacity: "1" } : undefined}
+        />
+        <div
+          className="goal-text_"
+          style={isGoal ? { color: "black" } : undefined}
+        >
           목표&관리
         </div>
       </div>
       <div className="bottombox" onClick={() => moveTo("menu")}>
-        <img className="menu" src={menu} alt="menu" style={isMenu ? { opacity: "1" } : undefined} />
-        <div className="menu-text" style={isMenu ? { color: "black" } : undefined}>
+        <img
+          className="menu"
+          src={menu}
+          alt="menu"
+          style={isMenu ? { opacity: "1" } : undefined}
+        />
+        <div
+          className="menu-text"
+          style={isMenu ? { color: "black" } : undefined}
+        >
           설정
         </div>
       </div>
