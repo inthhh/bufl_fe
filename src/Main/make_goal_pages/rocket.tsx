@@ -15,11 +15,6 @@ const Rocket: React.FC = () => {
 
   useEffect(() => {
     const fetchGoalDetails = async () => {
-      if (!goalId) {
-        // alert("목표 ID가 없습니다.");
-        return;
-      }
-
       try {
         const response = await fetch(`http://localhost:5000/api/goals/${goalId}`, {
           method: "GET",
@@ -35,24 +30,22 @@ const Rocket: React.FC = () => {
         }
       } catch (error) {
         console.error("Error:", error);
-        // alert("서버 오류가 발생했습니다.");
       }
     };
 
-    // goalData가 없다면 서버에서 데이터를 가져옴
     if (!goalDataFromState) {
       fetchGoalDetails();
     }
   }, [goalId, goalDataFromState]);
 
   const handlerocket = () => {
-    if (!goalData) {
-      // alert("목표 데이터가 없습니다.");
-      return;
-    }
+    // if (!goalData) {
+    //   // alert("목표 데이터가 없습니다.");
+    //   return;
+    // }
 
     navigate("/main/goals", {
-      state: { goalData }, // goalData를 메인 화면으로 전달
+      // state: { goalData }, // goalData를 메인 화면으로 전달
     });
   };
 

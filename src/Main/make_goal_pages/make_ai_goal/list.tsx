@@ -46,7 +46,7 @@ const List: React.FC = () => {
   const handleConfirm = async () => {
     try {
       const goalId = await saveGoal(); // goalId를 받아온 후 실행
-      console.log("---", goalId);
+      // console.log("---", goalId);
       navigate("/main/rocket", { state: { goal_id: goalId } });
     } catch (error) {
       console.error("Failed to save goal:", error);
