@@ -15,11 +15,9 @@ const App: React.FC = () => {
           borderRadius: "15px",
         }}
       >
-        <Routes>
-          <MoneySplitRoutes />
-          <MainRoutes />
-          <SignRoutes />
-        </Routes>
+        <MoneySplitRoutes />
+        <MainRoutes />
+        <SignRoutes />
       </div>
     </Router>
   );
