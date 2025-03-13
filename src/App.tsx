@@ -12,7 +12,7 @@ const App: React.FC = () => {
           width: "400px",
           height: "800px",
           backgroundColor: "white",
-          borderRadius: "15px",
+          marginTop: "5px",
         }}
       >
         <MoneySplitRoutes />
