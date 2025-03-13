@@ -65,8 +65,14 @@ const InterestPage = () => {
               style={{
                 cursor: "pointer",
                 borderRadius: "30px",
-                backgroundColor: selectedInterest?.id === interest.id ? "#3182f6" : "transparent",
-                border: selectedInterest?.id === interest.id ? "4px solid #3182f6" : "2px solid transparent",
+                backgroundColor:
+                  selectedInterest?.id === interest.id
+                    ? "#3182f6"
+                    : "transparent",
+                border:
+                  selectedInterest?.id === interest.id
+                    ? "4px solid #3182f6"
+                    : "2px solid transparent",
                 margin: "5px 7px",
               }}
               onClick={() => handleSelectInterest(interest)}
@@ -76,7 +82,9 @@ const InterestPage = () => {
 
         <div className="center_wrap">
           <button
-            className={`btn_start ${selectedInterest === null ? "disabled" : ""}`}
+            className={`btn_start ${
+              selectedInterest === null ? "disabled" : ""
+            }`}
             onClick={handleSaveInterest}
             disabled={selectedInterest === null}
           >

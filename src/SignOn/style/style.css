@@ -179,7 +179,7 @@
   margin-bottom: 40px;
 }
 .agree_text3 {
-  margin-top: 100px;
+  margin-top: 55px;
 }
 .agree_text4 {
   text-align: left;
@@ -193,13 +193,13 @@
 .agree_box {
   width: 350px;
   height: 600px;
-  background-color: rgb(0, 0, 0, 0.07);
+  background-color: #f1f1f1;
   padding: 10px;
   border-radius: 10px;
   overflow-y: scroll;
 }
 .agree_box::-webkit-scrollbar {
-  width: 8px; 
+  width: 8px;
 }
 
 .agree_box::-webkit-scrollbar-thumb {
@@ -209,6 +209,7 @@
 
 .agree_box::-webkit-scrollbar-track {
   background-color: #f1f1f1;
+  border-radius: 0px 10px 10px 0px;
 }
 .salary_text1 {
   font-size: 22px;
@@ -327,14 +328,21 @@
   top: 59px;
   left: 20px;
   width: 360px;
-  max-height: 200px;
+  max-height: 300px;
   overflow-y: auto;
   background: white;
   border: 1px solid #ccc;
   border-radius: 8px;
   text-align: center;
+  border-radius: 10px 10px 10px 10px;
 }
-
+.payday__dropdown::-webkit-scrollbar {
+  width: 10px;
+}
+.payday__dropdown::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
 .payday__dropdown-item {
   padding: 10px 16px;
   font-size: 16px;
@@ -345,18 +353,32 @@
   background-color: #3182f6;
   color: white;
 }
-
 .account-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 20px;
   background-color: #e4effe;
-  border-radius: 12px;
+  border-radius: 10px 10px 10px 10px;
   width: 360px;
   margin: 0 auto;
+  max-height: 422px;
+  overflow-y: auto;
+  margin-top: 25px;
+}
+.account-list::-webkit-scrollbar {
+  width: 10px;
 }
 
+.account-list::-webkit-scrollbar-thumb {
+  background: #3182f6;
+  border-radius: 10px;
+}
+
+.account-list::-webkit-scrollbar-track {
+  background: #e4effe;
+  border-radius: 0px 10px 10px 0px;
+}
 .account-item {
   display: flex;
   align-items: center;
@@ -501,11 +523,11 @@
 }
 
 .pin-dot.filled {
-  background-color: #3182f6; 
+  background-color: #3182f6;
 }
 
 .pin-dot.wrong {
-  background-color: rgb(246, 66, 66) !important; 
+  background-color: rgb(246, 66, 66) !important;
 }
 
 .shake {

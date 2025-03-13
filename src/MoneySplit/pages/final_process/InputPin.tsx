@@ -101,12 +101,19 @@ const InputPin: React.FC = () => {
           </div>
           <div className="keypad">
             {[...Array(9)].map((_, index) => (
-              <button key={index + 1} className="keypad-button" onClick={() => handleKeyPress((index + 1).toString())}>
+              <button
+                key={index + 1}
+                className="keypad-button"
+                onClick={() => handleKeyPress((index + 1).toString())}
+              >
                 {index + 1}
               </button>
             ))}
             <div onClick={handleDelete}></div>
-            <button className="keypad-button" onClick={() => handleKeyPress("0")}>
+            <button
+              className="keypad-button"
+              onClick={() => handleKeyPress("0")}
+            >
               0
             </button>
             <button className="keypad-button" onClick={handleDelete}>

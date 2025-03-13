@@ -2,7 +2,13 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../../redux/store";
-import { setName, setIdFront, setIdBack, setPhone, setAgreements } from "../../redux/reducers/personalInfoSlice";
+import {
+  setName,
+  setIdFront,
+  setIdBack,
+  setPhone,
+  setAgreements,
+} from "../../redux/reducers/personalInfoSlice";
 import axios from "axios";
 import "../../MoneySplit/style/splitStyle.css";
 import MoveBack from "../../MoneySplit/MoveBack";
@@ -10,7 +16,9 @@ import MoveBack from "../../MoneySplit/MoveBack";
 const PersonalInfoPage: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { name, idFront, idBack, phone, agreements } = useSelector((state: RootState) => state.personalInfo);
+  const { name, idFront, idBack, phone, agreements } = useSelector(
+    (state: RootState) => state.personalInfo
+  );
 
   const [localName, setLocalName] = useState(name);
   const [isComposing, setIsComposing] = useState(false);
@@ -52,7 +60,10 @@ const PersonalInfoPage: React.FC = () => {
       ...agreements,
       [key]: !agreements[key],
     };
-    updatedAgreements.all = updatedAgreements.terms && updatedAgreements.privacy && updatedAgreements.marketing;
+    updatedAgreements.all =
+      updatedAgreements.terms &&
+      updatedAgreements.privacy &&
+      updatedAgreements.marketing;
     dispatch(setAgreements(updatedAgreements));
   };
 
@@ -72,7 +83,12 @@ const PersonalInfoPage: React.FC = () => {
   };
 
   const isFormValid =
-    localName && idFront.length === 6 && idBack.length === 1 && phone && agreements.terms && agreements.privacy;
+    localName &&
+    idFront.length === 6 &&
+    idBack.length === 1 &&
+    phone &&
+    agreements.terms &&
+    agreements.privacy;
 
   // 백엔드 회원가입 요청 함수
   const handleSubmit = async () => {
@@ -96,7 +112,9 @@ const PersonalInfoPage: React.FC = () => {
       }
     } catch (error: any) {
       console.error("회원가입 오류:", error);
-      setErrorMessage(error.response?.data?.message || "회원가입 중 오류가 발생했습니다.");
+      setErrorMessage(
+        error.response?.data?.message || "회원가입 중 오류가 발생했습니다."
+      );
     }
   };
 
@@ -138,20 +156,37 @@ const PersonalInfoPage: React.FC = () => {
             maxLength={6}
           />
           <span>-</span>
-          <input className="input_id_2" type="text" value={idBack} onChange={handleIdBackChange} maxLength={1} />
+          <input
+            className="input_id_2"
+            type="text"
+            value={idBack}
+            onChange={handleIdBackChange}
+            maxLength={1}
+          />
           <span>******</span>
         </div>
 
         <div className="info_input_name info_input_phone">
           <label>휴대폰 번호</label>
-          <input type="text" placeholder="휴대폰 번호" value={phone} maxLength={11} onChange={handlePhoneChange} />
+          <input
+            type="text"
+            placeholder="휴대폰 번호"
+            value={phone}
+            maxLength={11}
+            onChange={handlePhoneChange}
+          />
         </div>
       </div>
 
       <div className="center_wrap agree_down">
         <h3>이용약관 동의</h3>
         <div className="agree_container">
-          <input type="checkbox" id="all" checked={agreements.all} onChange={handleAllAgreement} />
+          <input
+            type="checkbox"
+            id="all"
+            checked={agreements.all}
+            onChange={handleAllAgreement}
+          />
           <label htmlFor="all">모두 동의합니다.</label>
 
           <input
@@ -183,7 +218,11 @@ const PersonalInfoPage: React.FC = () => {
       {errorMessage && <p className="error_message">{errorMessage}</p>}
 
       <div className="center_wrap">
-        <button disabled={!isFormValid} onClick={handleSubmit} className={`btn_start ${isFormValid ? "" : "disabled"}`}>
+        <button
+          disabled={!isFormValid}
+          onClick={handleSubmit}
+          className={`btn_start ${isFormValid ? "" : "disabled"}`}
+        >
           확인
         </button>
       </div>

@@ -11,8 +11,12 @@ import MoveBack from "../../MoneySplit/MoveBack";
 function SalaryInfoPage() {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
-  const [salary, setSalary] = useState(() => Number(localStorage.getItem("salary")) || 2500000);
-  const [payday, setPayday] = useState(() => localStorage.getItem("payday") || "20일");
+  const [salary, setSalary] = useState(
+    () => Number(localStorage.getItem("salary")) || 2500000
+  );
+  const [payday, setPayday] = useState(
+    () => localStorage.getItem("payday") || "20일"
+  );
   const [selectedAccount, setSelectedAccount] = useState<number | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [accountList, setAccountList] = useState<
@@ -28,9 +32,12 @@ function SalaryInfoPage() {
   useEffect(() => {
     const fetchAccounts = async () => {
       try {
-        const response = await axios.get("https://buflbe.vercel.app/api/accounts", {
-          withCredentials: true,
-        });
+        const response = await axios.get(
+          "https://buflbe.vercel.app/api/accounts",
+          {
+            withCredentials: true,
+          }
+        );
         setAccountList(response.data.accounts);
       } catch (error) {
         console.error("계좌 정보를 불러오는 데 실패했습니다:", error);
@@ -55,7 +62,10 @@ function SalaryInfoPage() {
     setSalary((prevSalary) => Math.max(0, prevSalary + amount));
   };
 
-  const paydayOptions = Array.from({ length: 31 }, (_, i) => `${i + 1}일`).concat("말일");
+  const paydayOptions = Array.from(
+    { length: 31 },
+    (_, i) => `${i + 1}일`
+  ).concat("말일");
 
   const getNextDay = (day: string) => {
     if (day === "말일") return "1일";
@@ -82,7 +92,10 @@ function SalaryInfoPage() {
       navigate("/sign/interest");
     } catch (error) {
       const axiosError = error as AxiosError;
-      console.error("월급 정보 저장 실패:", axiosError.response ? axiosError.response.data : axiosError.message);
+      console.error(
+        "월급 정보 저장 실패:",
+        axiosError.response ? axiosError.response.data : axiosError.message
+      );
     }
   };
 
@@ -106,7 +119,10 @@ function SalaryInfoPage() {
           </div>
 
           <div className="salary_input_container">
-            <button className="salary_button" onClick={() => adjustSalary(500000)}>
+            <button
+              className="salary_button"
+              onClick={() => adjustSalary(500000)}
+            >
               +
             </button>
             <input
@@ -117,7 +133,10 @@ function SalaryInfoPage() {
               onBlur={handleBlur}
               className="salary_input"
             />
-            <button className="salary_button" onClick={() => adjustSalary(-500000)}>
+            <button
+              className="salary_button"
+              onClick={() => adjustSalary(-500000)}
+            >
               -
             </button>
             <span className="currency">원</span>
@@ -137,7 +156,10 @@ function SalaryInfoPage() {
           </div>
 
           <div className="payday__container">
-            <div className="payday__select-wrapper" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+            <div
+              className="payday__select-wrapper"
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            >
               <span className="payday__select-text">{payday}</span>
               <div className="payday__select--icon">▼</div>
             </div>
@@ -159,7 +181,9 @@ function SalaryInfoPage() {
               </div>
             )}
 
-            <p className="payday__description">매달 {getNextDay(payday)} 새벽에 월급 쪼개기를 진행할게요.</p>
+            <p className="payday__description">
+              매달 {getNextDay(payday)} 새벽에 월급 쪼개기를 진행할게요.
+            </p>
           </div>
 
           <div className="center_wrap">
@@ -179,10 +203,15 @@ function SalaryInfoPage() {
             {accountList.map((account) => (
               <button
                 key={account.account_id}
-                className={`account-item ${selectedAccount === account.account_id ? "selected" : ""}`}
+                className={`account-item ${
+                  selectedAccount === account.account_id ? "selected" : ""
+                }`}
                 onClick={() => setSelectedAccount(account.account_id)}
               >
-                <img src={require(`../images/${account.logo}`)} alt={account.bank_name} />
+                <img
+                  src={require(`../images/${account.logo}`)}
+                  alt={account.bank_name}
+                />
                 <span>
                   {account.bank_name} <strong>{account.account_number}</strong>
                 </span>
@@ -192,7 +221,9 @@ function SalaryInfoPage() {
 
           <div className="center_wrap">
             <button
-              className={`btn_start ${selectedAccount === null ? "disabled" : ""}`}
+              className={`btn_start ${
+                selectedAccount === null ? "disabled" : ""
+              }`}
               onClick={submitSalaryInfo}
               disabled={selectedAccount === null}
             >
