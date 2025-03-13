@@ -2,7 +2,7 @@ import React from "react";
 import "./AddGoal.css";
 import pay from "./img/pay.png";
 import { useNavigate } from "react-router-dom";
-import MoveBack from "../../MoneySplit/MoveBack";
+import MoveBack from "../../MoneySplit/utils/MoveBack";
 import Bottom from "../bottom_nav/bottom";
 import RobotFace from "./img/robot_face.png";
 

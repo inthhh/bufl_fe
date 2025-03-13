@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../../style/splitStyle.css";
 import { useNavigate } from "react-router-dom";
-import MoveBack from "../../MoveBack";
+import MoveBack from "../../utils/MoveBack";
 import RightArrow from "../../images/right-arrow.png";
 import tossIcon from "../../../SignOn/images/토스뱅크.png";
 

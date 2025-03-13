@@ -5,7 +5,7 @@ import { RootState } from "../../redux/store";
 import { setName, setIdFront, setIdBack, setPhone, setAgreements } from "../../redux/reducers/personalInfoSlice";
 import axios from "axios";
 import "../../MoneySplit/style/splitStyle.css";
-import MoveBack from "../../MoneySplit/MoveBack";
+import MoveBack from "../../MoneySplit/utils/MoveBack";
 
 const PersonalInfoPage: React.FC = () => {
   const navigate = useNavigate();

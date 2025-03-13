@@ -1,4 +1,4 @@
-import MoveBack from "../../MoveBack";
+import MoveBack from "../../utils/MoveBack";
 
 const AI_Cancel: React.FC = () => {
   return (

@@ -2,7 +2,7 @@ import React from "react";
 import "./ai_first.css";
 import pig from "../img/piggy.png";
 import { useNavigate } from "react-router-dom";
-import MoveBack from "../../../MoneySplit/MoveBack";
+import MoveBack from "../../../MoneySplit/utils/MoveBack";
 import RobotImg from "../img/robot.png";
 
 const Pig: React.FC = () => {

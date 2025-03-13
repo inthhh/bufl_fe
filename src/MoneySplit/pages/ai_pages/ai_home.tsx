@@ -2,7 +2,7 @@ import React from "react";
 import "../../style/splitStyle.css";
 import { useNavigate } from "react-router-dom";
 import RobotImg from "../../images/robot.png";
-import MoveBack from "../../MoveBack";
+import MoveBack from "../../utils/MoveBack";
 
 const AI_home: React.FC = () => {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import MoveBack from "../../MoveBack";
+import MoveBack from "../../utils/MoveBack";
 import "../../style/splitStyle.css";
 
 const TossAuth: React.FC = () => {

@@ -1,12 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import BackImg from "./images/left-arrow.png";
+import BackImg from "../images/left-arrow.png";
 import { useState } from "react";
-import "./style/splitStyle.css";
-
-interface MoveBackProps {
-  pageBefore: string;
-  now?: string;
-}
+import "../style/splitStyle.css";
+import { MoveBackProps } from "./interfaces";
 
 const MoveBack: React.FC<MoveBackProps> = ({ pageBefore, now }) => {
   const navigate = useNavigate();

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./chooseStyle.css";
 import pigmoney from "../img/piggy.png";
 import { useNavigate, useLocation } from "react-router-dom";
-import MoveBack from "../../../MoneySplit/MoveBack";
+import MoveBack from "../../../MoneySplit/utils/MoveBack";
 
 const Choose: React.FC = () => {
   const navigate = useNavigate();

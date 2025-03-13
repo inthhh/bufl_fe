@@ -1,9 +1,9 @@
 import React from "react";
-import "./style/splitStyle.css";
-import MoneyImg from "./images/money.png";
+import "../style/splitStyle.css";
+import MoneyImg from "../images/money.png";
 import { useNavigate } from "react-router-dom";
-import MoveBack from "./MoveBack";
-import RobotFace from "./images/robot_face.png";
+import MoveBack from "../utils/MoveBack";
+import RobotFace from "../images/robot_face.png";
 
 const SplitFirst: React.FC = () => {
   const navigate = useNavigate();

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCategories } from "../../../redux/actions/categoryAction";
 import { RootState } from "../../../redux/store";
 
-import MoveBack from "../../MoveBack";
+import MoveBack from "../../utils/MoveBack";
 
 const AddCategory: React.FC = () => {
   const [name, setName] = useState<string>("");

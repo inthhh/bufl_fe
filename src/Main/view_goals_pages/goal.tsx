@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./goalStyle.css";
-import MoveBack from "../../MoneySplit/MoveBack";
+import MoveBack from "../../MoneySplit/utils/MoveBack";
 import "../../MoneySplit/style/splitStyle.css";
 import BellImg from "./img/bell.png";
 import Bottom from "../bottom_nav/bottom";

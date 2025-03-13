@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "../../style/splitStyle.css"; // CSS 파일 import
 import { useNavigate, useParams } from "react-router-dom";
-import MoveBack from "../../MoveBack";
+import MoveBack from "../../utils/MoveBack";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import RightArrow from "../../images/right-arrow.png";
-import LoadingSpinner from "../../loadingSpinner";
+import LoadingSpinner from "../../utils/loadingSpinner";
 
 const SelectAccountDetail: React.FC = () => {
   const [name, setName] = useState<string>("");

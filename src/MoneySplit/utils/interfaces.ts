@@ -46,3 +46,24 @@ export interface SelectedAccountInterface {
   selectedAccountId: number;
   selectedAccountName: string;
 }
+
+export interface ConsumptionPattern {
+  name: string;
+  ratio: string;
+}
+
+export interface RecommendRatio {
+  name: string;
+  ratio: string;
+  amount: number;
+}
+
+export interface LoadingSpinnerProps {
+  text?: string;
+  height?: string;
+}
+
+export interface MoveBackProps {
+  pageBefore: string;
+  now?: string;
+}

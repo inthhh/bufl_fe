@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "../../style/splitStyle.css"; // CSS 파일 import
 import { useNavigate, useParams } from "react-router-dom";
-import MoveBack from "../../MoveBack";
+import MoveBack from "../../utils/MoveBack";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedAccount } from "../../../redux/actions/accountAction";
 import { RootState } from "../../../redux/store";
-import { AccountsInterface, SelectedAccountInterface } from "../interfaces";
-import LoadingSpinner from "../../loadingSpinner";
+import { AccountsInterface, SelectedAccountInterface } from "../../utils/interfaces";
+import LoadingSpinner from "../../utils/loadingSpinner";
 
 const SelectAccountAccounts: React.FC = () => {
   // const allAccountList = ["토스뱅크 123", "토스뱅크 456", "토스뱅크 789", "토스뱅크 000"];

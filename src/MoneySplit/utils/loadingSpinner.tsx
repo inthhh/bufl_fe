@@ -1,12 +1,8 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import "./style/splitStyle.css"; // CSS 파일 import
+import "../style/splitStyle.css"; // CSS 파일 import
 import { useNavigate } from "react-router-dom";
-
-interface LoadingSpinnerProps {
-  text?: string;
-  height?: string;
-}
+import { LoadingSpinnerProps } from "./interfaces";
 
 const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ text, height }) => {
   const dots = [1, 2, 3, 4, 5, 6, 7, 8];

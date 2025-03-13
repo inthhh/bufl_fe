@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "../../style/splitStyle.css";
 import { useNavigate } from "react-router-dom";
-import MoveBack from "../../MoveBack";
+import MoveBack from "../../utils/MoveBack";
 import DonutChart from "./ai_doughnut";
 import axios from "axios";
 import AI_calLoading from "./ai_calLoading";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { setCategories } from "../../../redux/actions/categoryAction";
-
-interface RecommendRatio {
-  name: string;
-  ratio: string;
-  amount: number;
-}
+import { RecommendRatio } from "../../utils/interfaces";
 
 const AI_calculate: React.FC = () => {
   const [recommendRatio, setRecommendRatio] = useState<RecommendRatio[]>([]);

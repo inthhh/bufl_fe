@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./settingStyle.css";
-import ProfileImg from "./profile.jpeg";
+import ProfileImg from "./img/profile.jpeg";
+import RightArrow from "./img/right-arrow.png";
 import Bottom from "../bottom_nav/bottom";
-import RightArrow from "./right-arrow.png";
 
 interface menuProps {
   menuName: string;

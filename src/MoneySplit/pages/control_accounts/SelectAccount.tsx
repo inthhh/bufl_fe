@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "../../style/splitStyle.css";
 import { useNavigate } from "react-router-dom";
-import MoveBack from "../../MoveBack";
+import MoveBack from "../../utils/MoveBack";
 import RightArrow from "../../images/right-arrow.png";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedAccount } from "../../../redux/actions/accountAction";
 import { RootState } from "../../../redux/store";
-import { CategoryInterface, CategoryAccountProps, CategoryAccountsInterface } from "../interfaces";
+import { CategoryInterface, CategoryAccountProps, CategoryAccountsInterface } from "../../utils/interfaces";
 import CategoryAccount from "./CategoryAccount";
-import LoadingSpinner from "../../loadingSpinner";
+import LoadingSpinner from "../../utils/loadingSpinner";
 
 function SelectAccount() {
   const [isFinish, setIsFinish] = useState<boolean>(false);

@@ -6,10 +6,10 @@ import Bufl from "./img/BUFL.png";
 import DoughnutChart from "./DoughnutChart.js";
 import Account from "./account";
 import Bottom from "../bottom_nav/bottom";
-import { AccountsInterface } from "../../MoneySplit/pages/interfaces";
+import { AccountsInterface } from "../../MoneySplit/utils/interfaces";
 import { useLocation, useNavigate } from "react-router-dom";
 import AccountTree from "./AccountTree";
-import LoadingSpinner from "../../MoneySplit/loadingSpinner";
+import LoadingSpinner from "../../MoneySplit/utils/loadingSpinner";
 
 const First: React.FC = () => {
   const [accounts, setAccounts] = useState<AccountsInterface[]>([]);

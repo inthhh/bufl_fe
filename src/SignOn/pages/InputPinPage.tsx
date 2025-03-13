@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../MoneySplit/style/splitStyle.css";
-import MoveBack from "../../MoneySplit/MoveBack";
+import MoveBack from "../../MoneySplit/utils/MoveBack";
 import "../style/style.css";
 const InputPinPage: React.FC = () => {
   const [pin, setPin] = useState<string[]>(Array(6).fill(""));

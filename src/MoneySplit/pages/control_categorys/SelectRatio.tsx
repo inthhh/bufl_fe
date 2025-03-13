@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "../../style/splitStyle.css";
 import { useNavigate } from "react-router-dom";
-import MoveBack from "../../MoveBack";
+import MoveBack from "../../utils/MoveBack";
 import { useSelector, useDispatch } from "react-redux";
 import { setCategories } from "../../../redux/actions/categoryAction";
 import { RootState } from "../../../redux/store";
-import { CategoryProps } from "../interfaces";
-import LoadingSpinner from "../../loadingSpinner";
+import { CategoryProps } from "../../utils/interfaces";
+import LoadingSpinner from "../../utils/loadingSpinner";
 
 const Category: React.FC<CategoryProps> = (props) => {
   const { idx, total, category, ratio, isOrigin, updateRatio, clickForDelete } = props;

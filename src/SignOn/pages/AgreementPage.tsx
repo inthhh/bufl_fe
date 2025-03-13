@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../style/style.css";
 import AgreeImg from "../images/agree.png";
 import "../../MoneySplit/style/splitStyle.css";
-import MoveBack from "../../MoneySplit/MoveBack";
+import MoveBack from "../../MoneySplit/utils/MoveBack";
 
 function AgreementPage() {
   const navigate = useNavigate();

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import RightArrow from "../../images/right-arrow.png";
 import { useDispatch } from "react-redux";
 import { setSelectedAccount } from "../../../redux/actions/accountAction";
-import { CategoryAccountProps } from "../interfaces";
+import { CategoryAccountProps } from "../../utils/interfaces";
 
 // 카테고리와 계좌 연동 결과를 보여주는 컴포넌트
 

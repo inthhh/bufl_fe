@@ -6,6 +6,7 @@ import profile from "./img/profile.jpeg";
 import Bottom from "../bottom_nav/bottom";
 import { useNavigate } from "react-router-dom";
 import DonutChart from "./Doughnut1";
+import LoadingSpinner from "../../MoneySplit/utils/loadingSpinner";
 
 const Start: React.FC = () => {
   const navigate = useNavigate();
@@ -38,11 +39,13 @@ const Start: React.FC = () => {
   const [goals, setGoals] = useState([
     {
       id: 1,
-      goal_name: "여행 자금 모으기",
-      current_amount: 150000,
-      probability: 40,
+      goal_name: "Loading...",
+      current_amount: 0,
+      probability: 0,
     },
   ]);
+
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch("https://buflbe.vercel.app/api/goals", {
@@ -52,8 +55,13 @@ const Start: React.FC = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.goals) setGoals(data.goals);
-      });
+      })
+      .finally(() => setIsLoading(false));
   }, []);
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div>

@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "../../style/splitStyle.css";
 import { useNavigate } from "react-router-dom";
-import MoveBack from "../../MoveBack";
+import MoveBack from "../../utils/MoveBack";
 import axios from "axios";
 import AI_anaLoading from "./ai_anaLoading";
-
-interface ConsumptionPattern {
-  name: string;
-  ratio: string;
-}
+import { ConsumptionPattern } from "../../utils/interfaces";
 
 const AI_analysis: React.FC = () => {
   const navigate = useNavigate();

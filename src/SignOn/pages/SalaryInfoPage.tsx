@@ -6,7 +6,7 @@ import MoneyImg from "../images/money.png";
 import DateImg from "../images/date.png";
 import AccountImg from "../images/account.png";
 import "../../MoneySplit/style/splitStyle.css";
-import MoveBack from "../../MoneySplit/MoveBack";
+import MoveBack from "../../MoneySplit/utils/MoveBack";
 
 function SalaryInfoPage() {
   const navigate = useNavigate();

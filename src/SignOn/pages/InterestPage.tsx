@@ -9,7 +9,7 @@ import IntImage4 from "../images/int4.png";
 import IntImage5 from "../images/int5.png";
 import IntImage6 from "../images/int6.png";
 import "../../MoneySplit/style/splitStyle.css";
-import MoveBack from "../../MoneySplit/MoveBack";
+import MoveBack from "../../MoneySplit/utils/MoveBack";
 
 const interests = [
   { id: 1, name: "빠르게 목돈 만들기", img: IntImage1 },

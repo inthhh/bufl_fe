@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import MoveBack from "../../../MoneySplit/MoveBack";
+import MoveBack from "../../../MoneySplit/utils/MoveBack";
 import "./choiceStyle.css";
 
 const Choice: React.FC = () => {
