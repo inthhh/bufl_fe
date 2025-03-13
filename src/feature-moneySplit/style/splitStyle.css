@@ -139,7 +139,6 @@
   cursor: pointer;
   display: block;
   border-radius: 12px;
-
 }
 .blue_small_btn {
   background-color: #007bff;
@@ -259,7 +258,6 @@
 .accounttitle {
   font-size: 22px;
   font-weight: bold;
-  margin-right: 100px;
   padding: 5px 0;
 }
 .input-form {
