@@ -199,7 +199,7 @@
   overflow-y: scroll;
 }
 .agree_box::-webkit-scrollbar {
-  width: 8px; 
+  width: 8px;
 }
 
 .agree_box::-webkit-scrollbar-thumb {
@@ -345,18 +345,32 @@
   background-color: #3182f6;
   color: white;
 }
-
 .account-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 20px;
   background-color: #e4effe;
-  border-radius: 12px;
+  border-radius: 8px 10px 10px 8px;
   width: 360px;
   margin: 0 auto;
+  max-height: 425px;
+  overflow-y: auto;
+  margin-top: 25px;
+}
+.account-list::-webkit-scrollbar {
+  width: 7px;
 }
 
+.account-list::-webkit-scrollbar-thumb {
+  background: #3182f6;
+  border-radius: 10px;
+}
+
+.account-list::-webkit-scrollbar-track {
+  background: #e4effe;
+  border-radius: 0px 10px 10px 0px;
+}
 .account-item {
   display: flex;
   align-items: center;
@@ -501,11 +515,11 @@
 }
 
 .pin-dot.filled {
-  background-color: #3182f6; 
+  background-color: #3182f6;
 }
 
 .pin-dot.wrong {
-  background-color: rgb(246, 66, 66) !important; 
+  background-color: rgb(246, 66, 66) !important;
 }
 
 .shake {

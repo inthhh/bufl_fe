@@ -15,8 +15,12 @@ const SelectAccountAccounts: React.FC = () => {
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const selectedAccountId = useSelector((state: RootState) => state.account.selectedAccountId);
-  const selectedAccountName = useSelector((state: RootState) => state.account.selectedAccountName);
+  const selectedAccountId = useSelector(
+    (state: RootState) => state.account.selectedAccountId
+  );
+  const selectedAccountName = useSelector(
+    (state: RootState) => state.account.selectedAccountName
+  );
 
   const { categoryId } = useParams();
   const clickForYes = async () => {
@@ -28,7 +32,7 @@ const SelectAccountAccounts: React.FC = () => {
   const [accounts, setAccounts] = useState<AccountsInterface[]>([]);
 
   useEffect(() => {
-    fetch("https://buflbe.vercel.app/api/accounts", {
+    fetch("http://localhost:5000/api/accounts", {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })
@@ -47,7 +51,9 @@ const SelectAccountAccounts: React.FC = () => {
 
   return (
     <div>
-      <MoveBack pageBefore={`/money-split/select-account/detail/${categoryId}`} />
+      <MoveBack
+        pageBefore={`/money-split/select-account/detail/${categoryId}`}
+      />
       <div className="center_wrapper">
         <div>
           <div className="accounttitle">
@@ -65,19 +71,28 @@ const SelectAccountAccounts: React.FC = () => {
                     onClick={() =>
                       setAccount({
                         selectedAccountId: account.account_id,
-                        selectedAccountName: account.bank_name + " " + String(account.account_number),
+                        selectedAccountName:
+                          account.bank_name +
+                          " " +
+                          String(account.account_number),
                       })
                     }
                     onChange={() => {}}
                   />{" "}
-                  <label htmlFor={`account-${index}`}>{account.bank_name + account.account_number}</label>
+                  <label htmlFor={`account-${index}`}>
+                    {account.bank_name + account.account_number}
+                  </label>
                 </li>
               ))}
             </ul>
           </div>
           <div className="center_wrapper">
             <div className="center_wrapper btn">
-              <button className="blue_big_btn" type="button" onClick={() => clickForYes()}>
+              <button
+                className="blue_big_btn"
+                type="button"
+                onClick={() => clickForYes()}
+              >
                 완료했어요.
               </button>
             </div>

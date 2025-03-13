@@ -6,29 +6,39 @@ import RightArrow from "../../images/right-arrow.png";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedAccount } from "../../../redux/actions/accountAction";
 import { RootState } from "../../../redux/store";
-import { CategoryInterface, CategoryAccountProps, CategoryAccountsInterface } from "../interfaces";
+import {
+  CategoryInterface,
+  CategoryAccountProps,
+  CategoryAccountsInterface,
+} from "../interfaces";
 import CategoryAccount from "./CategoryAccount";
 import LoadingSpinner from "../../loadingSpinner";
 
 function SelectAccount() {
   const [isFinish, setIsFinish] = useState<boolean>(false);
   const [categorys, setCategorys] = useState<CategoryInterface[]>([]);
-  const [categoryAccounts, setCategoryAccounts] = useState<CategoryAccountsInterface[]>([]);
+  const [categoryAccounts, setCategoryAccounts] = useState<
+    CategoryAccountsInterface[]
+  >([]);
   const dispatch = useDispatch();
-  const categoryList = useSelector((state: RootState) => state.category.categoryList);
+  const categoryList = useSelector(
+    (state: RootState) => state.category.categoryList
+  );
   // 리덕스 리스트 길이 n만큼 categorys 뒤에서 n개 자르기
   const listLen = categoryList.length;
   const navigate = useNavigate();
-  const [salaryAccount, setSalaryAccount] = useState<CategoryAccountsInterface>({
-    name: "",
-    bankName: "",
-    accountNumber: "",
-  });
+  const [salaryAccount, setSalaryAccount] = useState<CategoryAccountsInterface>(
+    {
+      name: "",
+      bankName: "",
+      accountNumber: "",
+    }
+  );
   const [isLoading1, setIsLoading1] = useState(true);
   const [isLoading2, setIsLoading2] = useState(true);
   useEffect(() => {
     console.log(listLen);
-    fetch("https://buflbe.vercel.app/api/salary/category", {
+    fetch("http://localhost:5000/api/salary/category", {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })
@@ -47,7 +57,7 @@ function SelectAccount() {
   }, []);
 
   useEffect(() => {
-    fetch("https://buflbe.vercel.app/api/salary/account", {
+    fetch("http://localhost:5000/api/salary/account", {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })
@@ -89,7 +99,11 @@ function SelectAccount() {
                   category={category.name}
                   ratio={category.ratio}
                   amount={category.amount}
-                  account={index === 0 ? salaryAccount : categoryAccounts[index] ?? { bankName: "정보 없음" }}
+                  account={
+                    index === 0
+                      ? salaryAccount
+                      : categoryAccounts[index] ?? { bankName: "정보 없음" }
+                  }
                 />
               </div>
             ))}

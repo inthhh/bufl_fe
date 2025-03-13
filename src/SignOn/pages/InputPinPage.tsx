@@ -67,7 +67,7 @@ const InputPinPage: React.FC = () => {
 
     try {
       const response = await axios.put(
-        "https://buflbe.vercel.app/api/users/update-password",
+        "http://localhost:5000/api/users/update-password",
         {
           userPhone,
           userPassword: newPassword,
@@ -109,18 +109,30 @@ const InputPinPage: React.FC = () => {
 
           <div className={`pin-input-container ${isWrong ? "shake" : ""}`}>
             {pin.map((num, index) => (
-              <div key={index} className={`pin-dot ${num ? (isWrong ? "wrong" : "filled") : ""}`}></div>
+              <div
+                key={index}
+                className={`pin-dot ${
+                  num ? (isWrong ? "wrong" : "filled") : ""
+                }`}
+              ></div>
             ))}
           </div>
 
           <div className="keypad">
             {[...Array(9)].map((_, index) => (
-              <button key={index + 1} className="keypad-button" onClick={() => handleKeyPress((index + 1).toString())}>
+              <button
+                key={index + 1}
+                className="keypad-button"
+                onClick={() => handleKeyPress((index + 1).toString())}
+              >
                 {index + 1}
               </button>
             ))}
             <div></div>
-            <button className="keypad-button" onClick={() => handleKeyPress("0")}>
+            <button
+              className="keypad-button"
+              onClick={() => handleKeyPress("0")}
+            >
               0
             </button>
             <button className="keypad-button" onClick={handleDelete}>
