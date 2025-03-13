@@ -18,7 +18,7 @@ const AddGoal: React.FC = () => {
     <div>
       <div style={{ backgroundColor: "#f2f2f2" }}>
         <div>
-          <MoveBack pageBefore="/" />
+          <MoveBack pageBefore="/add-goal" />
           <div className="pay1">저축 목표 세우기</div>
         </div>
         <div className="pay">

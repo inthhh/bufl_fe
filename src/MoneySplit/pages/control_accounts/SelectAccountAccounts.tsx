@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSelectedAccount } from "../../../redux/actions/accountAction";
 import { RootState } from "../../../redux/store";
 import { AccountsInterface, SelectedAccountInterface } from "../interfaces";
+import LoadingSpinner from "../../loadingSpinner";
 
 const SelectAccountAccounts: React.FC = () => {
   // const allAccountList = ["토스뱅크 123", "토스뱅크 456", "토스뱅크 789", "토스뱅크 000"];
@@ -15,12 +16,10 @@ const SelectAccountAccounts: React.FC = () => {
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const selectedAccountId = useSelector(
-    (state: RootState) => state.account.selectedAccountId
-  );
-  const selectedAccountName = useSelector(
-    (state: RootState) => state.account.selectedAccountName
-  );
+
+  const selectedAccountId = useSelector((state: RootState) => state.account.selectedAccountId);
+  const selectedAccountName = useSelector((state: RootState) => state.account.selectedAccountName);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { categoryId } = useParams();
   const clickForYes = async () => {
@@ -41,13 +40,18 @@ const SelectAccountAccounts: React.FC = () => {
         setAccounts(data.accounts);
         console.log(data.accounts);
       })
-      .catch((error) => console.error("SelectAccountAccounts error:", error));
+      .catch((error) => console.error("SelectAccountAccounts error:", error))
+      .finally(() => setIsLoading(false));
   }, []);
 
   useEffect(() => {
     dispatch(setSelectedAccount(account));
     console.log(selectedAccountId, selectedAccountName);
   }, [account, dispatch]);
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div>

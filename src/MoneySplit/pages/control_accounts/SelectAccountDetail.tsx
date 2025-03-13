@@ -5,6 +5,7 @@ import MoveBack from "../../MoveBack";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import RightArrow from "../../images/right-arrow.png";
+import LoadingSpinner from "../../loadingSpinner";
 
 const SelectAccountDetail: React.FC = () => {
   const [name, setName] = useState<string>("");
@@ -21,9 +22,10 @@ const SelectAccountDetail: React.FC = () => {
   );
 
   const { categoryId } = useParams();
-  const categoryList = useSelector(
-    (state: RootState) => state.category.categoryList
-  );
+
+  const categoryList = useSelector((state: RootState) => state.category.categoryList);
+  const [isLoading, setIsLoading] = useState(true);
+
 
   useEffect(() => {
     console.log("*******", categoryId);
@@ -38,7 +40,8 @@ const SelectAccountDetail: React.FC = () => {
         console.log(data.category[0].name, data.category[0].goal_amount);
         console.log("***", data.category);
       })
-      .catch((error) => console.error("SelectAccountDetail error:", error));
+      .catch((error) => console.error("SelectAccountDetail error:", error))
+      .finally(() => setIsLoading(false));
   }, []);
 
   // console.log(selectedAccount);
@@ -74,6 +77,10 @@ const SelectAccountDetail: React.FC = () => {
   const clickForAccount = () => {
     navigate(`/money-split/select-account/accounts/${categoryId}`);
   };
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div>
