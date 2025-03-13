@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import RightArrow from "../../images/right-arrow.png";
 import LoadingSpinner from "../../../shared/loadingSpinner";
+import Fade from "../../../shared/Fade";
 
 const SelectAccountDetail: React.FC = () => {
   const [name, setName] = useState<string>("");
@@ -75,63 +76,65 @@ const SelectAccountDetail: React.FC = () => {
   }
 
   return (
-    <div>
-      <MoveBack pageBefore="/money-split/select-account" />
-      <div className="center_wrapper">
-        <div>
-          <form className="auth-form" style={{ width: "330px" }}>
-            <div>
-              <label className="title" htmlFor="name">
-                카테고리 명
-              </label>
-              <br />
-              <div className="input-form">{name}</div>
-            </div>
+    <Fade>
+      <div>
+        <MoveBack pageBefore="/money-split/select-account" />
+        <div className="center_wrapper">
+          <div>
+            <form className="auth-form" style={{ width: "330px" }}>
+              <div>
+                <label className="title" htmlFor="name">
+                  카테고리 명
+                </label>
+                <br />
+                <div className="input-form">{name}</div>
+              </div>
 
-            <div>
-              <label className="title" htmlFor="amount">
-                목표 금액
-              </label>
-              <br />
-              <div className="input-form">{Number(amount).toLocaleString()} 원</div>
-            </div>
+              <div>
+                <label className="title" htmlFor="amount">
+                  목표 금액
+                </label>
+                <br />
+                <div className="input-form">{Number(amount).toLocaleString()} 원</div>
+              </div>
 
-            <div>
-              <label className="title">연결 계좌</label>
-              {selectedAccountId >= 0 && selectedAccountName.length > 0 ? (
-                <div style={{ margin: "10px 0" }}>
-                  <div onClick={clickForAccount} className="list_div font_20">
-                    {selectedAccountName}
-                    <img src={RightArrow} alt="" width={15} />
+              <div>
+                <label className="title">연결 계좌</label>
+                {selectedAccountId >= 0 && selectedAccountName.length > 0 ? (
+                  <div style={{ margin: "10px 0" }}>
+                    <div onClick={clickForAccount} className="list_div font_20">
+                      {selectedAccountName}
+                      <img src={RightArrow} alt="" width={15} />
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <button
-                  type="button"
-                  onClick={clickForAccount}
-                  className="light_blue_btn"
-                  style={{
-                    width: "330px",
-                    height: "45px",
-                    fontSize: "15px",
-                    fontWeight: "normal",
-                  }}
-                >
-                  + 계좌 추가하기
+                ) : (
+                  <button
+                    type="button"
+                    onClick={clickForAccount}
+                    className="light_blue_btn"
+                    style={{
+                      width: "330px",
+                      height: "45px",
+                      fontSize: "15px",
+                      fontWeight: "normal",
+                    }}
+                  >
+                    + 계좌 추가하기
+                  </button>
+                )}
+              </div>
+            </form>
+            <div className="center_wrapper">
+              <div className="center_wrapper btn">
+                <button className="blue_big_btn" type="button" onClick={() => clickForYes()}>
+                  저장
                 </button>
-              )}
-            </div>
-          </form>
-          <div className="center_wrapper">
-            <div className="center_wrapper btn">
-              <button className="blue_big_btn" type="button" onClick={() => clickForYes()}>
-                저장
-              </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </Fade>
   );
 };
 

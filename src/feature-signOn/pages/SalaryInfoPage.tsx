@@ -7,6 +7,7 @@ import DateImg from "../images/date.png";
 import AccountImg from "../images/account.png";
 import "../../feature-moneySplit/style/splitStyle.css";
 import MoveBack from "../../shared/MoveBack";
+import Fade from "../../shared/Fade";
 
 function SalaryInfoPage() {
   const navigate = useNavigate();
@@ -87,121 +88,123 @@ function SalaryInfoPage() {
   };
 
   return (
-    <div className="container">
-      <MoveBack pageBefore="/sign/input-pin" />
-      <h3 className="salary_text1">
-        월급 자동 분배를 위해
-        <br />
-        정보가 필요해요.
-      </h3>
+    <Fade>
+      <div className="container">
+        <MoveBack pageBefore="/sign/input-pin" />
+        <h3 className="salary_text1">
+          월급 자동 분배를 위해
+          <br />
+          정보가 필요해요.
+        </h3>
 
-      {step === 1 ? (
-        <div>
-          <div className="salary_flex">
-            <img src={MoneyImg} alt="money" width="45px" height="45px" />
-            <div className="salary_text_group">
-              <p className="salary_text2">월 실수령</p>
-              <p className="salary_text3">실수령 월급을 입력해주세요.</p>
-            </div>
-          </div>
-
-          <div className="salary_input_container">
-            <button className="salary_button" onClick={() => adjustSalary(500000)}>
-              +
-            </button>
-            <input
-              ref={inputRef}
-              type="text"
-              value={formatSalary(salary)}
-              onChange={handleSalaryChange}
-              onBlur={handleBlur}
-              className="salary_input"
-            />
-            <button className="salary_button" onClick={() => adjustSalary(-500000)}>
-              -
-            </button>
-            <span className="currency">원</span>
-          </div>
-
-          <div className="center_wrap">
-            <button className="btn_start" onClick={() => setStep(2)}>
-              다음
-            </button>
-          </div>
-        </div>
-      ) : step === 2 ? (
-        <div>
-          <div className="salary_flex">
-            <img src={DateImg} alt="date" width="45px" />
-            <p className="salary_text2 salary2__title--move">월급일</p>
-          </div>
-
-          <div className="payday__container">
-            <div className="payday__select-wrapper" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-              <span className="payday__select-text">{payday}</span>
-              <div className="payday__select--icon">▼</div>
-            </div>
-
-            {isDropdownOpen && (
-              <div className="payday__dropdown">
-                {paydayOptions.map((day) => (
-                  <div
-                    key={day}
-                    className="payday__dropdown-item"
-                    onClick={() => {
-                      setPayday(day);
-                      setIsDropdownOpen(false);
-                    }}
-                  >
-                    {day}
-                  </div>
-                ))}
+        {step === 1 ? (
+          <div>
+            <div className="salary_flex">
+              <img src={MoneyImg} alt="money" width="45px" height="45px" />
+              <div className="salary_text_group">
+                <p className="salary_text2">월 실수령</p>
+                <p className="salary_text3">실수령 월급을 입력해주세요.</p>
               </div>
-            )}
+            </div>
 
-            <p className="payday__description">매달 {getNextDay(payday)} 새벽에 월급 쪼개기를 진행할게요.</p>
-          </div>
-
-          <div className="center_wrap">
-            <button className="btn_start" onClick={() => setStep(3)}>
-              다음
-            </button>
-          </div>
-        </div>
-      ) : (
-        <div>
-          <div className="salary_flex">
-            <img src={AccountImg} alt="account" width="45px" />
-            <p className="salary_text2 salary2__title--move">월급계좌</p>
-          </div>
-          <div className="account-list">
-            <p className="account-title">내 계좌</p>
-            {accountList.map((account) => (
-              <button
-                key={account.account_id}
-                className={`account-item ${selectedAccount === account.account_id ? "selected" : ""}`}
-                onClick={() => setSelectedAccount(account.account_id)}
-              >
-                <img src={require(`../../shared/shared-images/${account.logo}`)} alt={account.bank_name} />
-                <span>
-                  {account.bank_name} <strong>{account.account_number}</strong>
-                </span>
+            <div className="salary_input_container">
+              <button className="salary_button" onClick={() => adjustSalary(500000)}>
+                +
               </button>
-            ))}
-          </div>
+              <input
+                ref={inputRef}
+                type="text"
+                value={formatSalary(salary)}
+                onChange={handleSalaryChange}
+                onBlur={handleBlur}
+                className="salary_input"
+              />
+              <button className="salary_button" onClick={() => adjustSalary(-500000)}>
+                -
+              </button>
+              <span className="currency">원</span>
+            </div>
 
-          <div className="center_wrap">
-            <button
-              className={`btn_start ${selectedAccount === null ? "disabled" : ""}`}
-              onClick={submitSalaryInfo}
-              disabled={selectedAccount === null}
-            >
-              다음
-            </button>
+            <div className="center_wrap">
+              <button className="btn_start" onClick={() => setStep(2)}>
+                다음
+              </button>
+            </div>
           </div>
-        </div>
-      )}
-    </div>
+        ) : step === 2 ? (
+          <div>
+            <div className="salary_flex">
+              <img src={DateImg} alt="date" width="45px" />
+              <p className="salary_text2 salary2__title--move">월급일</p>
+            </div>
+
+            <div className="payday__container">
+              <div className="payday__select-wrapper" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+                <span className="payday__select-text">{payday}</span>
+                <div className="payday__select--icon">▼</div>
+              </div>
+
+              {isDropdownOpen && (
+                <div className="payday__dropdown">
+                  {paydayOptions.map((day) => (
+                    <div
+                      key={day}
+                      className="payday__dropdown-item"
+                      onClick={() => {
+                        setPayday(day);
+                        setIsDropdownOpen(false);
+                      }}
+                    >
+                      {day}
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <p className="payday__description">매달 {getNextDay(payday)} 새벽에 월급 쪼개기를 진행할게요.</p>
+            </div>
+
+            <div className="center_wrap">
+              <button className="btn_start" onClick={() => setStep(3)}>
+                다음
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div>
+            <div className="salary_flex">
+              <img src={AccountImg} alt="account" width="45px" />
+              <p className="salary_text2 salary2__title--move">월급계좌</p>
+            </div>
+            <div className="account-list">
+              <p className="account-title">내 계좌</p>
+              {accountList.map((account) => (
+                <button
+                  key={account.account_id}
+                  className={`account-item ${selectedAccount === account.account_id ? "selected" : ""}`}
+                  onClick={() => setSelectedAccount(account.account_id)}
+                >
+                  <img src={require(`../../shared/shared-images/${account.logo}`)} alt={account.bank_name} />
+                  <span>
+                    {account.bank_name} <strong>{account.account_number}</strong>
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            <div className="center_wrap">
+              <button
+                className={`btn_start ${selectedAccount === null ? "disabled" : ""}`}
+                onClick={submitSalaryInfo}
+                disabled={selectedAccount === null}
+              >
+                다음
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </Fade>
   );
 }
 

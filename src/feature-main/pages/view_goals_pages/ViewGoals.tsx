@@ -7,6 +7,7 @@ import Bottom from "../bottom_nav/bottom";
 import { useNavigate } from "react-router-dom";
 import DonutChart from "./Doughnut1";
 import LoadingSpinner from "../../../shared/loadingSpinner";
+import Fade from "../../../shared/Fade";
 
 const Start: React.FC = () => {
   const navigate = useNavigate();
@@ -64,43 +65,45 @@ const Start: React.FC = () => {
   }
 
   return (
-    <div>
+    <Fade>
       <div>
-        <div className="startlist">목표 목록</div>
-      </div>
-      <div className="plus-parents">
-        <button className="plus-btn" onClick={() => navigate("/add-goal")}>
-          +
-        </button>
-        <div className="plus-list" onClick={() => navigate("/add-goal")}>
-          <div className="plus-text">추가 목표</div>
+        <div>
+          <div className="startlist">목표 목록</div>
         </div>
-      </div>
-
-      <div className="parentsbox" ref={parentsboxRef}>
-        {goals.map((goal) => (
-          <div key={goal.id} className="goal-box" onClick={() => navigate("/main/goal")}>
-            <img className="payment" src={payment} alt="payment" />
-            <div className="nowgoal">목표</div>
-            <div className="goaltext">{goal.goal_name}</div>
-            <img className="present" src={present} alt="present" />
-            <div className="nowmoney">현재 저축액</div>
-            <div className="money4">{Number(goal.current_amount).toLocaleString()}원</div>
-            <div className="donutWrap">
-              <DonutChart progress={goal.probability || 0} />
-            </div>
+        <div className="plus-parents">
+          <button className="plus-btn" onClick={() => navigate("/add-goal")}>
+            +
+          </button>
+          <div className="plus-list" onClick={() => navigate("/add-goal")}>
+            <div className="plus-text">추가 목표</div>
           </div>
-        ))}
-      </div>
+        </div>
 
-      <div style={{ paddingTop: "10px" }}>
-        <img className="ninja" src={profile} alt="ninja" width={150} />
+        <div className="parentsbox" ref={parentsboxRef}>
+          {goals.map((goal) => (
+            <div key={goal.id} className="goal-box" onClick={() => navigate("/main/goal")}>
+              <img className="payment" src={payment} alt="payment" />
+              <div className="nowgoal">목표</div>
+              <div className="goaltext">{goal.goal_name}</div>
+              <img className="present" src={present} alt="present" />
+              <div className="nowmoney">현재 저축액</div>
+              <div className="money4">{Number(goal.current_amount).toLocaleString()}원</div>
+              <div className="donutWrap">
+                <DonutChart progress={goal.probability || 0} />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ paddingTop: "10px" }}>
+          <img className="ninja" src={profile} alt="ninja" width={150} />
+        </div>
+        <div className="message">
+          오늘도 목표를 향해 <br /> 달려가는 "뱅크닌자"님 <br /> 응원합니다!
+        </div>
+        <Bottom page="goal" />
       </div>
-      <div className="message">
-        오늘도 목표를 향해 <br /> 달려가는 "뱅크닌자"님 <br /> 응원합니다!
-      </div>
-      <Bottom page="goal" />
-    </div>
+    </Fade>
   );
 };
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../style/rocketStyle.css";
 import rocket from "../../images/rocket.png";
 import { useNavigate, useLocation } from "react-router-dom";
+import Fade from "../../../shared/Fade";
 
 const Rocket: React.FC = () => {
   const navigate = useNavigate();
@@ -50,19 +51,21 @@ const Rocket: React.FC = () => {
   };
 
   return (
-    <div>
-      <div className="rocket">
-        <img className="rocket" src={rocket} alt="rocket" />
+    <Fade>
+      <div>
+        <div className="rocket">
+          <img className="rocket" src={rocket} alt="rocket" />
+        </div>
+        <div className="text">
+          모으기 완주까지
+          <br />
+          응원할게요!
+        </div>
+        <button className="start1" onClick={handlerocket}>
+          메인 화면으로
+        </button>
       </div>
-      <div className="text">
-        모으기 완주까지
-        <br />
-        응원할게요!
-      </div>
-      <button className="start1" onClick={handlerocket}>
-        메인 화면으로
-      </button>
-    </div>
+    </Fade>
   );
 };
 

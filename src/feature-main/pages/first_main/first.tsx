@@ -10,6 +10,7 @@ import { AccountsInterface } from "../../../feature-moneySplit/utils/interfaces"
 import { useLocation, useNavigate } from "react-router-dom";
 import AccountTree from "./AccountTree";
 import LoadingSpinner from "../../../shared/loadingSpinner";
+import Fade from "../../../shared/Fade";
 
 const First: React.FC = () => {
   const [accounts, setAccounts] = useState<AccountsInterface[]>([]);
@@ -85,104 +86,106 @@ const First: React.FC = () => {
   if (isLoading) return <LoadingSpinner />; // ✅ 로딩 중이면 스피너 표시
 
   return (
-    <div style={{ height: "730px", backgroundColor: "#F3F3F3" }}>
-      <img className="bufl" src={Bufl} alt="bufl" />
-      <img className="bell" src={BellImg} alt="Bell" />
-      <div className="main-wrap">
-        <div className="bank-icon">
-          <div className="bank-icon1">
-            <img
-              className="main_icons"
-              src={accounts?.length > 0 ? require(`../../../shared/shared-images/${accounts[0]?.logo}`) : BankIcon1}
-              alt="icon"
-            />
-            <div className="money">{accounts[0]?.balance ? Number(accounts[0]?.balance).toLocaleString() : 0}원</div>
+    <Fade>
+      <div style={{ height: "730px", backgroundColor: "#F3F3F3" }}>
+        <img className="bufl" src={Bufl} alt="bufl" />
+        <img className="bell" src={BellImg} alt="Bell" />
+        <div className="main-wrap">
+          <div className="bank-icon">
+            <div className="bank-icon1">
+              <img
+                className="main_icons"
+                src={accounts?.length > 0 ? require(`../../../shared/shared-images/${accounts[0]?.logo}`) : BankIcon1}
+                alt="icon"
+              />
+              <div className="money">{accounts[0]?.balance ? Number(accounts[0]?.balance).toLocaleString() : 0}원</div>
+            </div>
+            <div className="bank-icon2">
+              <img
+                className="main_icons"
+                src={accounts?.length > 0 ? require(`../../../shared/shared-images/${accounts[1]?.logo}`) : BankIcon1}
+                alt="icon"
+              />
+              <div className="money">{accounts[1]?.balance ? Number(accounts[1]?.balance).toLocaleString() : 0}원</div>
+            </div>
+            <div className="bank-icon3">
+              <img
+                className="main_icons"
+                src={accounts?.length > 0 ? require(`../../../shared/shared-images/${accounts[2]?.logo}`) : BankIcon1}
+                alt="icon"
+              />
+              <div className="money">{accounts[2]?.balance ? Number(accounts[2]?.balance).toLocaleString() : 0}원</div>
+            </div>
+            <div className="bank-icon4">
+              <img
+                className="main_icons"
+                src={accounts?.length > 0 ? require(`../../../shared/shared-images/${accounts[3]?.logo}`) : BankIcon1}
+                alt="icon"
+              />
+              <div className="money">{accounts[3]?.balance ? Number(accounts[3]?.balance).toLocaleString() : 0}원</div>
+            </div>
+            {viewMore ? (
+              <>
+                {accounts.slice(4).map((account, index) => (
+                  <div key={index} className="bank-icon5">
+                    <img
+                      className="main_icons"
+                      src={account?.logo ? require(`../../../shared/shared-images/${account.logo}`) : BankIcon1}
+                      alt="icon"
+                    />
+                    <div className="money">{account?.balance ? Number(account.balance).toLocaleString() : 0}원</div>
+                  </div>
+                ))}
+              </>
+            ) : undefined}
+
+            <div className="more" onClick={() => setViewMore(!viewMore)}>
+              {viewMore ? <>접기 ▲</> : <>더 보기 ▼</>}
+            </div>
           </div>
-          <div className="bank-icon2">
-            <img
-              className="main_icons"
-              src={accounts?.length > 0 ? require(`../../../shared/shared-images/${accounts[1]?.logo}`) : BankIcon1}
-              alt="icon"
-            />
-            <div className="money">{accounts[1]?.balance ? Number(accounts[1]?.balance).toLocaleString() : 0}원</div>
+          <div className="month_">
+            <div className="month1_">2월 총 지출</div>
+            <div className="month2_">326,510 원</div>
           </div>
-          <div className="bank-icon3">
-            <img
-              className="main_icons"
-              src={accounts?.length > 0 ? require(`../../../shared/shared-images/${accounts[2]?.logo}`) : BankIcon1}
-              alt="icon"
-            />
-            <div className="money">{accounts[2]?.balance ? Number(accounts[2]?.balance).toLocaleString() : 0}원</div>
-          </div>
-          <div className="bank-icon4">
-            <img
-              className="main_icons"
-              src={accounts?.length > 0 ? require(`../../../shared/shared-images/${accounts[3]?.logo}`) : BankIcon1}
-              alt="icon"
-            />
-            <div className="money">{accounts[3]?.balance ? Number(accounts[3]?.balance).toLocaleString() : 0}원</div>
-          </div>
-          {viewMore ? (
-            <>
-              {accounts.slice(4).map((account, index) => (
-                <div key={index} className="bank-icon5">
-                  <img
-                    className="main_icons"
-                    src={account?.logo ? require(`../../../shared/shared-images/${account.logo}`) : BankIcon1}
-                    alt="icon"
-                  />
-                  <div className="money">{account?.balance ? Number(account.balance).toLocaleString() : 0}원</div>
+          {isFromCompletion ? (
+            <div className="start-service-box">
+              <div>
+                <div style={{ margin: "30px 0", textAlign: "center" }}>
+                  월급 쪼개기를
+                  <br />
+                  시작해볼까요?
                 </div>
-              ))}
+              </div>
+              <button className="blue_big_btn" type="button" onClick={() => navigate("/money-split")}>
+                바로가기
+              </button>
+            </div>
+          ) : undefined}
+          <div className="asset-box">
+            <div className="donut-title">자산</div>
+            <div className="donut1">
+              <DoughnutChart name={name} ratio={ratio} color={color} />
+            </div>
+
+            <div className="asset5">
+              내 월급 :<br /> {(total / 10000).toLocaleString()}만원
+            </div>
+            <div className="asset6">
+              당신은 "성실형"
+              <br />
+              입니다.
+            </div>
+          </div>
+          {!isFromCompletion ? (
+            <>
+              <AccountTree />
+              <Account total={total} />
             </>
           ) : undefined}
-
-          <div className="more" onClick={() => setViewMore(!viewMore)}>
-            {viewMore ? <>접기 ▲</> : <>더 보기 ▼</>}
-          </div>
         </div>
-        <div className="month_">
-          <div className="month1_">2월 총 지출</div>
-          <div className="month2_">326,510 원</div>
-        </div>
-        {isFromCompletion ? (
-          <div className="start-service-box">
-            <div>
-              <div style={{ margin: "30px 0", textAlign: "center" }}>
-                월급 쪼개기를
-                <br />
-                시작해볼까요?
-              </div>
-            </div>
-            <button className="blue_big_btn" type="button" onClick={() => navigate("/money-split")}>
-              바로가기
-            </button>
-          </div>
-        ) : undefined}
-        <div className="asset-box">
-          <div className="donut-title">자산</div>
-          <div className="donut1">
-            <DoughnutChart name={name} ratio={ratio} color={color} />
-          </div>
-
-          <div className="asset5">
-            내 월급 :<br /> {(total / 10000).toLocaleString()}만원
-          </div>
-          <div className="asset6">
-            당신은 "성실형"
-            <br />
-            입니다.
-          </div>
-        </div>
-        {!isFromCompletion ? (
-          <>
-            <AccountTree />
-            <Account total={total} />
-          </>
-        ) : undefined}
+        <Bottom page="home" isFirstTime={isFromCompletion ? true : false} />
       </div>
-      <Bottom page="home" isFirstTime={isFromCompletion ? true : false} />
-    </div>
+    </Fade>
   );
 };
 export default First;

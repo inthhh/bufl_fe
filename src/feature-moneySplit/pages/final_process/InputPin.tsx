@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../style/splitStyle.css";
 import MoveBack from "../../../shared/MoveBack";
+import Fade from "../../../shared/Fade";
 
 const InputPin: React.FC = () => {
   const [pin, setPin] = useState<string[]>(Array(6).fill(""));
@@ -78,44 +79,50 @@ const InputPin: React.FC = () => {
   }, [pin]);
 
   return (
-    <div>
-      <MoveBack pageBefore="/money-split/authentication" />
-      <div className="center_wrapper">
-        <div>
-          <div className="black_title center_text">
-            자동이체 등록을 위해 <br />
-            PIN 번호를 입력해주세요.
-          </div>
-          <div className="center_wrapper" style={{ margin: "30px 0" }}>
-            <div className={`pin-input-container ${isWrong ? "shake" : ""}`}>
-              {pin.map((num, index) => (
-                <input
-                  key={index}
-                  type="password"
-                  value={num}
-                  className={`${isWrong ? "wrong" : "pin-input"}`}
-                  required
-                />
-              ))}
+    <Fade>
+      <div>
+        <MoveBack pageBefore="/money-split/authentication" />
+        <div className="center_wrapper">
+          <div>
+            <div className="black_title center_text">
+              자동이체 등록을 위해 <br />
+              PIN 번호를 입력해주세요.
             </div>
-          </div>
-          <div className="keypad">
-            {[...Array(9)].map((_, index) => (
-              <button key={index + 1} className="keypad-button" onClick={() => handleKeyPress((index + 1).toString())}>
-                {index + 1}
+            <div className="center_wrapper" style={{ margin: "30px 0" }}>
+              <div className={`pin-input-container ${isWrong ? "shake" : ""}`}>
+                {pin.map((num, index) => (
+                  <input
+                    key={index}
+                    type="password"
+                    value={num}
+                    className={`${isWrong ? "wrong" : "pin-input"}`}
+                    required
+                  />
+                ))}
+              </div>
+            </div>
+            <div className="keypad">
+              {[...Array(9)].map((_, index) => (
+                <button
+                  key={index + 1}
+                  className="keypad-button"
+                  onClick={() => handleKeyPress((index + 1).toString())}
+                >
+                  {index + 1}
+                </button>
+              ))}
+              <div onClick={handleDelete}></div>
+              <button className="keypad-button" onClick={() => handleKeyPress("0")}>
+                0
               </button>
-            ))}
-            <div onClick={handleDelete}></div>
-            <button className="keypad-button" onClick={() => handleKeyPress("0")}>
-              0
-            </button>
-            <button className="keypad-button" onClick={handleDelete}>
-              ⬅
-            </button>
+              <button className="keypad-button" onClick={handleDelete}>
+                ⬅
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Fade>
   );
 };
 

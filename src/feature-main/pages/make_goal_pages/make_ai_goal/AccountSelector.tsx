@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../../style/AddGoal.css";
 import { useNavigate } from "react-router-dom";
 import MoveBack from "../../../../shared/MoveBack";
+import Fade from "../../../../shared/Fade";
 
 const AccountSelector1: React.FC = () => {
   const navigate = useNavigate();
@@ -41,37 +42,39 @@ const AccountSelector1: React.FC = () => {
   };
 
   return (
-    <div>
-      <MoveBack pageBefore="/main/pig" />
-      <div className="bankbook">
-        저축을 위해 매달 돈을 가져올
-        <br />
-        통장을 선택해주세요.
-      </div>
+    <Fade>
+      <div>
+        <MoveBack pageBefore="/main/pig" />
+        <div className="bankbook">
+          저축을 위해 매달 돈을 가져올
+          <br />
+          통장을 선택해주세요.
+        </div>
 
-      {/* 라디오 버튼을 활용한 계좌 선택 UI */}
-      <div className="checkbox-container">
-        {accounts.map((account) => (
-          <label key={account.account_id} className="checkbox">
-            <input
-              className="input-type"
-              type="radio"
-              name="account"
-              value={account.account_id}
-              checked={selectedAccount === account.account_id.toString()}
-              onChange={() => setSelectedAccount(account.account_id.toString())}
-            />
-            {account.bank_name} {account.account_number}
-            <span className="checkmark"></span>
-          </label>
-        ))}
-      </div>
+        {/* 라디오 버튼을 활용한 계좌 선택 UI */}
+        <div className="checkbox-container">
+          {accounts.map((account) => (
+            <label key={account.account_id} className="checkbox">
+              <input
+                className="input-type"
+                type="radio"
+                name="account"
+                value={account.account_id}
+                checked={selectedAccount === account.account_id.toString()}
+                onChange={() => setSelectedAccount(account.account_id.toString())}
+              />
+              {account.bank_name} {account.account_number}
+              <span className="checkmark"></span>
+            </label>
+          ))}
+        </div>
 
-      {/* 완료 버튼 */}
-      <button className="okay-btn" onClick={handleConfirm}>
-        완료했어요.
-      </button>
-    </div>
+        {/* 완료 버튼 */}
+        <button className="okay-btn" onClick={handleConfirm}>
+          완료했어요.
+        </button>
+      </div>
+    </Fade>
   );
 };
 
