@@ -50,9 +50,9 @@ const SelectAccountAccounts: React.FC = () => {
     console.log(selectedAccountId, selectedAccountName);
   }, [account, dispatch]);
 
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
+  // if (isLoading) {
+  //   return <LoadingSpinner />;
+  // }
 
   return (
     <Fade>
@@ -65,25 +65,29 @@ const SelectAccountAccounts: React.FC = () => {
               <br /> 선택해주세요.
             </div>
             <div>
-              <ul className="analysis_list">
-                {accounts?.map((account, index) => (
-                  <li>
-                    <input
-                      type="radio"
-                      id={`account-${index}`}
-                      name="account"
-                      onClick={() =>
-                        setAccount({
-                          selectedAccountId: account.account_id,
-                          selectedAccountName: account.bank_name + " " + String(account.account_number),
-                        })
-                      }
-                      onChange={() => {}}
-                    />{" "}
-                    <label htmlFor={`account-${index}`}>{account.bank_name + account.account_number}</label>
-                  </li>
-                ))}
-              </ul>
+              {isLoading ? (
+                <LoadingSpinner height="300px" />
+              ) : (
+                <ul className="analysis_list">
+                  {accounts?.map((account, index) => (
+                    <li>
+                      <input
+                        type="radio"
+                        id={`account-${index}`}
+                        name="account"
+                        onClick={() =>
+                          setAccount({
+                            selectedAccountId: account.account_id,
+                            selectedAccountName: account.bank_name + " " + String(account.account_number),
+                          })
+                        }
+                        onChange={() => {}}
+                      />{" "}
+                      <label htmlFor={`account-${index}`}>{account.bank_name + account.account_number}</label>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
             <div className="center_wrapper">
               <div className="center_wrapper btn">
