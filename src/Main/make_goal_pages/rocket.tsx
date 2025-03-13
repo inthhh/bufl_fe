@@ -16,10 +16,13 @@ const Rocket: React.FC = () => {
   useEffect(() => {
     const fetchGoalDetails = async () => {
       try {
-        const response = await fetch(`https://buflbe.vercel.app/api/goals/${goalId}`, {
-          method: "GET",
-          credentials: "include", // 세션 쿠키 전송
-        });
+        const response = await fetch(
+          `https://buflbe.vercel.app/api/goals/${goalId}`,
+          {
+            method: "GET",
+            credentials: "include", // 세션 쿠키 전송
+          }
+        );
 
         if (response.ok) {
           const data = await response.json();
