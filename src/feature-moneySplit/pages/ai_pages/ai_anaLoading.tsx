@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
 import "../../style/splitStyle.css"; // CSS 파일 import
 import LoadingSpinner from "../../../shared/loadingSpinner";
+import Fade from "../../../shared/Fade";
 
 const AI_anaLoading: React.FC = () => {
   return (
-    <div>
-      <LoadingSpinner text="ana" />
-    </div>
+    <Fade>
+      <div>
+        <LoadingSpinner text="ana" />
+      </div>
+    </Fade>
   );
 };
 

@@ -4,6 +4,7 @@ import log from "../../../images/log.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import MoveBack from "../../../../shared/MoveBack";
 import LoadingSpinner from "../../../../shared/loadingSpinner";
+import Fade from "../../../../shared/Fade";
 
 // 추천 목록의 타입 정의
 interface Recommendation {
@@ -124,95 +125,97 @@ const List: React.FC = () => {
   };
 
   return (
-    <div>
-      <MoveBack pageBefore="/main/account-selector" />
-      <div className="list-container">
-        <div className="list">
-          <div className="list1">AI 추천받기</div>
+    <Fade>
+      <div>
+        <MoveBack pageBefore="/main/account-selector" />
+        <div className="list-container">
+          <div className="list">
+            <div className="list1">AI 추천받기</div>
 
-          {/* AI 추천 리스트 불러오기 */}
-          {loading ? (
-            <div>
-              <LoadingSpinner text="recommend" height="400px" />
-            </div>
-          ) : error ? (
-            <p>오류 발생: {error}</p>
-          ) : (
-            recommendations?.slice(0, 4).map((rec, index) => (
-              <button key={index} className="list2" onClick={() => openModal(rec.goal_name, rec.id)}>
-                <strong>AI 추천 목표</strong>
-                <br />
-                {rec.goal_name}
-              </button>
-            ))
-          )}
-        </div>
-
-        {/* 새로고침 버튼 - 변경된 부분 */}
-        <div>
-          <button className={loading ? "log-btn no" : "log-btn"} onClick={handleRefresh}>
-            <img className="log" src={log} alt="log" style={{ marginRight: "5px" }} />
-            새로고침
-          </button>
-        </div>
-      </div>
-
-      {/* 모달 창 */}
-      {selectedGoal && (
-        <>
-          <div className="modal-overlay-list" onClick={closeModal}></div>
-          <div className="modal-content">
-            <h2 className="content-right">선택한 목표가 맞나요?</h2>
-            <p className="goal-text">"{selectedGoal}"</p>
-
-            {/* 저축 금액 조절 슬라이더 */}
-            <div className="slider-container">
-              <label className="month">한 달에 {amount}만원</label>
-              <div className="text-space-btw">
-                <span className="min-value">5만원</span>
-                <span className="max-value">300만원</span>
+            {/* AI 추천 리스트 불러오기 */}
+            {loading ? (
+              <div>
+                <LoadingSpinner text="recommend" height="400px" />
               </div>
-              <input
-                className="slider1"
-                type="range"
-                min="5"
-                max="300"
-                step="5"
-                value={amount}
-                onChange={(e) => setAmount(Number(e.target.value))}
-              />
-            </div>
-
-            {/* 저축 기간 조절 슬라이더 */}
-            <div className="slider-container1">
-              <label className="month-money">{duration}개월 모으기</label>
-              <div className="text-space-btw">
-                <span className="min-value">1개월</span>
-                <span className="max-value">36개월</span>
-              </div>
-              <input
-                className="slider1"
-                type="range"
-                min="1"
-                max="36"
-                value={duration}
-                onChange={(e) => setDuration(Number(e.target.value))}
-              />
-            </div>
-
-            {/* 버튼 영역 */}
-            <div className="modal-buttons" style={{ marginTop: "40px", width: "360px", marginLeft: "10px" }}>
-              <button className="cancel-btn" onClick={closeModal}>
-                다시 선택
-              </button>
-              <button className="confirm-btn" onClick={handleConfirm}>
-                확인
-              </button>
-            </div>
+            ) : error ? (
+              <p>오류 발생: {error}</p>
+            ) : (
+              recommendations?.slice(0, 4).map((rec, index) => (
+                <button key={index} className="list2" onClick={() => openModal(rec.goal_name, rec.id)}>
+                  <strong>AI 추천 목표</strong>
+                  <br />
+                  {rec.goal_name}
+                </button>
+              ))
+            )}
           </div>
-        </>
-      )}
-    </div>
+
+          {/* 새로고침 버튼 - 변경된 부분 */}
+          <div>
+            <button className={loading ? "log-btn no" : "log-btn"} onClick={handleRefresh}>
+              <img className="log" src={log} alt="log" style={{ marginRight: "5px" }} />
+              새로고침
+            </button>
+          </div>
+        </div>
+
+        {/* 모달 창 */}
+        {selectedGoal && (
+          <>
+            <div className="modal-overlay-list" onClick={closeModal}></div>
+            <div className="modal-content">
+              <h2 className="content-right">선택한 목표가 맞나요?</h2>
+              <p className="goal-text">"{selectedGoal}"</p>
+
+              {/* 저축 금액 조절 슬라이더 */}
+              <div className="slider-container">
+                <label className="month">한 달에 {amount}만원</label>
+                <div className="text-space-btw">
+                  <span className="min-value">5만원</span>
+                  <span className="max-value">300만원</span>
+                </div>
+                <input
+                  className="slider1"
+                  type="range"
+                  min="5"
+                  max="300"
+                  step="5"
+                  value={amount}
+                  onChange={(e) => setAmount(Number(e.target.value))}
+                />
+              </div>
+
+              {/* 저축 기간 조절 슬라이더 */}
+              <div className="slider-container1">
+                <label className="month-money">{duration}개월 모으기</label>
+                <div className="text-space-btw">
+                  <span className="min-value">1개월</span>
+                  <span className="max-value">36개월</span>
+                </div>
+                <input
+                  className="slider1"
+                  type="range"
+                  min="1"
+                  max="36"
+                  value={duration}
+                  onChange={(e) => setDuration(Number(e.target.value))}
+                />
+              </div>
+
+              {/* 버튼 영역 */}
+              <div className="modal-buttons" style={{ marginTop: "40px", width: "360px", marginLeft: "10px" }}>
+                <button className="cancel-btn" onClick={closeModal}>
+                  다시 선택
+                </button>
+                <button className="confirm-btn" onClick={handleConfirm}>
+                  확인
+                </button>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+    </Fade>
   );
 };
 

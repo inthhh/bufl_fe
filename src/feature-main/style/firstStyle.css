@@ -160,11 +160,11 @@
 
 .start-service-box {
   width: 400px;
-  height: 1100px;
+  height: 800px;
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
   position: absolute;
-  top: 350px;
+  top: 370px;
   z-index: 999;
   display: flex;
   justify-content: flex-start;

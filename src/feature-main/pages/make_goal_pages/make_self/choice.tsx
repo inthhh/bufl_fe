@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import MoveBack from "../../../../shared/MoveBack";
 import "../../../style/choiceStyle.css";
+import Fade from "../../../../shared/Fade";
 
 const Choice: React.FC = () => {
   const navigate = useNavigate();
@@ -45,43 +46,45 @@ const Choice: React.FC = () => {
   };
 
   return (
-    <div>
-      <MoveBack pageBefore="/main/choose" />
+    <Fade>
       <div>
-        <input
-          className="money-pig"
-          type="text"
-          id="userInput"
-          placeholder={inputValue === "" ? placeholder : ""}
-          value={inputValue ? `${inputValue} 만원` : ""}
-          readOnly
-        />
-        <div className="money-pig1">매달 최대 3,000,000원 가능</div>
-      </div>
-
-      {/* 숫자 키패드 */}
-      <div className="numpad-container">
-        <div className="numpad-grid">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
-            <button key={num} className="numpad-button" onClick={() => handleKeyPress(num.toString())}>
-              {num}
-            </button>
-          ))}
-          <div className="empty-cell"></div>
-          {/* <button className="numpad-button" onClick={() => handleKeyPress("0")}> */}
-          <button className="numpad-button" onClick={() => handleKeyPress("0")}>
-            0
-          </button>
-          <button className="numpad-button" onClick={() => handleKeyPress("backspace")}>
-            ←
-          </button>
+        <MoveBack pageBefore="/main/choose" />
+        <div>
+          <input
+            className="money-pig"
+            type="text"
+            id="userInput"
+            placeholder={inputValue === "" ? placeholder : ""}
+            value={inputValue ? `${inputValue} 만원` : ""}
+            readOnly
+          />
+          <div className="money-pig1">매달 최대 3,000,000원 가능</div>
         </div>
-      </div>
 
-      <button className="next-btn1" onClick={nexthandle}>
-        확인
-      </button>
-    </div>
+        {/* 숫자 키패드 */}
+        <div className="numpad-container">
+          <div className="numpad-grid">
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
+              <button key={num} className="numpad-button" onClick={() => handleKeyPress(num.toString())}>
+                {num}
+              </button>
+            ))}
+            <div className="empty-cell"></div>
+            {/* <button className="numpad-button" onClick={() => handleKeyPress("0")}> */}
+            <button className="numpad-button" onClick={() => handleKeyPress("0")}>
+              0
+            </button>
+            <button className="numpad-button" onClick={() => handleKeyPress("backspace")}>
+              ←
+            </button>
+          </div>
+        </div>
+
+        <button className="next-btn1" onClick={nexthandle}>
+          확인
+        </button>
+      </div>
+    </Fade>
   );
 };
 

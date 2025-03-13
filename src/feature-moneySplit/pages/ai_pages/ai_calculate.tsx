@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { setCategories } from "../../../redux/actions/categoryAction";
 import { RecommendRatio } from "../../utils/interfaces";
+import Fade from "../../../shared/Fade";
 
 const AI_calculate: React.FC = () => {
   const [recommendRatio, setRecommendRatio] = useState<RecommendRatio[]>([]);
@@ -85,53 +86,55 @@ const AI_calculate: React.FC = () => {
   }
 
   return (
-    <div>
-      <MoveBack pageBefore={"/money-split/ai/analysis"} />
-      <div className="center_wrapper">
-        <div>
-          <div className="black_title">
-            AI가 추천하는
-            <br />
-            월급 분배 비율이에요!
-          </div>
-          <div className="scroll-wrapper">
-            <div className="content_box">
-              <div className="black_title">월급 {total.toLocaleString()}원에서</div>
-              <div>
-                <ul className="analysis_list">
-                  {recommendRatio?.map((recommend) => (
-                    <li>
-                      {recommend.name} {Number(recommend.ratio)}%{" "}
-                      <span>(약 {Number(recommend.amount).toLocaleString()}원)</span>
-                    </li>
-                  ))}
-                </ul>
+    <Fade>
+      <div>
+        <MoveBack pageBefore={"/money-split/ai/analysis"} />
+        <div className="center_wrapper">
+          <div>
+            <div className="black_title">
+              AI가 추천하는
+              <br />
+              월급 분배 비율이에요!
+            </div>
+            <div className="scroll-wrapper">
+              <div className="content_box">
+                <div className="black_title">월급 {total.toLocaleString()}원에서</div>
+                <div>
+                  <ul className="analysis_list">
+                    {recommendRatio?.map((recommend) => (
+                      <li>
+                        {recommend.name} {Number(recommend.ratio)}%{" "}
+                        <span>(약 {Number(recommend.amount).toLocaleString()}원)</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="center_wrapper" style={{ marginBottom: "20px" }}>
+                <div style={{ width: "180px", height: "180px", marginTop: "20px" }}>
+                  <DonutChart
+                    dataList={recommendRatio?.map((r) => Number(r.ratio))}
+                    name={recommendRatio?.map((r) => r.name)}
+                  />
+                </div>
               </div>
             </div>
 
-            <div className="center_wrapper" style={{ marginBottom: "20px" }}>
-              <div style={{ width: "180px", height: "180px", marginTop: "20px" }}>
-                <DonutChart
-                  dataList={recommendRatio?.map((r) => Number(r.ratio))}
-                  name={recommendRatio?.map((r) => r.name)}
-                />
+            <div className="center_wrapper">
+              <div className="center_wrapper btn">
+                <button className="gray_small_btn" type="button" onClick={() => clickForNo()}>
+                  수정할래요
+                </button>
+                <button className="blue_small_btn" type="button" onClick={() => clickForYes()}>
+                  좋아요!
+                </button>
               </div>
-            </div>
-          </div>
-
-          <div className="center_wrapper">
-            <div className="center_wrapper btn">
-              <button className="gray_small_btn" type="button" onClick={() => clickForNo()}>
-                수정할래요
-              </button>
-              <button className="blue_small_btn" type="button" onClick={() => clickForYes()}>
-                좋아요!
-              </button>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </Fade>
   );
 };
 

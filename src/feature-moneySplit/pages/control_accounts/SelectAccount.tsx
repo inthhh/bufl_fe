@@ -9,6 +9,7 @@ import { RootState } from "../../../redux/store";
 import { CategoryInterface, CategoryAccountProps, CategoryAccountsInterface } from "../../utils/interfaces";
 import CategoryAccount from "./CategoryAccount";
 import LoadingSpinner from "../../../shared/loadingSpinner";
+import Fade from "../../../shared/Fade";
 
 function SelectAccount() {
   const [isFinish, setIsFinish] = useState<boolean>(false);
@@ -76,36 +77,38 @@ function SelectAccount() {
   }
 
   return (
-    <div>
-      <MoveBack pageBefore="/money-split/select-ratio" now="account" />
-      <div className="center_wrapper">
-        <div>
-          <div className="black_title">카테고리별 계좌를 선택해주세요.</div>
-          <div style={{ height: "550px", overflowY: "scroll" }}>
-            {categorys?.map((category, index) => (
-              <div>
-                <CategoryAccount
-                  categoryId={category.id}
-                  category={category.name}
-                  ratio={category.ratio}
-                  amount={category.amount}
-                  account={index === 0 ? salaryAccount : categoryAccounts[index] ?? { bankName: "정보 없음" }}
-                />
-              </div>
-            ))}
-          </div>
-          <div className="center_wrapper">
-            <button
-              className={isFinish ? "blue_big_btn" : "gray_big_btn no"}
-              type="button"
-              onClick={isFinish ? () => clickForYes() : undefined}
-            >
-              완료했어요.
-            </button>
+    <Fade>
+      <div>
+        <MoveBack pageBefore="/money-split/select-ratio" now="account" />
+        <div className="center_wrapper">
+          <div>
+            <div className="black_title">카테고리별 계좌를 선택해주세요.</div>
+            <div style={{ height: "550px", overflowY: "scroll" }}>
+              {categorys?.map((category, index) => (
+                <div>
+                  <CategoryAccount
+                    categoryId={category.id}
+                    category={category.name}
+                    ratio={category.ratio}
+                    amount={category.amount}
+                    account={index === 0 ? salaryAccount : categoryAccounts[index] ?? { bankName: "정보 없음" }}
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="center_wrapper">
+              <button
+                className={isFinish ? "blue_big_btn" : "gray_big_btn no"}
+                type="button"
+                onClick={isFinish ? () => clickForYes() : undefined}
+              >
+                완료했어요.
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Fade>
   );
 }
 

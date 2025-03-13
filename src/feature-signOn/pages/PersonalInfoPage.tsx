@@ -6,6 +6,7 @@ import { setName, setIdFront, setIdBack, setPhone, setAgreements } from "../../r
 import axios from "axios";
 import "../../feature-moneySplit/style/splitStyle.css";
 import MoveBack from "../../shared/MoveBack";
+import Fade from "../../shared/Fade";
 
 const PersonalInfoPage: React.FC = () => {
   const navigate = useNavigate();
@@ -101,93 +102,99 @@ const PersonalInfoPage: React.FC = () => {
   };
 
   return (
-    <div>
-      <div className="underline">
-        <MoveBack pageBefore="/sign" />
-        <div className="center_wrap">
-          <h2 className="text_info">개인정보 설정</h2>
-        </div>
-      </div>
-      <p className="info_text2 center_wrap">
-        안전한 저축 시작과 AI추천을 위하여, <br />
-        개인정보를 입력해주세요.
-      </p>
-
+    <Fade>
       <div>
-        <div className="info_input_name">
-          <label>이름</label>
-          <input
-            type="text"
-            placeholder="성명"
-            value={localName}
-            onChange={handleNameChange}
-            onBlur={handleBlur}
-            onCompositionStart={() => setIsComposing(true)}
-            onCompositionEnd={() => setIsComposing(false)}
-          />
+        <div className="underline">
+          <MoveBack pageBefore="/sign" />
+          <div className="center_wrap">
+            <h2 className="text_info">개인정보 설정</h2>
+          </div>
+        </div>
+        <p className="info_text2 center_wrap">
+          안전한 저축 시작과 AI추천을 위하여, <br />
+          개인정보를 입력해주세요.
+        </p>
+
+        <div>
+          <div className="info_input_name">
+            <label>이름</label>
+            <input
+              type="text"
+              placeholder="성명"
+              value={localName}
+              onChange={handleNameChange}
+              onBlur={handleBlur}
+              onCompositionStart={() => setIsComposing(true)}
+              onCompositionEnd={() => setIsComposing(false)}
+            />
+          </div>
+
+          <div className="info_input_name info_input_id">
+            <label>주민등록번호</label>
+            <input
+              className="input_id_1"
+              type="text"
+              placeholder="앞 6자리"
+              value={idFront}
+              onChange={handleIdFrontChange}
+              maxLength={6}
+            />
+            <span>-</span>
+            <input className="input_id_2" type="text" value={idBack} onChange={handleIdBackChange} maxLength={1} />
+            <span>******</span>
+          </div>
+
+          <div className="info_input_name info_input_phone">
+            <label>휴대폰 번호</label>
+            <input type="text" placeholder="휴대폰 번호" value={phone} maxLength={11} onChange={handlePhoneChange} />
+          </div>
         </div>
 
-        <div className="info_input_name info_input_id">
-          <label>주민등록번호</label>
-          <input
-            className="input_id_1"
-            type="text"
-            placeholder="앞 6자리"
-            value={idFront}
-            onChange={handleIdFrontChange}
-            maxLength={6}
-          />
-          <span>-</span>
-          <input className="input_id_2" type="text" value={idBack} onChange={handleIdBackChange} maxLength={1} />
-          <span>******</span>
+        <div className="center_wrap agree_down">
+          <h3>이용약관 동의</h3>
+          <div className="agree_container">
+            <input type="checkbox" id="all" checked={agreements.all} onChange={handleAllAgreement} />
+            <label htmlFor="all">모두 동의합니다.</label>
+
+            <input
+              type="checkbox"
+              id="terms"
+              checked={agreements.terms}
+              onChange={() => handleAgreementChange("terms")}
+            />
+            <label htmlFor="terms">이용약관 (필수)</label>
+
+            <input
+              type="checkbox"
+              id="privacy"
+              checked={agreements.privacy}
+              onChange={() => handleAgreementChange("privacy")}
+            />
+            <label htmlFor="privacy">개인정보 수집 및 이용 동의 (필수)</label>
+
+            <input
+              type="checkbox"
+              id="marketing"
+              checked={agreements.marketing}
+              onChange={() => handleAgreementChange("marketing")}
+            />
+            <label htmlFor="marketing">마케팅 정보 수신 동의 (선택)</label>
+          </div>
         </div>
 
-        <div className="info_input_name info_input_phone">
-          <label>휴대폰 번호</label>
-          <input type="text" placeholder="휴대폰 번호" value={phone} maxLength={11} onChange={handlePhoneChange} />
+        {errorMessage && <p className="error_message">{errorMessage}</p>}
+
+        <div className="center_wrap">
+          <button
+            disabled={!isFormValid}
+            onClick={handleSubmit}
+            className={`btn_start ${isFormValid ? "" : "disabled"}`}
+          >
+            확인
+          </button>
         </div>
       </div>
-
-      <div className="center_wrap agree_down">
-        <h3>이용약관 동의</h3>
-        <div className="agree_container">
-          <input type="checkbox" id="all" checked={agreements.all} onChange={handleAllAgreement} />
-          <label htmlFor="all">모두 동의합니다.</label>
-
-          <input
-            type="checkbox"
-            id="terms"
-            checked={agreements.terms}
-            onChange={() => handleAgreementChange("terms")}
-          />
-          <label htmlFor="terms">이용약관 (필수)</label>
-
-          <input
-            type="checkbox"
-            id="privacy"
-            checked={agreements.privacy}
-            onChange={() => handleAgreementChange("privacy")}
-          />
-          <label htmlFor="privacy">개인정보 수집 및 이용 동의 (필수)</label>
-
-          <input
-            type="checkbox"
-            id="marketing"
-            checked={agreements.marketing}
-            onChange={() => handleAgreementChange("marketing")}
-          />
-          <label htmlFor="marketing">마케팅 정보 수신 동의 (선택)</label>
-        </div>
-      </div>
-
-      {errorMessage && <p className="error_message">{errorMessage}</p>}
-
-      <div className="center_wrap">
-        <button disabled={!isFormValid} onClick={handleSubmit} className={`btn_start ${isFormValid ? "" : "disabled"}`}>
-          확인
-        </button>
-      </div>
-    </div>
+    </Fade>
   );
 };
 

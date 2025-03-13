@@ -7,6 +7,7 @@ import { setSelectedAccount } from "../../../redux/actions/accountAction";
 import { RootState } from "../../../redux/store";
 import { AccountsInterface, SelectedAccountInterface } from "../../utils/interfaces";
 import LoadingSpinner from "../../../shared/loadingSpinner";
+import Fade from "../../../shared/Fade";
 
 const SelectAccountAccounts: React.FC = () => {
   // const allAccountList = ["토스뱅크 123", "토스뱅크 456", "토스뱅크 789", "토스뱅크 000"];
@@ -54,45 +55,47 @@ const SelectAccountAccounts: React.FC = () => {
   }
 
   return (
-    <div>
-      <MoveBack pageBefore={`/money-split/select-account/detail/${categoryId}`} />
-      <div className="center_wrapper">
-        <div>
-          <div className="accounttitle">
-            해당 카테고리로 사용할 통장을
-            <br /> 선택해주세요.
-          </div>
+    <Fade>
+      <div>
+        <MoveBack pageBefore={`/money-split/select-account/detail/${categoryId}`} />
+        <div className="center_wrapper">
           <div>
-            <ul className="analysis_list">
-              {accounts?.map((account, index) => (
-                <li>
-                  <input
-                    type="radio"
-                    id={`account-${index}`}
-                    name="account"
-                    onClick={() =>
-                      setAccount({
-                        selectedAccountId: account.account_id,
-                        selectedAccountName: account.bank_name + " " + String(account.account_number),
-                      })
-                    }
-                    onChange={() => {}}
-                  />{" "}
-                  <label htmlFor={`account-${index}`}>{account.bank_name + account.account_number}</label>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="center_wrapper">
-            <div className="center_wrapper btn">
-              <button className="blue_big_btn" type="button" onClick={() => clickForYes()}>
-                완료했어요.
-              </button>
+            <div className="accounttitle">
+              해당 카테고리로 사용할 통장을
+              <br /> 선택해주세요.
+            </div>
+            <div>
+              <ul className="analysis_list">
+                {accounts?.map((account, index) => (
+                  <li>
+                    <input
+                      type="radio"
+                      id={`account-${index}`}
+                      name="account"
+                      onClick={() =>
+                        setAccount({
+                          selectedAccountId: account.account_id,
+                          selectedAccountName: account.bank_name + " " + String(account.account_number),
+                        })
+                      }
+                      onChange={() => {}}
+                    />{" "}
+                    <label htmlFor={`account-${index}`}>{account.bank_name + account.account_number}</label>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="center_wrapper">
+              <div className="center_wrapper btn">
+                <button className="blue_big_btn" type="button" onClick={() => clickForYes()}>
+                  완료했어요.
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </Fade>
   );
 };
 

@@ -7,6 +7,7 @@ import { setCategories } from "../../../redux/actions/categoryAction";
 import { RootState } from "../../../redux/store";
 import { CategoryProps } from "../../utils/interfaces";
 import LoadingSpinner from "../../../shared/loadingSpinner";
+import Fade from "../../../shared/Fade";
 
 const Category: React.FC<CategoryProps> = (props) => {
   const { idx, total, category, ratio, isOrigin, updateRatio, clickForDelete } = props;
@@ -215,80 +216,84 @@ const SelectRatio: React.FC = () => {
   }
 
   return (
-    <div>
-      <MoveBack pageBefore="/money-split" now="ratio" />
-      <div className="center_wrapper">
-        <div>
+    <Fade>
+      <div>
+        <MoveBack pageBefore="/money-split" now="ratio" />
+        <div className="center_wrapper">
           <div>
-            <div className="black_title">월급 쪼개기 비율을 설정해주세요.</div>
-
-            <div style={{ margin: "10px 0" }}>
-              <div>월 소득</div>
-              <div style={{ fontSize: "22px" }}>{total.toLocaleString()}원 중,</div>
-            </div>
-          </div>
-          <div style={{ height: "500px", overflowY: "scroll" }}>
             <div>
-              {/* 월급 통장 (자동 계산) */}
-              <Category
-                idx={0}
-                category="💰 월급 통장"
-                total={total}
-                ratio={salaryAccountRatio}
-                amount={total * salaryAccountRatio * 0.01}
-                isOrigin={true}
-                updateRatio={() => {}}
-                clickForDelete={clickForDelete}
-              />
-              <div style={{ marginBottom: "5px" }}>
-                {is100percent && !isTooBig ? (
-                  <div>분배 완료!</div>
-                ) : isTooBig ? (
-                  <div style={{ color: "red" }}>비율의 총 합이 100%를 초과해요! ({-1 * salaryAccountRatio}% 초과)</div>
-                ) : (
-                  <div style={{ color: "blue" }}>비율의 총 합이 100%가 되도록 해주세요.</div>
-                )}
+              <div className="black_title">월급 쪼개기 비율을 설정해주세요.</div>
+
+              <div style={{ margin: "10px 0" }}>
+                <div>월 소득</div>
+                <div style={{ fontSize: "22px" }}>{total.toLocaleString()}원 중,</div>
               </div>
-              {/* 하위 카테고리 */}
-              {categoryList &&
-                categoryList.map((cate, index) =>
-                  index >= 1 ? (
-                    <Category
-                      key={index}
-                      idx={index}
-                      total={total}
-                      category={cate.name}
-                      ratio={ratios[index] || 0}
-                      amount={0}
-                      updateRatio={updateRatio}
-                      clickForDelete={clickForDelete}
-                    />
-                  ) : null
-                )}
             </div>
-          </div>
-          <div className="center_wrapper">
-            <div className="center_wrapper btn">
-              <button
-                className="gray_small_btn"
-                style={{ backgroundColor: "#DCEAFF" }}
-                type="button"
-                onClick={clickForNo}
-              >
-                카테고리 추가
-              </button>
-              <button
-                className={isTooBig || isTooSmall ? "gray_small_btn no" : "blue_small_btn"}
-                type="button"
-                onClick={clickForYes}
-              >
-                완료했어요
-              </button>
+            <div style={{ height: "500px", overflowY: "scroll" }}>
+              <div>
+                {/* 월급 통장 (자동 계산) */}
+                <Category
+                  idx={0}
+                  category="💰 월급 통장"
+                  total={total}
+                  ratio={salaryAccountRatio}
+                  amount={total * salaryAccountRatio * 0.01}
+                  isOrigin={true}
+                  updateRatio={() => {}}
+                  clickForDelete={clickForDelete}
+                />
+                <div style={{ marginBottom: "5px" }}>
+                  {is100percent && !isTooBig ? (
+                    <div>분배 완료!</div>
+                  ) : isTooBig ? (
+                    <div style={{ color: "red" }}>
+                      비율의 총 합이 100%를 초과해요! ({-1 * salaryAccountRatio}% 초과)
+                    </div>
+                  ) : (
+                    <div style={{ color: "blue" }}>비율의 총 합이 100%가 되도록 해주세요.</div>
+                  )}
+                </div>
+                {/* 하위 카테고리 */}
+                {categoryList &&
+                  categoryList.map((cate, index) =>
+                    index >= 1 ? (
+                      <Category
+                        key={index}
+                        idx={index}
+                        total={total}
+                        category={cate.name}
+                        ratio={ratios[index] || 0}
+                        amount={0}
+                        updateRatio={updateRatio}
+                        clickForDelete={clickForDelete}
+                      />
+                    ) : null
+                  )}
+              </div>
+            </div>
+            <div className="center_wrapper">
+              <div className="center_wrapper btn">
+                <button
+                  className="gray_small_btn"
+                  style={{ backgroundColor: "#DCEAFF" }}
+                  type="button"
+                  onClick={clickForNo}
+                >
+                  카테고리 추가
+                </button>
+                <button
+                  className={isTooBig || isTooSmall ? "gray_small_btn no" : "blue_small_btn"}
+                  type="button"
+                  onClick={clickForYes}
+                >
+                  완료했어요
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </Fade>
   );
 };
 

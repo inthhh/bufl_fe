@@ -3,6 +3,7 @@ import "../../style/settingStyle.css";
 import ProfileImg from "../../images/profile.jpeg";
 import RightArrow from "../../images/right-arrow.png";
 import Bottom from "../bottom_nav/bottom";
+import Fade from "../../../shared/Fade";
 
 interface menuProps {
   menuName: string;
@@ -52,30 +53,32 @@ const Profile: React.FC = () => {
 
 const Setting: React.FC = () => {
   return (
-    <div style={{ height: "730px", backgroundColor: "#F3F3F3" }}>
-      <div style={{ height: "70px" }}></div>
-      <div className="menu-top-border">
-        <Profile />
-      </div>
+    <Fade>
+      <div style={{ height: "730px", backgroundColor: "#F3F3F3" }}>
+        <div style={{ height: "70px" }}></div>
+        <div className="menu-top-border">
+          <Profile />
+        </div>
 
-      <div className="menu-top-border">
-        <MenuComponent menuName="알림" />
-        <MenuComponent menuName="계좌 관리" />
-      </div>
+        <div className="menu-top-border">
+          <MenuComponent menuName="알림" />
+          <MenuComponent menuName="계좌 관리" />
+        </div>
 
-      <div className="menu-top-border">
-        <MenuComponent menuName="인증서" />
-        <MenuComponent menuName="보안" />
-        <MenuComponent menuName="약관 및 정책" />
-        <MenuComponent menuName="FAQ" />
-        <MenuComponent menuName="고객센터" />
-      </div>
+        <div className="menu-top-border">
+          <MenuComponent menuName="인증서" />
+          <MenuComponent menuName="보안" />
+          <MenuComponent menuName="약관 및 정책" />
+          <MenuComponent menuName="FAQ" />
+          <MenuComponent menuName="고객센터" />
+        </div>
 
-      <div className="menu-top-border">
-        <MenuComponent menuName="탈퇴하기" />
+        <div className="menu-top-border">
+          <MenuComponent menuName="탈퇴하기" />
+        </div>
+        <Bottom page="menu" />
       </div>
-      <Bottom page="menu" />
-    </div>
+    </Fade>
   );
 };
 

@@ -3,6 +3,7 @@ import "../../../style/chooseStyle.css";
 import pigmoney from "../../../images/piggy.png";
 import { useNavigate, useLocation } from "react-router-dom";
 import MoveBack from "../../../../shared/MoveBack";
+import Fade from "../../../../shared/Fade";
 
 const Choose: React.FC = () => {
   const navigate = useNavigate();
@@ -60,60 +61,62 @@ const Choose: React.FC = () => {
   }, [savingAmount]);
 
   return (
-    <div>
-      <MoveBack pageBefore="/Main/choose" />
+    <Fade>
       <div>
-        <img className="pigmoney" src={pigmoney} alt="pigmoney" />
-      </div>
-      <div className="winnermoney1">
-        매달 {amount}만원씩
-        <br />
-        저축에 성공하면
-      </div>
-      <div className="winnermoney2">{duration}개월 만기했을 때 (원금+이자)</div>
-      <div className="winnermoney3">
-        <span style={{ color: "#3182F6", fontWeight: "bold" }}>{(amount * 10000 * duration).toLocaleString()}원</span> +
-        a 받아요
-      </div>
-      <div>
-        <div className="mybox-container">
-          <div className="slider-container">
-            <span className="min-value1">5만원</span>
-            <label className="month10">한 달에 {amount}만원</label>
-            <span className="max-value2">300만원</span>
-            <input
-              className="slider3"
-              type="range"
-              min="5"
-              max="300"
-              step="5"
-              value={amount}
-              onChange={(e) => setAmount(Number(e.target.value))}
-            />
+        <MoveBack pageBefore="/Main/choose" />
+        <div>
+          <img className="pigmoney" src={pigmoney} alt="pigmoney" />
+        </div>
+        <div className="winnermoney1">
+          매달 {amount}만원씩
+          <br />
+          저축에 성공하면
+        </div>
+        <div className="winnermoney2">{duration}개월 만기했을 때 (원금+이자)</div>
+        <div className="winnermoney3">
+          <span style={{ color: "#3182F6", fontWeight: "bold" }}>{(amount * 10000 * duration).toLocaleString()}원</span>{" "}
+          + a 받아요
+        </div>
+        <div>
+          <div className="mybox-container">
+            <div className="slider-container">
+              <span className="min-value1">5만원</span>
+              <label className="month10">한 달에 {amount}만원</label>
+              <span className="max-value2">300만원</span>
+              <input
+                className="slider3"
+                type="range"
+                min="5"
+                max="300"
+                step="5"
+                value={amount}
+                onChange={(e) => setAmount(Number(e.target.value))}
+              />
+            </div>
+            <div className="slider-container1">
+              <span className="min-month1">3개월</span>
+              <label className="month-money1">{duration}개월 모으기</label>
+              <span className="max-month2">36개월</span>
+              <input
+                className="slider3"
+                type="range"
+                min="3"
+                max="36"
+                step="1"
+                value={duration}
+                onChange={(e) => setDuration(Number(e.target.value))}
+              />
+            </div>
+            <button className="winner-money4" onClick={handleDirectInputClick}>
+              직접 입력
+            </button>
+            <button className="next-btn" onClick={nexthandle}>
+              다음
+            </button>
           </div>
-          <div className="slider-container1">
-            <span className="min-month1">3개월</span>
-            <label className="month-money1">{duration}개월 모으기</label>
-            <span className="max-month2">36개월</span>
-            <input
-              className="slider3"
-              type="range"
-              min="3"
-              max="36"
-              step="1"
-              value={duration}
-              onChange={(e) => setDuration(Number(e.target.value))}
-            />
-          </div>
-          <button className="winner-money4" onClick={handleDirectInputClick}>
-            직접 입력
-          </button>
-          <button className="next-btn" onClick={nexthandle}>
-            다음
-          </button>
         </div>
       </div>
-    </div>
+    </Fade>
   );
 };
 
