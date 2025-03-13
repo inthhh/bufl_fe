@@ -15,7 +15,7 @@ const Account: React.FC<AccountProps> = ({ total }) => {
 
   useEffect(() => {
     // 카테고리 정보 api
-    fetch(`http://localhost:5000/api/salary/category`, {
+    fetch(`https://buflbe.vercel.app/api/salary/category`, {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })

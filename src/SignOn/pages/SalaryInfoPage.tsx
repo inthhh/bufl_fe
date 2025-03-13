@@ -32,9 +32,12 @@ function SalaryInfoPage() {
   useEffect(() => {
     const fetchAccounts = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/accounts", {
-          withCredentials: true,
-        });
+        const response = await axios.get(
+          "https://buflbe.vercel.app/api/accounts",
+          {
+            withCredentials: true,
+          }
+        );
         setAccountList(response.data.accounts);
       } catch (error) {
         console.error("계좌 정보를 불러오는 데 실패했습니다:", error);
@@ -77,7 +80,7 @@ function SalaryInfoPage() {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/users/salary",
+        "https://buflbe.vercel.app/api/users/salary",
         {
           amount: salary,
           payDate: payday,

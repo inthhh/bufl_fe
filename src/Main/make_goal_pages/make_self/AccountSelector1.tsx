@@ -14,7 +14,7 @@ const AccountSelector1: React.FC = () => {
   useEffect(() => {
     const fetchAccounts = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/accounts", {
+        const response = await fetch("https://buflbe.vercel.app/api/accounts", {
           method: "GET",
           credentials: "include", // 쿠키를 포함하여 요청
         });
