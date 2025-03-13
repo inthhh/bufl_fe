@@ -179,7 +179,7 @@
   margin-bottom: 40px;
 }
 .agree_text3 {
-  margin-top: 100px;
+  margin-top: 55px;
 }
 .agree_text4 {
   text-align: left;
@@ -328,14 +328,21 @@
   top: 59px;
   left: 20px;
   width: 360px;
-  max-height: 200px;
+  max-height: 300px;
   overflow-y: auto;
   background: white;
   border: 1px solid #ccc;
   border-radius: 8px;
   text-align: center;
+  border-radius: 10px 10px 10px 10px;
 }
-
+.payday__dropdown::-webkit-scrollbar {
+  width: 10px;
+}
+.payday__dropdown::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
 .payday__dropdown-item {
   padding: 10px 16px;
   font-size: 16px;

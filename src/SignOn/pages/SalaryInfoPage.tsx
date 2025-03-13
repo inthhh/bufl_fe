@@ -10,7 +10,7 @@ import MoveBack from "../../MoneySplit/MoveBack";
 
 function SalaryInfoPage() {
   const navigate = useNavigate();
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
   const [salary, setSalary] = useState(
     () => Number(localStorage.getItem("salary")) || 2500000
   );
