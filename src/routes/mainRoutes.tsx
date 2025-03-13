@@ -1,16 +1,16 @@
 import { Routes, Route } from "react-router-dom";
-import First from "../Main/first_main/first";
-import Setting from "../Main/settingPage/Setting";
-import AddGoal from "../Main/make_goal_pages/AddGoal";
-import AccountSelector from "../Main/make_goal_pages/make_ai_goal/AccountSelector";
-import AccountSelector1 from "../Main/make_goal_pages/make_self/AccountSelector1";
-import Pig from "../Main/make_goal_pages/make_ai_goal/ai_first";
-import List from "../Main/make_goal_pages/make_ai_goal/list";
-import Choose from "../Main/make_goal_pages/make_self/choose";
-import Choice from "../Main/make_goal_pages/make_self/choice";
-import Rocket from "../Main/make_goal_pages/rocket";
-import ViewGoals from "../Main/view_goals_pages/ViewGoals";
-import Goal from "../Main/view_goals_pages/goal";
+import First from "../feature-main/pages/first_main/first";
+import Setting from "../feature-main/pages/settingPage/Setting";
+import AddGoal from "../feature-main/pages/make_goal_pages/AddGoal";
+import AccountSelector from "../feature-main/pages/make_goal_pages/make_ai_goal/AccountSelector";
+import AccountSelector1 from "../feature-main/pages/make_goal_pages/make_self/AccountSelector1";
+import Pig from "../feature-main/pages/make_goal_pages/make_ai_goal/ai_first";
+import List from "../feature-main/pages/make_goal_pages/make_ai_goal/list";
+import Choose from "../feature-main/pages/make_goal_pages/make_self/choose";
+import Choice from "../feature-main/pages/make_goal_pages/make_self/choice";
+import Rocket from "../feature-main/pages/make_goal_pages/rocket";
+import ViewGoals from "../feature-main/pages/view_goals_pages/ViewGoals";
+import Goal from "../feature-main/pages/view_goals_pages/goal";
 
 const MainRoutes = () => {
   return (

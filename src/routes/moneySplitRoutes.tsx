@@ -1,22 +1,22 @@
 import { Routes, Route } from "react-router-dom";
-import MoneySplitFirst from "../MoneySplit/pages/SplitFirst";
-import AI_home from "../MoneySplit/pages/ai_pages/ai_home";
-import AI_anaLoading from "../MoneySplit/pages/ai_pages/ai_anaLoading";
-import AI_calLoading from "../MoneySplit/pages/ai_pages/ai_calLoading";
-import AI_calculate from "../MoneySplit/pages/ai_pages/ai_calculate";
-import AI_analysis from "../MoneySplit/pages/ai_pages/ai_analysis";
-import AI_Cancel from "../MoneySplit/pages/ai_pages/ai_cancel";
-import SelectAccount from "../MoneySplit/pages/control_accounts/SelectAccount";
-import SelectRatio from "../MoneySplit/pages/control_categorys/SelectRatio";
-import Authentication from "../MoneySplit/pages/final_process/Authentication";
-import TossAuth from "../MoneySplit/pages/final_process/TossAuth";
-import InputPin from "../MoneySplit/pages/final_process/InputPin";
-import SplitLoading from "../MoneySplit/pages/final_process/SplitLoading";
-import SplitFinish from "../MoneySplit/pages/final_process/SplitFinish";
-import SelectAccountDetail from "../MoneySplit/pages/control_accounts/SelectAccountDetail";
-import SelectAccountAccounts from "../MoneySplit/pages/control_accounts/SelectAccountAccounts";
-import AddCategory from "../MoneySplit/pages/control_categorys/AddCategory";
-import TossTerms from "../MoneySplit/pages/final_process/TossTerms";
+import MoneySplitFirst from "../feature-moneySplit/pages/SplitFirst";
+import AI_home from "../feature-moneySplit/pages/ai_pages/ai_home";
+import AI_anaLoading from "../feature-moneySplit/pages/ai_pages/ai_anaLoading";
+import AI_calLoading from "../feature-moneySplit/pages/ai_pages/ai_calLoading";
+import AI_calculate from "../feature-moneySplit/pages/ai_pages/ai_calculate";
+import AI_analysis from "../feature-moneySplit/pages/ai_pages/ai_analysis";
+import AI_Cancel from "../feature-moneySplit/pages/ai_pages/ai_cancel";
+import SelectAccount from "../feature-moneySplit/pages/control_accounts/SelectAccount";
+import SelectRatio from "../feature-moneySplit/pages/control_categorys/SelectRatio";
+import Authentication from "../feature-moneySplit/pages/final_process/Authentication";
+import TossAuth from "../feature-moneySplit/pages/final_process/TossAuth";
+import InputPin from "../feature-moneySplit/pages/final_process/InputPin";
+import SplitLoading from "../feature-moneySplit/pages/final_process/SplitLoading";
+import SplitFinish from "../feature-moneySplit/pages/final_process/SplitFinish";
+import SelectAccountDetail from "../feature-moneySplit/pages/control_accounts/SelectAccountDetail";
+import SelectAccountAccounts from "../feature-moneySplit/pages/control_accounts/SelectAccountAccounts";
+import AddCategory from "../feature-moneySplit/pages/control_categorys/AddCategory";
+import TossTerms from "../feature-moneySplit/pages/final_process/TossTerms";
 
 const MoneySplitRoutes = () => {
   return (

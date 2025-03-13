@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import StartPage from "../SignOn/pages/StartPage";
-import PersonalInfoPage from "../SignOn/pages/PersonalInfoPage";
-import AgreementPage from "../SignOn/pages/AgreementPage";
-import SalaryInfoPage from "../SignOn/pages/SalaryInfoPage";
-import InterestPage from "../SignOn/pages/InterestPage";
-import CompletionPage from "../SignOn/pages/CompletionPage";
-import InputPinPage from "../SignOn/pages/InputPinPage";
+import StartPage from "../feature-signOn/pages/StartPage";
+import PersonalInfoPage from "../feature-signOn/pages/PersonalInfoPage";
+import AgreementPage from "../feature-signOn/pages/AgreementPage";
+import SalaryInfoPage from "../feature-signOn/pages/SalaryInfoPage";
+import InterestPage from "../feature-signOn/pages/InterestPage";
+import CompletionPage from "../feature-signOn/pages/CompletionPage";
+import InputPinPage from "../feature-signOn/pages/InputPinPage";
 
 const SignRoutes = () => {
   return (
