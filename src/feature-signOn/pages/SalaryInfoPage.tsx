@@ -182,7 +182,7 @@ function SalaryInfoPage() {
                 className={`account-item ${selectedAccount === account.account_id ? "selected" : ""}`}
                 onClick={() => setSelectedAccount(account.account_id)}
               >
-                <img src={require(`../images/${account.logo}`)} alt={account.bank_name} />
+                <img src={require(`../../shared/shared-images/${account.logo}`)} alt={account.bank_name} />
                 <span>
                   {account.bank_name} <strong>{account.account_number}</strong>
                 </span>
