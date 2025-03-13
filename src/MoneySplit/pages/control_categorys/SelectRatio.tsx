@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setCategories } from "../../../redux/actions/categoryAction";
 import { RootState } from "../../../redux/store";
 import { CategoryProps } from "../interfaces";
+import LoadingSpinner from "../../loadingSpinner";
 
 const Category: React.FC<CategoryProps> = (props) => {
   const { idx, total, category, ratio, isOrigin, updateRatio, clickForDelete } = props;
@@ -81,6 +82,7 @@ const SelectRatio: React.FC = () => {
   const [isTooSmall, setIsTooSmall] = useState<boolean>(true);
   const [total, setTotal] = useState<number>(12345);
   const [ratios, setRatios] = useState<number[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // ai 데이터가 포함되어왔을 때 확인
@@ -100,7 +102,10 @@ const SelectRatio: React.FC = () => {
         setTotal(Number(data.amount));
         console.log(total);
       })
-      .catch((error) => console.error("SelectRatio error:", error));
+      .catch((error) => console.error("SelectRatio error:", error))
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
 
   useEffect(() => {
@@ -204,6 +209,10 @@ const SelectRatio: React.FC = () => {
   const clickForNo = () => {
     navigate("/money-split/add-category");
   };
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div>

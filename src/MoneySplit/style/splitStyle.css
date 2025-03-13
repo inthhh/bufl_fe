@@ -560,3 +560,25 @@ input[type="range"]::-webkit-slider-thumb {
     transform: translateY(0);
   }
 }
+
+.scroll-wrapper {
+  height: 500px;
+  overflow-y: auto;
+}
+
+/* 스크롤바 전체 기본 꾸미기 */
+.scroll-wrapper::-webkit-scrollbar {
+  scrollbar-color: #b6b6b6 #f1f1f1;
+  width: 6px;
+}
+
+/* 스크롤바 막대 꾸미기 */
+.scroll-wrapper::-webkit-scrollbar-thumb {
+  background-color: #b6b6b6;
+  border-radius: 4px;
+}
+
+/* 스크롤바 트랙 꾸미기 */
+.scroll-wrapper::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}

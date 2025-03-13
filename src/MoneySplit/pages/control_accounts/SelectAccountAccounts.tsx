@@ -51,7 +51,8 @@ const SelectAccountAccounts: React.FC = () => {
       <div className="center_wrapper">
         <div>
           <div className="accounttitle">
-            “생활비” 목적으로 사용할 <br /> 선택해주세요.
+            해당 카테고리로 사용할 통장을
+            <br /> 선택해주세요.
           </div>
           <div>
             <ul className="analysis_list">
