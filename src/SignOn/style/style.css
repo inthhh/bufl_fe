@@ -193,7 +193,7 @@
 .agree_box {
   width: 350px;
   height: 600px;
-  background-color: rgb(0, 0, 0, 0.07);
+  background-color: #f1f1f1;
   padding: 10px;
   border-radius: 10px;
   overflow-y: scroll;
@@ -209,6 +209,7 @@
 
 .agree_box::-webkit-scrollbar-track {
   background-color: #f1f1f1;
+  border-radius: 0px 10px 10px 0px;
 }
 .salary_text1 {
   font-size: 22px;
@@ -351,10 +352,10 @@
   gap: 10px;
   padding: 20px;
   background-color: #e4effe;
-  border-radius: 8px 10px 10px 8px;
+  border-radius: 8px 10px 10px px;
   width: 360px;
   margin: 0 auto;
-  max-height: 425px;
+  max-height: 417px;
   overflow-y: auto;
   margin-top: 25px;
 }
