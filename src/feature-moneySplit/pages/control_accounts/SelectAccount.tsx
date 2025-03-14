@@ -25,27 +25,22 @@ function SelectAccount() {
   //   bankName: "",
   //   accountNumber: "",
   // });
-  // const [isLoading1, setIsLoading1] = useState(true);
+  const [isLoading1, setIsLoading1] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
-  // useEffect(() => {
-  //   console.log(listLen);
-  //   fetch("https://buflbe.vercel.app/api/salary/category", {
-  //     method: "GET", // 기본값이지만 명시적으로 써도 됨
-  //     credentials: "include", // 쿠키 및 인증 정보 포함
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setSalaryAccount({
-  //         name: "💰 월급 통장",
-  //         bankName: data.categories[0].bank_name,
-  //         accountNumber: data.categories[0].account_number,
-  //       });
-  //       setCategorys(data.categories);
-  //       console.log("**category", categoryList, "**월급통장", salaryAccount);
-  //     })
-  //     .catch((error) => console.error("SelectAccount error:", error))
-  //     .finally(() => setIsLoading1(false));
-  // }, []);
+  useEffect(() => {
+    console.log(listLen);
+    fetch("https://buflbe.vercel.app/api/salary/category", {
+      method: "GET", // 기본값이지만 명시적으로 써도 됨
+      credentials: "include", // 쿠키 및 인증 정보 포함
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setCategorys(data.categories);
+        console.log("**category", categoryList);
+      })
+      .catch((error) => console.error("SelectAccount error:", error))
+      .finally(() => setIsLoading1(false));
+  }, []);
 
   useEffect(() => {
     fetch("https://buflbe.vercel.app/api/salary/account", {
@@ -82,7 +77,7 @@ function SelectAccount() {
     navigate("/money-split/authentication");
   };
 
-  if (isLoading) {
+  if (isLoading || isLoading1) {
     return <LoadingSpinner />;
   }
 
