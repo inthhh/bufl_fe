@@ -14,7 +14,7 @@ function AgreementPage() {
   return (
     <Fade>
       <div>
-        <MoveBack pageBefore="/sign/personal-info" />
+        <MoveBack pageBefore="/sign/input-pin" />
         {!isAgreementOpen ? (
           <div className="center_wrap">
             {/* 동의 안내 화면 */}
