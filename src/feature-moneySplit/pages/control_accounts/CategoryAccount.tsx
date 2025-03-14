@@ -24,8 +24,8 @@ const CategoryAccount: React.FC<CategoryAccountProps> = (props) => {
       <div>
         <div
           className="account_list"
-          onClick={props.category == "💰 월급 통장" ? undefined : clickForAccountLink}
-          style={props.category == "💰 월급 통장" ? undefined : { backgroundColor: "#DCEAFF" }}
+          onClick={props.category == "월급 통장" ? undefined : clickForAccountLink}
+          style={props.category == "월급 통장" ? undefined : { backgroundColor: "#DCEAFF" }}
         >
           <div className="list_div">
             <div>

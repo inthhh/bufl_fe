@@ -20,32 +20,32 @@ function SelectAccount() {
   // 리덕스 리스트 길이 n만큼 categorys 뒤에서 n개 자르기
   const listLen = categoryList.length;
   const navigate = useNavigate();
-  const [salaryAccount, setSalaryAccount] = useState<CategoryAccountsInterface>({
-    name: "",
-    bankName: "",
-    accountNumber: "",
-  });
-  const [isLoading1, setIsLoading1] = useState(true);
-  const [isLoading2, setIsLoading2] = useState(true);
-  useEffect(() => {
-    console.log(listLen);
-    fetch("https://buflbe.vercel.app/api/salary/category", {
-      method: "GET", // 기본값이지만 명시적으로 써도 됨
-      credentials: "include", // 쿠키 및 인증 정보 포함
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setSalaryAccount({
-          name: "💰 월급 통장",
-          bankName: data.categories[0].bank_name,
-          accountNumber: data.categories[0].account_number,
-        });
-        setCategorys(data.categories);
-        console.log("**category", categoryList, "**월급통장", salaryAccount);
-      })
-      .catch((error) => console.error("SelectAccount error:", error))
-      .finally(() => setIsLoading1(false));
-  }, []);
+  // const [salaryAccount, setSalaryAccount] = useState<CategoryAccountsInterface>({
+  //   name: "",
+  //   bankName: "",
+  //   accountNumber: "",
+  // });
+  // const [isLoading1, setIsLoading1] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  // useEffect(() => {
+  //   console.log(listLen);
+  //   fetch("https://buflbe.vercel.app/api/salary/category", {
+  //     method: "GET", // 기본값이지만 명시적으로 써도 됨
+  //     credentials: "include", // 쿠키 및 인증 정보 포함
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setSalaryAccount({
+  //         name: "💰 월급 통장",
+  //         bankName: data.categories[0].bank_name,
+  //         accountNumber: data.categories[0].account_number,
+  //       });
+  //       setCategorys(data.categories);
+  //       console.log("**category", categoryList, "**월급통장", salaryAccount);
+  //     })
+  //     .catch((error) => console.error("SelectAccount error:", error))
+  //     .finally(() => setIsLoading1(false));
+  // }, []);
 
   useEffect(() => {
     fetch("https://buflbe.vercel.app/api/salary/account", {
@@ -58,18 +58,18 @@ function SelectAccount() {
         console.log("✅ accounts:", data);
       })
       .catch((error) => console.error("account get error:", error))
-      .finally(() => setIsLoading2(false));
+      .finally(() => setIsLoading(false));
   }, []);
 
-  useEffect(() => {
-    if (!isLoading1 && !isLoading2 && salaryAccount && categoryAccounts.length > 0) {
-      setCategoryAccounts((prevAccounts) => {
-        const updatedAccounts = [...prevAccounts];
-        updatedAccounts[0] = salaryAccount;
-        return updatedAccounts;
-      });
-    }
-  }, [isLoading1, isLoading2, salaryAccount, categoryAccounts]);
+  // useEffect(() => {
+  //   if (!isLoading1 && !isLoading2 && salaryAccount && categoryAccounts.length > 0) {
+  //     setCategoryAccounts((prevAccounts) => {
+  //       const updatedAccounts = [...prevAccounts];
+  //       updatedAccounts[0] = salaryAccount;
+  //       return updatedAccounts;
+  //     });
+  //   }
+  // }, [isLoading1, isLoading2, salaryAccount, categoryAccounts]);
 
   useEffect(() => {
     setIsFinish(false);
@@ -82,7 +82,7 @@ function SelectAccount() {
     navigate("/money-split/authentication");
   };
 
-  if (isLoading1 || isLoading2) {
+  if (isLoading) {
     return <LoadingSpinner />;
   }
 
