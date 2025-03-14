@@ -66,7 +66,7 @@ const List: React.FC = () => {
           monthly_saving: amount,
           goal_duration: duration,
           // selectedGoalIndex: goalId,
-          accountId: 46,
+          accountId: 1,
         }),
         credentials: "include",
       });
