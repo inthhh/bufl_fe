@@ -56,20 +56,23 @@ const List: React.FC = () => {
 
   const saveGoal = async () => {
     try {
-      const response = await fetch("https://buflbe.vercel.app/api/ai-goals/generate-goals", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          goal_name: selectedGoal,
-          monthly_saving: amount,
-          goal_duration: duration,
-          // selectedGoalIndex: goalId,
-          accountId: 46,
-        }),
-        credentials: "include",
-      });
+      const response = await fetch(
+        "https://buflbe.vercel.app/api/ai-goals/generate-goals",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            goal_name: selectedGoal,
+            monthly_saving: amount,
+            goal_duration: duration,
+            // selectedGoalIndex: goalId,
+            accountId: 46,
+          }),
+          credentials: "include",
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -101,7 +104,9 @@ const List: React.FC = () => {
       }
 
       const data = await response.json();
-      const shuffledRecommendations = data.recommendations.recommendations.sort(() => Math.random() - 0.5);
+      const shuffledRecommendations = data.recommendations.recommendations.sort(
+        () => Math.random() - 0.5
+      );
 
       setTimeout(() => {
         setRecommendations(shuffledRecommendations);
@@ -141,7 +146,11 @@ const List: React.FC = () => {
               <p>오류 발생: {error}</p>
             ) : (
               recommendations?.slice(0, 4).map((rec, index) => (
-                <button key={index} className="list2" onClick={() => openModal(rec.goal_name, rec.id)}>
+                <button
+                  key={index}
+                  className="list2"
+                  onClick={() => openModal(rec.goal_name, rec.id)}
+                >
                   <strong>AI 추천 목표</strong>
                   <br />
                   {rec.goal_name}
@@ -152,8 +161,16 @@ const List: React.FC = () => {
 
           {/* 새로고침 버튼 - 변경된 부분 */}
           <div>
-            <button className={loading ? "log-btn no" : "log-btn"} onClick={handleRefresh}>
-              <img className="log" src={log} alt="log" style={{ marginRight: "5px" }} />
+            <button
+              className={loading ? "log-btn no" : "log-btn"}
+              onClick={handleRefresh}
+            >
+              <img
+                className="log"
+                src={log}
+                alt="log"
+                style={{ marginRight: "5px" }}
+              />
               새로고침
             </button>
           </div>
@@ -203,7 +220,14 @@ const List: React.FC = () => {
               </div>
 
               {/* 버튼 영역 */}
-              <div className="modal-buttons" style={{ marginTop: "40px", width: "360px", marginLeft: "10px" }}>
+              <div
+                className="modal-buttons"
+                style={{
+                  marginTop: "40px",
+                  width: "360px",
+                  marginLeft: "10px",
+                }}
+              >
                 <button className="cancel-btn" onClick={closeModal}>
                   다시 선택
                 </button>

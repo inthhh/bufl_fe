@@ -5,7 +5,10 @@ import MoveBack from "../../../shared/MoveBack";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedAccount } from "../../../redux/actions/accountAction";
 import { RootState } from "../../../redux/store";
-import { AccountsInterface, SelectedAccountInterface } from "../../utils/interfaces";
+import {
+  AccountsInterface,
+  SelectedAccountInterface,
+} from "../../utils/interfaces";
 import LoadingSpinner from "../../../shared/loadingSpinner";
 import Fade from "../../../shared/Fade";
 
@@ -18,8 +21,12 @@ const SelectAccountAccounts: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const selectedAccountId = useSelector((state: RootState) => state.account.selectedAccountId);
-  const selectedAccountName = useSelector((state: RootState) => state.account.selectedAccountName);
+  const selectedAccountId = useSelector(
+    (state: RootState) => state.account.selectedAccountId
+  );
+  const selectedAccountName = useSelector(
+    (state: RootState) => state.account.selectedAccountName
+  );
   const [isLoading, setIsLoading] = useState(true);
 
   const { categoryId } = useParams();
@@ -57,7 +64,9 @@ const SelectAccountAccounts: React.FC = () => {
   return (
     <Fade>
       <div>
-        <MoveBack pageBefore={`/money-split/select-account/detail/${categoryId}`} />
+        <MoveBack
+          pageBefore={`/money-split/select-account/detail/${categoryId}`}
+        />
         <div className="center_wrapper">
           <div>
             <div className="accounttitle">
@@ -78,12 +87,17 @@ const SelectAccountAccounts: React.FC = () => {
                         onClick={() =>
                           setAccount({
                             selectedAccountId: account.account_id,
-                            selectedAccountName: account.bank_name + " " + String(account.account_number),
+                            selectedAccountName:
+                              account.bank_name +
+                              " " +
+                              String(account.account_number),
                           })
                         }
                         onChange={() => {}}
                       />{" "}
-                      <label htmlFor={`account-${index}`}>{account.bank_name + account.account_number}</label>
+                      <label htmlFor={`account-${index}`}>
+                        {account.bank_name + account.account_number}
+                      </label>
                     </li>
                   ))}
                 </ul>
@@ -91,7 +105,11 @@ const SelectAccountAccounts: React.FC = () => {
             </div>
             <div className="center_wrapper">
               <div className="center_wrapper btn">
-                <button className="blue_big_btn" type="button" onClick={() => clickForYes()}>
+                <button
+                  className="blue_big_btn"
+                  type="button"
+                  onClick={() => clickForYes()}
+                >
                   완료했어요.
                 </button>
               </div>
