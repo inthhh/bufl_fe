@@ -28,7 +28,7 @@ const Choose: React.FC = () => {
         body: JSON.stringify({
           monthly_saving: amount * 10000, // amount는 만 원 단위로 설정되어 있음
           goal_duration: duration,
-          account_id: 46,
+          account_id: 1,
         }),
         credentials: "include", // 쿠키 인증 정보를 포함
       });
@@ -36,7 +36,7 @@ const Choose: React.FC = () => {
       const data = await response.json();
 
       if (response.ok) {
-        alert(`목표가 설정되었습니다. 목표 ID: ${data.goal_id}`);
+        // alert(`목표가 설정되었습니다. 목표 ID: ${data.goal_id}`);
         navigate("/Main/rocket", {
           state: { goal_id: data.goal_id }, // goal_id 전달
         });
@@ -45,7 +45,7 @@ const Choose: React.FC = () => {
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("서버 오류가 발생했습니다.");
+      // alert("서버 오류가 발생했습니다.");
     }
   };
 
