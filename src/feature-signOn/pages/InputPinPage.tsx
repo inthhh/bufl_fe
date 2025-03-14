@@ -81,7 +81,7 @@ const InputPinPage: React.FC = () => {
       );
 
       if (response.status === 200) {
-        navigate("/sign/salary-info");
+        navigate("/sign/agreement");
       }
     } catch (error: any) {
       console.error("비밀번호 업데이트 오류:", error);

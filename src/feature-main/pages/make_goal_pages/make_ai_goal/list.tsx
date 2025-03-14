@@ -203,7 +203,14 @@ const List: React.FC = () => {
               </div>
 
               {/* 버튼 영역 */}
-              <div className="modal-buttons" style={{ marginTop: "40px", width: "360px", marginLeft: "10px" }}>
+              <div
+                className="modal-buttons"
+                style={{
+                  marginTop: "40px",
+                  width: "360px",
+                  marginLeft: "10px",
+                }}
+              >
                 <button className="cancel-btn" onClick={closeModal}>
                   다시 선택
                 </button>

@@ -34,10 +34,13 @@ const First: React.FC = () => {
       credentials: "include",
     }).then((res) => res.json());
 
-    const fetchCategory = fetch("https://buflbe.vercel.app/api/salary/category", {
-      method: "GET",
-      credentials: "include",
-    }).then((res) => res.json());
+    const fetchCategory = fetch(
+      "https://buflbe.vercel.app/api/salary/category",
+      {
+        method: "GET",
+        credentials: "include",
+      }
+    ).then((res) => res.json());
 
     const fetchSalary = fetch("https://buflbe.vercel.app/api/users/salary", {
       method: "GET",
@@ -95,34 +98,70 @@ const First: React.FC = () => {
             <div className="bank-icon1">
               <img
                 className="main_icons"
-                src={accounts?.length > 0 ? require(`../../../shared/shared-images/${accounts[0]?.logo}`) : BankIcon1}
+                src={
+                  accounts?.length > 0
+                    ? require(`../../../shared/shared-images/${accounts[0]?.logo}`)
+                    : BankIcon1
+                }
                 alt="icon"
               />
-              <div className="money">{accounts[0]?.balance ? Number(accounts[0]?.balance).toLocaleString() : 0}원</div>
+              <div className="money">
+                {accounts[0]?.balance
+                  ? Number(accounts[0]?.balance).toLocaleString()
+                  : 0}
+                원
+              </div>
             </div>
             <div className="bank-icon2">
               <img
                 className="main_icons"
-                src={accounts?.length > 0 ? require(`../../../shared/shared-images/${accounts[1]?.logo}`) : BankIcon1}
+                src={
+                  accounts?.length > 0
+                    ? require(`../../../shared/shared-images/${accounts[1]?.logo}`)
+                    : BankIcon1
+                }
                 alt="icon"
               />
-              <div className="money">{accounts[1]?.balance ? Number(accounts[1]?.balance).toLocaleString() : 0}원</div>
+              <div className="money">
+                {accounts[1]?.balance
+                  ? Number(accounts[1]?.balance).toLocaleString()
+                  : 0}
+                원
+              </div>
             </div>
             <div className="bank-icon3">
               <img
                 className="main_icons"
-                src={accounts?.length > 0 ? require(`../../../shared/shared-images/${accounts[2]?.logo}`) : BankIcon1}
+                src={
+                  accounts?.length > 0
+                    ? require(`../../../shared/shared-images/${accounts[2]?.logo}`)
+                    : BankIcon1
+                }
                 alt="icon"
               />
-              <div className="money">{accounts[2]?.balance ? Number(accounts[2]?.balance).toLocaleString() : 0}원</div>
+              <div className="money">
+                {accounts[2]?.balance
+                  ? Number(accounts[2]?.balance).toLocaleString()
+                  : 0}
+                원
+              </div>
             </div>
             <div className="bank-icon4">
               <img
                 className="main_icons"
-                src={accounts?.length > 0 ? require(`../../../shared/shared-images/${accounts[3]?.logo}`) : BankIcon1}
+                src={
+                  accounts?.length > 0
+                    ? require(`../../../shared/shared-images/${accounts[3]?.logo}`)
+                    : BankIcon1
+                }
                 alt="icon"
               />
-              <div className="money">{accounts[3]?.balance ? Number(accounts[3]?.balance).toLocaleString() : 0}원</div>
+              <div className="money">
+                {accounts[3]?.balance
+                  ? Number(accounts[3]?.balance).toLocaleString()
+                  : 0}
+                원
+              </div>
             </div>
             {viewMore ? (
               <>
@@ -130,10 +169,19 @@ const First: React.FC = () => {
                   <div key={index} className="bank-icon5">
                     <img
                       className="main_icons"
-                      src={account?.logo ? require(`../../../shared/shared-images/${account.logo}`) : BankIcon1}
+                      src={
+                        account?.logo
+                          ? require(`../../../shared/shared-images/${account.logo}`)
+                          : BankIcon1
+                      }
                       alt="icon"
                     />
-                    <div className="money">{account?.balance ? Number(account.balance).toLocaleString() : 0}원</div>
+                    <div className="money">
+                      {account?.balance
+                        ? Number(account.balance).toLocaleString()
+                        : 0}
+                      원
+                    </div>
                   </div>
                 ))}
               </>
@@ -156,7 +204,11 @@ const First: React.FC = () => {
                   시작해볼까요?
                 </div>
               </div>
-              <button className="blue_big_btn" type="button" onClick={() => navigate("/money-split")}>
+              <button
+                className="blue_big_btn"
+                type="button"
+                onClick={() => navigate("/money-split")}
+              >
                 바로가기
               </button>
             </div>

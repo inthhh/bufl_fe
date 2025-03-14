@@ -61,7 +61,9 @@ const AccountSelector1: React.FC = () => {
                 name="account"
                 value={account.account_id}
                 checked={selectedAccount === account.account_id.toString()}
-                onChange={() => setSelectedAccount(account.account_id.toString())}
+                onChange={() =>
+                  setSelectedAccount(account.account_id.toString())
+                }
               />
               {account.bank_name} {account.account_number}
               <span className="checkmark"></span>

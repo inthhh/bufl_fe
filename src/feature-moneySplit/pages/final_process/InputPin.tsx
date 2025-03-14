@@ -112,7 +112,10 @@ const InputPin: React.FC = () => {
                 </button>
               ))}
               <div onClick={handleDelete}></div>
-              <button className="keypad-button" onClick={() => handleKeyPress("0")}>
+              <button
+                className="keypad-button"
+                onClick={() => handleKeyPress("0")}
+              >
                 0
               </button>
               <button className="keypad-button" onClick={handleDelete}>
