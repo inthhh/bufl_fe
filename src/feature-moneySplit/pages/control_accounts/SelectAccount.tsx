@@ -41,7 +41,7 @@ function SelectAccount() {
           accountNumber: data.categories[0].account_number,
         });
         setCategorys(data.categories);
-        console.log("**category", categoryList);
+        console.log("**category", categoryList, "**월급통장", salaryAccount);
       })
       .catch((error) => console.error("SelectAccount error:", error))
       .finally(() => setIsLoading1(false));
@@ -91,7 +91,7 @@ function SelectAccount() {
                     category={category.name}
                     ratio={category.ratio}
                     amount={category.amount}
-                    account={index === 0 ? salaryAccount : categoryAccounts[index] ?? { bankName: "정보 없음" }}
+                    account={index === 0 ? salaryAccount : categoryAccounts[index - 1] ?? { bankName: "정보 없음" }}
                   />
                 </div>
               ))}
