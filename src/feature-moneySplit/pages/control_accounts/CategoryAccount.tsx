@@ -15,6 +15,9 @@ const CategoryAccount: React.FC<CategoryAccountProps> = (props) => {
     navigate(`/money-split/select-account/detail/${props.categoryId}`);
   };
 
+  useEffect(() => {
+    console.log("계좌 -", props.account);
+  }, []);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setSelectedAccount({ selectedAccountId: -1, selectedAccountName: "" }));
@@ -24,8 +27,8 @@ const CategoryAccount: React.FC<CategoryAccountProps> = (props) => {
       <div>
         <div
           className="account_list"
-          onClick={props.category == "월급 통장" ? undefined : clickForAccountLink}
-          style={props.category == "월급 통장" ? undefined : { backgroundColor: "#DCEAFF" }}
+          onClick={props.category.includes("월급") ? undefined : clickForAccountLink}
+          style={props.category.includes("월급") ? undefined : { backgroundColor: "#DCEAFF" }}
         >
           <div className="list_div">
             <div>
@@ -34,12 +37,12 @@ const CategoryAccount: React.FC<CategoryAccountProps> = (props) => {
               </div>
 
               <div>
-                {props.account.bankName === "정보 없음"
+                {props.account.bankName?.includes("없음")
                   ? "계좌 연결하기"
                   : props.account.bankName + " " + props.account.accountNumber + " ✅"}
               </div>
             </div>
-            {props.category == "💰 월급 통장" ? undefined : <img src={RightArrow} alt="right" width={15} />}
+            {props.category.includes("월급") ? undefined : <img src={RightArrow} alt="right" width={15} />}
           </div>
           <div className="list_div" style={{ marginTop: "15px" }}>
             <div className="font_20" style={{ color: "#3182F6" }}>
