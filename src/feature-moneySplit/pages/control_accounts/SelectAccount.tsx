@@ -36,7 +36,7 @@ function SelectAccount() {
       .then((response) => response.json())
       .then((data) => {
         setSalaryAccount({
-          name: "Salary Account",
+          name: "💰 월급 통장",
           bankName: data.categories[0].bank_name,
           accountNumber: data.categories[0].account_number,
         });
@@ -101,7 +101,7 @@ function SelectAccount() {
                     category={category.name}
                     ratio={category.ratio}
                     amount={category.amount}
-                    account={categoryAccounts[index] ?? { bankName: "null" }}
+                    account={categoryAccounts[index] ?? { bankName: "정보 없음" }}
                   />
                 </div>
               ))}
