@@ -39,7 +39,7 @@ const InputPin: React.FC = () => {
     try {
       const pinString = pin.join("");
       console.log(pinString);
-      const response = await fetch("https://buflbe.vercel.app/api/users/pin", {
+      const response = await fetch("http://localhost:5000/api/users/pin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -112,7 +112,10 @@ const InputPin: React.FC = () => {
                 </button>
               ))}
               <div onClick={handleDelete}></div>
-              <button className="keypad-button" onClick={() => handleKeyPress("0")}>
+              <button
+                className="keypad-button"
+                onClick={() => handleKeyPress("0")}
+              >
                 0
               </button>
               <button className="keypad-button" onClick={handleDelete}>

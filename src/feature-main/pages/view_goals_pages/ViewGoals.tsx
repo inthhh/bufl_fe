@@ -49,7 +49,7 @@ const Start: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://buflbe.vercel.app/api/goals", {
+    fetch("http://localhost:5000/api/goals", {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })
@@ -81,13 +81,19 @@ const Start: React.FC = () => {
 
         <div className="parentsbox" ref={parentsboxRef}>
           {goals.map((goal) => (
-            <div key={goal.id} className="goal-box" onClick={() => navigate("/main/goal")}>
+            <div
+              key={goal.id}
+              className="goal-box"
+              onClick={() => navigate("/main/goal")}
+            >
               <img className="payment" src={payment} alt="payment" />
               <div className="nowgoal">목표</div>
               <div className="goaltext">{goal.goal_name}</div>
               <img className="present" src={present} alt="present" />
               <div className="nowmoney">현재 저축액</div>
-              <div className="money4">{Number(goal.current_amount).toLocaleString()}원</div>
+              <div className="money4">
+                {Number(goal.current_amount).toLocaleString()}원
+              </div>
               <div className="donutWrap">
                 <DonutChart progress={goal.probability || 0} />
               </div>

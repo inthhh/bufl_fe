@@ -15,7 +15,7 @@ const Account: React.FC<AccountProps> = ({ total }) => {
 
   useEffect(() => {
     // 카테고리 정보 api
-    fetch(`https://buflbe.vercel.app/api/salary/category`, {
+    fetch(`http://localhost:5000/api/salary/category`, {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })
@@ -44,12 +44,18 @@ const Account: React.FC<AccountProps> = ({ total }) => {
               <div className="budget_name">{name[i]}</div>
               <div
                 className="budget_percent"
-                style={color[i] ? { backgroundColor: `${color[i]}` } : { backgroundColor: "#dddddd" }}
+                style={
+                  color[i]
+                    ? { backgroundColor: `${color[i]}` }
+                    : { backgroundColor: "#dddddd" }
+                }
               >
                 {r}%
               </div>
               <div className="budget_month">매달</div>
-              <div className="budget_amount">{(r * total * 0.01).toLocaleString()}원</div>
+              <div className="budget_amount">
+                {(r * total * 0.01).toLocaleString()}원
+              </div>
             </div>
           ))}
         </div>

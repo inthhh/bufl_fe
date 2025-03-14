@@ -106,7 +106,7 @@ const PersonalInfoPage: React.FC = () => {
 
     try {
       const response = await axios.post(
-        "https://buflbe.vercel.app/api/users",
+        "http://localhost:5000/api/users",
         {
           userName: localName,
           userRegnu: `${idFront}-${idBack}******`,
