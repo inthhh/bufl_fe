@@ -50,7 +50,7 @@ function SelectAccount() {
       .then((response) => response.json())
       .then((data) => {
         setCategoryAccounts(data.map());
-        console.log("✅ accounts:", data);
+        console.log("✅ accounts:", categoryAccounts);
       })
       .catch((error) => console.error("account get error:", error))
       .finally(() => setIsLoading(false));
@@ -96,7 +96,7 @@ function SelectAccount() {
                     category={category.name}
                     ratio={category.ratio}
                     amount={category.amount}
-                    account={categoryAccounts[index] ?? { bankName: "정보 없음" }}
+                    account={categoryAccounts[index]}
                   />
                 </div>
               ))}
