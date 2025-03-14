@@ -6,11 +6,7 @@ import RightArrow from "../../images/right-arrow.png";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedAccount } from "../../../redux/actions/accountAction";
 import { RootState } from "../../../redux/store";
-import {
-  CategoryInterface,
-  CategoryAccountProps,
-  CategoryAccountsInterface,
-} from "../../utils/interfaces";
+import { CategoryInterface, CategoryAccountProps, CategoryAccountsInterface } from "../../utils/interfaces";
 import CategoryAccount from "./CategoryAccount";
 import LoadingSpinner from "../../../shared/loadingSpinner";
 import Fade from "../../../shared/Fade";
@@ -18,23 +14,17 @@ import Fade from "../../../shared/Fade";
 function SelectAccount() {
   const [isFinish, setIsFinish] = useState<boolean>(false);
   const [categorys, setCategorys] = useState<CategoryInterface[]>([]);
-  const [categoryAccounts, setCategoryAccounts] = useState<
-    CategoryAccountsInterface[]
-  >([]);
+  const [categoryAccounts, setCategoryAccounts] = useState<CategoryAccountsInterface[]>([]);
   const dispatch = useDispatch();
-  const categoryList = useSelector(
-    (state: RootState) => state.category.categoryList
-  );
+  const categoryList = useSelector((state: RootState) => state.category.categoryList);
   // 리덕스 리스트 길이 n만큼 categorys 뒤에서 n개 자르기
   const listLen = categoryList.length;
   const navigate = useNavigate();
-  const [salaryAccount, setSalaryAccount] = useState<CategoryAccountsInterface>(
-    {
-      name: "",
-      bankName: "",
-      accountNumber: "",
-    }
-  );
+  const [salaryAccount, setSalaryAccount] = useState<CategoryAccountsInterface>({
+    name: "",
+    bankName: "",
+    accountNumber: "",
+  });
   const [isLoading1, setIsLoading1] = useState(true);
   const [isLoading2, setIsLoading2] = useState(true);
   useEffect(() => {
@@ -51,7 +41,7 @@ function SelectAccount() {
           accountNumber: data.categories[0].account_number,
         });
         setCategorys(data.categories);
-        console.log("**category", categoryList);
+        console.log("**category", categoryList, "**월급통장", salaryAccount);
       })
       .catch((error) => console.error("SelectAccount error:", error))
       .finally(() => setIsLoading1(false));
@@ -64,7 +54,7 @@ function SelectAccount() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setCategoryAccounts(data);
+        setCategoryAccounts(data.slice(1).map());
         console.log("✅ accounts:", data);
       })
       .catch((error) => console.error("account get error:", error))
@@ -101,11 +91,7 @@ function SelectAccount() {
                     category={category.name}
                     ratio={category.ratio}
                     amount={category.amount}
-                    account={
-                      index === 0
-                        ? salaryAccount
-                        : categoryAccounts[index] ?? { bankName: "정보 없음" }
-                    }
+                    account={index === 0 ? salaryAccount : categoryAccounts[index - 1] ?? { bankName: "정보 없음" }}
                   />
                 </div>
               ))}
