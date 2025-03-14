@@ -39,7 +39,7 @@ function SelectAccount() {
   const [isLoading2, setIsLoading2] = useState(true);
   useEffect(() => {
     console.log(listLen);
-    fetch("http://localhost:5000/api/salary/category", {
+    fetch("https://buflbe.vercel.app/api/salary/category", {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })
@@ -58,7 +58,7 @@ function SelectAccount() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/salary/account", {
+    fetch("https://buflbe.vercel.app/api/salary/account", {
       method: "GET", // 기본값이지만 명시적으로 써도 됨
       credentials: "include", // 쿠키 및 인증 정보 포함
     })

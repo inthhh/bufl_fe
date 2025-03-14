@@ -39,7 +39,7 @@ const InputPin: React.FC = () => {
     try {
       const pinString = pin.join("");
       console.log(pinString);
-      const response = await fetch("http://localhost:5000/api/users/pin", {
+      const response = await fetch("https://buflbe.vercel.app/api/users/pin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

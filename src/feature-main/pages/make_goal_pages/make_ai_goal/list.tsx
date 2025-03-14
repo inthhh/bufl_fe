@@ -57,7 +57,7 @@ const List: React.FC = () => {
   const saveGoal = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/ai-goals/generate-goals",
+        "https://buflbe.vercel.app/api/ai-goals/generate-goals",
         {
           method: "POST",
           headers: {
@@ -94,7 +94,7 @@ const List: React.FC = () => {
     setError(null); // 기존 오류 메시지 초기화
 
     try {
-      const response = await fetch("http://localhost:5000/api/ai-goals", {
+      const response = await fetch("https://buflbe.vercel.app/api/ai-goals", {
         method: "GET",
         credentials: "include",
       });

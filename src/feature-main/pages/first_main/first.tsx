@@ -29,17 +29,20 @@ const First: React.FC = () => {
     setIsLoading(true); // ✅ API 호출 전 로딩 시작
     setErrorMessage(null); // ✅ 기존 에러 초기화
 
-    const fetchAccounts = fetch("http://localhost:5000/api/accounts", {
+    const fetchAccounts = fetch("https://buflbe.vercel.app/api/accounts", {
       method: "GET",
       credentials: "include",
     }).then((res) => res.json());
 
-    const fetchCategory = fetch("http://localhost:5000/api/salary/category", {
-      method: "GET",
-      credentials: "include",
-    }).then((res) => res.json());
+    const fetchCategory = fetch(
+      "https://buflbe.vercel.app/api/salary/category",
+      {
+        method: "GET",
+        credentials: "include",
+      }
+    ).then((res) => res.json());
 
-    const fetchSalary = fetch("http://localhost:5000/api/users/salary", {
+    const fetchSalary = fetch("https://buflbe.vercel.app/api/users/salary", {
       method: "GET",
       credentials: "include",
     }).then((res) => res.json());
