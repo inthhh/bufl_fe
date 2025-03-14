@@ -54,12 +54,22 @@ function SelectAccount() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setCategoryAccounts(data.slice(1).map());
+        setCategoryAccounts(data.map());
         console.log("✅ accounts:", data);
       })
       .catch((error) => console.error("account get error:", error))
       .finally(() => setIsLoading2(false));
   }, []);
+
+  useEffect(() => {
+    if (!isLoading1 && !isLoading2 && salaryAccount && categoryAccounts.length > 0) {
+      setCategoryAccounts((prevAccounts) => {
+        const updatedAccounts = [...prevAccounts];
+        updatedAccounts[0] = salaryAccount;
+        return updatedAccounts;
+      });
+    }
+  }, [isLoading1, isLoading2, salaryAccount, categoryAccounts]);
 
   useEffect(() => {
     setIsFinish(false);
@@ -91,7 +101,7 @@ function SelectAccount() {
                     category={category.name}
                     ratio={category.ratio}
                     amount={category.amount}
-                    account={index === 0 ? salaryAccount : categoryAccounts[index - 1] ?? { bankName: "정보 없음" }}
+                    account={categoryAccounts[index] ?? { bankName: "null" }}
                   />
                 </div>
               ))}
