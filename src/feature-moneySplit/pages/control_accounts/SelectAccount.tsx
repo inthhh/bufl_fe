@@ -49,22 +49,12 @@ function SelectAccount() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setCategoryAccounts(data.map());
+        setCategoryAccounts(data);
         console.log("✅ accounts:", categoryAccounts);
       })
       .catch((error) => console.error("account get error:", error))
       .finally(() => setIsLoading(false));
   }, []);
-
-  // useEffect(() => {
-  //   if (!isLoading1 && !isLoading2 && salaryAccount && categoryAccounts.length > 0) {
-  //     setCategoryAccounts((prevAccounts) => {
-  //       const updatedAccounts = [...prevAccounts];
-  //       updatedAccounts[0] = salaryAccount;
-  //       return updatedAccounts;
-  //     });
-  //   }
-  // }, [isLoading1, isLoading2, salaryAccount, categoryAccounts]);
 
   useEffect(() => {
     setIsFinish(false);
