@@ -20,6 +20,9 @@
 
 ## 📌 프로젝트 개요
 
+<img width="200" alt="image" src="https://github.com/user-attachments/assets/8d3eb7a6-c5b3-48a0-b6d4-bc17bfbe240b" />
+
+
 사용자의 월급을 **자동으로 카테고리별로 배분**하고, **금융 흐름을 시각화**하는 기능을 제공
 
 •	✅ **자동 저축 및 투자** → 월급이 들어오면 설정한 비율대로 자동 배분
