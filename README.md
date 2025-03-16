@@ -1,6 +1,8 @@
 ## 💰 버플(BUFL) 🫧
 - 한 줄 소개 : 월급 쪼개기 자동화 & Money Flow 시각화 서비스
 - 프로젝트 목적 : 한경xTossBank 중간 팀프로젝트
+- 💾 FE 저장소 : https://github.com/Toss-middle-project/bufl_fe
+- 💾 BE 저장소 : https://github.com/Toss-middle-project/bufl_be
 
 ### 🛠️ 사용 기술
 
@@ -28,3 +30,13 @@
 
 ## 📌 디렉토리 구조
 <img width="300" alt="image" src="https://github.com/user-attachments/assets/3150ad4a-887f-45fb-b45d-d09a0b88c761" />
+
+## 발표자료 미리보기
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/257978b9-b108-4523-afb5-314cae7bcd8c" />
+<br>
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/58b75cb7-f6da-4827-91d7-dd1f7a4164b9" />
+<br>
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/5b2542a4-c201-4811-80e1-10dff70f8088" />
+<br>
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/8025e62f-f699-4d3a-950f-0c033d1c32a2" />
+
