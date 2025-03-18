@@ -14,7 +14,7 @@
 |              | **상태관리** : Redux  |
 | 📍 **Backend (BE)** | **런타임 환경** : Node.js  |
 |              | **API 문서화** : Swagger  |
-|              | **DB** : MySQL, Firebase  |
+|              | **DB** : MySQL  |
 | 📍 **협업 도구** | Git/Github, Notion, Slack  |
 
 
