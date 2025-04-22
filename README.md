@@ -1,4 +1,4 @@
-## 💰 버플(BUFL) 🫧
+## 💰 버플(BUFL) 🫧 - 우수상 수상🥉
 - 한 줄 소개 : 월급 쪼개기 자동화 & Money Flow 시각화 서비스
 - 프로젝트 목적 : 한경xTossBank 중간 팀프로젝트
 - 💾 FE 저장소 : https://github.com/Toss-middle-project/bufl_fe
